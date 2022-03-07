@@ -22,9 +22,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //get login 
 Route::post('/login_process','LoginController@LoginProcess');
 
-//form inspeksi 
+//form inspeksi, kelola uji petik inspeksi dan visual 
 //Route::get('/form_inspeksi/get/role','FormInspeksiController@GetAll');
 //Route::post('/form_inspeksi/post','FormInspeksiController@PostFormOne');
+//Route::post('/form_inspeksi/delete/{id_product}','FormInspeksiController@DeleteByIdProduct');
 
-//form inspeksi get role
+//kelola form input
+
+//form inspeksi lab , kelola data pengujian laboratorium
 //Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetAll');
+//Route::post('/form_inspeksi_lab/post','FormInspeksiLabController@PostFormOne');
+//Route::post('/form_inspeksi_lab/delete/{id_product}','FormInspeksiLabController@DeleteByIdProduct');
+
+//kelola form input lab
+
+//kelola user
+
+//kelola data high risk
+
+//menampilkan dashboard
+
+//menampilkan master data
+
+//mengenerate berita
+
+
+
+
