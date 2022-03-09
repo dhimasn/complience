@@ -13,24 +13,25 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//get login 
 Route::post('login', 'Api\Mobile\AuthController@login');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//get login 
-Route::post('/login_process','LoginController@LoginProcess');
-
 //form inspeksi, kelola uji petik inspeksi dan visual 
-//Route::get('/form_inspeksi/get/role','FormInspeksiController@GetAll');
-//Route::post('/form_inspeksi/post','FormInspeksiController@PostFormOne');
-//Route::post('/form_inspeksi/delete/{id_product}','FormInspeksiController@DeleteByIdProduct');
+Route::post('/form_inspeksi/get/role','FormInspeksiController@GetbyRole');
+Route::post('/form_inspeksi/get/roles','FormInspeksiController@GetbyRoles');
+Route::post('/form_inspeksi/post','FormInspeksiController@PostFormOne');
+Route::post('/form_inspeksi/delete/{id_product}','FormInspeksiController@DeleteByIdProduct');
+Route::post('/form_inspeksi/get/list','FormInspeksiController@GetList');
 
 //kelola form input
 
 //form inspeksi lab , kelola data pengujian laboratorium
-//Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetAll');
+//Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetbyRole');
 //Route::post('/form_inspeksi_lab/post','FormInspeksiLabController@PostFormOne');
 //Route::post('/form_inspeksi_lab/delete/{id_product}','FormInspeksiLabController@DeleteByIdProduct');
 
