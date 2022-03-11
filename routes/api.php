@@ -25,8 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/form_inspeksi/get/role','FormInspeksiController@GetbyRole');
 Route::post('/form_inspeksi/get/roles','FormInspeksiController@GetbyRoles');
 Route::post('/form_inspeksi/post','FormInspeksiController@PostFormOne');
+Route::post('/form_inspeksi/post/ujik_petik','FormInspeksiController@PostFormOnePetik');
 Route::post('/form_inspeksi/delete/{id_product}','FormInspeksiController@DeleteByIdProduct');
 Route::post('/form_inspeksi/get/list','FormInspeksiController@GetList');
+
+
+
 
 //kelola form input
 
