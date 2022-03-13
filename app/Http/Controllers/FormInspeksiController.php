@@ -23,9 +23,22 @@ class FormInspeksiController extends Controller
 
     public function GetbyRole(Request $request){
         try{
-            
-            $result = $this->formInpeksi_db->getRole($request->role);
-            return response()->json(['success'=> true, 'message' => '200 Ok', 'data' => $result]);
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $role = $request->role;
+
+            if(!empty($role)){
+                
+                $result = $this->formInpeksi_db->getRole($role);
+                if($result){
+
+                    $response['success'] = true;
+                    $response['message'] = "200 Ok";
+                    $response['data'] = $result;
+                }
+            }
+
+            return response()->json($response, 200);
             
         }catch(Exception $e)
         {
@@ -35,9 +48,19 @@ class FormInspeksiController extends Controller
 
     public function GetByRoles(Request $request){
         try{
-            
-            $result = $this->formInpeksi_db->getRoles($request->roles);
-            return response()->json(['success'=> true, 'message' => '200 Ok', 'data' => $result]);
+
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $roles = $request->roles;
+            if(!empty($roles)){
+
+                $result = $this->formInpeksi_db->getRoles($roles);
+                $response['success'] = true;
+                $response['message'] = "200 Ok";
+                $response['data'] = $result;
+            }
+
+            return response()->json($response, 200);
 
         }catch(Exception $e)
         {
@@ -50,17 +73,32 @@ class FormInspeksiController extends Controller
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
-            $data = $request[0];
+            $dt = $request[0];
             
-            if(!empty($data)){
+            if(!empty($dt)){
 
                 for ($x = 1; $x <= 31; $x++) {
+                    
+                    //parse form;
+                    $this->parseIdForm();
 
-                    $this->formInpeksi_db->createDataInspeksi($data['iv'.$x.''], $data["id"], 1); //nomor she
+                    if($x != 18){
+
+                        $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], $x);
                     
-                    //create base64
-                    //iv18
-                    
+                    }else{
+
+                        $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], 18); 
+                        
+                        $dataInspeksi = $this->formInpeksi_db->getDataInspeksiByIdProdukIdFormInpeksi($dt["id"], 18);
+                       
+                        if(!empty($dataInspeksi)){
+                        
+                            $base64 = base64_encode($dt['iv'.$x.'']);
+                            $this->formInpeksi_db->createDataInspeksiFile( $dataInspeksi->Id_data_produk_inspeksi, $dt["id"], $base64);
+                                                        
+                        }    
+                    } 
                 }
                 
                 $response['success'] = true;
@@ -83,11 +121,36 @@ class FormInspeksiController extends Controller
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
-            $data = $request[0];
+            $dt = $request[0];
             
-            if(!empty($data)){
+            if(!empty($dt)){
 
-                //
+                for ($x = 1; $x <= 6; $x++) {
+
+                        //parse form;
+                        $this->parseIdForm();
+    
+                        if($x == 1){
+    
+                            $this->formInpeksi_db->createDataInspeksi($dt['UP'.$x.''], $dt["id"], $x); 
+                        
+                        }else{
+    
+                            $this->formInpeksi_db->createDataInspeksi($dt['UP'.$x.''], $dt["id"], $x); 
+                            
+                            $dataInspeksi = $this->formInpeksi_db->getDataInspeksiByIdProdukIdFormInpeksi($dt["id"], $x);
+                            
+                            if(!empty($dataInspeksi)){
+                            
+                                $base64 = base64_encode($dt['UP'.$x.'']);
+                                $this->formInpeksi_db->createDataInspeksiFile( $dataInspeksi->Id_data_produk_inspeksi, $dt["id"], $base64);
+                                                           
+                            }    
+                        } 
+                    }
+
+                $response['success'] = true;
+                $response['message'] = "200 Ok";
                 
             }
 
@@ -101,10 +164,32 @@ class FormInspeksiController extends Controller
     }
 
     public function DeleteByIdProduct(Request $request){
+        try{
 
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $deleteId = $request[0]['id'];
+            if(!empty($deleteId)){
+               
+                $this->formInpeksi_db->deleteDataProdukInspeksi($deleteId);
+                $response['success'] = true;
+                $response['message'] = "200 Ok";
+            
+            }
+
+            return response()->json($response, 200);
+
+        }catch(Exception $e)
+        {
+            return response()->json(['message' => false]);
+        }
     }
 
     public function GetList(Request $request){
+        
+    }
+
+    public function parseIdForm(){
 
     }
 

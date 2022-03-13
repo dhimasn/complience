@@ -30,18 +30,34 @@ class InpeksiDb
         return $result;
     }
 
-    public function createDataInspeksi($data, $idProduk, $idform){
-
-        $result = InspeksiDB::create([
-            //'Id_data_produk_inspeksi' => 'London to Paris',
-            'id_data_produk' => $idProduk,
-            'id_form_inpeksi' => $idform,
-            'data_produk_inspeksi' => $data,
-            //'verication_result' => 'London to Paris',
-            //'nomor_she' => 'London to Paris',
-            //'notes' => 'London to Paris',
-        ]);
-
+    public function getDataInspeksiByIdProdukIdFormInpeksi($idProduk, $idform){
+        $result = DB::table('data_produk_inpeksi')->where('id_data_produk', $idProduk)
+            ->where('id_form_inpeksi', $idform)
+            ->first();
         return $result;
     }
+
+    public function createDataInspeksi($data, $idProduk, $idform){
+       
+        $q = sprintf("INSERT into cmp_tools.data_produk_inpeksi(id_data_produk, id_form_inpeksi, data_produk_inspeksi, state) values(%d, '%s', '%s', %d)", 
+        $idProduk, $idform, $data, 1);
+        $a = DB::insert($q);
+        return $a;
+    }
+
+    public function createDataInspeksiFile($idDataProduk, $idform, $base64){
+        $q = sprintf("INSERT into cmp_tools.data_produk_inpeksi_file(Id_data_produk_inspeksi, Id_form_inpeksi, base64, state) values(%d, '%s', '%s', %d)", 
+        $idDataProduk, $idform, $base64, 1);
+        $a = DB::insert($q);
+        return $a;
+    }
+
+    public function deleteDataProdukInspeksi($deleteId){
+
+        $q = sprintf("UPDATE cmp_tools.data_produk_inpeksi set state=%d where id_data_produk=%d", 4, $deleteId);
+        $a = DB::update($q);
+        return $a;
+
+    }
+
 }
