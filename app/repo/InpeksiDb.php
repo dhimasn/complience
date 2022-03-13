@@ -60,4 +60,10 @@ class InpeksiDb
 
     }
 
+    public function getListDataProdukInspeksi(){
+        $result = DB::table('data_produk_inpeksi')->where('state', 4)
+        ->get();
+        return $result;
+    }
+
 }

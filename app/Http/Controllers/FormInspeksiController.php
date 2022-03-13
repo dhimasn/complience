@@ -186,7 +186,26 @@ class FormInspeksiController extends Controller
     }
 
     public function GetList(Request $request){
-        
+        try{
+
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            
+            $result = $this->formInpeksi_db->getListDataProdukInspeksi();
+            if(!empty($result)){
+               
+                $response['success'] = true;
+                $response['message'] = "200 Ok";
+                $response['data'] = $result;
+            
+            }
+
+            return response()->json($response, 200);
+
+        }catch(Exception $e)
+        {
+            return response()->json(['message' => false]);
+        }
     }
 
     public function parseIdForm(){
