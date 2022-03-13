@@ -11,7 +11,7 @@
  Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 08/03/2022 12:59:15
+ Date: 13/03/2022 19:38:55
 */
 
 SET NAMES utf8mb4;
@@ -67,21 +67,79 @@ CREATE TABLE `data_produk_cmp_high_risk`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `data_produk_inpeksi`;
 CREATE TABLE `data_produk_inpeksi`  (
-  `Id_data_produk_inspeksi` bigint(11) NOT NULL,
-  `id_data_produk` bigint(11) NULL DEFAULT NULL,
-  `id_form_inpeksi` bigint(255) NULL DEFAULT NULL,
+  `Id_data_produk_inspeksi` int(11) NOT NULL AUTO_INCREMENT,
+  `id_data_produk` bigint(255) NULL DEFAULT NULL,
+  `id_form_inpeksi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `data_produk_inspeksi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `verication_result` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `notes` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `nomor_she` bigint(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`Id_data_produk_inspeksi`) USING BTREE,
-  INDEX `form_inspeksi`(`id_form_inpeksi`) USING BTREE,
-  INDEX `data_produk_inpeksi_cmp`(`id_data_produk`) USING BTREE,
-  CONSTRAINT `data_produk_inpeksi_cmp` FOREIGN KEY (`id_data_produk`) REFERENCES `data_produk_cmp` (`id_data_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `form_inspeksi` FOREIGN KEY (`id_form_inpeksi`) REFERENCES `form_inpeksi` (`id_form_inpeksi`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `lab_inspeksi` FOREIGN KEY (`id_data_produk`) REFERENCES `produk_lab` (`id_data_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `ritel_inspeksi` FOREIGN KEY (`id_data_produk`) REFERENCES `ritel_inspeksi` (`id_data_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+  `state` bigint(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`Id_data_produk_inspeksi`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of data_produk_inpeksi
+-- ----------------------------
+INSERT INTO `data_produk_inpeksi` VALUES (67, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (68, 1646594469412, '2', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (69, 1646594469412, '3', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (70, 1646594469412, '4', 'null', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (71, 1646594469412, '5', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (72, 1646594469412, '6', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (73, 1646594469412, '7', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (74, 1646594469412, '8', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (75, 1646594469412, '9', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (76, 1646594469412, '10', '001/LSP/QI/06.1-I/2022', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (77, 1646594469412, '11', 'Samsung', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (78, 1646594469412, '12', 'AR13KVFSDX', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (79, 1646594469412, '13', 'AR13KVFSDX', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (80, 1646594469412, '14', '1120.00', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (81, 1646594469412, '15', '12000.00', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (82, 1646594469412, '16', '11.70', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (83, 1646594469412, '17', '4', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (84, 1646594469412, '18', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (85, 1646594469412, '19', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (86, 1646594469412, '20', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (87, 1646594469412, '21', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (88, 1646594469412, '22', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (89, 1646594469412, '23', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (90, 1646594469412, '24', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (91, 1646594469412, '25', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (92, 1646594469412, '26', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (93, 1646594469412, '27', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (94, 1646594469412, '28', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (95, 1646594469412, '29', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (96, 1646594469412, '30', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (97, 1646594469412, '31', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (100, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (101, 1646594469412, '2', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (102, 1646594469412, '3', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (103, 1646594469412, '4', 'null', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (104, 1646594469412, '5', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (105, 1646594469412, '6', '', NULL, NULL, NULL, 4);
+
+-- ----------------------------
+-- Table structure for data_produk_inpeksi_file
+-- ----------------------------
+DROP TABLE IF EXISTS `data_produk_inpeksi_file`;
+CREATE TABLE `data_produk_inpeksi_file`  (
+  `Id_data_produk_inspeksi` bigint(11) NOT NULL AUTO_INCREMENT,
+  `Id_form_inpeksi` bigint(11) NULL DEFAULT NULL,
+  `base64` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `state` bigint(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`Id_data_produk_inspeksi`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of data_produk_inpeksi_file
+-- ----------------------------
+INSERT INTO `data_produk_inpeksi_file` VALUES (68, 1646594469412, '', 1);
+INSERT INTO `data_produk_inpeksi_file` VALUES (69, 1646594469412, '', 1);
+INSERT INTO `data_produk_inpeksi_file` VALUES (70, 1646594469412, 'bnVsbA==', 1);
+INSERT INTO `data_produk_inpeksi_file` VALUES (71, 1646594469412, '', 1);
+INSERT INTO `data_produk_inpeksi_file` VALUES (72, 1646594469412, '', 1);
+INSERT INTO `data_produk_inpeksi_file` VALUES (84, 1646594469412, '', 1);
 
 -- ----------------------------
 -- Table structure for data_produk_lab
@@ -96,6 +154,17 @@ CREATE TABLE `data_produk_lab`  (
   INDEX `produk_lab`(`id_form_lab`) USING BTREE,
   CONSTRAINT `inspeksi_lab` FOREIGN KEY (`id_data_produk_lab`) REFERENCES `produk_lab` (`id_data_produk_lab`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `produk_lab` FOREIGN KEY (`id_form_lab`) REFERENCES `form_lab` (`id_form_lab`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for data_produk_lab_file
+-- ----------------------------
+DROP TABLE IF EXISTS `data_produk_lab_file`;
+CREATE TABLE `data_produk_lab_file`  (
+  `id_data_produk_lab` bigint(11) NOT NULL,
+  `id_form_lab` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `base64` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  PRIMARY KEY (`id_data_produk_lab`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
