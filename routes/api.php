@@ -28,6 +28,7 @@ Route::post('/form_inspeksi/post/one','FormInspeksiController@PostFormOne');
 Route::post('/form_inspeksi/post/uji_petik','FormInspeksiController@PostFormOnePetik');
 Route::get('/form_inspeksi/delete','FormInspeksiController@DeleteByIdProduct');
 Route::get('/form_inspeksi/get/list','FormInspeksiController@GetList');
+Route::get('/form_inspeksi/get/detail','FormInspeksiController@GetDetail');
 
 //form inspeksi lab , kelola data pengujian laboratorium
 Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetbyRole');

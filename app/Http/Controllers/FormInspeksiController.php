@@ -190,10 +190,11 @@ class FormInspeksiController extends Controller
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
-            
             $result = $this->formInpeksi_db->getListDataProdukInspeksi();
+
             if(!empty($result)){
-               
+                
+                //$response_detail_produk = ProdukResponse::responseProduk($prduk);
                 $response['success'] = true;
                 $response['message'] = "200 Ok";
                 $response['data'] = $result;
@@ -206,6 +207,10 @@ class FormInspeksiController extends Controller
         {
             return response()->json(['message' => false]);
         }
+    }
+
+    public function GetDetail(Request $request){
+
     }
 
     public function parseIdForm(){
