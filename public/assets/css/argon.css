@@ -6230,7 +6230,7 @@ input[type='button'].btn-block
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active
 {
-    color: rgba(255, 255, 255, .65);
+    color: rgba(0,0,0);
 }
 
 .navbar-dark .navbar-toggler
