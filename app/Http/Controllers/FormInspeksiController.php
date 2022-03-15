@@ -8,8 +8,10 @@ use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repo\InpeksiDb;
+use App\Response\ProductResponse;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use stdClass;
 
 class FormInspeksiController extends Controller
@@ -38,12 +40,13 @@ class FormInspeksiController extends Controller
                 }
             }
 
-            return response()->json($response, 200);
-            
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function GetByRoles(Request $request){
@@ -60,12 +63,13 @@ class FormInspeksiController extends Controller
                 $response['data'] = $result;
             }
 
-            return response()->json($response, 200);
-
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function PostFormOne(Request $request){
@@ -106,13 +110,13 @@ class FormInspeksiController extends Controller
             
             }
 
-            return response()->json($response, 200);
-    
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
-
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function PostFormOnePetik(Request $request){
@@ -154,12 +158,13 @@ class FormInspeksiController extends Controller
                 
             }
 
-            return response()->json($response, 200);
-    
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
+        DB::commit();
+        return response()->json($response, 200);
 
     }
 
@@ -177,12 +182,13 @@ class FormInspeksiController extends Controller
             
             }
 
-            return response()->json($response, 200);
-
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function GetList(Request $request){
@@ -193,20 +199,20 @@ class FormInspeksiController extends Controller
             $result = $this->formInpeksi_db->getListDataProdukInspeksi();
 
             if(!empty($result)){
-                
-                //$response_detail_produk = ProdukResponse::responseProduk($prduk);
+                $data = ProductResponse::responseProduk($result);
                 $response['success'] = true;
                 $response['message'] = "200 Ok";
-                $response['data'] = $result;
+                $response['data'] = $data;
             
             }
 
-            return response()->json($response, 200);
-
         }catch(Exception $e)
         {
-            return response()->json(['message' => false]);
+            DB::rollBack();
+            throw $e;
         }
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function GetDetail(Request $request){
