@@ -209,6 +209,33 @@ INSERT INTO `fom_inpeksi_role` VALUES (6, 'Compliance Assessment');
 INSERT INTO `fom_inpeksi_role` VALUES (7, 'Rekaman Sampel Uji Petik');
 
 -- ----------------------------
+-- Table structure for field_api_mobile
+-- ----------------------------
+DROP TABLE IF EXISTS `field_api_mobile`;
+CREATE TABLE `field_api_mobile`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_category_product` bigint(255) NULL DEFAULT NULL,
+  `field` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `key` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of field_api_mobile
+-- ----------------------------
+INSERT INTO `field_api_mobile` VALUES (1, 2, 'field-0', 'merek');
+INSERT INTO `field_api_mobile` VALUES (2, 2, 'field-1', 'famili');
+INSERT INTO `field_api_mobile` VALUES (3, 2, 'field-2', 'model');
+INSERT INTO `field_api_mobile` VALUES (4, 2, 'field-3', 'tipe');
+INSERT INTO `field_api_mobile` VALUES (5, 2, 'field-4', 'daya');
+INSERT INTO `field_api_mobile` VALUES (6, 2, 'field-5', 'kapasitaspendinginan');
+INSERT INTO `field_api_mobile` VALUES (7, 2, 'field-6', 'nilaiefisiensi');
+INSERT INTO `field_api_mobile` VALUES (8, 2, 'field-7', 'ratingbintang');
+INSERT INTO `field_api_mobile` VALUES (9, 2, 'field-8', 'konsumsienergitahunan');
+INSERT INTO `field_api_mobile` VALUES (10, 2, 'field-9', 'biayalistriktahunan');
+INSERT INTO `field_api_mobile` VALUES (11, 2, 'field-10', 'noregistrasi');
+
+-- ----------------------------
 -- Table structure for form_inpeksi
 -- ----------------------------
 DROP TABLE IF EXISTS `form_inpeksi`;

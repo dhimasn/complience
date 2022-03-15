@@ -13,34 +13,35 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+//get login 
+Route::post('login', 'AuthController@login');
 Route::group(['namespace' => 'Api'], function () { // Api Controller
-    Route::group(['namespace' => 'Mobile'], function () { // Mobile Controller
-        //get login 
-        Route::post('login', 'AuthController@login');
+    Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', 'middleware' => 'auth:api'], function () { // logged only api
+        
+        Route::post('sync-product', 'ProductController@getAllProduct');
     });
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //form inspeksi, kelola uji petik inspeksi dan visual 
-Route::post('/form_inspeksi/get/role','FormInspeksiController@GetbyRole');
-Route::post('/form_inspeksi/get/roles','FormInspeksiController@GetbyRoles');
-Route::post('/form_inspeksi/post/one','FormInspeksiController@PostFormOne');
-Route::post('/form_inspeksi/post/uji_petik','FormInspeksiController@PostFormOnePetik');
-Route::get('/form_inspeksi/delete','FormInspeksiController@DeleteByIdProduct');
-Route::get('/form_inspeksi/get/list','FormInspeksiController@GetList');
-Route::get('/form_inspeksi/get/detail','FormInspeksiController@GetDetail');
+Route::post('/form_inspeksi/get/role', 'FormInspeksiController@GetbyRole');
+Route::post('/form_inspeksi/get/roles', 'FormInspeksiController@GetbyRoles');
+Route::post('/form_inspeksi/post/one', 'FormInspeksiController@PostFormOne');
+Route::post('/form_inspeksi/post/uji_petik', 'FormInspeksiController@PostFormOnePetik');
+Route::get('/form_inspeksi/delete', 'FormInspeksiController@DeleteByIdProduct');
+Route::get('/form_inspeksi/get/list', 'FormInspeksiController@GetList');
+Route::get('/form_inspeksi/get/detail', 'FormInspeksiController@GetDetail');
 
 //form inspeksi lab , kelola data pengujian laboratorium
-Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetbyRole');
-Route::get('/form_inspeksi_lab/get/roles','FormInspeksiLabController@GetbyRoles');
-Route::post('/form_inspeksi_lab/post/two','FormInspeksiLabController@PostFormTwo');
-Route::post('/form_inspeksi_lab/post/three','FormInspeksiLabController@PostFormThree');
-Route::post('/form_inspeksi_lab/post/four','FormInspeksiLabController@PostFormFour');
-Route::post('/form_inspeksi_lab/delete/{id_product}','FormInspeksiLabController@DeleteByIdProduct');
+Route::get('/form_inspeksi_lab/get/role', 'FormInspeksiLabController@GetbyRole');
+Route::get('/form_inspeksi_lab/get/roles', 'FormInspeksiLabController@GetbyRoles');
+Route::post('/form_inspeksi_lab/post/two', 'FormInspeksiLabController@PostFormTwo');
+Route::post('/form_inspeksi_lab/post/three', 'FormInspeksiLabController@PostFormThree');
+Route::post('/form_inspeksi_lab/post/four', 'FormInspeksiLabController@PostFormFour');
+Route::post('/form_inspeksi_lab/delete/{id_product}', 'FormInspeksiLabController@DeleteByIdProduct');
 
 
 //kelola form
@@ -54,7 +55,3 @@ Route::post('/form_inspeksi_lab/delete/{id_product}','FormInspeksiLabController@
 //menampilkan master data
 
 //mengenerate berita
-
-
-
-

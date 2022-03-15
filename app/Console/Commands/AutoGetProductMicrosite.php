@@ -56,10 +56,10 @@ class AutoGetProductMicrosite extends Command
                     'field_value' => $product->field_value,
                 );
             }
-            Cache::put('product_microsite', json_encode($insert));
             foreach (array_chunk($insert, 1000) as $data) {
                 $result = \DB::table('data_produk_cmp')->insert($data);
             }
+            Cache::flush();
             \Log::channel('cron')->info('[SUCCESS] AutoGetProductMicrosite');
         } catch (\Exception $e) {
             \Log::channel('cron')->info('[FAILED] AutoGetProductMicrosite');
