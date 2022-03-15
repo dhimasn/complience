@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//get login 
-Route::post('login', 'Api\Mobile\AuthController@login');
+Route::group(['namespace' => 'Api'], function () { // Api Controller
+    Route::group(['namespace' => 'Mobile'], function () { // Mobile Controller
+        //get login 
+        Route::post('login', 'AuthController@login');
+    });
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Helpers\ApiHelper;
+use Illuminate\Support\Facades\Cache;
 
 class AutoGetProductMicrosite extends Command
 {
@@ -55,6 +56,7 @@ class AutoGetProductMicrosite extends Command
                     'field_value' => $product->field_value,
                 );
             }
+            Cache::put('product_microsite', json_encode($insert));
             foreach (array_chunk($insert, 1000) as $data) {
                 $result = \DB::table('data_produk_cmp')->insert($data);
             }

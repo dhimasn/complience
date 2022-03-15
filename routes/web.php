@@ -1,5 +1,7 @@
 <?php
 
+use App\Helpers\ApiHelper;
+use App\Helpers\ProductHelper;
 use Illuminate\Support\Facades\Route;
 
 /*
