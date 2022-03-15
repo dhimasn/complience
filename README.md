@@ -21,6 +21,9 @@ complience tools is application to help inspectorat catch data
     - `php artisan config:clear`
 4. Config web server, akses public di arahkan ke folder public laravel
 5. Jalankan command `php artisan optimize:clear` biar semakin mantap gan
+6. tambahkan requirement api di file `.env`
+    - URL_GET_PRODUCT_MICROSITE
+    - SECRET_KEY_MICROSITE
 
 
 

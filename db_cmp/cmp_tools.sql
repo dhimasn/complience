@@ -41,12 +41,15 @@ CREATE TABLE `data_high_risk`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `data_produk_cmp`;
 CREATE TABLE `data_produk_cmp`  (
-  `id_data_produk` bigint(11) NOT NULL AUTO_INCREMENT,
+  `id_produk` bigint(11) NOT NULL AUTO_INCREMENT,
+  `id_data_produk` bigint(11) NOT NULL,
+  `id_category` bigint(11) NOT NULL,
   `id_perusahaan` bigint(11) NULL DEFAULT NULL,
   `id_user` bigint(11) NULL DEFAULT NULL,
   `id_ispro` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `id_field` bigint(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_data_produk`) USING BTREE
+  `id_field` varchar(20) NULL DEFAULT NULL,
+  `field_value` text NULL,
+  PRIMARY KEY (`id_produk`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
