@@ -2,8 +2,10 @@
 
 namespace App\Repo;
 
+use App\Models\DataProdukMasterDB;
 use App\Models\FormInspeksiDB;
 use App\Models\InspeksiDB;
+use DateTime;
 use stdClass;
 use Exception;
 use Illuminate\Support\Carbon;
@@ -62,6 +64,38 @@ class InpeksiDb
 
     public function getListDataProdukInspeksi(){
         $result = DB::table('data_produk_inpeksi')->where('state', 4)
+        ->get();
+        return $result;
+    }
+
+    public function createProdukMaster($dt){
+
+        $result = null;
+
+        $productMaster = $this->getProdukMasterByIdDataProduk($dt);
+        if(empty($productMaster)){
+            $result = DataProdukMasterDB::create([
+                'id_data_produk' => $dt['id'],
+                'date_added' => new DateTime(),
+                'date_updated' => new DateTime(),
+            ]);
+        }
+
+        return $result;
+
+    }
+
+    public function getProdukMasterByIdDataProduk($dt){
+        $result = DataProdukMasterDB::where('id_data_produk', $dt['id'])
+        ->first();
+        return $result;
+    }
+
+    public function getListDataProduk(){
+        $result = DataProdukMasterDB::where('state', 1)
+        ->with(['produk_inspeksi' => function($dataInspeksi){
+            $dataInspeksi->where('state', 1);
+        }])
         ->get();
         return $result;
     }

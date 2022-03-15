@@ -6,94 +6,65 @@ use App\Http\Controllers\Controller;
 
 class ProductResponse extends Controller 
 {
-    public static function responseProduk($data) {
-
-        $data = [];
-        $result = array(
-            'id_data_produk'=>'',
-            'Nomor SHE'=>'',
-            'merek'=> '',
-            'Kapasitas'=> '',
-            'Manufaktur / importir'=> '',
-            'Tanggal Produksi' => '',
-            'Negara Asal'=>'',
-            'Harga'=>'' 
-        );
+    public static function responseProduk($data) {        
         
-        foreach($data as $dt){
-        
-            if($dt->id_form_inspeksi){
-                //   
-            
-            }
-        
-        }
-        
-        
-        /*if(!empty($berita->tipe)){
+        foreach($data as $produk_inpeksi){
 
-            $tipe = mstDataTrait::getDetailByid($berita->tipe);
-            if(!empty($tipe)){
-                $berita->tipe = $tipe->namaData;
-            }
-
-        }
-
-        if(!empty($berita->kategori)){
-
-            $kategori = mstDataTrait::getDetailByid($berita->kategori);
-            if(!empty($kategori)){
-                $berita->kategori = $kategori->namaData;
-            }
-
-        }
-
-        if(!empty($berita->jenis)){
-
-            $jenis = mstDataTrait::getDetailByid($berita->jenis);
-            if(!empty($jenis)){
-                $berita->jenis = $jenis->namaData;
-            }
-
-        }
-
-        if(!empty($berita->grup)){
-
-            $grup = mstDataTrait::getDetailByid($berita->grup);
-            if(!empty($grup)){
-                $berita->grup = $grup->namaData;
-            }
-
-        }
-
-        if(!empty($berita->perwakilan)){
-
-            $perwakilan = mstDataTrait::getDetailByid($berita->perwakilan);
-            if(!empty($perwakilan)){
-                $berita->perwakilan = $perwakilan->namaData;
+            $produk_inpeksi['data_inspeksi_visual'] = [];
+    
+            $result = array(
+                'Nomor SHE'=>'',
+                'merek'=> '',
+                'Kapasitas'=> '',
+                'Manufaktur/importir'=> '',
+                'Tanggal Produksi' => '',
+                'Negara Asal'=>'',
+                'Harga'=>'' 
+            );
+           
+           foreach($produk_inpeksi['produk_inspeksi'] as $dt){
+                
+                if($data[0]['id_data_produk'] == $dt['id_data_produk']){
+    
+                    if($dt['id_form_inpeksi'] == 16){
+                        $result['Nomor SHE'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 17){
+                        $result['merek'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 18){
+                        $result['Kapasitas'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 21){
+                        $result['Manufaktur/importir'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 22){
+                        $result['Tanggal Produksi'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 23){
+                        $result['Negara Asal'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                    if($dt['id_form_inpeksi'] == 24){
+                        $result['Harga'] = $dt['data_produk_inspeksi'];
+                    }
+    
+                }
+                
             }
 
-        }
+            unset($produk_inpeksi['produk_inspeksi']);
 
-        if(!empty($berita->perwakilan)){
-
-            $perwakilan = mstDataTrait::getDetailByid($berita->perwakilan);
-            if(!empty($perwakilan)){
-                $berita->perwakilan = $perwakilan->namaData;
-            }
+            $produk_inpeksi['data_inspeksi_visual'] = $result;
 
         }
 
-        if(!empty($berita->golongan)){
-
-            $golongan = mstDataTrait::getDetailByid($berita->golongan);
-            if(!empty($golongan)){
-                $berita->golongan = $golongan->namaData;
-            }
-
-        }*/
-
-        //return $data;
+        return $data;
 
     }
 

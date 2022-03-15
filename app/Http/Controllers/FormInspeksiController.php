@@ -78,33 +78,39 @@ class FormInspeksiController extends Controller
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
             $dt = $request[0];
-            
+           
             if(!empty($dt)){
-
-                for ($x = 1; $x <= 31; $x++) {
-                    
-                    //parse form;
-                    $this->parseIdForm();
-
-                    if($x != 18){
-
-                        $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], $x);
-                    
-                    }else{
-
-                        $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], 18); 
-                        
-                        $dataInspeksi = $this->formInpeksi_db->getDataInspeksiByIdProdukIdFormInpeksi($dt["id"], 18);
-                       
-                        if(!empty($dataInspeksi)){
-                        
-                            $base64 = base64_encode($dt['iv'.$x.'']);
-                            $this->formInpeksi_db->createDataInspeksiFile( $dataInspeksi->Id_data_produk_inspeksi, $dt["id"], $base64);
-                                                        
-                        }    
-                    } 
-                }
+            
+                //create product master
+                $dt_master = $this->formInpeksi_db->createProdukMaster($dt); 
                 
+                if(!empty($dt_master)){
+                    
+                    for ($x = 1; $x <= 31; $x++) {
+                    
+                        //parse form;
+                        $this->parseIdForm();
+    
+                        if($x != 18){
+    
+                            $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], $x);
+                        
+                        }else{
+    
+                            $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], 18); 
+                            
+                            $dataInspeksi = $this->formInpeksi_db->getDataInspeksiByIdProdukIdFormInpeksi($dt["id"], 18);
+                           
+                            if(!empty($dataInspeksi)){
+                            
+                                $base64 = base64_encode($dt['iv'.$x.'']);
+                                $this->formInpeksi_db->createDataInspeksiFile( $dataInspeksi->Id_data_produk_inspeksi, $dt["id"], $base64);
+                                                            
+                            }    
+                        } 
+                    }
+                }
+
                 $response['success'] = true;
                 $response['message'] = "200 Ok";
             
@@ -129,7 +135,11 @@ class FormInspeksiController extends Controller
             
             if(!empty($dt)){
 
-                for ($x = 1; $x <= 6; $x++) {
+                //cek product master
+                $dt_master = $this->formInpeksi_db->getProdukMasterByIdDataProduk($dt);
+                if(!empty($dt_master)){
+
+                    for ($x = 1; $x <= 6; $x++) {
 
                         //parse form;
                         $this->parseIdForm();
@@ -152,6 +162,8 @@ class FormInspeksiController extends Controller
                             }    
                         } 
                     }
+
+                }
 
                 $response['success'] = true;
                 $response['message'] = "200 Ok";
@@ -196,10 +208,13 @@ class FormInspeksiController extends Controller
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
-            $result = $this->formInpeksi_db->getListDataProdukInspeksi();
+
+            $result = $this->formInpeksi_db->getListDataProduk();
 
             if(!empty($result)){
+            
                 $data = ProductResponse::responseProduk($result);
+            
                 $response['success'] = true;
                 $response['message'] = "200 Ok";
                 $response['data'] = $data;
