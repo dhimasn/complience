@@ -29,14 +29,15 @@ Route::post('/form_inspeksi/post/uji_petik','FormInspeksiController@PostFormOneP
 Route::get('/form_inspeksi/delete','FormInspeksiController@DeleteByIdProduct');
 Route::get('/form_inspeksi/get/list','FormInspeksiController@GetList');
 Route::get('/form_inspeksi/get/detail','FormInspeksiController@GetDetail');
+Route::post('/form_inspeksi/post/four','FormInspeksiLabController@PostFormFour');
 
 //form inspeksi lab , kelola data pengujian laboratorium
 Route::get('/form_inspeksi_lab/get/role','FormInspeksiLabController@GetbyRole');
 Route::get('/form_inspeksi_lab/get/roles','FormInspeksiLabController@GetbyRoles');
 Route::post('/form_inspeksi_lab/post/two','FormInspeksiLabController@PostFormTwo');
 Route::post('/form_inspeksi_lab/post/three','FormInspeksiLabController@PostFormThree');
-Route::post('/form_inspeksi_lab/post/four','FormInspeksiLabController@PostFormFour');
-Route::post('/form_inspeksi_lab/delete/{id_product}','FormInspeksiLabController@DeleteByIdProduct');
+Route::post('/form_inspeksi_lab/delete','FormInspeksiLabController@DeleteByIdProduct');
+
 
 
 //kelola form
