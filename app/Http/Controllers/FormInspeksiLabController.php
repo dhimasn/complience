@@ -36,10 +36,6 @@ class FormInspeksiLabController extends Controller
        
     }
 
-    public function PostFormFour(Request $request){
-        
-    }
-
     public function DeleteByIdProduct(Request $request){
 
     }
