@@ -65,7 +65,7 @@ class ProductResponse extends Controller
         }
 
         return $data;
-
+        
     }
-
+    
 }

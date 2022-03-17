@@ -27,17 +27,20 @@ class FormInspeksiController extends Controller
         try{
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
+            
             $role = $request->role;
-
+            
             if(!empty($role)){
                 
                 $result = $this->formInpeksi_db->getRole($role);
+
                 if($result){
 
                     $response['success'] = true;
                     $response['message'] = "200 Ok";
                     $response['data'] = $result;
                 }
+               
             }
 
         }catch(Exception $e)
@@ -231,7 +234,32 @@ class FormInspeksiController extends Controller
     }
 
     public function GetDetail(Request $request){
+        try{
+          
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
 
+            $detailId = $request->detail_id;
+            
+            $result = $this->formInpeksi_db->getDetailProduk($detailId);
+
+            if(!empty($result)){
+            
+                $data = ProductResponse::responseProduk($result);
+            
+                $response['success'] = true;
+                $response['message'] = "200 Ok";
+                $response['data'] = $data;
+            
+            }
+
+        }catch(Exception $e)
+        {
+            DB::rollBack();
+            throw $e;
+        }
+        DB::commit();
+        return response()->json($response, 200);
     }
 
     public function parseIdForm(){
