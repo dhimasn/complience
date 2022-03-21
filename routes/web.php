@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/lab', function () {
     return view('pages.lab.index');
 });
+Route::get('/formulir-4', function () {
+    return view('pages.formulir4.index');
+});
 
 Auth::routes(['register' => false]);
 

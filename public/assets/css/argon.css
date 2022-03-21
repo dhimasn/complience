@@ -2188,7 +2188,7 @@ pre code
 .table th,
 .table td
 {
-    padding: 1rem;
+    padding: .5rem;
 
     vertical-align: top;
 
@@ -2699,7 +2699,7 @@ pre code
 
     color: #8898aa;
     border: 1px solid #dee2e6;
-    border-radius: .25rem;
+    /* border-radius: .25rem; */
     background-color: #fff;
     background-clip: padding-box;
     box-shadow: 0 3px 2px rgba(233, 236, 239, .05);
@@ -2724,7 +2724,7 @@ pre code
 .form-control:focus
 {
     color: #8898aa;
-    border-color: #5e72e4;
+    /* border-color: #707070; */
     outline: 0;
     background-color: #fff;
     box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, .1);
@@ -2846,7 +2846,7 @@ textarea.form-control
 
 .form-group
 {
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
 }
 
 .form-text
@@ -20040,7 +20040,7 @@ a.btn-icon-only
 {
     font-size: .875rem;
     font-weight: 600; 
-
+    margin-bottom: 0.2rem;
     color: #525f7f;
 }
 
@@ -20263,14 +20263,14 @@ textarea[resize='horizontal']
 .focused .input-group-text
 {
     color: #8898aa;
-    border-color: #5e72e4; 
+    border-color: #707070; 
     background-color: #fff;
 }
 
-.focused .form-control
+/* .focused .form-control
 {
-    border-color: #5e72e4;
-}
+    border-color: #707070;
+} */
 
 .focused .input-group-flush
 {
@@ -29855,8 +29855,16 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
     padding: 1.5rem 3rem !important;
 }
 
+.form-complience{
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #707070;
+    height: 25px;
+    padding: 0;
+}
+
 .title-menu{
-	width: 222px;
     height: 30px;
     font-family: Montserrat;
     font-size: 25px;
@@ -29930,6 +29938,12 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 }
 .button-pilih-formulir-dash{
     width: 149px;
+    height: 35px;
+    border-radius: 17.5px;
+    margin: 0 auto;
+    padding: 0.3rem 1.25rem;
+}
+.button-comp{
     height: 35px;
     border-radius: 17.5px;
     margin: 0 auto;
