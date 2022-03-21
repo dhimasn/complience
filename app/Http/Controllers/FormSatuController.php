@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use stdClass;
 
-class FormInspeksiController extends Controller
+class FormSatuController extends Controller
 {
     private $formInpeksi_db;
 
