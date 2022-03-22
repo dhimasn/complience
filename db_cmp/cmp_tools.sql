@@ -2524,4 +2524,53 @@ CREATE TABLE `user_role`  (
   PRIMARY KEY (`id_user_role`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
+-- ----------------------------
+-- Table structure for round_robin
+-- ----------------------------
+DROP TABLE IF EXISTS `round_robin`;
+CREATE TABLE `round_robin`  (
+  `id_round_robin` int(255) NOT NULL AUTO_INCREMENT,
+  `id_product` bigint(20) NULL DEFAULT NULL,
+  `id_inspektur` bigint(255) NULL DEFAULT NULL,
+  `form_data` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` tinyint(255) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `created_at` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_round_robin`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for form_roundrobin
+-- ----------------------------
+DROP TABLE IF EXISTS `form_roundrobin`;
+CREATE TABLE `form_roundrobin`  (
+  `id_form_roundrobin` bigint(255) NOT NULL AUTO_INCREMENT,
+  `data_point` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `data_entry_type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `mandatory` tinyint(255) NULL DEFAULT NULL,
+  `notes` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id_form_roundrobin`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of form_roundrobin
+-- ----------------------------
+INSERT INTO `form_roundrobin` VALUES (1, 'Nomor SHE', 'Drop down menu', 1, NULL);
+INSERT INTO `form_roundrobin` VALUES (2, 'Merek', 'Manual entry', 1, NULL);
+INSERT INTO `form_roundrobin` VALUES (3, 'Kapasitas Pengenal (PK)', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (4, 'Teknologi', 'Drop down menu', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (5, 'Manufaktur / Importir', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (6, 'Kode atau Tanggal Produksi', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (7, 'Negara Asal', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (8, 'Harga', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (9, 'Lampirkan foto LTHE', 'File', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (10, 'Nomor SHE', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (11, 'Jumlah Bintang', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (12, 'Nilai Efisiensi Energi (EER/CSPF)', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (13, 'Model Unit Dalam', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (14, 'Model Unit Luar', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (15, 'Daya', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (16, 'Kapasitas Pendingin', 'Manual entry', NULL, NULL);
+INSERT INTO `form_roundrobin` VALUES (17, 'Lab Uji Tujuan', 'Manual entry', NULL, NULL);
+
 SET FOREIGN_KEY_CHECKS = 1;
