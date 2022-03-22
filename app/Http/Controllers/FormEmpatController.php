@@ -12,7 +12,7 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
 
-class FormInspeksiLabController extends Controller
+class FormEmpatController extends Controller
 {
     
     public function __construct()
@@ -25,14 +25,6 @@ class FormInspeksiLabController extends Controller
     }
 
     public function GetbyRoles(Request $request){
-       
-    }
-
-    public function PostFormTwo(Request $request){
-        
-    }
-
-    public function PostFormThree(Request $request){
        
     }
 

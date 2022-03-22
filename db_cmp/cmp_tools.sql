@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100138
+ Source Server Version : 100414
  Source Host           : localhost:3306
  Source Schema         : cmp_tools
 
  Target Server Type    : MySQL
- Target Server Version : 100138
+ Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 13/03/2022 19:38:55
+ Date: 15/03/2022 17:11:02
 */
 
 SET NAMES utf8mb4;
@@ -41,15 +41,12 @@ CREATE TABLE `data_high_risk`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `data_produk_cmp`;
 CREATE TABLE `data_produk_cmp`  (
-  `id_produk` bigint(11) NOT NULL AUTO_INCREMENT,
-  `id_data_produk` bigint(11) NOT NULL,
-  `id_category` bigint(11) NOT NULL,
+  `id_data_produk` bigint(11) NOT NULL AUTO_INCREMENT,
   `id_perusahaan` bigint(11) NULL DEFAULT NULL,
   `id_user` bigint(11) NULL DEFAULT NULL,
   `id_ispro` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `id_field` varchar(20) NULL DEFAULT NULL,
-  `field_value` text NULL,
-  PRIMARY KEY (`id_produk`) USING BTREE
+  `id_field` bigint(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_data_produk`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -84,43 +81,43 @@ CREATE TABLE `data_produk_inpeksi`  (
 -- ----------------------------
 -- Records of data_produk_inpeksi
 -- ----------------------------
-INSERT INTO `data_produk_inpeksi` VALUES (67, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (68, 1646594469412, '2', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (69, 1646594469412, '3', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (70, 1646594469412, '4', 'null', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (71, 1646594469412, '5', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (72, 1646594469412, '6', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (73, 1646594469412, '7', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (74, 1646594469412, '8', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (75, 1646594469412, '9', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (76, 1646594469412, '10', '001/LSP/QI/06.1-I/2022', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (77, 1646594469412, '11', 'Samsung', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (78, 1646594469412, '12', 'AR13KVFSDX', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (79, 1646594469412, '13', 'AR13KVFSDX', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (80, 1646594469412, '14', '1120.00', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (81, 1646594469412, '15', '12000.00', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (82, 1646594469412, '16', '11.70', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (83, 1646594469412, '17', '4', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (84, 1646594469412, '18', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (85, 1646594469412, '19', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (86, 1646594469412, '20', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (87, 1646594469412, '21', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (88, 1646594469412, '22', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (89, 1646594469412, '23', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (90, 1646594469412, '24', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (91, 1646594469412, '25', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (92, 1646594469412, '26', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (93, 1646594469412, '27', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (94, 1646594469412, '28', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (95, 1646594469412, '29', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (96, 1646594469412, '30', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (97, 1646594469412, '31', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (100, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (101, 1646594469412, '2', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (102, 1646594469412, '3', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (103, 1646594469412, '4', 'null', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (104, 1646594469412, '5', '', NULL, NULL, NULL, 4);
-INSERT INTO `data_produk_inpeksi` VALUES (105, 1646594469412, '6', '', NULL, NULL, NULL, 4);
+INSERT INTO `data_produk_inpeksi` VALUES (67, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (68, 1646594469412, '2', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (69, 1646594469412, '3', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (70, 1646594469412, '4', 'null', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (71, 1646594469412, '5', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (72, 1646594469412, '6', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (73, 1646594469412, '7', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (74, 1646594469412, '8', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (75, 1646594469412, '9', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (76, 1646594469412, '10', '001/LSP/QI/06.1-I/2022', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (77, 1646594469412, '11', 'Samsung', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (78, 1646594469412, '12', 'AR13KVFSDX', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (79, 1646594469412, '13', 'AR13KVFSDX', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (80, 1646594469412, '14', '1120.00', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (81, 1646594469412, '15', '12000.00', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (82, 1646594469412, '16', '11.70', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (83, 1646594469412, '17', '4', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (84, 1646594469412, '18', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (85, 1646594469412, '19', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (86, 1646594469412, '20', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (87, 1646594469412, '21', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (88, 1646594469412, '22', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (89, 1646594469412, '23', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (90, 1646594469412, '24', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (91, 1646594469412, '25', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (92, 1646594469412, '26', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (93, 1646594469412, '27', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (94, 1646594469412, '28', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (95, 1646594469412, '29', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (96, 1646594469412, '30', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (97, 1646594469412, '31', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (100, 1646594469412, '1', '-6.2485762,106.9378654', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (101, 1646594469412, '2', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (102, 1646594469412, '3', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (103, 1646594469412, '4', 'null', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (104, 1646594469412, '5', '', NULL, NULL, NULL, 1);
+INSERT INTO `data_produk_inpeksi` VALUES (105, 1646594469412, '6', '', NULL, NULL, NULL, 1);
 
 -- ----------------------------
 -- Table structure for data_produk_inpeksi_file
@@ -169,6 +166,24 @@ CREATE TABLE `data_produk_lab_file`  (
   `base64` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   PRIMARY KEY (`id_data_produk_lab`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for data_produk_master
+-- ----------------------------
+DROP TABLE IF EXISTS `data_produk_master`;
+CREATE TABLE `data_produk_master`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_data_produk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `date_added` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `date_updated` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `state` bigint(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of data_produk_master
+-- ----------------------------
+INSERT INTO `data_produk_master` VALUES (1, '1646594469412', '2022-03-15 07:28:23', '2022-03-15 07:28:23', 1);
 
 -- ----------------------------
 -- Table structure for data_ritel
@@ -584,7 +599,7 @@ CREATE TABLE `perusahaan_product`  (
   `qty2` int(11) NULL DEFAULT 0,
   `qty3` int(11) NULL DEFAULT 0,
   `filename` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  `timestamp` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `timestamp` timestamp(0) NULL DEFAULT current_timestamp(0),
   `flag` enum('1','0') CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT '1',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_perusahaan_product_perusahaan`(`id_perusahaan`) USING BTREE,

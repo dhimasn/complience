@@ -22,33 +22,50 @@ Route::group(['namespace' => 'Api'], function () { // Api Controller
     });
 });
 
+
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
-//form inspeksi, kelola uji petik inspeksi dan visual 
-Route::post('/form_inspeksi/get/role', 'FormInspeksiController@GetbyRole');
-Route::post('/form_inspeksi/get/roles', 'FormInspeksiController@GetbyRoles');
-Route::post('/form_inspeksi/post/one', 'FormInspeksiController@PostFormOne');
-Route::post('/form_inspeksi/post/uji_petik', 'FormInspeksiController@PostFormOnePetik');
-Route::get('/form_inspeksi/delete', 'FormInspeksiController@DeleteByIdProduct');
-Route::get('/form_inspeksi/get/list', 'FormInspeksiController@GetList');
-Route::get('/form_inspeksi/get/detail', 'FormInspeksiController@GetDetail');
-
-//form inspeksi lab , kelola data pengujian laboratorium
-Route::get('/form_inspeksi_lab/get/role', 'FormInspeksiLabController@GetbyRole');
-Route::get('/form_inspeksi_lab/get/roles', 'FormInspeksiLabController@GetbyRoles');
-Route::post('/form_inspeksi_lab/post/two', 'FormInspeksiLabController@PostFormTwo');
-Route::post('/form_inspeksi_lab/post/three', 'FormInspeksiLabController@PostFormThree');
-Route::post('/form_inspeksi_lab/post/four', 'FormInspeksiLabController@PostFormFour');
-Route::post('/form_inspeksi_lab/delete/{id_product}', 'FormInspeksiLabController@DeleteByIdProduct');
-
-
 //kelola form
+//form inspeksi, kelola uji petik inspeksi dan visual (formulir 1) 
+Route::post('/form_1/get/role','FormSatuController@GetbyRole');
+Route::post('/form_1/get/roles','FormSatuController@GetbyRoles');
+Route::post('/form_1/post/one','FormSatuController@PostFormOne');
+Route::post('/form_1/post/uji_petik','FormSatuController@PostFormOnePetik');
+Route::get('/form_1/delete','FormSatuController@DeleteByIdProduct');
+Route::get('/form_1/get/list','FormSatuController@GetList');
+Route::get('/form_1/get/detail','FormSatuController@GetDetail');
+
+//formulir untuk uji khusus/round robin testing (formulir 4)
+Route::get('/form_4/get/role','FormEmpatController@GetbyRole');
+Route::get('/form_4/get/roles','FormEmpatController@GetbyRoles');
+Route::post('/form_4/post/four','FormEmpatController@PostFormFour');
+Route::post('/form_4/delete','FormEmpatController@DeleteByIdProduct');
+
+//formulir inspeksi lab, kelola data pengujian laboratorium (fomulir 2)
+Route::get('/form_2/get/role','FormDuaController@GetbyRole');
+Route::get('/form_2/get/roles','FormDuaController@GetbyRoles');
+Route::post('/form_2/post/two','FormDuaController@PostFormTwo');
+Route::post('/form_2/delete','FormDuaController@DeleteByIdProduct');
+
+//fomulir untuk uji petik laboratorium (formulir 3)
+Route::get('/form_3/get/role','FormTigaController@GetbyRole');
+Route::get('/form_3/get/roles','FormTigaController@GetbyRoles');
+Route::post('/form_3/post/three','FormTigaController@PostFormThree');
+Route::post('/form_3/delete','FormTigaController@DeleteByIdProduct');
+
+//kelola pertanyaan formulir  
+Route::get('/form/create','KelolaFormController@createForm'); //add
+Route::get('/form/update','KelolaFormController@updateForm'); //edit
+Route::get('/form/delete','KelolaFormController@deleteForm'); //delete
 
 //kelola user
-
-//kelola data high risk
+Route::get('/user/create','KelolaUserController@createUser'); //add
+Route::get('/user/update','KelolaUserController@updateUser'); //edit
+Route::get('/user/delete','KelolaUserController@deleteUser'); //delete
+Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
+Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
 
 //menampilkan dashboard
 

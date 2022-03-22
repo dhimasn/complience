@@ -11,5 +11,5 @@ class FormInspeksiDB extends Model
      *
      * @var string
      */
-    protected $table = 'fom_inpeksi';
+    protected $table = 'form_inpeksi';
 }
