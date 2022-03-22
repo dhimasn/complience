@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/lab', function () {
-    return view('pages.lab.index');
+Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
+    Route::get('/formulir-4', 'RoundRobinController@index')->name('form4');
+    Route::post('/formulir-4/store', 'RoundRobinController@store')->name('formulir4.store');
 });
-Route::get('/formulir-4', function () {
-    return view('pages.formulir4.index');
+
+Route::get('/', function () {
+    return view('pages.lab.index');
 });
 
 Auth::routes(['register' => false]);

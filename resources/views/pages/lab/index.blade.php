@@ -53,7 +53,7 @@
                   Menginisiasi entri data, untuk memulai rekaman pendataan dan aktivasi kegiatan di lab uji
                   (Formulir 2, lalu Formulir 3)
                 </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="http://">
+                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form4')}}">
                   Pilih
                 </a>
               </div>
