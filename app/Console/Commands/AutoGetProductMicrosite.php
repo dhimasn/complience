@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Helpers\ApiHelper;
+use Illuminate\Support\Facades\Cache;
 
 class AutoGetProductMicrosite extends Command
 {
@@ -58,6 +59,7 @@ class AutoGetProductMicrosite extends Command
             foreach (array_chunk($insert, 1000) as $data) {
                 $result = \DB::table('data_produk_cmp')->insert($data);
             }
+            Cache::flush();
             \Log::channel('cron')->info('[SUCCESS] AutoGetProductMicrosite');
         } catch (\Exception $e) {
             \Log::channel('cron')->info('[FAILED] AutoGetProductMicrosite');

@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //get login 
-Route::post('login', 'Api\Mobile\AuthController@login');
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', 'AuthController@login');
+Route::group(['namespace' => 'Api'], function () { // Api Controller
+    Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', 'middleware' => 'auth:api'], function () { // logged only api
+        
+        Route::post('sync-product', 'ProductController@getAllProduct');
+    });
 });
 
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+//kelola form
 //form inspeksi, kelola uji petik inspeksi dan visual (formulir 1) 
 Route::post('/form_1/get/role','FormSatuController@GetbyRole');
 Route::post('/form_1/get/roles','FormSatuController@GetbyRoles');
@@ -64,7 +72,3 @@ Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
 //menampilkan master data
 
 //mengenerate berita
-
-
-
-
