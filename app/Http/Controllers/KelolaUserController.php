@@ -7,40 +7,37 @@ use App\Repo\UserDb;
 use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repo\InpeksiDb;
+use App\Repo\Inspeksi;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
 
 class KelolaUserController extends Controller
 {
+     private $formInpeksi_db;
     
     public function __construct()
     {
-       
+        $this->formInpeksi_db = new Inspeksi();
     }
 
-    public function GetbyRole(Request $request){
+    public function createUser(Request $request){
         
     }
 
-    public function GetbyRoles(Request $request){
+    public function updateUser(Request $request){
        
     }
 
-    public function PostFormThree(Request $request){
+    public function deleteUser(Request $request){
        
     }
 
-    public function DeleteByIdProduct(Request $request){
+    public function GetListUser(Request $request){
 
     }
 
-    public function GetList(Request $request){
-
-    }
-
-    public function parseIdForm(){
+    public function GetDetailUser(Request $request){
 
     }
 

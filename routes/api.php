@@ -47,10 +47,17 @@ Route::get('/form_3/get/roles','FormTigaController@GetbyRoles');
 Route::post('/form_3/post/three','FormTigaController@PostFormThree');
 Route::post('/form_3/delete','FormTigaController@DeleteByIdProduct');
 
-
-//kelola pertanyaan formulir
+//kelola pertanyaan formulir  
+Route::get('/form/create','KelolaFormController@createForm'); //add
+Route::get('/form/update','KelolaFormController@updateForm'); //edit
+Route::get('/form/delete','KelolaFormController@deleteForm'); //delete
 
 //kelola user
+Route::get('/user/create','KelolaUserController@createUser'); //add
+Route::get('/user/update','KelolaUserController@updateUser'); //edit
+Route::get('/user/delete','KelolaUserController@deleteUser'); //delete
+Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
+Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
 
 //menampilkan dashboard
 
