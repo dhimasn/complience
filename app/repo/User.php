@@ -2,8 +2,7 @@
 
 namespace App\Repo;
 
-use App\Models\DataProdukMasterDB;
-use App\Models\FormInspeksiDB;
+use App\Models\UserRoleDB;
 use App\Models\UserDB;
 use DateTime;
 use stdClass;
