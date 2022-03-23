@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : Localhost
  Source Server Type    : MySQL
- Source Server Version : 100138
+ Source Server Version : 100414
  Source Host           : localhost:3306
  Source Schema         : cmp_tools
 
  Target Server Type    : MySQL
- Target Server Version : 100138
+ Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 23/03/2022 09:43:25
+ Date: 23/03/2022 10:53:00
 */
 
 SET NAMES utf8mb4;
@@ -197,7 +197,7 @@ CREATE TABLE `fom_inpeksi_role`  (
   `id_form_role` bigint(255) NOT NULL AUTO_INCREMENT,
   `kategori` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_form_role`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fom_inpeksi_role
@@ -205,10 +205,12 @@ CREATE TABLE `fom_inpeksi_role`  (
 INSERT INTO `fom_inpeksi_role` VALUES (1, 'Informasi Umum');
 INSERT INTO `fom_inpeksi_role` VALUES (2, 'Data Ritel');
 INSERT INTO `fom_inpeksi_role` VALUES (3, 'Pengalaman terhadap Label Tanda Hemat Energi');
-INSERT INTO `fom_inpeksi_role` VALUES (4, 'Detail produk');
-INSERT INTO `fom_inpeksi_role` VALUES (5, 'Pemeriksaan visual + entri data ketidaksesuaian');
-INSERT INTO `fom_inpeksi_role` VALUES (6, 'Compliance Assessment');
-INSERT INTO `fom_inpeksi_role` VALUES (7, 'Rekaman Sampel Uji Petik');
+INSERT INTO `fom_inpeksi_role` VALUES (4, 'Detail produk AC');
+INSERT INTO `fom_inpeksi_role` VALUES (5, 'Pemeriksaan visual + entri data ketidaksesuaian (3) - LABEL LAMA');
+INSERT INTO `fom_inpeksi_role` VALUES (6, 'Compliance LTHE');
+INSERT INTO `fom_inpeksi_role` VALUES (7, 'Aktifkan Rekaman Sampel Uji Petik');
+INSERT INTO `fom_inpeksi_role` VALUES (8, 'Compliance Regulasi Lainnya');
+INSERT INTO `fom_inpeksi_role` VALUES (9, 'Pemeriksaan visual + entri data ketidaksesuaian (3) - LABEL BARU');
 
 -- ----------------------------
 -- Table structure for form_inpeksi
@@ -225,60 +227,68 @@ CREATE TABLE `form_inpeksi`  (
   PRIMARY KEY (`id_form_inpeksi`) USING BTREE,
   INDEX `inspeksi_role`(`id_form_role`) USING BTREE,
   CONSTRAINT `inspeksi_role` FOREIGN KEY (`id_form_role`) REFERENCES `fom_inpeksi_role` (`id_form_role`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of form_inpeksi
 -- ----------------------------
-INSERT INTO `form_inpeksi` VALUES (1, 1, 'Tanggal & waktu', 'Auto-populated', 'Mandatory', 'Saat mulai mengisi, atau saat formulir dikirimkan', NULL);
-INSERT INTO `form_inpeksi` VALUES (2, 1, 'Nama Inspektur', 'Auto-populated', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (3, 1, 'ID Inspektur', 'Auto-populated', 'Mandatory', 'Dapat diberikan account ID spesifik, atau dari ID unik yang disediakan KESDM (apabila ada)', NULL);
-INSERT INTO `form_inpeksi` VALUES (4, 2, 'Nama Ritel', 'Manual entry', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (5, 2, 'Alamat Ritel', 'Manual entry', 'Mandatory', 'Integrasi lokasi Google Maps', NULL);
-INSERT INTO `form_inpeksi` VALUES (6, 2, 'Nama Tenaga Penjual', 'Manual entry', 'Optional', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (7, 2, 'Wilayah Ritel', 'Drop down menu or auto-populated (?) based on location', 'Mandatory', '\"Jabodetabek\nJawa Tengah\nJawa Timur\nDI Yogyakarta\nKalimantan\nKepulauan Maluku\nBali & Nusa Tenggara\nPapua\nSulawesi\nSumatera\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (8, 2, 'Tipe Ritel', 'Drop down menu', 'Mandatory', '\"Warung\nPasar tradisional\nToko\nDealer/Distributor\nChain\nDepartment store\nHypermarket\nGeneral store\nSupermarket\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (9, 2, 'Lampirkan foto tampak depan Ritel\r\nLampirkan foto tampak depan Ritel\r\n', 'Photo', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (10, 2, 'Jumlah produk yang ingin diinspeksi pada kunjungan ini', 'Manual entry', 'Optional', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (11, 3, 'Apakah tenaga penjual familiar dengan LTHE?', 'Drop down menu', 'Mandatory', 'Ya \r\nSedikit\r\n Tidak', NULL);
-INSERT INTO `form_inpeksi` VALUES (12, 3, 'Seberapa seringkah tenaga penjual menemukan produk tanpa LTHE?', 'Drop down menu', 'Optional', 'Tidak pernah\r\nJarang\r\nSering\r\nSangat sering', NULL);
-INSERT INTO `form_inpeksi` VALUES (13, 3, 'Apakah yang dilakukan oleh pihak ritel saat produk tanpa LTHE ditemukan?', 'Drop down menu', 'Mandatory', 'Mengembalikan produk pada pemasok untuk mencantumkan label', NULL);
-INSERT INTO `form_inpeksi` VALUES (14, 3, 'Apakah konsumen menanyakan tentang LTHE?', 'Drop down menu', 'Mandatory', 'Ya\r\nSering\r\nKadang-kadang\r\nTidak pernah', NULL);
-INSERT INTO `form_inpeksi` VALUES (15, 3, 'Apakah pramuniaga ritel dapat menjelaskan arti LTHE dengan benar?', 'Drop down menu', 'Mandatory', 'Ya\r\nSebagian \r\nTidak', NULL);
-INSERT INTO `form_inpeksi` VALUES (16, 4, 'Nomor SHE', 'Manual entry, then \"easy fill\"', 'Mandatory', 'Fitur lookup sudah diaktifkan disini, kalau tidak ditemukan, buka pilihan \"tidak ditemukan\"', NULL);
-INSERT INTO `form_inpeksi` VALUES (17, 4, 'Merek', 'Pre-populated from registry', 'Mandatory', 'Or allow for manual entry if no registration', NULL);
-INSERT INTO `form_inpeksi` VALUES (18, 4, 'Metrik 1: Kapasitas', 'Drop down', 'Mandatory', '1/2 PK\r\n3/4 PK\r\n1 PK\r\n1.5 PK\r\n2 PK\r\n2.5 PK\r\n3 PK', NULL);
-INSERT INTO `form_inpeksi` VALUES (19, 4, 'Metrik 2: Teknologi', 'Drop down', 'Mandatory', 'Standard, fixed speed\r\nInverter', NULL);
-INSERT INTO `form_inpeksi` VALUES (20, 4, 'Metrik 3: ', 'Drop down', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (21, 4, 'Manufaktur / importir', 'Pre-populated from registry', 'Mandatory', 'Or allow for manual entry if no registration', NULL);
-INSERT INTO `form_inpeksi` VALUES (22, 4, 'Kode atau Tanggal Produksi', 'Manual entry', 'Mandatory', 'Can this be obtained? Is it necessary?', NULL);
-INSERT INTO `form_inpeksi` VALUES (23, 4, 'Negara Asal', 'Manual entry', 'Mandatory\r\n', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (24, 4, 'Harga', 'Manual entry', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (25, 5, 'Lampirkan foto LTHE\r\n', 'Photo', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (26, 5, 'Metrik 0: Jumlah Bintang', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (27, 5, 'Metrik 1: Daya', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (28, 5, 'Metrik 2: Nilai Efisiensi Energi', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (29, 5, 'Metrik 3: Kapasitas Pendinginan (AC)', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (30, 5, 'Metrik 4: Model Unit Dalam (AC)', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (31, 5, 'Metrik 5: Model Unit Luar (AC)', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', NULL);
-INSERT INTO `form_inpeksi` VALUES (32, 6, 'LTHE tercantum pada produk', 'Drop down menu', 'Mandatory', 'Yes\r\nNo', NULL);
-INSERT INTO `form_inpeksi` VALUES (33, 6, 'LTHE tercantum pada kotak kemasan', 'Drop down menu', 'Mandatory', 'Yes\r\nNo', NULL);
-INSERT INTO `form_inpeksi` VALUES (34, 6, 'Visibilitas LTHE', 'Drop down menu', 'Mandatory\r\n', '\"Label jelas dan mudah terlihat\nLabel kabur atau rusak karena tindakan produsen atau importir\nLabel kabur atau rusak karena tindakan pengecer\nLabel sebagian atau seluruhnya ditutupi oleh label lain atau informasi pemasaran\nTidak berlaku - label tidak dibu', NULL);
-INSERT INTO `form_inpeksi` VALUES (35, 6, 'Kesesuaian visual LTHE', 'Drop down menu', 'Mandatory\r\n', '\"Label terlihat benar dan sesuai dengan persyaratan\nDesain label salah (warna, ukuran, dll)\nLabel tampaknya palsu\nLabel tidak sesuai dengan model fisik produk\nTidak berlaku - label tidak dibubuhkan\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (36, 6, 'Ketidaksesuaian LTHE, dijelaskan', 'Manual entry', 'Optional', 'Jelaskan secara manual, ketidaksesuaian yang ditemukan\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (37, 6, 'Label SNI tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', '\"Ya\nTidak yakin\nTidak\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (38, 6, 'Ekolabel tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', '\"Ya\nTidak yakin\nTidak\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (39, 6, 'Kartu garansi tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', '\"Ya\nTidak yakin\nTidak\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (40, 6, 'Label produk dalam Bahasa Indonesia', 'Drop down menu', 'Mandatory', '\"Ya\nTidak yakin\nTidak\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (41, 6, 'Tinjauan inspeksi LTHE', 'Drop down menu', 'Mandatory', '\"Label dan produk tampak sesuai\nLabel atau produk tampak mencurigakan dan memerlukan penyelidikan lebih lanjut\nLabel atau produk tampak mencurigakan dan direkomendasikan untuk pengujian verifikasi\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (42, 6, 'Tuliskan penjelasan apabila label atau produk mencurigakan', 'Manual entry', 'Optional', 'Aktif untuk isian Tinjauan inspeksi selain \"Label dan produk tampak sesuai\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (43, 7, 'Apakah ada produk dari kunjungan ritel yang dipilih untuk uji petik?\r\nApakah ada produk dari kunjungan ritel yang dipilih untuk uji petik?\r\n', 'Drop down menu\r\n', 'Mandatory\r\n', '\"Ya\nTidak\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (44, 7, '(Apabila Ya) Pilih dari Entri Data yang Direkam\r\n', 'Single or multiple', 'Mandatory', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (45, 7, '(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Lab Uji Tujuan', 'Drop down menu\r\n', 'Optional\r\n', '\"Qualis\nTUV Rheinland\nB2TKE-BRIN\nB4T-Kemenperin\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (46, 7, '(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Cara Pengiriman', 'Drop down menu\r\n', 'Mandatory\r\n', '\"Diantar langsung\nPengiriman jarak dekat\nPengiriman jarak jauh\"\r\n', NULL);
-INSERT INTO `form_inpeksi` VALUES (47, 7, 'Lampirkan foto Formulir Transmisi\r\n', 'Photo', 'Optional\r\n', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (48, 7, 'Lampirkan foto Bukti Pembayaran', 'Photo', 'Optional\r\n', NULL, NULL);
-INSERT INTO `form_inpeksi` VALUES (49, 7, 'Lampirkan foto Kemasan Tersegel', 'Photo', 'Optional\r\n', NULL, NULL);
+INSERT INTO `form_inpeksi` VALUES (1, 1, 'Tanggal & waktu', 'Auto-populated', 'Mandatory', 'Saat mulai mengisi, atau saat formulir dikirimkan', '1');
+INSERT INTO `form_inpeksi` VALUES (2, 1, 'Nama Inspektur', 'Auto-populated', 'Mandatory', NULL, '1');
+INSERT INTO `form_inpeksi` VALUES (3, 1, 'ID Inspektur', 'Auto-populated', 'Mandatory', 'Dapat diberikan account ID spesifik, atau dari ID unik yang disediakan KESDM (apabila ada)', '1');
+INSERT INTO `form_inpeksi` VALUES (4, 2, 'Tipe Lokasi Pengawasan', 'Drop down menu\r\n', 'Mandatory', NULL, '1');
+INSERT INTO `form_inpeksi` VALUES (5, 2, 'Nama Lokasi Pengawasan', 'Manual entry', 'Mandatory', 'Integrasi lokasi Google Maps', '1');
+INSERT INTO `form_inpeksi` VALUES (6, 2, 'Alamat Lokasi Pengawasan', 'Manual entry', 'Optional', NULL, '1');
+INSERT INTO `form_inpeksi` VALUES (7, 2, 'Wilayah Lokasi Pengawasan', 'Drop down menu or auto-populated (?) based on location', 'Mandatory', '\"Jabodetabek\nJawa Tengah\nJawa Timur\nDI Yogyakarta\nKalimantan\nKepulauan Maluku\nBali & Nusa Tenggara\nPapua\nSulawesi\nSumatera\"\r\n', '1');
+INSERT INTO `form_inpeksi` VALUES (8, 2, 'Nama Tenaga Penjual', 'Manual entry', 'Mandatory', '\"Warung\nPasar tradisional\nToko\nDealer/Distributor\nChain\nDepartment store\nHypermarket\nGeneral store\nSupermarket\"\r\n', '1');
+INSERT INTO `form_inpeksi` VALUES (9, 2, 'Lampirkan foto tampak depan Lokasi Pengawasan', 'Photo', 'Mandatory', NULL, '1');
+INSERT INTO `form_inpeksi` VALUES (11, 3, 'Apakah tenaga penjual familiar dengan LTHE?', 'Drop down menu', 'Mandatory', 'Ya Sedikit Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (12, 3, 'Seberapa seringkah tenaga penjual menemukan produk tanpa LTHE?', 'Drop down menu', 'Optional', 'Tidak pernah Jarang Sering Sangat sering', '1');
+INSERT INTO `form_inpeksi` VALUES (13, 3, 'Apakah yang dilakukan oleh pihak ritel saat produk tanpa LTHE ditemukan?', 'Drop down menu', 'Mandatory', 'Mengembalikan produk pada pemasok untuk mencantumkan label Menahan produk sampai produk pengganti berlabel diterima dari pemasok Tidak melakukan apa-apa - menjual produk seadanya', '1');
+INSERT INTO `form_inpeksi` VALUES (14, 3, 'Apakah konsumen menanyakan tentang LTHE?', 'Drop down menu', 'Mandatory', 'Ya Sering Kadang-kadang Tidak pernah', '1');
+INSERT INTO `form_inpeksi` VALUES (15, 3, 'Apakah pramuniaga ritel dapat menjelaskan arti LTHE dengan benar?', 'Drop down menu', 'Mandatory', 'Ya Sebagian  Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (16, 4, 'Produk', 'Drop down menu', 'Mandatory', 'AC Lampu Swabalast CFL Kulkas Penanak Nasi Kipas Angin', '1');
+INSERT INTO `form_inpeksi` VALUES (17, 4, 'Merek', 'Pre-populated from registry', 'Mandatory', 'Or allow for manual entry if no registration', '1');
+INSERT INTO `form_inpeksi` VALUES (18, 4, 'Kapasitas Pengenal (PK)', 'Drop down', 'Mandatory', '1/2 3/4 1 1.5 2 2.5 3', '1');
+INSERT INTO `form_inpeksi` VALUES (19, 4, 'Teknologi', 'Drop down', 'Mandatory', 'Standard, fixed speed Inverter', '1');
+INSERT INTO `form_inpeksi` VALUES (20, 4, 'Manufaktur / importir', 'Pre-populated from registry', 'Mandatory', 'Or allow for manual entry if no registration', '1');
+INSERT INTO `form_inpeksi` VALUES (21, 4, 'Kode atau Tanggal Produksi', 'Manual entry', 'Mandatory', 'Can this be obtained? Is it necessary?', '1');
+INSERT INTO `form_inpeksi` VALUES (22, 4, 'Negara Asal', 'Manual entry', 'Mandatory', '', '1');
+INSERT INTO `form_inpeksi` VALUES (23, 4, 'Harga', 'Manual entry', 'Mandatory', '', '1');
+INSERT INTO `form_inpeksi` VALUES (24, 4, 'Model', 'Manual entry', 'Optional', '', '1');
+INSERT INTO `form_inpeksi` VALUES (25, 5, 'Lampirkan foto LTHE', 'Photo', 'Mandatory', '', '1');
+INSERT INTO `form_inpeksi` VALUES (26, 5, 'Nomor Registrasi', 'Manual entry, then \"easy fill\"', 'Mandatory', 'Fitur lookup sudah diaktifkan disini, kalau tidak ditemukan, buka pilihan \"tidak ditemukan\"', '1');
+INSERT INTO `form_inpeksi` VALUES (27, 5, 'Jumlah Bintang', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (28, 5, 'Nilai Efisiensi Energi, EER', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (29, 5, 'Model Unit Dalam', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (30, 5, 'Model Unit Luar', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (31, 5, 'Daya', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (32, 6, 'LTHE tercantum pada produk', 'Drop down menu', 'Mandatory', 'Yes No', '1');
+INSERT INTO `form_inpeksi` VALUES (33, 6, 'LTHE tercantum pada kotak kemasan', 'Drop down menu', 'Mandatory', 'Yes No', '1');
+INSERT INTO `form_inpeksi` VALUES (34, 6, 'Visibilitas LTHE', 'Drop down menu', 'Mandatory', 'Label jelas dan mudah terlihat Label kabur atau rusak karena tindakan produsen atau importir Label kabur atau rusak karena tindakan pengecer Label sebagian atau seluruhnya ditutupi oleh label lain atau informasi pemasaran Tidak berlaku - label tidak dibub', '1');
+INSERT INTO `form_inpeksi` VALUES (35, 6, 'Kesesuaian visual LTHE', 'Drop down menu', 'Mandatory', 'Label terlihat benar dan sesuai dengan persyaratan Desain label salah (warna, ukuran, dll) Label tampaknya palsu Label tidak sesuai dengan model fisik produk Tidak berlaku - label tidak dibubuhkan', '1');
+INSERT INTO `form_inpeksi` VALUES (36, 6, 'Ketidaksesuaian LTHE, dijelaskan', 'Manual entry', 'Optional', 'Jelaskan secara manual, ketidaksesuaian yang ditemukan', '1');
+INSERT INTO `form_inpeksi` VALUES (37, 6, 'Tinjauan inspeksi LTHE', 'Drop down menu', 'Mandatory', 'Label dan produk tampak sesuai Label atau produk tampak mencurigakan dan memerlukan penyelidikan lebih lanjut Label atau produk tampak mencurigakan dan direkomendasikan untuk pengujian verifikasi', '1');
+INSERT INTO `form_inpeksi` VALUES (38, 6, 'Tuliskan penjelasan apabila label atau produk mencurigakan', 'Manual entry', 'Optional', 'Aktif untuk isian Tinjauan inspeksi selain \"Label dan produk tampak sesuai\"', '1');
+INSERT INTO `form_inpeksi` VALUES (39, 8, 'Label SNI tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', 'Ya Tidak yakin Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (40, 8, 'Ekolabel tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', 'Ya Tidak yakin Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (41, 8, 'Kartu garansi tercantum dan dapat terbaca jelas', 'Drop down menu', 'Mandatory', 'Ya Tidak yakin Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (42, 8, 'Label produk dalam Bahasa Indonesia', 'Drop down menu', 'Mandatory', 'Ya Tidak yakin Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (43, 7, 'Apakah ada produk dari kunjungan Lokasi Pengawasan yang dipilih untuk uji petik?', 'Drop down menu', 'Mandatory', 'Ya Tidak', '1');
+INSERT INTO `form_inpeksi` VALUES (44, 7, '(Apabila Ya) Pilih dari Entri Data yang Direkam', 'Single or multiple', 'Mandatory', 'Pilihan, produk yang direkam (Merek, 4 digit nomor SHE terakhir); Formulir Pendataan Uji Petik dibuka untuk tiap Entri Data yg dipilih', '1');
+INSERT INTO `form_inpeksi` VALUES (45, 7, '(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Lab Uji Tujuan', 'Drop down menu', 'Optional', 'Qualis TUV Rheinland B2TKE-BRIN B4T-Kemenperin', '1');
+INSERT INTO `form_inpeksi` VALUES (46, 7, '(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Cara Pengiriman', 'Drop down menu', 'Mandatory', 'Diantar langsung Pengiriman jarak dekat Pengiriman jarak jauh', '1');
+INSERT INTO `form_inpeksi` VALUES (47, 7, 'Lampirkan foto Formulir Transmisi', 'Photo', 'Optional', '', '1');
+INSERT INTO `form_inpeksi` VALUES (48, 7, 'Lampirkan foto Bukti Pembayaran', 'Photo', 'Optional', '', '1');
+INSERT INTO `form_inpeksi` VALUES (49, 7, 'Lampirkan foto Kemasan Tersegel', 'Photo', 'Optional', '', '1');
+INSERT INTO `form_inpeksi` VALUES (51, 5, 'Kapasitas Pendinginan', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (53, 9, 'Lampirkan foto LTHE', 'Photo', 'Mandatory', '', '1');
+INSERT INTO `form_inpeksi` VALUES (54, 9, 'Nomor SHE', 'Manual entry, then \"easy fill\"', 'Mandatory', 'Fitur lookup sudah diaktifkan disini, kalau tidak ditemukan, buka pilihan \"tidak ditemukan\"', '1');
+INSERT INTO `form_inpeksi` VALUES (55, 9, 'Jumlah Bintang', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (56, 9, 'Nilai Efisiensi Energi, CSPF', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (57, 9, 'Model Unit Dalam', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (58, 9, 'Model Unit Luar', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (59, 9, 'Daya', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
+INSERT INTO `form_inpeksi` VALUES (60, 9, 'Kapasitas Pendinginan', 'Pre-populated from registry', 'Mandatory', 'Buka pilihan manual entry apabila tidak sesuai', '1');
 
 -- ----------------------------
 -- Table structure for form_lab
