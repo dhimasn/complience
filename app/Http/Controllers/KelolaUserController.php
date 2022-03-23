@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Repo\UserDb;
+
+use App\Repo\User;
 use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,11 +14,11 @@ use stdClass;
 
 class KelolaUserController extends Controller
 {
-     private $formInpeksi_db;
+     private $UserDB;
     
     public function __construct()
     {
-        $this->formInpeksi_db = new Inspeksi();
+        $this->UserDB = new User();
     }
 
     public function createUser(Request $request){

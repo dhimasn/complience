@@ -7,7 +7,7 @@ use App\Repo\UserDb;
 use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repo\InpeksiDb;
+use App\Repo\Inspeksi;
 use App\Response\ProductResponse;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class FormSatuController extends Controller
 
     public function __construct()
     {
-        $this->formInpeksi_db = new InpeksiDb();
+        $this->formInpeksi_db = new Inspeksi();
     }
 
     public function GetbyRole(Request $request){
