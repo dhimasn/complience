@@ -61,9 +61,9 @@ Route::get('/form/update','KelolaFormController@updateForm'); //edit
 Route::get('/form/delete','KelolaFormController@deleteForm'); //delete
 
 //kelola user
-Route::get('/user/create','KelolaUserController@createUser'); //add
-Route::get('/user/update','KelolaUserController@updateUser'); //edit
-Route::get('/user/delete','KelolaUserController@deleteUser'); //delete
+Route::post('/user/create','KelolaUserController@createUser'); //add
+Route::post('/user/update','KelolaUserController@updateUser'); //edit
+Route::post('/user/delete','KelolaUserController@deleteUser'); //delete
 Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
 Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
 

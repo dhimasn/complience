@@ -12,4 +12,10 @@ class UserDB extends Model
      * @var string
      */
     protected $table = 'user';
+
+    protected $primaryKey = 'id_user';
+    
+    protected $fillable = ['nama_user','id_user_role'];
+
+    public $timestamps = false;
 }
