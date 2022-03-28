@@ -15,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
-    Route::get('/formulir-4', 'RoundRobinController@index')->name('form4');
-    Route::post('/formulir-4/store', 'RoundRobinController@store')->name('formulir4.store');
+    Route::get('formulir-3', 'FormTigaController@index')->name('form3.index');
+    Route::get('formulir-3/form', 'FormTigaController@form')->name('form3.form');
+
+    Route::get('formulir-4', 'RoundRobinController@index')->name('form4');
+    Route::post('formulir-4/store', 'RoundRobinController@store')->name('formulir4.store');
+
+    Route::get('uji-petik', 'UjiPetikController@index')->name('ujipetik.index');
+    Route::get('uji-petik/form', 'UjiPetikController@form')->name('ujipetik.form');
 });
 
 Route::get('/', function () {

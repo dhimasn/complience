@@ -18,7 +18,7 @@
                   Merekam data inspeksi, dan menginformasikan Tim Pengawasan bahwa sampel telah diterima dan dapat
                   diproses untuk pengujian
                 </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="http://">
+                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('ujipetik.index')}}">
                   Pilih
                 </a>
               </div>
@@ -35,7 +35,7 @@
                 <span class="desc-box-formulir">
                   Merekam data digital hasil pengujian untuk rekaman Database
                 </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="http://">
+                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('ujipetik.index')}}">
                   Pilih
                 </a>
               </div>

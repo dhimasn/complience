@@ -3,18 +3,14 @@
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
-  .select2-container .select2-selection--single{
-    padding: 0 !important;
+  .form-complience{
     border-top: 1px solid #fff !important;
     border-right: 1px solid #fff !important;
     border-left: 1px solid #fff !important;
-    border-bottom: 1px solid #e4e4e4 !important;
-    color: #8898aa !important;
-    font-size: .875rem !important;
-  }
-  .select2-selection__rendered{
-    padding-left: 0 !important;
-  }
+    border-bottom: 1px solid #707070 !important;
+    height: 25px !important;
+    padding: 0 !important;
+}
 </style>
 @endsection
 @section('contents')
@@ -33,15 +29,6 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group">
-                <input type="hidden" name="id_product" value="" id="id_product">
-                <label class="form-control-label">Nomor SHE</label>
-                <select name="1" id="" class="form-control form-complience select2">
-                  @foreach ($products as $id_product => $product)
-                  <option value="{{$product['No. Registrasi/No. SHE']}}" data-id="{{$id_product}}" data-merek="{{$product['Merek']}}">{{$product['No. Registrasi/No. SHE']}}</option>
-                  @endforeach
-                </select>
-              </div>
               <div class="form-group">
                 <label class="form-control-label">Merek</label>
                 <input class="form-control form-complience" name="2" id="merek" value="" type="text">
@@ -135,32 +122,7 @@
                 </select>
               </div>
             </div>
-            {{-- <div class="col-md-8 mx-auto text-center">
-              <table class="table align-items-center table-bordered">
-                <thead class="thead-light">
-                  <th>Lab Uji Tujuan</th>
-                  <th>Tanggal Pengujian</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Qualis</td>
-                    <td><a href="http://">Klik Disini</a></td>
-                  </tr>
-                  <tr>
-                    <td>TUV Rheinland</td>
-                    <td><a href="http://">Klik Disini</a></td>
-                  </tr>
-                  <tr>
-                    <td>B2TkE-BRIN</td>
-                    <td><a href="http://">Klik Disini</a></td>
-                  </tr>
-                  <tr>
-                    <td>B4T-Kemenperin</td>
-                    <td><a href="http://">Klik Disini</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> --}}
+           
           </div>
         </div>
       </div>
