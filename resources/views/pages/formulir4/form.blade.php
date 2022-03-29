@@ -19,7 +19,7 @@
 @endsection
 @section('contents')
 <div class="header-body">
-  <div class="row align-items-center pb-1">
+  <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
       <h6 class="h2 text-black d-inline-block mb-0">Detil Produk</h6>
     </div>
@@ -35,8 +35,9 @@
             <div class="col-md-12">
               <div class="form-group">
                 <input type="hidden" name="id_product" value="" id="id_product">
-                <label class="form-control-label">Nomor SHE</label>
+                <label class="form-control-label">Nomor SHE/No Registrasi</label>
                 <select name="1" id="" class="form-control form-complience select2">
+                  <option value="" disabled selected="true">Pilih Nomor SHE/No Registrasi</option>
                   @foreach ($products as $id_product => $product)
                   <option value="{{$product['No. Registrasi/No. SHE']}}" data-id="{{$id_product}}" data-merek="{{$product['Merek']}}">{{$product['No. Registrasi/No. SHE']}}</option>
                   @endforeach
@@ -81,7 +82,7 @@
     </div>
   </div>
   <div class="header-body">
-    <div class="row align-items-center pb-1">
+    <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
         <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual + Entri Data Ketidaksesuaian</h6>
       </div>

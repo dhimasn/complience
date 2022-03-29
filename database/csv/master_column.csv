@@ -1,0 +1,147 @@
+id;category_id;column_name;column_label
+1;1;field-0;Merek
+2;1;field-1;Jenis
+3;1;field-2;Model
+4;1;field-3;Tipe
+5;1;field-4;Daya (watt)
+6;1;field-5;Efikasi (Lumen/watt)
+7;1;field-6;Warna Cahaya
+8;1;field-7;Rating Bintang (1-5)
+9;1;field-8;Konsumsi Energi Tahunan (kWh)*
+10;1;field-9;Biaya Listrik <br>Tahunan (Rp)
+11;1;field-10;Nomor SHE
+12;2;field-0;Merek
+13;2;field-1;Famili
+14;2;field-2;Model
+15;2;field-3;Tipe
+16;2;field-4;Daya (watt)
+17;2;field-5;Kapasitas Pendinginan (BTU/h)
+18;2;field-6;Nilai Efisiensi (EER/CSPF)
+19;2;field-7;Rating Bintang (1-5)
+20;2;field-8;Konsumsi Energi Tahunan (kWh)*
+21;2;field-9;Biaya Listrik Tahunan (Rp)
+22;3;field-0;Merek
+23;3;field-1;Famili
+24;3;field-2;Model
+25;3;field-3;Tipe
+26;3;field-4;Kapasitas (Liter)
+27;3;field-5;Daya (watt)
+28;3;field-6;Rating Bintang (1-5)
+29;3;field-7;Konsumsi Energi Tahunan (kWh)*
+30;3;field-8;Biaya Listrik Tahunan (Rp)
+31;3;field-9;Nomor SHE
+32;4;field-0;Merek
+33;4;field-1;Famili
+34;4;field-2;Model
+35;4;field-3;Kapasitas (Liter)
+36;4;field-4;Daya Memasak (watt)
+37;4;field-5;Daya Memanaskan (watt)
+38;4;field-6;Energi untuk Memasak dan Memanaskan (Wh)
+39;4;field-7;Rating Bintang (1-5)
+40;4;field-8;Konsumsi Energi Tahunan (kWh)*
+41;4;field-9;Biaya Listrik Tahunan (Rp)
+42;4;field-10;Nomor SHE
+43;5;field-0;Merek
+44;5;field-1;Famili
+45;5;field-2;Model
+46;5;field-3;Diameter (inci)
+47;5;field-4;Daya (watt)
+48;5;field-5;Nilai Servis
+49;5;field-6;Rating Bintang (1-5)
+50;5;field-7;Konsumsi Energi Tahunan (kWh)*
+51;5;field-8;Biaya Listrik Tahunan (Rp)
+52;5;field-9;Nomor SHE
+53;2;field-10;No. Registrasi/No. SHE
+54;6;field-0;Merek
+55;6;field-1;Famili
+56;6;field-2;Model
+57;6;field-3;Tipe
+58;6;field-4;Kapasitas (kg)
+59;6;field-5;Daya (watt)
+60;6;field-6;Konsumsi Energi (kWh/kg)
+61;6;field-7;Rating Bintang (1-5)
+62;6;field-8;Konsumsi Energi Tahunan (kWh)*
+63;6;field-9;Biaya Listrik Tahunan (Rp)
+64;6;field-10;Nomor SHE
+65;7;field-0;Merek
+66;7;field-1;Famili
+67;7;field-2;Model
+68;7;field-3;Tipe
+69;7;field-4;Daya (watt)
+70;7;field-5;Debit pada Efisiensi Maksimum (liter/menit)
+71;7;field-6;Head pada Efisiensi Maksimum (m)
+72;7;field-7;Head Maksimum (m)
+73;7;field-8;Konsumsi Energi Tahunan (kWh)*
+74;7;field-9;Biaya Listrik Tahunan (Rp)
+75;7;field-10;Nomor SHE
+76;8;field-0;Merek
+77;8;field-1;Famili
+78;8;field-2;Model
+79;8;field-3;Tipe
+80;8;field-4;Ukuran (inci)
+81;8;field-5;Daya (watt)
+82;8;field-6;Daya Siaga (watt)
+83;8;field-7;Konsumsi Energi (wattjam/cm^2)
+84;8;field-8;Konsumsi Energi Tahunan (kWh)*
+85;8;field-9;Biaya Listrik Tahunan (Rp)
+86;8;field-10;Nomor SHE
+87;9;field-0;Merek
+88;9;field-1;Famili
+89;9;field-2;Model
+90;9;field-3;Tipe
+91;9;field-4;Daya (watt)
+92;9;field-5;Konsumsi Energi (Wh/'C)
+93;9;field-6;Konsumsi Energi Tahunan (kWh)*
+94;9;field-7;Biaya Listrik Tahunan (Rp)
+95;9;field-8;Nomor SHE
+96;10;field-0;Merek
+97;10;field-1;Famili
+98;10;field-2;Model
+99;10;field-3;Daya (watt)
+100;10;field-4;Kapasitas Maksimum (liter)
+101;10;field-5;Kapasitas Efektif (liter)
+102;10;field-6;Konsumsi Energi Per Siklus (Watt/Jam)
+103;10;field-7;Konsumsi Energi Tahunan (kWh)*
+104;10;field-8;Biaya Listrik Tahunan (Rp)
+105;10;field-9;Nomor SHE
+106;11;field-0;Merek
+107;11;field-1;Famili
+108;11;field-2;Model
+109;11;field-3;Jenis
+110;11;field-4;Daya (watt)
+111;11;field-5;Konsumsi Energi (kWh/hari)
+112;11;field-6;Rating Bintang (1-5)
+113;11;field-7;Konsumsi Energi Tahunan (kWh)*
+114;11;field-8;Biaya Listrik Tahunan (Rp)
+115;11;field-9;Nomor SHE
+116;4;field-11;Tipe
+117;13;field-0;Merek
+118;13;field-1;Jenis
+119;13;field-2;Model
+120;13;field-3;Tipe
+121;13;field-4;Daya (Watt)
+122;13;field-5;Rating Bintang (1-5)
+123;13;field-6;Konsumsi Energi Tahunan (kWh)*
+124;13;field-7;Biaya Listrik Tahunan
+125;13;field-8;Nomor SHE
+126;14;field-0;Merk
+127;14;field-1;Famili
+128;14;field-2;Model
+129;14;field-3;Tipe
+130;16;field-0;Region
+131;16;field-1;Jumlah Gula
+132;16;field-2;Aroma
+133;16;field-3;Harga
+134;1;field-11;
+135;1;field-12;
+136;17;field-0;Merek
+137;17;field-1;Ukuran
+138;17;field-2;Model
+139;17;field-3;Nomor SHE
+140;17;field-4;Rating Bintang
+141;2;field-11;Baseline
+142;2;field-12;Jenis Refrijeran 
+143;4;field-12;Waktu Memasak (hari)
+144;4;field-13;Waktu Memanaskan (hari)
+145;4;field-14;Volume 80% (liter)
+146;3;field-10;Adjusted Volume (liter)

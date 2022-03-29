@@ -22,11 +22,20 @@
                 <th>Merek</th>
                 <th>Kapasitas</th>
                 <th>Teknologi</th>
+                <th>Tanggal</th>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td><a href="http://">123412</a></td>
+                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
+                  <td>hjshfjksdhfjkhjk</td>
+                  <td>Samsung</td>
+                  <td>2 PK</td>
+                  <td>Inverter</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>

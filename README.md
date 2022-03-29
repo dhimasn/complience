@@ -3,7 +3,7 @@ complience tools is application to help inspectorat catch data
 
 #reguirements
 
-- PHP >= 7.4.0
+- PHP >= 7.4.*
 - Enable Extension : BCMath, Ctype, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML
 - [Composer](https://getcomposer.org/) Installed
 

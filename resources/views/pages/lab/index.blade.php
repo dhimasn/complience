@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Dashboard Menu')
+@section('title-menu', 'Pengujian Lab')
 @section('contents')
 <div class="row">
   <div class="col-md-12">
@@ -18,7 +18,7 @@
                   Merekam data inspeksi, dan menginformasikan Tim Pengawasan bahwa sampel telah diterima dan dapat
                   diproses untuk pengujian
                 </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('ujipetik.index')}}">
+                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form2.index')}}">
                   Pilih
                 </a>
               </div>
@@ -35,25 +35,7 @@
                 <span class="desc-box-formulir">
                   Merekam data digital hasil pengujian untuk rekaman Database
                 </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('ujipetik.index')}}">
-                  Pilih
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card box-formulir-dashboard">
-              <div class="card-body grid-disp">
-                <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
-                <span class="title-box-formulir">
-                  Pengisian Formulir 4
-                </span>
-                <div class="line-box-formulir"></div>
-                <span class="desc-box-formulir">
-                  Menginisiasi entri data, untuk memulai rekaman pendataan dan aktivasi kegiatan di lab uji
-                  (Formulir 2, lalu Formulir 3)
-                </span>
-                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form4')}}">
+                <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form3.index')}}">
                   Pilih
                 </a>
               </div>

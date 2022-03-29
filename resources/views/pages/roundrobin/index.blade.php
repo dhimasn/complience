@@ -26,7 +26,7 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td><a href="http://">123412</a></td>
+                  <td><a href="{{route('roundrobin.form')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>

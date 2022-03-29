@@ -1,0 +1,12 @@
+id;category_id;field;key
+1;2;"field-0";merek
+2;2;"field-1";famili
+3;2;"field-2";model
+4;2;"field-3";tipe
+5;2;"field-4";daya
+6;2;"field-5";kapasitaspendinginan
+7;2;"field-6";nilaiefisiensi
+8;2;"field-7";ratingbintang
+9;2;"field-8";konsumsienergitahunan
+10;2;"field-9";biayalistriktahunan
+11;2;"field-10";noregistrasi

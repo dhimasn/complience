@@ -2,7 +2,7 @@
 @section('title-menu', 'Hasil Pengujian Sampel')
 @section('contents')
 <div class="header-body">
-  <div class="row align-items-center pb-1">
+  <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
       <h6 class="h2 text-black d-inline-block mb-0">Informasi Umum</h6>
     </div>
@@ -43,7 +43,7 @@
     </div>
   </div>
   <div class="header-body">
-    <div class="row align-items-center pb-1">
+    <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
         <h6 class="h2 text-black d-inline-block mb-0">Detail Produk</h6>
       </div>
@@ -94,7 +94,7 @@
     </div>
   </div>
   <div class="header-body">
-    <div class="row align-items-center pb-1">
+    <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
         <h6 class="h2 text-black d-inline-block mb-0">Data Nameplate Produk</h6>
       </div>
@@ -179,7 +179,7 @@
     </div>
   </div>
   <div class="header-body">
-    <div class="row align-items-center pb-1">
+    <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
         <h6 class="h2 text-black d-inline-block mb-0">Hasil Pengujian Full Load</h6>
       </div>
@@ -194,19 +194,79 @@
               <table class="table table-striped table-bordered">
                 <thead>
                     <th></th>
-                    <th>Full-load</th>
-                    <th>50% full-load</th>
+                    <th width="200px">Full-load</th>
+                    <th width="200px">50% full-load</th>
                 </thead>
                 <tbody>
                   <tr>
                     <th>Time (min)</th>
-                    <td></td>
-                    <td></td>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
                   </tr>
                   <tr>
-                    <th>Time</th>
-                    <td></td>
-                    <td></td>
+                    <th>Voltage (V)</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                  </tr>
+                  <tr>
+                    <th>Voltage</th>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
                   </tr>
                 </tbody>
               </table>
@@ -217,7 +277,7 @@
     </div>
   </div>
   <div class="header-body">
-    <div class="row align-items-center pb-1">
+    <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
         <h6 class="h2 text-black d-inline-block mb-0">Rekap Hasil Pengujian</h6>
       </div>
@@ -239,15 +299,15 @@
                 <tbody>
                   <tr>
                     <th>EER (Btu/h/W)</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
                   </tr>
                   <tr>
                     <th>CSPF (Wh/Wh)</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
+                    <td><input class="form-control form-complience"></td>
                   </tr>
                 </tbody>
               </table>

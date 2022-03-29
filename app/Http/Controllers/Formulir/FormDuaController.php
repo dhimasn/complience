@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Formulir;
 
 use App\User;
 use App\Repo\UserDb;
@@ -12,12 +12,10 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use stdClass;
 
-class FormEmpatController extends Controller
+class FormDuaController extends Controller
 {
-    
-    public function __construct()
-    {
-       
+    public function index(){
+        return view('pages.formulir2.index');
     }
 
     public function GetbyRole(Request $request){
@@ -28,7 +26,7 @@ class FormEmpatController extends Controller
        
     }
 
-    public function PostFormFour(Request $request){
+    public function PostFormTwo(Request $request){
         
     }
 

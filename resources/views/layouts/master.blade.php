@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Complience System - ESDM</title>
+  <title>@yield('title-menu') - Complience System</title>
   <!-- Favicon -->
   <!-- <link rel="icon" href="assets/img/brand/favicon.png" type="image/png"> -->
   <!-- Fonts -->
@@ -45,7 +45,7 @@
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
           <i class="fas fa-user-circle text-yellow-cus" style="min-width: 2rem;margin-right: 1rem;"></i>
-          <span class="nav-link-text">User Name</span>
+          <span class="nav-link-text">Admin</span>
         </a>
       </div>
       <div class="navbar-inner">
@@ -56,9 +56,25 @@
 
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="{{'/'}}">
+              <a class="nav-link" href="{{'/'}}">
                 <i class="fas fa-th-large text-yellow-cus"></i>
-                <span class="nav-link-text">Dashboard Menu</span>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+              <a class="nav-link active" href="{{'/'}}">
+                <i class="fas fa-tags text-yellow-cus"></i>
+                <span class="nav-link-text">Pengujian Lab</span>
+              </a>
+              <a class="nav-link" href="{{route('pengawasan.index')}}">
+                <i class="fas fa-table text-yellow-cus"></i>
+                <span class="nav-link-text">Pengawasan</span>
+              </a>
+              {{-- <a class="nav-link" href="{{'/'}}">
+                <i class="fas fa-table text-yellow-cus"></i>
+                <span class="nav-link-text">Data Pengawasan</span>
+              </a> --}}
+              <a class="nav-link" href="{{'/'}}">
+                <i class="fas fa-database text-yellow-cus"></i>
+                <span class="nav-link-text">Data Master</span>
               </a>
             </li>
           </ul>
