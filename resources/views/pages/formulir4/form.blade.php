@@ -18,6 +18,42 @@
 </style>
 @endsection
 @section('contents')
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="form-control-label">Kegiatan</label>
+              <div class="row">
+                <div class="col-md-3">
+                  <select name="17" class="form-control form-complience">
+                    <option value="1">Round Robin Testing</option>
+                    <option value="2">Pengujian Ulang</option>
+                    <option value="3">Lainnya</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <input class="form-control form-complience" placeholder="Lainnya" name="9" value="">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Lab Uji Tujuan</label>
+              <select name="17" class="form-control form-complience">
+                <option value="1">Qualis</option>
+                <option value="2">TUV Rheinland</option>
+                <option value="3">B2TkE-BRIN</option>
+                <option value="4">B4T-Kemenperin</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="header-body">
   <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
@@ -125,15 +161,6 @@
               <div class="form-group">
                 <label class="form-control-label">Kapasitas Pendingin</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" value="" type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Lab Uji Tujuan</label>
-                <select name="17" class="form-control form-complience">
-                  <option value="1">Qualis</option>
-                  <option value="2">TUV Rheinland</option>
-                  <option value="3">B2TkE-BRIN</option>
-                  <option value="4">B4T-Kemenperin</option>
-                </select>
               </div>
             </div>
             {{-- <div class="col-md-8 mx-auto text-center">

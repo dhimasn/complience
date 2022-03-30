@@ -76,6 +76,10 @@
                 <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">Master Data</span>
               </a>
+              <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
+                <i class="fas fa-box text-yellow-cus"></i>
+                <span class="nav-link-text">Data Produk</span>
+              </a>
             </li>
           </ul>
           <!-- Divider -->

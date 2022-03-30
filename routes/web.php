@@ -24,6 +24,7 @@ Route::get('pengawasan/pemilihan-lab-uji/detail', 'PengawasanController@formPemi
 Route::post('pengawasan/pemilihan-lab-uji/store', 'PengawasanController@storePemilihanLabUji')->name('pengawasan.pemilihanlabuji.store');
 
 Route::group(['prefix' => 'data-master'], function () { 
+    Route::get('produk', 'MasterDataController@produk')->name('masterdata.produk');
     Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
     Route::get('complience/detail', 'MasterDataController@detailComplience')->name('masterdata.detailcomplience');
 });
