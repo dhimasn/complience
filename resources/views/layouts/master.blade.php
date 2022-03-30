@@ -60,21 +60,21 @@
                 <i class="fas fa-th-large text-yellow-cus"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-              <a class="nav-link active" href="{{'/'}}">
-                <i class="fas fa-tags text-yellow-cus"></i>
-                <span class="nav-link-text">Pengujian Lab</span>
-              </a>
               <a class="nav-link" href="{{route('pengawasan.index')}}">
                 <i class="fas fa-table text-yellow-cus"></i>
                 <span class="nav-link-text">Pengawasan</span>
+              </a>
+              <a class="nav-link active" href="{{'/lab'}}">
+                <i class="fas fa-tags text-yellow-cus"></i>
+                <span class="nav-link-text">Pengujian Lab</span>
               </a>
               {{-- <a class="nav-link" href="{{'/'}}">
                 <i class="fas fa-table text-yellow-cus"></i>
                 <span class="nav-link-text">Data Pengawasan</span>
               </a> --}}
-              <a class="nav-link" href="{{'/'}}">
+              <a class="nav-link" href="{{route('masterdata.complience')}}">
                 <i class="fas fa-database text-yellow-cus"></i>
-                <span class="nav-link-text">Data Master</span>
+                <span class="nav-link-text">Master Data</span>
               </a>
             </li>
           </ul>
@@ -115,7 +115,7 @@
               <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                 <!-- Dropdown header -->
                 <div class="px-3 py-3">
-                  <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.
+                  <h6 class="text-sm text-muted m-0">1 Pesan Belum dibaca
                   </h6>
                 </div>
                 <!-- List group -->
@@ -124,21 +124,18 @@
                     <div class="row align-items-center">
                     
                       <div class="col">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center py-1 px-3">
                           <div>
-                            <h4 class="mb-0 text-sm">John Snow</h4>
+                            <h4 class="mb-0">Test</h4>
                           </div>
                           <div class="text-right text-muted">
-                            <small>2 hrs ago</small>
                           </div>
                         </div>
-                        <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                        <p class="text-sm mb-0">Test Message</p>
                       </div>
                     </div>
                   </a>
                 </div>
-                <!-- View all -->
-                <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
               </div>
             </li>
           </ul>

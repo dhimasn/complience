@@ -25478,6 +25478,8 @@ button.section-darker:focus
 .text-sm
 {
     font-size: .875rem !important;
+    color: #000;
+    font-weight: 400;
 }
 
 .text-lg

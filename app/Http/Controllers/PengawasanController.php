@@ -9,4 +9,7 @@ class PengawasanController extends Controller
     public function index(){
         return view('pages.pengawasan.index');
     }
+    public function pemilihanLabUji(){
+        return view('pages.pengawasan.pilihlabuji');
+    }
 }

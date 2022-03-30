@@ -14,17 +14,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
+Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
+Route::get('/lab', function () {
     return view('pages.lab.index');
 });
-Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
 
+Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
+Route::get('pengawasan/pemilihan-lab-uji', 'PengawasanController@pemilihanLabUji')->name('pengawasan.pemilihanlabuji');
+
+Route::group(['prefix' => 'data-master'], function () { 
+    Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
+});
 Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
     Route::get('formulir-2', 'FormDuaController@index')->name('form2.index');
     
     Route::get('formulir-3', 'FormTigaController@index')->name('form3.index');
+    Route::get('formulir-3/round-robin', 'FormTigaController@roundRobin')->name('form3.roundrobin');
+    Route::get('formulir-3/uji-petik', 'FormTigaController@ujiPetik')->name('form3.ujipetik');
     Route::get('formulir-3/form', 'FormTigaController@form')->name('form3.form');
 
+    Route::get('formulir-4/pilih-produk', 'FormEmpatController@pilihProduk')->name('form4.pilihproduk');
     Route::get('formulir-4/form', 'FormEmpatController@form')->name('form4.form');
     Route::post('formulir-4/store', 'FormEmpatController@store')->name('formulir4.store');
 

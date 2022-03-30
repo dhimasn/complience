@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\DB;
 class FormEmpatController extends Controller
 {
 
+    public function pilihProduk()
+    {
+        return view('pages.formulir4.pilihproduk');
+    }
     public function form()
     {
         $productHelper = new ProductHelper();

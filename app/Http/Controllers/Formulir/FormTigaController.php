@@ -16,37 +16,15 @@ use stdClass;
 class FormTigaController extends Controller
 {
     public function index(){
+        return view('pages.formulir3.index');
+    }
+    public function ujiPetik(){
+        return view('pages.formulir3.ujipetik');
+    }
+    public function roundRobin(){
+        return view('pages.formulir3.roundrobin');
     }
     public function form(){
-        // $forms = FormLabDB::whereIn('id_form_lab_role', [2, ])
         return view('pages.formulir3.form');
     }
-    public function store(){
-
-    }
-
-    public function GetbyRole(Request $request){
-        
-    }
-
-    public function GetbyRoles(Request $request){
-       
-    }
-
-    public function PostFormThree(Request $request){
-       
-    }
-
-    public function DeleteByIdProduct(Request $request){
-
-    }
-
-    public function GetList(Request $request){
-
-    }
-
-    public function parseIdForm(){
-
-    }
-
 }
