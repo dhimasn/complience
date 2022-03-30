@@ -14,7 +14,7 @@
 </style>
 @endsection
 @section('contents')
-<form action="{{route('formulir4.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('pengawasan.pemilihanlabuji.store')}}" method="post">
   @csrf
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">

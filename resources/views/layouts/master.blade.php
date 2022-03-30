@@ -159,7 +159,7 @@
           <i class="ni ni-bell-55 mb-4"></i>
           <h2>Simpan Data Berhasil</h2>
           <h2>&</h2>
-          <h2>Disimpan Kedalam Database</h2>
+          <h2>@if(session()->has('success')) {{session('success')}} @endif</h2>
           <a href="/" class="btn btn-yellow button-comp mt-5">Kembali ke Dashboard</a>
         </div>
       </div>

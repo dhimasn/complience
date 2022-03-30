@@ -15,4 +15,7 @@ class PengawasanController extends Controller
     public function formPemilihanLabUji(){
         return view('pages.pengawasan.form-pilihlabuji');
     }
+    public function storePemilihanLabUji(){
+        return back()->with('success', 'Data telah terkirim ke Lab tujuan');
+    }
 }

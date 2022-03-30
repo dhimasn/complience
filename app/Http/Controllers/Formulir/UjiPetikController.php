@@ -32,4 +32,7 @@ class UjiPetikController extends Controller
         );
         return view('pages.ujipetik.form',compact('formUnitIndoor', 'formUnitOutdoor'));
     }
+    public function store(){
+        return back()->with('success', 'Disimpan Kedalam Database');
+    }
 }

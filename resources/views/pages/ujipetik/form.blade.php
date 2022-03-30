@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<form action="{{route('formulir4.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('ujipetik.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-md-12">

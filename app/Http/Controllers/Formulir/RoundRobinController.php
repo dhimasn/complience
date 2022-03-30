@@ -44,5 +44,8 @@ class RoundRobinController extends Controller
         );
         return view('pages.roundrobin.form', compact('forms'));
     }
+    public function store(){
+        return back()->with('success', 'Disimpan Kedalam Database');
+    }
 }
 

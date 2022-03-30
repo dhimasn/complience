@@ -66,7 +66,7 @@ class FormEmpatController extends Controller
             $store->save();
             DB::commit();
             $resp['status'] = 'success';
-            Session::flash('success');
+            Session::flash('success', 'Disimpan Kedalam Database');
         } catch (Exception $e) {
             Session::flash('error');
             DB::rollBack();

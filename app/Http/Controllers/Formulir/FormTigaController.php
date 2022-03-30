@@ -49,4 +49,7 @@ class FormTigaController extends Controller
         );
         return view('pages.formulir3.form', compact('pengujianForm'));
     }
+    public function store(){
+        return back()->with('success', 'Disimpan Kedalam Database');
+    }
 }
