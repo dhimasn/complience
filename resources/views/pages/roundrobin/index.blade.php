@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Data Round Robin')
+@section('title-menu', 'Data Round Robin | Formulir 2')
 @section('contents')
 {{-- <div class="header-body">
   <div class="row align-items-center pb-1">
@@ -22,16 +22,20 @@
                 <th>Merek</th>
                 <th>Kapasitas</th>
                 <th>Teknologi</th>
+                <th>Tanggal</th>
               </thead>
               <tbody>
+                @foreach ($complience as $item)
                 <tr>
-                  <td>1</td>
-                  <td><a href="{{route('roundrobin.form')}}">123412</a></td>
-                  <td>hjshfjksdhfjkhjk</td>
+                  <td>{{$loop->iteration}}</td>
+                  <td><a href="{{route('roundrobin.form', $item->record_id)}}">{{$item->record_id}}</a></td>
+                  <td>{{$item->no_she}}</td>
                   <td>Samsung</td>
                   <td>2 PK</td>
-                  <td>Inverter</td>
+                  <td>{{$item->teknologi}}</td>
+                  <td>{{$item->updated_at}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

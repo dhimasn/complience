@@ -12,4 +12,7 @@ class PengawasanController extends Controller
     public function pemilihanLabUji(){
         return view('pages.pengawasan.pilihlabuji');
     }
+    public function formPemilihanLabUji(){
+        return view('pages.pengawasan.form-pilihlabuji');
+    }
 }

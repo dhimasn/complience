@@ -27,7 +27,7 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
+                  <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>
@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
+                  <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>

@@ -11,6 +11,7 @@ use App\Models\FormData;
 use App\Models\Formulir4;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class FormEmpatController extends Controller
 {
@@ -29,14 +30,16 @@ class FormEmpatController extends Controller
     {
         try {
             DB::beginTransaction();
-            $forms = FormData::where('jenis_form', 4)->get();
+            $forms = \DB::table('form_roundrobin')->get();
             $arr_form_data = array();
             foreach ($forms as $form) {
                 if ($form->data_entry_type == 'File') {
                     $id_form = $form->id_form_roundrobin;
-                    $imageName = time() . '.' . $request->file($id_form)->extension();
-                    $request->$id_form->move(storage_path('images/round_robin'), $imageName);
-                    $arr_form_data[$id_form] = $imageName;
+                    if($request->hasFile($id_form)){
+                        $imageName = time() . '.' . $request->file($id_form)->extension();
+                        $request->$id_form->move(storage_path('images/round_robin'), $imageName);
+                        $arr_form_data[$id_form] = $imageName;
+                    }
                 } else {
                     $arr_form_data[$form->id_form_roundrobin] = $request->input($form->id_form_roundrobin);
                 }
@@ -47,7 +50,12 @@ class FormEmpatController extends Controller
             $complience->product_id = $request->input('id_product');
             $complience->pengawas_id = 2;
             $complience->no_she = $request->input('1');
-            $complience->teknologi = $request->input('4');
+            $complience->merek = $request->input('2');
+            $complience->teknologi = $request->input('3');
+            $complience->manufaktur = $request->input('5');
+            $complience->kode = $request->input('6');
+            $complience->negara = $request->input('7');
+            $complience->harga = $request->input('8');
             $complience->status = 3; // RRT
             $complience->save();
 
@@ -58,11 +66,12 @@ class FormEmpatController extends Controller
             $store->save();
             DB::commit();
             $resp['status'] = 'success';
+            Session::flash('success');
         } catch (Exception $e) {
-            $resp['status'] = 'error';
+            Session::flash('error');
             DB::rollBack();
             report($e);
         }
-        return back()->with($resp['status']);
+        return back();
     }
 }

@@ -198,76 +198,14 @@
                     <th width="200px">50% full-load</th>
                 </thead>
                 <tbody>
+                  @foreach ($pengujianForm as $form)
                   <tr>
-                    <th>Time (min)</th>
+                    <th>{{$form}}</th>
                     <td><input class="form-control form-complience"></td>
                     <td><input class="form-control form-complience"></td>
                   </tr>
-                  <tr>
-                    <th>Voltage (V)</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
-                  <tr>
-                    <th>Voltage</th>
-                    <td><input class="form-control form-complience"></td>
-                    <td><input class="form-control form-complience"></td>
-                  </tr>
+                  @endforeach
+                 
                 </tbody>
               </table>
             </div>
@@ -322,7 +260,7 @@
                     <strong>Variasi hasil pengujian terhadap EER SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    Klik Disini
+                    
                   </div>
                 </div>
               </div>
@@ -332,7 +270,7 @@
                     <strong>Variasi hasil pengujian terhadap CSPF SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    Klik Disini
+                    
                   </div>
                 </div>
               </div>
@@ -342,7 +280,7 @@
                     <strong>Variasi hasil pengujian terhadap EER Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    Klik Disini
+                    
                   </div>
                 </div>
               </div>
@@ -352,7 +290,7 @@
                     <strong>Variasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    Klik Disini
+                    
                   </div>
                 </div>
               </div>

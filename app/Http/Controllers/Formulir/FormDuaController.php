@@ -17,29 +17,5 @@ class FormDuaController extends Controller
     public function index(){
         return view('pages.formulir2.index');
     }
-
-    public function GetbyRole(Request $request){
-        
-    }
-
-    public function GetbyRoles(Request $request){
-       
-    }
-
-    public function PostFormTwo(Request $request){
-        
-    }
-
-    public function DeleteByIdProduct(Request $request){
-
-    }
-
-    public function GetList(Request $request){
-
-    }
-
-    public function parseIdForm(){
-
-    }
-
+    
 }

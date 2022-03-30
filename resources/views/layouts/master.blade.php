@@ -151,8 +151,8 @@
       @yield('contents')
     </div>
   </div>
-  @if(session()->has('success'))
-  <div class="modal" tabindex="-1" role="dialog" id="modalSuccess">
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="modalSuccessInput">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content modal-comp">
         <div class="modal-body text-center p-5">
@@ -160,12 +160,11 @@
           <h2>Simpan Data Berhasil</h2>
           <h2>&</h2>
           <h2>Disimpan Kedalam Database</h2>
-          <button class="btn btn-yellow button-comp mt-5">Kembali ke Dashboard</button>
+          <a href="/" class="btn btn-yellow button-comp mt-5">Kembali ke Dashboard</a>
         </div>
       </div>
     </div>
   </div>
-  @endif
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
@@ -178,6 +177,11 @@
   <script src="{{asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
   <!-- Argon JS -->
   <script src="{{asset('assets/js/argon.js')}}"></script>
+  <script>
+    @if(session()->has('success'))
+      $("#modalSuccessInput").modal('show');
+    @endif
+  </script>
   @yield('scripts')
 </body>
 

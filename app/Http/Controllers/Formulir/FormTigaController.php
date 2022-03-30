@@ -25,6 +25,28 @@ class FormTigaController extends Controller
         return view('pages.formulir3.roundrobin');
     }
     public function form(){
-        return view('pages.formulir3.form');
+        $pengujianForm = array(
+            'Time (min)',
+            'Voltage (V)',
+            'Frequency (Hz)',
+            'Current (A)',
+            'Dry-bulb temperature, air entering, indoor side  (oC)',
+            'Wet-bulb temperature, air entering, indoor side (oC)',
+            'Dry-bulb & Wet-bulb temperature outdoor side (oC)',
+            'Standard airflow rate (m3/s)',
+            'Dry bulb temperature, air leaving, indoor side (oC)',
+            'Wet bulb temperature, air leaving, indoor side (oC)',
+            'Test Unit Static Pressure (Pa)',
+            'Atmospheric pressure (kPa)',
+            'Indoor unit fan speed (RPM)',
+            'Inverter compressor set* (Hz)',
+            'Total cooling capacity (Btu/h),[W]',
+            'Latent cooling capacity (Btu/h)',
+            'Sensible cooling capacity (Btu/h)',
+            'Sensible heat ratio (%)',
+            'Effective Power input (W)',
+            'EER (Btu/h/W)',
+        );
+        return view('pages.formulir3.form', compact('pengujianForm'));
     }
 }

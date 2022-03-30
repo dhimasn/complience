@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Data Uji Petik')
+@section('title-menu', 'Data Uji Petik | Formulir 2')
 @section('contents')
 {{-- <div class="header-body">
   <div class="row align-items-center pb-1">

@@ -20,6 +20,7 @@ Route::get('lab', 'LabController@index')->name('lab.index');
 
 Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
 Route::get('pengawasan/pemilihan-lab-uji', 'PengawasanController@pemilihanLabUji')->name('pengawasan.pemilihanlabuji');
+Route::get('pengawasan/pemilihan-lab-uji/detail', 'PengawasanController@formPemilihanLabUji')->name('pengawasan.pemilihanlabuji.detail');
 
 Route::group(['prefix' => 'data-master'], function () { 
     Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
@@ -38,10 +39,10 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
     Route::post('formulir-4/store', 'FormEmpatController@store')->name('formulir4.store');
 
     Route::get('uji-petik', 'UjiPetikController@index')->name('ujipetik.index');
-    Route::get('uji-petik/form', 'UjiPetikController@form')->name('ujipetik.form');
+    Route::get('uji-petik/form/{record_id}', 'UjiPetikController@form')->name('ujipetik.form');
 
     Route::get('round-robin', 'RoundRobinController@index')->name('roundrobin.index');
-    Route::get('round-robin/form', 'RoundRobinController@form')->name('roundrobin.form');
+    Route::get('round-robin/form/{record_id}', 'RoundRobinController@form')->name('roundrobin.form');
 });
 
 
