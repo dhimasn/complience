@@ -11,7 +11,7 @@
               <div class="card-body grid-disp">
                 <div class="row p-3 align-items-center">
                   <div class="col-md-6 text-left">
-                    <span class="title-box-list">Uji Petik</span>
+                    <span class="title-box-list">Uji Petik dan Pengujian Lainnya</span>
                   </div>
                   <div class="col-md-6 text-right">
                     <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('ujipetik.index')}}">

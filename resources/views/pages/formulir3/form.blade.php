@@ -181,7 +181,7 @@
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Hasil Pengujian Full Load</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">Hasil Pengujian</h6>
       </div>
     </div>
   </div>

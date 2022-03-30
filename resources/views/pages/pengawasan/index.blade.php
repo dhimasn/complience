@@ -11,7 +11,7 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Pemilihan Lab Uji
+                  Aktivasi Pendataan Uji Petik - 4
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">
@@ -29,7 +29,7 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Pengisian Formulir 4
+                  Aktivasi Pendataan Uji Petik - 4
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">
