@@ -12,7 +12,7 @@ class MasterColumnSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path("database\csv\master_column.csv");
+        $path = base_path("database/csv/master_column.csv");
         $provinces = GeneralHelper::csvToArray($path);
         \DB::table('master_column')->insert($provinces);
     }

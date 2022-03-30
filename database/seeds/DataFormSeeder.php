@@ -12,7 +12,7 @@ class DataFormSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path("database\csv\data_form.csv");
+        $path = base_path("database/csv/data_form.csv");
         $provinces = GeneralHelper::csvToArray($path);
         \DB::table('form_data')->insert($provinces);
     }

@@ -12,7 +12,7 @@ class FieldMobileSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path("database\csv\mobile_field.csv");
+        $path = base_path("database/csv/mobile_field.csv");
         $provinces = GeneralHelper::csvToArray($path);
         \DB::table('field_mobile')->insert($provinces);
     }
