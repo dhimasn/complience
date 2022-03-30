@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Uji Petik | Formulir 2')
+@section('title-menu', 'Penerimaan dan Inspeksi Sampel - Pemeriksaan Fisik')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
