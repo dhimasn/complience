@@ -30,7 +30,7 @@ class ProductHelper
     $result = array();
     foreach ($field_product as $master) {
         foreach (json_decode($products) as $product) {
-            if($master->column_name == $product->id_field){
+            if($master->column_name == $product->field){
                 $result[$product->id_data_produk][$master->column_label] = $product->field_value;
             }
         }
