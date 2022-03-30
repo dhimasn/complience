@@ -56,15 +56,15 @@
 
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{'/'}}">
+              <a class="nav-link {{\Request::route()->getName() == 'dashboard.index' ? 'active' : ''}}" href="{{route('dashboard.index')}}">
                 <i class="fas fa-th-large text-yellow-cus"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-              <a class="nav-link" href="{{route('pengawasan.index')}}">
+              <a class="nav-link {{\Request::route()->getName() == 'pengawasan.index' ? 'active' : ''}}" href="{{route('pengawasan.index')}}">
                 <i class="fas fa-table text-yellow-cus"></i>
                 <span class="nav-link-text">Pengawasan</span>
               </a>
-              <a class="nav-link active" href="{{'/lab'}}">
+              <a class="nav-link {{\Request::route()->getName() == 'lab.index' ? 'active' : ''}}" href="{{route('lab.index')}}">
                 <i class="fas fa-tags text-yellow-cus"></i>
                 <span class="nav-link-text">Pengujian Lab</span>
               </a>
@@ -72,7 +72,7 @@
                 <i class="fas fa-table text-yellow-cus"></i>
                 <span class="nav-link-text">Data Pengawasan</span>
               </a> --}}
-              <a class="nav-link" href="{{route('masterdata.complience')}}">
+              <a class="nav-link {{\Request::route()->getName() == 'masterdata.complience' ? 'active' : ''}}" href="{{route('masterdata.complience')}}">
                 <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">Master Data</span>
               </a>
@@ -151,6 +151,21 @@
       @yield('contents')
     </div>
   </div>
+  @if(session()->has('success'))
+  <div class="modal" tabindex="-1" role="dialog" id="modalSuccess">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content modal-comp">
+        <div class="modal-body text-center p-5">
+          <i class="ni ni-bell-55 mb-4"></i>
+          <h2>Simpan Data Berhasil</h2>
+          <h2>&</h2>
+          <h2>Disimpan Kedalam Database</h2>
+          <button class="btn btn-yellow button-comp mt-5">Kembali ke Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>

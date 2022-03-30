@@ -58,18 +58,4 @@
     </div>
   </div>
 </form>
-
-<div class="modal" tabindex="-1" role="dialog" id="modalSuccess">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content modal-comp">
-      <div class="modal-body text-center p-5">
-        <i class="ni ni-bell-55 mb-4"></i>
-        <h2>Simpan Data Berhasil</h2>
-        <h2>&</h2>
-        <h2>Disimpan Kedalam Database</h2>
-        <button class="btn btn-yellow button-comp mt-5">Kembali ke Dashboard</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection

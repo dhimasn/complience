@@ -23,7 +23,7 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td><a href="{{route('ujipetik.form')}}">KKO983H1</a></td>
+                  <td><a href="{{route('masterdata.detailcomplience')}}">KKO983H1</a></td>
                   <td>006.1.01.09.14.0002</td>
                   <td>AQA-KRV9BGS</td>
                   <td>Samsung</td>

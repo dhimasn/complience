@@ -16,15 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-Route::get('/lab', function () {
-    return view('pages.lab.index');
-});
+Route::get('lab', 'LabController@index')->name('lab.index');
 
 Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
 Route::get('pengawasan/pemilihan-lab-uji', 'PengawasanController@pemilihanLabUji')->name('pengawasan.pemilihanlabuji');
 
 Route::group(['prefix' => 'data-master'], function () { 
     Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
+    Route::get('complience/detail', 'MasterDataController@detailComplience')->name('masterdata.detailcomplience');
 });
 Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
     Route::get('formulir-2', 'FormDuaController@index')->name('form2.index');
