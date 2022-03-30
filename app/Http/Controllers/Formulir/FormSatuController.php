@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Formulir;
 
 use App\User;
 use App\Repo\UserDb;
 use App\Helper\JsonDecode;
+use App\Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Complience;
+use App\Models\FormData;
+use App\Models\Formulir1;
 use App\Repo\Inspeksi;
 use App\Response\ProductResponse;
 use Exception;
@@ -77,55 +81,54 @@ class FormSatuController extends Controller
 
     public function PostFormOne(Request $request){
         try{
-
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
-            $dt = $request[0];
-           
-            if(!empty($dt)){
             
-                //create product master
-                $dt_master = $this->formInpeksi_db->createProdukMaster($dt); 
-                
-                if(!empty($dt_master)){
-                    
-                    for ($x = 1; $x <= 31; $x++) {
-                    
-                        //parse form;
-                        $this->parseIdForm();
-    
-                        if($x != 18){
-    
-                            $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], $x);
-                        
-                        }else{
-    
-                            $this->formInpeksi_db->createDataInspeksi($dt['iv'.$x.''], $dt["id"], 18); 
-                            
-                            $dataInspeksi = $this->formInpeksi_db->getDataInspeksiByIdProdukIdFormInpeksi($dt["id"], 18);
-                           
-                            if(!empty($dataInspeksi)){
-                            
-                                $base64 = base64_encode($dt['iv'.$x.'']);
-                                $this->formInpeksi_db->createDataInspeksiFile( $dataInspeksi->Id_data_produk_inspeksi, $dt["id"], $base64);
-                                                            
-                            }    
-                        } 
-                    }
-                }
+            DB::beginTransaction();
+            $forms = FormData::where('jenis_form', 1)->get();
+            $arr_form_data = array();
+            $data_request = $request[0];
 
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
+            foreach ($forms as $form) {
+            
+                if ($form->data_entry_type == 'Photo') {
+            
+                    $id_form = $form->id;
+                    $imageName = time() . '.' . $request->file($id_form)->extension();
+                    $request->$id_form->move(storage_path('images/formulir1'), $imageName);
+                    $arr_form_data[$id_form] = $imageName;
+            
+                } else {
+                    $arr_form_data[$form->id] = $request->input($form->id);
+                }
             
             }
+            
+            $record_id = GeneralHelper::generateRecordId();
+            $complience = new Complience();
+            $complience->record_id = $record_id;
+            $complience->product_id = $request->input('id_product');
+            $complience->pengawas_id = 2;
+            $complience->no_she = $request->input('1');
+            $complience->teknologi = $request->input('4');
+            $complience->status = 3; // RRT
+            $complience->save();
+
+            $store = new Formulir1();
+            $store->record_id = $record_id;
+            $store->pengawas_id = 2; // dummy
+            $store->form_data = json_encode($arr_form_data);
+            $store->save();
+            DB::commit();
+            $resp['status'] = 'success';
 
         }catch(Exception $e)
         {
+            $resp['status'] = 'error';
             DB::rollBack();
-            throw $e;
+            report($e);
         }
-        DB::commit();
-        return response()->json($response, 200);
+
     }
 
     public function PostFormOnePetik(Request $request){
@@ -260,14 +263,6 @@ class FormSatuController extends Controller
         }
         DB::commit();
         return response()->json($response, 200);
-    }
-
-    public function PostFormFour(){
-        
-    }
-
-    public function parseIdForm(){
-
     }
 
 }

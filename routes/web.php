@@ -35,8 +35,6 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
     Route::get('round-robin/form', 'RoundRobinController@form')->name('roundrobin.form');
 });
 
-
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
