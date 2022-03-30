@@ -2697,7 +2697,7 @@ pre code
 
     transition: all .15s cubic-bezier(.68, -.55, .265, 1.55); 
 
-    color: #8898aa;
+    color: #000;
     border: 1px solid #dee2e6;
     /* border-radius: .25rem; */
     background-color: #fff;
