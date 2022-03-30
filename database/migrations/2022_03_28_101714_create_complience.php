@@ -18,7 +18,7 @@ class CreateComplience extends Migration
             $table->integer('product_id');
             $table->integer('pengawas_id');
             $table->string('no_she');
-            $table->string('tekonolgi');
+            $table->string('teknologi');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

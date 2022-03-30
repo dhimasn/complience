@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 
 class GeneralHelper
 {
-  public function generateRecordId($length = 8)
+  public static function generateRecordId($length = 8)
   {
     $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

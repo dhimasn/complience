@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Helpers;
+
+use App\Models\FieldMobile;
+use App\Models\MasterColumn;
+use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 
@@ -15,14 +19,14 @@ class ProductHelper
    */
   public function getProductFromDB(){
     $products = Cache::rememberForever('product_microsite_'.$this->_idCategory, function () {
-      return json_encode(\DB::table('data_produk_cmp')->where('id_category', $this->_idCategory)->get()->toArray());
+      return json_encode(Product::where('id_category', $this->_idCategory)->get()->toArray());
     });
     return $products;
   }
   public function getAllProducts($id_category){
     $this->_idCategory = $id_category;
     $products = $this->getProductFromDB();
-    $field_product = \DB::table('product_master_column')->where('category_id', $id_category)->get();
+    $field_product = MasterColumn::where('category_id', $id_category)->get();
     $result = array();
     foreach ($field_product as $master) {
         foreach (json_decode($products) as $product) {
@@ -36,7 +40,7 @@ class ProductHelper
   public function getAllProductsMobile($id_category){
     $this->_idCategory = $id_category;
     $products = $this->getProductFromDB();
-    $field_product = \DB::table('field_api_mobile')->where('id_category_product', $id_category)->get();
+    $field_product = FieldMobile::where('id_category_product', $id_category)->get();
     $result = array();
     foreach ($field_product as $master) {
         foreach (json_decode($products) as $product) {
