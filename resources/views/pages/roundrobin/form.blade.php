@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Round Robin | Formulir 2')
+@section('title-menu', 'Pendataan RRT dan Pengujian Lainnya')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
