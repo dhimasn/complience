@@ -97,8 +97,8 @@
 @endsection
 @section('scripts')
 <script src="{{asset('assets/vendor/leaflet/leaflet.js')}}"></script>
-<script src="{{asset('assets/vendor/chart.js/dist/chart.min.js')}}"></script>
-<script src="{{asset('assets/vendor/chart.js/dist/plugin-labels.js')}}"></script>
+<script src="{{asset('assets/vendor/chartjs/dist/chart.min.js')}}"></script>
+<script src="{{asset('assets/vendor/chartjs/dist/plugin-labels.js')}}"></script>
 <script>
   var map = L.map('map').setView([-2.000373, 116.526913], 4);
 
