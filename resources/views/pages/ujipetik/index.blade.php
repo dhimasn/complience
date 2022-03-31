@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Data Uji Petik')
+@section('title-menu', 'Data Uji Petik | Formulir 2')
 @section('contents')
 {{-- <div class="header-body">
   <div class="row align-items-center pb-1">
@@ -27,7 +27,7 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
+                  <td><a href="{{route('ujipetik.form', '12345')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>
@@ -35,7 +35,7 @@
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td><a href="{{route('ujipetik.form')}}">123412</a></td>
+                  <td><a href="{{route('ujipetik.form', '12345')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>
                   <td>2 PK</td>

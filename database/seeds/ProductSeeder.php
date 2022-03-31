@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path("database\csv\products.csv");
+        $path = base_path("database/csv/products.csv");
         $provinces = GeneralHelper::csvToArray($path, "|");
         \DB::transaction(function() use($provinces) {
             $collection = collect($provinces);

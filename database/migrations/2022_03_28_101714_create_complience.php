@@ -18,7 +18,13 @@ class CreateComplience extends Migration
             $table->integer('product_id');
             $table->integer('pengawas_id');
             $table->string('no_she');
+            $table->string('merek')->nullable();
             $table->string('teknologi');
+            $table->string('manufaktur')->nullable();
+            $table->string('kode')->nullable();
+            $table->string('negara')->nullable();
+            $table->string('harga')->nullable();
+            $table->integer('lab_uji')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

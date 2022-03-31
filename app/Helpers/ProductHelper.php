@@ -19,7 +19,7 @@ class ProductHelper
    */
   public function getProductFromDB(){
     $products = Cache::rememberForever('product_microsite_'.$this->_idCategory, function () {
-      return json_encode(Product::where('id_category', $this->_idCategory)->get()->toArray());
+      return json_encode(Product::where('category_id', $this->_idCategory)->get()->toArray());
     });
     return $products;
   }
@@ -30,8 +30,8 @@ class ProductHelper
     $result = array();
     foreach ($field_product as $master) {
         foreach (json_decode($products) as $product) {
-            if($master->column_name == $product->id_field){
-                $result[$product->id_data_produk][$master->column_label] = $product->field_value;
+            if($master->column_name == $product->field){
+                $result[$product->product_id][$master->column_label] = $product->field_value;
             }
         }
     }

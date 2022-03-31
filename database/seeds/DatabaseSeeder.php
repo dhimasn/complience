@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DataFormSeeder::class);
         $this->call(FieldMobileSeeder::class);
         $this->call(MasterColumnSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

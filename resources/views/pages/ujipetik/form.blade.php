@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Uji Petik | Formulir 2')
+@section('title-menu', 'Penerimaan dan Inspeksi Sampel - Pemeriksaan Fisik')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<form action="{{route('formulir4.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('ujipetik.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-md-12">
@@ -119,8 +119,9 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
+              @foreach ($formUnitIndoor as $indoor)
               <div class="form-group">
-                <label class="form-control-label">Kondisi kemasan produk AC tidak rusak</label><br>
+                <label class="form-control-label">{!!nl2br($indoor)!!}</label><br>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" value="option1">
                   <label class="form-check-label">Baik</label>
@@ -131,6 +132,7 @@
                 </div>
                 <input class="form-control form-complience" placeholder="Masukan Catatan" name="10" value="" type="text">
               </div>
+              @endforeach
             </div>
           </div>
         </div>
@@ -150,8 +152,9 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
+              @foreach ($formUnitOutdoor as $outdoor)
               <div class="form-group">
-                <label class="form-control-label">Kondisi kemasan produk AC tidak rusak</label><br>
+                <label class="form-control-label">{!!nl2br($outdoor)!!}</label><br>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" value="option1">
                   <label class="form-check-label">Baik</label>
@@ -162,6 +165,7 @@
                 </div>
                 <input class="form-control form-complience" placeholder="Masukan Catatan" name="10" value="" type="text">
               </div>
+              @endforeach
             </div>
           </div>
         </div>
