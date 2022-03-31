@@ -2,7 +2,7 @@
 @section('title-menu', 'Dashboard')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/leaflet/leaflet.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('assets/vendor/chart.js/dist/chart.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('assets/vendor/chartjs/dist/Chart.min.css')}}" type="text/css">
 @endsection
 @section('contents')
 <div class="row">
@@ -97,7 +97,7 @@
 @endsection
 @section('scripts')
 <script src="{{asset('assets/vendor/leaflet/leaflet.js')}}"></script>
-<script src="{{asset('assets/vendor/chartjs/dist/chart.min.js')}}"></script>
+<script src="{{asset('assets/vendor/chartjs/dist/Chart.min.js')}}"></script>
 <script src="{{asset('assets/vendor/chartjs/dist/plugin-labels.js')}}"></script>
 <script>
   var map = L.map('map').setView([-2.000373, 116.526913], 4);
