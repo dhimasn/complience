@@ -11,7 +11,7 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Pengisian Formulir 2
+                  Pemeriksaan Sample Uji
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">
@@ -29,7 +29,7 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Pengisian Formulir 3
+                  Rekaman Hasil Pengujian
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">

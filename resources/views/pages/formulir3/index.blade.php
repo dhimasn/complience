@@ -1,40 +1,50 @@
 @extends('layouts.master')
-@section('title-menu', 'Pengisian Formulir 3')
+@section('title-menu', 'Rekaman Hasil Pengujian')
 @section('contents')
+{{-- <div class="header-body">
+  <div class="row align-items-center pb-1">
+    <div class="col-lg-12">
+      <h6 class="h2 text-black d-inline-block mb-0">Uji Petik</h6>
+    </div>
+  </div>
+</div> --}}
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-body card-body-dashboard">
+      <div class="card-body p-3">
         <div class="row">
           <div class="col-md-12">
-            <div class="card box-formulir-list">
-              <div class="card-body grid-disp">
-                <div class="row p-3 align-items-center">
-                  <div class="col-md-6 text-left">
-                    <span class="title-box-list">Uji Petik</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form3.ujipetik')}}">
-                      Pilih
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card box-formulir-list">
-              <div class="card-body grid-disp">
-                <div class="row p-3 align-items-center">
-                  <div class="col-md-6 text-left">
-                    <span class="title-box-list">Round Robin Testing</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form3.roundrobin')}}">
-                      Pilih
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <table class="table table-comp">
+              <thead class="thead-comp">
+                <th>Record ID</th>
+                <th>Nomor SHE</th>
+                <th>Merek</th>
+                <th>Kapasitas</th>
+                <th>Model</th>
+                <th>Tanggal Penerimaan</th>
+                <th>Kegiatan</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="{{route('form3.form')}}">123412</a></td>
+                  <td>200.323.482.43</td>
+                  <td>Samsung</td>
+                  <td>2 PK</td>
+                  <td>HUDMK/2332</td>
+                  <td>20/03/2022 07:32</td>
+                  <td>Uji Petik</td>
+                </tr>
+                <tr>
+                  <td><a href="{{route('form3.form')}}">HDU827</a></td>
+                  <td>200.323.482.43</td>
+                  <td>Samsung</td>
+                  <td>2 PK</td>
+                  <td>HUDMK/2332</td>
+                  <td>20/03/2022 07:32</td>
+                  <td>Round Robin</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

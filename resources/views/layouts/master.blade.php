@@ -33,7 +33,7 @@
     type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="{{asset('assets/css/argon.css?v=1.2.0')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('assets/css/argon.css?v='.env('APP_VERSION'))}}" type="text/css">
   @yield('styles')
 </head>
 
@@ -44,7 +44,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <i class="fas fa-user-circle text-yellow-cus" style="min-width: 2rem;margin-right: 1rem;"></i>
+          <i class="fas fa-user-circle user-profile" style="min-width: 2rem;margin-right: 1rem;"></i>
           <span class="nav-link-text">Admin</span>
         </a>
       </div>
@@ -79,6 +79,10 @@
               <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
                 <i class="fas fa-box text-yellow-cus"></i>
                 <span class="nav-link-text">Data Produk</span>
+              </a>
+              <a class="nav-link" href="#">
+                <i class="fas fa-box text-yellow-cus"></i>
+                <span class="nav-link-text">Pengelolaan User</span>
               </a>
             </li>
           </ul>

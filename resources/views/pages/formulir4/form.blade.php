@@ -120,7 +120,7 @@
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual + Entri Data Ketidaksesuaian</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual</h6>
       </div>
     </div>
   </div>

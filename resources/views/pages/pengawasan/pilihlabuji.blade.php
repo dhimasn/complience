@@ -11,30 +11,22 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-body p-3">
+      <div class="card-body p-2">
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-comp">
+            <table class="table table-comp table-responsive">
               <thead class="thead-comp">
-                <th>#</th>
                 <th>Record ID</th>
                 <th>Nomor SHE</th>
                 <th>Merek</th>
                 <th>Kapasitas</th>
-                <th>Teknologi</th>
-                <th>Tanggal</th>
+                <th>Model</th>
+                <th>Lokasi Pengawasan</th>
+                <th>Inspektur</th>
+                <th>Tanggal Inspeksi</th>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">123412</a></td>
-                  <td>hjshfjksdhfjkhjk</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>Inverter</td>
-                </tr>
-                <tr>
-                  <td>1</td>
                   <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">123412</a></td>
                   <td>hjshfjksdhfjkhjk</td>
                   <td>Samsung</td>

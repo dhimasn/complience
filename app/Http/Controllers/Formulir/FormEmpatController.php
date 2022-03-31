@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Formulir;
 
+use App\FormFormulir4;
 use App\Helpers\GeneralHelper;
 use App\Helpers\ProductHelper;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class FormEmpatController extends Controller
     {
         try {
             DB::beginTransaction();
-            $forms = \DB::table('form_roundrobin')->get();
+            $forms = FormFormulir4::all();
             $arr_form_data = array();
             foreach ($forms as $form) {
                 if ($form->data_entry_type == 'File') {

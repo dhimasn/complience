@@ -11,12 +11,11 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Aktivasi Pendataan Uji Petik - 4
+                  Aktivasi Pendataan Uji Petik
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">
-                  Pemilihan Lab Uji, untuk memulai pendataan dan aktivasi kegiatan uji petik di lab uji
-                  (Formulir 2, lalu Formulir 3)
+                  Aktivasi Pendataan Uji Petik, untuk memulai pendataan dan aktivasi kegiatan uji petik di lab uji
                 </span>
                 <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('pengawasan.pemilihanlabuji')}}">
                   Pilih
@@ -29,12 +28,11 @@
               <div class="card-body grid-disp">
                 <i class="far fa-file-alt icon-box-formulir-dashboard"></i>
                 <span class="title-box-formulir">
-                  Aktivasi Pendataan Uji Petik - 4
+                  Pendataan RRT dan Pengujian Lainnya
                 </span>
                 <div class="line-box-formulir"></div>
                 <span class="desc-box-formulir">
-                  Menginisiasi entri data, untuk memulai rekaman pendataan dan aktivasi kegiatan di lab uji
-                  (Formulir 2, lalu Formulir 3)
+                  Aktivasi Pendataan Round Robin Testing dan Pengujian Lainnya
                 </span>
                 <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('form4.pilihproduk')}}">
                   Pilih

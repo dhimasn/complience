@@ -16,30 +16,21 @@
           <div class="col-md-12">
             <table class="table table-comp">
               <thead class="thead-comp">
-                <th>#</th>
                 <th>Record ID</th>
                 <th>Nomor SHE</th>
                 <th>Merek</th>
                 <th>Kapasitas</th>
-                <th>Teknologi</th>
-                <th>Tanggal</th>
+                <th>Model</th>
+                <th>Tanggal Penerimaan</th>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td><a href="{{route('ujipetik.form', '12345')}}">123412</a></td>
-                  <td>hjshfjksdhfjkhjk</td>
+                  <td><a href="{{route('ujipetik.form', '12345')}}">KHU75GH</a></td>
+                  <td>343.097.93874</td>
                   <td>Samsung</td>
                   <td>2 PK</td>
-                  <td>Inverter</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td><a href="{{route('ujipetik.form', '12345')}}">123412</a></td>
-                  <td>hjshfjksdhfjkhjk</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>Inverter</td>
+                  <td>JUDKH76/KI</td>
+                  <td>20/03/2022 09:09</td>
                 </tr>
               </tbody>
             </table>

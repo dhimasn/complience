@@ -21430,6 +21430,18 @@ textarea[resize='horizontal']
     padding-right: 1rem;
     padding-left: 1rem;
 }
+.user-profile{
+    color: #ffee00;
+    font-size: 2rem;
+}
+.img-umum{
+    max-width: 100%;
+    border: 1px solid;
+    border-radius: 5px;
+}
+.nav-link.active .text-yellow-cus{
+    color: #ffee00;
+}
 .navbar-vertical .navbar-nav .nav-link.active
 {
     position: relative;
@@ -25619,7 +25631,7 @@ a.text-orange:focus
 
 .text-yellow-cus
 {
-    color: #ffee00;
+    color: #ffee00db;
     font-size: 2rem;
 }
 
@@ -29896,7 +29908,7 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 .title-menu{
     height: 30px;
     font-family: Montserrat;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     font-stretch: normal;
     font-style: normal;
@@ -29916,13 +29928,42 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
     border-radius: 38px;
     border: solid 1px #707070;
 }
+.box-pilih-produk{
+    background-color: #d2d2d2a3;
+    border-radius: 16px;
+    border: solid 1px #b2b2b2;
+    margin-bottom: 9px !important;
+    cursor: pointer;
+    box-shadow: 0 0 2rem 0 rgb(136 152 170 / 7%);
+}
+.box-pilih-produk.disable{
+    cursor: default;
+}
+.box-pilih-produk.disable:hover{
+    background-color: #d2d2d2a3;
+}
+.box-pilih-produk:hover{
+    background-color: #d2d2d270;
+}
+.box-pilih-produk span{
+    color: #000;
+    font-weight: 600;
+    font-size: .9rem;
+}
+.box-pilih-produk img{
+    height: 24px;
+}
+.box-pilih-produk .icon-produk{
+    min-width: 35px;
+    text-align: center;
+}
 .icon-box-formulir-dashboard{
     font-size: 93px;
     color: #fff;
     margin: 49px auto 0;
 }
 .title-box-formulir {
-    width: 110px;
+    width: 210px;
     height: 48px;
     margin: 48px auto 0;
     font-family: Montserrat;
@@ -29942,12 +29983,12 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
     background-color: #707070;
 }
 .desc-box-formulir{
-    width: 182px;
+    width: 200px;
     height: 96px;
     margin: 0 auto 9.4px;
     font-family: Montserrat;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 400;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;

@@ -1,0 +1,18 @@
+id;data_point;data_entry_type;mandatory;notes
+1;Nomor SHE;Drop down menu;1;
+2;Merek;Manual entry;1;
+3;Kapasitas Pengenal (PK);Manual entry;0;
+4;Teknologi;Drop down menu;0;
+5;Manufaktur / Importir;Manual entry;0;
+6;Kode atau Tanggal Produksi;Manual entry;0;
+7;Negara Asal;Manual entry;0;
+8;Harga;Manual entry;0;
+9;Lampirkan foto LTHE;File;0;
+10;Nomor SHE;Manual entry;0;
+11;Jumlah Bintang;Manual entry;0;
+12;Nilai Efisiensi Energi (EER/CSPF);Manual entry;0;
+13;Model Unit Dalam;Manual entry;0;
+14;Model Unit Luar;Manual entry;0;
+15;Daya;Manual entry;0;
+16;Kapasitas Pendingin;Manual entry;0;
+17;Lab Uji Tujuan;Manual entry;0;
