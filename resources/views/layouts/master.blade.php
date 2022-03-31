@@ -81,7 +81,7 @@
                 <span class="nav-link-text">Data Produk</span>
               </a>
               <a class="nav-link" href="#">
-                <i class="fas fa-box text-yellow-cus"></i>
+                <i class="fas fa-users text-yellow-cus"></i>
                 <span class="nav-link-text">Pengelolaan User</span>
               </a>
             </li>
@@ -180,11 +180,8 @@
   <script src="{{asset('assets/vendor/js-cookie/js.cookie.js')}}"></script>
   <script src="{{asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
   <script src="{{asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
-  <!-- Optional JS -->
-  <script src="{{asset('assets/vendor/chart.js/dist/Chart.min.js')}}"></script>
-  <script src="{{asset('assets/vendor/chart.js/dist/Chart.extension.js')}}"></script>
-  <!-- Argon JS -->
   <script src="{{asset('assets/js/argon.js')}}"></script>
+  <script src="{{asset('assets/js/main.js')}}"></script>
   <script>
     @if(session()->has('success'))
       $("#modalSuccessInput").modal('show');

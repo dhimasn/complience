@@ -14,11 +14,11 @@
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
-                <th>Manufactur</th>
                 <th>Tanggal</th>
                 <th>Nama Toko</th>
-                <th>LSPro</th>
                 <th>Lab Uji</th>
+                <th>Kegiatan</th>
+                <th>Status</th>
               </thead>
               <tbody>
                 <tr>
@@ -27,11 +27,11 @@
                   <td>006.1.01.09.14.0002</td>
                   <td>AQA-KRV9BGS</td>
                   <td>Samsung</td>
-                  <td>PT. Samsung</td>
                   <td>20/03/20022 12:32</td>
                   <td>Toko Makmur</td>
-                  <td>Baristand</td>
                   <td>BPPT</td>
+                  <td>Uji Petik</td>
+                  <td>Formulir 1</td>
                 </tr>
               </tbody>
             </table>

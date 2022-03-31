@@ -19,13 +19,15 @@ class CreateComplience extends Migration
             $table->integer('pengawas_id');
             $table->string('no_she');
             $table->string('merek')->nullable();
-            $table->string('teknologi');
+            $table->string('teknologi')->nullable();
+            $table->string('model')->nullable();
             $table->string('manufaktur')->nullable();
             $table->string('kode')->nullable();
             $table->string('negara')->nullable();
             $table->string('harga')->nullable();
             $table->integer('lab_uji')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('kegiatan')->comment("1: Uji Petik 2:RRT");
             $table->timestamps();
         });
     }

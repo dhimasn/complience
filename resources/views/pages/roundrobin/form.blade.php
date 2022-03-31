@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Pendataan RRT dan Pengujian Lainnya')
+@section('title-menu', 'Penerimaan dan Inspeksi Sampel - Pemeriksaan Pra-Pengujian')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
@@ -67,7 +67,7 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" value="" type="text">
@@ -85,6 +85,15 @@
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" value="" type="text">
               </div>
               <div class="form-group">
+                <label class="form-control-label">Informasi sampel sudah sesuai</label>
+                <select class="form-control form-complience">
+                  <option value="Ya">Ya</option>
+                  <option value="Tidak">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" value="" type="text">
               </div>
@@ -94,10 +103,6 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" value="" type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Informasi sampel sudah sesuai</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" value="" type="text">
               </div>
             </div>

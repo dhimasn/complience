@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterColumnSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(FormFormulir4Seeder::class);
+        $this->call(LabUjiSeeder::class);
     }
 }

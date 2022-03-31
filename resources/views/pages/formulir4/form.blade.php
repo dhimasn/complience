@@ -19,7 +19,7 @@
 @endsection
 @section('contents')
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card">
       <div class="card-body">
         <div class="row">
@@ -27,15 +27,15 @@
             <div class="form-group">
               <label class="form-control-label">Kegiatan</label>
               <div class="row">
-                <div class="col-md-3">
-                  <select name="17" class="form-control form-complience">
+                <div class="col-md-6">
+                  <select name="17" class="form-control form-complience" id="kegiatan_input">
                     <option value="1">Round Robin Testing</option>
                     <option value="2">Pengujian Ulang</option>
                     <option value="3">Lainnya</option>
                   </select>
                 </div>
-                <div class="col-md-3">
-                  <input class="form-control form-complience" placeholder="Lainnya" name="9" value="">
+                <div class="col-md-6">
+                  <input id="kegiatan_lainnya" class="form-control form-complience d-none" placeholder="Lainnya" name="9" value="">
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <input type="hidden" name="id_product" value="" id="id_product">
                 <label class="form-control-label">Nomor SHE/No Registrasi</label>
@@ -95,6 +95,8 @@
                   <option value="Inverter">Inverter</option>
                 </select>
               </div>
+            </div>
+            <div class="col-md-6"></div>
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
                 <input class="form-control form-complience" name="5" placeholder="" value="" type="text">
@@ -212,6 +214,14 @@
     var merek = $(this).find(':selected').data('merek');
     $("#id_product").val(id);
     $("#merek").val(merek);
+  });
+  $("#kegiatan_input").change(function(){
+    var value = $(this).val();
+    if(value=="3"){
+      $("#kegiatan_lainnya").removeClass('d-none');
+    }else{
+      $("#kegiatan_lainnya").addClass('d-none');
+    }
   });
 </script>
 @endsection

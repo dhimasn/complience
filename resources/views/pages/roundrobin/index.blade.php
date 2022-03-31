@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Pemeriksaan Sample Uji | Round Robin')
+@section('title-menu', 'Penerimaan dan Inspeksi Sampel - Pemeriksaan Pra-Pengujian')
 @section('contents')
 {{-- <div class="header-body">
   <div class="row align-items-center pb-1">

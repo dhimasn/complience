@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Penerimaan dan Inspeksi Sampel')
+@section('title-menu', 'Penerimaan dan Inspeksi Sampel - Pemeriksaan Fisik')
 @section('contents')
 {{-- <div class="header-body">
   <div class="row align-items-center pb-1">

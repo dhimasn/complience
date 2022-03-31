@@ -67,7 +67,7 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" value="" type="text">
@@ -84,6 +84,8 @@
                 <label class="form-control-label">Teknologi</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" value="" type="text">
               </div>
+            </div>
+            <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" value="" type="text">
