@@ -18,7 +18,7 @@ class FormTigaController extends Controller
 {
     public function index(){
         $compliences = Complience::whereIn('status', [4,5])->get();
-        return view('pages.formulir3.index');
+        return view('pages.formulir3.index', compact('compliences'));
     }
     public function ujiPetik(){
         return view('pages.formulir3.ujipetik');
@@ -26,7 +26,7 @@ class FormTigaController extends Controller
     public function roundRobin(){
         return view('pages.formulir3.roundrobin');
     }
-    public function form(){
+    public function form($record_id){
         $pengujianForm = array(
             'Time (min)',
             'Voltage (V)',
@@ -49,7 +49,8 @@ class FormTigaController extends Controller
             'Effective Power input (W)',
             'EER (Btu/h/W)',
         );
-        return view('pages.formulir3.form', compact('pengujianForm'));
+        $complience = Complience::where('record_id', $record_id)->first();
+        return view('pages.formulir3.form', compact('pengujianForm', 'complience'));
     }
     public function store(){
         return back()->with('success', 'Disimpan Kedalam Database');

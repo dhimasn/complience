@@ -14,7 +14,7 @@
       <div class="card-body p-3">
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-comp">
+            <table class="table table-comp table-responsive">
               <thead class="thead-comp">
                 <th>Record ID</th>
                 <th>Nomor SHE</th>
@@ -25,24 +25,17 @@
                 <th>Kegiatan</th>
               </thead>
               <tbody>
+                @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('form3.form')}}">123412</a></td>
-                  <td>200.323.482.43</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>HUDMK/2332</td>
-                  <td>20/03/2022 07:32</td>
-                  <td>Uji Petik</td>
+                  <td><a href="{{route('form3.form', $item->record_id)}}">{{$item->record_id}}</a></td>
+                  <td>{{$item->no_she}}</td>
+                  <td>{{$item->merek}}</td>
+                  <td>{{$item->kapasitas}}</td>
+                  <td>{{$item->model}}</td>
+                  <td>{{$item->updated_at}}</td>
+                  <td>{{$item->kegiatan == '1' ? 'Uji Petik' : 'Round Robin'}}</td>
                 </tr>
-                <tr>
-                  <td><a href="{{route('form3.form')}}">HDU827</a></td>
-                  <td>200.323.482.43</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>HUDMK/2332</td>
-                  <td>20/03/2022 07:32</td>
-                  <td>Round Robin</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

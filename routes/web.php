@@ -34,7 +34,7 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
     Route::get('formulir-3', 'FormTigaController@index')->name('form3.index');
     Route::get('formulir-3/round-robin', 'FormTigaController@roundRobin')->name('form3.roundrobin');
     Route::get('formulir-3/uji-petik', 'FormTigaController@ujiPetik')->name('form3.ujipetik');
-    Route::get('formulir-3/form', 'FormTigaController@form')->name('form3.form');
+    Route::get('formulir-3/form/{record_id}', 'FormTigaController@form')->name('form3.form');
     Route::post('formulir-3/store', 'FormTigaController@store')->name('form3.store');
 
     Route::get('formulir-4/pilih-produk', 'FormEmpatController@pilihProduk')->name('form4.pilihproduk');

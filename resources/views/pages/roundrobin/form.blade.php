@@ -31,15 +31,15 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Record ID</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" type="text" name="record_id" readonly value="{{$complience->record_id}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab_uji}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" type="text" readonly value="{{$complience->updated_at}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Pemeriksa</label>
@@ -70,19 +70,19 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" readonly value="{{$complience->no_she}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Merek</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="11" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="11" readonly value="{{$complience->merek}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kapasitas</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="12" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="12" readonly value="{{$complience->kapasitas}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Teknologi</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly value="{{$complience->teknologi}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Informasi sampel sudah sesuai</label>
@@ -95,15 +95,15 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" readonly value="{{$complience->manufaktur}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kode atau Tanggal Produksi</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" readonly value="{{$complience->kode}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" value="" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" readonly value="{{$complience->negara}}" type="text">
               </div>
             </div>
           </div>

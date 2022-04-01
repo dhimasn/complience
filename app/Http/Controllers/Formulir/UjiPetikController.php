@@ -32,9 +32,13 @@ class UjiPetikController extends Controller
             'Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor',
             'Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas)'
         );
-        return view('pages.ujipetik.form',compact('formUnitIndoor', 'formUnitOutdoor'));
+        $complience = Complience::where('record_id', $record_id)->first();
+        return view('pages.ujipetik.form',compact('formUnitIndoor', 'formUnitOutdoor','complience'));
     }
-    public function store(){
+    public function store(Request $request){
+        $complience = Complience::where('record_id', $request->input('record_id'))->first();
+        $complience->status = 4;
+        $complience->save();
         return back()->with('success', 'Disimpan Kedalam Database');
     }
 }
