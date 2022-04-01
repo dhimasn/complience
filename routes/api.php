@@ -18,9 +18,20 @@ Route::post('login', 'AuthController@login');
 
 Route::group(['namespace' => 'Api'], function () { // Api Controller
 
-    Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', 'middleware' => 'auth:api'], function () { // logged only api
+Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => 'auth:api'*/ ], function () { // logged only api
         
         Route::post('sync-product', 'ProductController@getAllProduct');
+
+        Route::group(['namespace' => 'Formulir', 'prefix' => 'formulir'], function () {
+
+            Route::post('/get/form','FormSatuController@GetForm');
+            Route::post('/post/one','FormSatuController@PostData');
+            Route::post('/post/uji_petik','FormSatuController@PostDataPetik');
+            Route::get('/delete','FormSatuController@DeleteByIdProduct');
+            Route::get('/get/list','FormSatuController@GetList');
+            Route::get('/get/detail','FormSatuController@GetDetail');
+            
+        });
 
     });
 
@@ -30,19 +41,6 @@ Route::group(['namespace' => 'Api'], function () { // Api Controller
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
-Route::group(['namespace' => 'Formulir'], function () {
-
-    //form inspeksi, kelola uji petik inspeksi dan visual (formulir 1) 
-    Route::post('/form_1/get/role','FormSatuController@GetbyRole');
-    Route::post('/form_1/get/roles','FormSatuController@GetbyRoles');
-    Route::post('/form_1/post/one','FormSatuController@PostFormOne');
-    Route::post('/form_1/post/uji_petik','FormSatuController@PostFormOnePetik');
-    Route::get('/form_1/delete','FormSatuController@DeleteByIdProduct');
-    Route::get('/form_1/get/list','FormSatuController@GetList');
-    Route::get('/form_1/get/detail','FormSatuController@GetDetail');
-    
-});
 
 //kelola pertanyaan formulir  
 Route::get('/form/create','KelolaFormController@createForm'); //add
