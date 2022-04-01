@@ -13,5 +13,11 @@ return [
     '9' => 'Formulir 3 (RRT)',
     '10' => 'Selesai (RRT)',
     '11' => 'Selesai (Uji Petik)',
+  ],
+  'temp_lab' => [
+    "1" => "Qualis",
+    "2" => "TUV Rheinland",
+    "3" => "B2TkE-BRIN",
+    "4" => "B4T-Kemenperin",
   ]
 ];
