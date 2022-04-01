@@ -35,7 +35,7 @@
                   <td>{{$item->model}}</td>
                   <td>{{$item->lokasi}}</td>
                   <td>{{$item->pengawas_id}}</td>
-                  <td>{{$item->crated_at}}</td>
+                  <td>{{$item->created_at}}</td>
                 </tr>
                 @endforeach
               </tbody>
