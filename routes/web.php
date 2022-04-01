@@ -50,8 +50,6 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
     Route::post('round-robin/store', 'RoundRobinController@store')->name('roundrobin.store');
 });
 
-
-
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
