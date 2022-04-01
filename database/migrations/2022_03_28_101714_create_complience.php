@@ -27,7 +27,7 @@ class CreateComplience extends Migration
             $table->string('kode')->nullable();
             $table->string('negara')->nullable();
             $table->string('harga')->nullable();
-            $table->integer('lab_uji')->nullable();
+            $table->string('lab_uji')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('kegiatan')->comment("1: Uji Petik 2:RRT");
             $table->timestamps();

@@ -14,7 +14,7 @@
       <div class="card-body p-3">
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-comp">
+            <table class="table table-comp table-responsive">
               <thead class="thead-comp">
                 <th>Record ID</th>
                 <th>Nomor SHE</th>
