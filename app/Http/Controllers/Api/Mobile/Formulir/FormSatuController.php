@@ -263,20 +263,23 @@ class FormSatuController extends Controller
             case ($form->id == 53):
                 $result = 'pc7';
                 break;
-            case ($form->id == 52):
+            case ($form->id == 26):
                 $result = 'pc8';
                 break;
-            case ($form->id == 26):
+            case ($form->id == 19):
                 $result = 'pc9';
                 break;
-            case ($form->id == 19):
+            case ($form->id == 20):
                 $result = 'pc10';
                 break;
             case ($form->id == 21):
                 $result = 'pc11';
                 break;
-            case ($form->id == 24):
+            case ($form->id == 22):
                 $result = 'pc12';
+                break;
+            case ($form->id == 24):
+                $result = 'pc13';
                 break;
 
             //LTHE
