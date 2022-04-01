@@ -33,6 +33,7 @@ class FormulirSatu
         $complience->pengawas_id = 2;
         $complience->no_she = $data_request['pc1'];
         $complience->teknologi = $data_request['pc4'];
+        $complience->kegiatan = 2;
         $complience->status = 1; // RRT
         $complience->save();
     }
