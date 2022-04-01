@@ -228,3 +228,5 @@ Tidak sesuai""";2
 167;2;Variasi hasil pengujian terhadap CSPF SHE (%);Hitung dengan formula;null;0;;3
 168;2;Variasi hasil pengujian terhadap EER Nameplate (%);Hitung dengan formula;null;0;;3
 169;2;Variasi hasil pengujian terhadap CSPF Nameplate (%);Hitung dengan formula;null;0;;3
+170;2;Koordinat GPS;Entri tersedia;null;1;;1
+171;2;Nomor LTHE;Entri tersedia;null;1;;1
