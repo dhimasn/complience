@@ -79,7 +79,7 @@ class FormSatuController extends Controller
                                
                                 //upload image
                                 $imageName = $id_form.'_'.time();
-                                $dirLocation = storage_path('images/formulir_1');
+                                $dirLocation = 'images/formulir_1';
                                 $upload_image = GeneralHelper::uploadImageBase64($data_request[$id_form],$imageName, $dirLocation);
                                 $arr_form_data[$form->id] = $upload_image;
                             }
