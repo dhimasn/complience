@@ -26,13 +26,18 @@
                 <th>Tanggal Inspeksi</th>
               </thead>
               <tbody>
+                @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">123412</a></td>
-                  <td>hjshfjksdhfjkhjk</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>Inverter</td>
+                  <td><a href="{{route('pengawasan.pemilihanlabuji.detail')}}">{{$item->record_id}}</a></td>
+                  <td>{{$item->no_she}}</td>
+                  <td>{{$item->merek}}</td>
+                  <td>{{$item->kapasitas}}</td>
+                  <td>{{$item->model}}</td>
+                  <td>{{$item->lokasi}}</td>
+                  <td>{{$item->pengawas_id}}</td>
+                  <td>{{$item->crated_at}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

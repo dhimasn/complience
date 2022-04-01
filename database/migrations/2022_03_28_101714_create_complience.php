@@ -22,7 +22,8 @@ class CreateComplience extends Migration
             $table->string('teknologi')->nullable();
             $table->string('model')->nullable();
             $table->string('manufaktur')->nullable();
-            $table->string('kode')->nullable();
+            $table->string('kode_produk')->nullable();
+            $table->string('kapasitas')->nullable();
             $table->string('negara')->nullable();
             $table->string('harga')->nullable();
             $table->integer('lab_uji')->nullable();

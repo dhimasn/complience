@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complience;
 use Illuminate\Http\Request;
 
 class PengawasanController extends Controller
@@ -10,7 +11,8 @@ class PengawasanController extends Controller
         return view('pages.pengawasan.index');
     }
     public function pemilihanLabUji(){
-        return view('pages.pengawasan.pilihlabuji');
+        $compliences = Complience::where('status', 1)->get();
+        return view('pages.pengawasan.pilihlabuji', compact('compliences'));
     }
     public function formPemilihanLabUji(){
         return view('pages.pengawasan.form-pilihlabuji');
