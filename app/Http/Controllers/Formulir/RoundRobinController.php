@@ -13,7 +13,6 @@ class RoundRobinController extends Controller
 {
     public function index(){
         $complience = Complience::where('status', 3)->get();
-        
         return view('pages.roundrobin.index', compact('complience'));
     }
     public function form($record_id){

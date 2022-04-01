@@ -28,9 +28,9 @@
                 <tr>
                   <td><a href="{{route('roundrobin.form', $item->record_id)}}">{{$item->record_id}}</a></td>
                   <td>{{$item->no_she}}</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>{{$item->teknologi}}</td>
+                  <td>{{$item->merek}}</td>
+                  <td>{{$item->kapasitas}}</td>
+                  <td>{{$item->model}}</td>
                   <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach

@@ -34,12 +34,16 @@ class Formulir4 extends Model
             $complience->pengawas_id = 2;
             $complience->no_she = $request->input('1');
             $complience->merek = $request->input('2');
-            $complience->teknologi = $request->input('3');
+            $complience->kapasitas = $request->input('3');
+            $complience->teknologi = $request->input('4');
+            $complience->model = $request->input('model');
             $complience->manufaktur = $request->input('5');
             $complience->kode = $request->input('6');
             $complience->negara = $request->input('7');
             $complience->harga = $request->input('8');
-            $complience->status = 3; // RRT
+            $complience->lab_uji = $request->input('lab_uji');
+            $complience->status = $request->input('kegiatan') == '1' ? '3' : '2'; // RRT
+            $complience->kegiatan = $request->input('kegiatan') == '1' ? '2' : '1'; // RRT
             $complience->save();
     
             $store = new Formulir4();

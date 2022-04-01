@@ -24,14 +24,16 @@
                 <th>Tanggal Penerimaan</th>
               </thead>
               <tbody>
+                @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('ujipetik.form', '12345')}}">KHU75GH</a></td>
-                  <td>343.097.93874</td>
-                  <td>Samsung</td>
-                  <td>2 PK</td>
-                  <td>JUDKH76/KI</td>
-                  <td>20/03/2022 09:09</td>
+                  <td><a href="{{route('ujipetik.form', $item->record_id)}}">{{$item->record_id}}</a></td>
+                  <td>{{$item->no_she}}</td>
+                  <td>{{$item->merek}}</td>
+                  <td>{{$item->kapasitas}}</td>
+                  <td>{{$item->model}}</td>
+                  <td>{{$item->updated_at}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

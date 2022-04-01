@@ -7,6 +7,7 @@ use App\Repo\UserDb;
 use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Complience;
 use App\Models\FormLabDB;
 use App\Repo\InpeksiDb;
 use Exception;
@@ -16,6 +17,7 @@ use stdClass;
 class FormTigaController extends Controller
 {
     public function index(){
+        $compliences = Complience::whereIn('status', [4,5])->get();
         return view('pages.formulir3.index');
     }
     public function ujiPetik(){

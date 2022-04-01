@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Formulir;
 
 use App\Http\Controllers\Controller;
+use App\Models\Complience;
 use App\Models\FormLabDB;
 use Illuminate\Http\Request;
 
 class UjiPetikController extends Controller
 {
     public function index(){
-        return view('pages.ujipetik.index');
+        $compliences = Complience::where('status', 2)->where('lab_uji', '!=', '')->get();
+        return view('pages.ujipetik.index', compact('compliences'));
     }
     public function form($record_id){
         $formUnitIndoor = array(
