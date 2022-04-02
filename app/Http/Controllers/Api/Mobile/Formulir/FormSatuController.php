@@ -39,7 +39,7 @@ class FormSatuController extends Controller
             if(!empty($result)){
 
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
+                $response['message'] = "201";
                 $response['data'] = $result;
             }
             
@@ -107,7 +107,7 @@ class FormSatuController extends Controller
 
             DB::commit();
             $response['success'] = true;
-            $response['message'] = "200 Ok";
+            $response['message'] = "201";
 
         }catch(Exception $e)
         {
@@ -129,7 +129,7 @@ class FormSatuController extends Controller
                
                 $this->formInpeksi_db->deleteDataProdukInspeksi($deleteId);
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
+                $response['message'] = "201";
             
             }
 
@@ -159,7 +159,7 @@ class FormSatuController extends Controller
                 }
                
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
+                $response['message'] = "201";
                 $response['data'] = $result;
             
             }
@@ -190,7 +190,7 @@ class FormSatuController extends Controller
                 if(!empty($data)){
 
                     $response['success'] = true;
-                    $response['message'] = "200 Ok";
+                    $response['message'] = "201";
                     $response['data'] = $data;
 
                 }
