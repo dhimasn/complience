@@ -36,7 +36,7 @@ class GeneralHelper
 
     return $data;
   }
-  public function uploadImageBase64($base64, $fileName, $dirLocation)
+  public static function uploadImageBase64($base64, $fileName, $dirLocation)
   {
     if (!empty($base64)) {
       $extension = explode('/', mime_content_type($base64))[1];
