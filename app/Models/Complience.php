@@ -9,5 +9,7 @@ class Complience extends Model
     protected $primaryKey = 'record_id';
     
     public $incrementing = false;
+
     protected $table = 'complience';
+    
 }
