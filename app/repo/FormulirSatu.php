@@ -32,8 +32,17 @@ class FormulirSatu
         $complience->product_id = $data_request['id'];
         $complience->pengawas_id = 2;
         $complience->no_she = $data_request['pc1'];
+        $complience->merek = $data_request['pc2'];
         $complience->teknologi = $data_request['pc4'];
-        $complience->status = 1; // RRT
+        $complience->model = $data_request['pc3'];
+        $complience->manufaktur = $data_request['pc9'];
+        $complience->kode_produk = $data_request['pc10'];
+        $complience->kapasitas = $data_request['pc6'];
+        $complience->negara = $data_request['pc11'];
+        $complience->harga = $data_request['pc12'];
+        //$complience->lab_uji = $data_request['pc4'];
+        $complience->kegiatan = 2;
+        $complience->status = 1;
         $complience->save();
     }
 
@@ -46,21 +55,19 @@ class FormulirSatu
     }
 
     public function getListDataProduk(){
-        $result = FormData::where('state', 1)
-        ->with(['produk_inspeksi' => function($dataInspeksi){
-            $dataInspeksi->where('state', 1);
-        }])
+
+        $result = Complience::where('status', 1)
+        ->join('formulir_1', 'formulir_1.record_id', '=', 'complience.record_id')
         ->get();
         return $result;
+
     }
 
-    public function getDetailProduk($detailId){
-        $result = FormData::where('state', 1)
-        ->where('id_data_produk', $detailId)
-        ->with(['produk_inspeksi' => function($dataInspeksi){
-            $dataInspeksi->where('state', 1);
-        }])
-        ->get();
+    public function getDetailProduk($record_id){
+        $result = Complience::where('status', 1)
+        ->where('complience.record_id', $record_id)
+        ->join('formulir_1', 'formulir_1.record_id', '=', 'complience.record_id')
+        ->first();
         return $result;
     }
 
