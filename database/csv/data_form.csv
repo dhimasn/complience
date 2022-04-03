@@ -73,160 +73,93 @@ Supermarket""";1
 55;2;Model Unit Luar;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
 56;2;Daya;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
 57;2;Kapasitas Pendinginan;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
-58;2;Produk;Drop down menu;null;1;"""AC";4
-59;2;Lampu Swabalast CFL;;null;1;;4
-60;2;Tanggal & waktu;Auto-populated;null;1;Saat mulai mengisi atau saat formulir dikirimkan;4
-61;2;Nama Inspektur;Auto-populated (?);null;1;;4
-62;2;ID Inspektur;Auto-populated (?);null;1;Dapat diberikan account ID spesifik atau dari ID unik yang disediakan KESDM (apabila ada);4
-63;2;Kapasitas Pengenal (PK);Drop down;null;1;;4
-64;2;Teknologi;Drop down;null;1;;4
-65;2;Manufaktur / importir;Pre-populated from registry;null;1;;4
-66;2;Kode atau Tanggal Produksi;Manual entry;null;1;;4
-67;2;Negara Asal;Manual entry;null;1;;4
-68;2;Harga;Manual entry;null;1;;4
-69;2;Merek;Pre-populated from registry;null;1;;4
-70;2;(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Lab Uji Tujuan;Multiple entry rank by order;null;1;"""Qualis
-TUV Rheinland
-B2TKE-BRIN
-B4T-Kemenperin""";4
-71;2;(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Tanggal Pengujian;Manual entry;null;1;;4
-72;2;Record ID;Auto-populated (?);null;1;Hanya aktif dari sampel uji yang diunggah dan dipilih untuk uji petik pada Formulir 1 atau aktivasi khusus dari Tim Pengawasan DJEBTKE;2
-73;2;Laboratorium Pengujian;Auto-populated;null;1;;2
-74;2;Tanggal & Waktu Inspeksi Sampel;Auto-populated;null;1;Saat mulai mengisi atau saat formulir dikirimkan;2
-75;2;Nama Petugas Pemeriksa;Auto-populated (?);null;1;;2
-76;2;Nama Petugas Persetujuan;Auto-populated (?);null;1;;2
-77;2;Merek;Auto-populated;null;1;;2
-78;2;Metrik 1: Kapasitas;Auto-populated;null;1;;2
-79;2;Metrik 2: Teknologi;Auto-populated;null;1;;2
-80;2;Manufaktur / importir;Auto-populated;null;1;;2
-81;2;Kode atau Tanggal Produksi;Auto-populated;null;1;;2
-82;2;Negara Asal;Auto-populated;null;1;;2
-83;2;Kondisi kemasan produk AC tidak rusak;Checklist;null;1;"""Baik
-Tidak baik""";2
-84;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-85;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-86;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;Checklist;null;1;"""Baik
-Tidak baik""";2
-87;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;Checklist;null;1;"""Baik
-Tidak baik""";2
-88;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-89;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;Checklist;null;1;"""Baik
-Tidak baik""";2
-90;2;Kondisi kemasan produk AC tidak rusak;Checklist;null;1;"""Baik
-Tidak baik""";2
-91;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-92;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-93;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;Checklist;null;1;"""Baik
-Tidak baik""";2
-94;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;Checklist;null;1;"""Baik
-Tidak baik""";2
-95;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);Checklist;null;1;"""Baik
-Tidak baik""";2
-96;2;Hasil penilaian;Drop down menu;null;1;"""Baik dapat dilanjutkan ke pengecekan kondisi pengujian
-Tidak diterima unit dikemas kembali untuk dikembalikan""";2
-97;2;Keterangan tambahan;"Manual entry
-Manual entry & drop down menu";null;0;"""Sesuai
-Tidak sesuai""";2
-98;2;Berat unit indoor sebelum;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-99;2;Berat unit indoor sesudah;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-100;2;Berat unit outdoor sebelum;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-101;2;Berat unit outdoor sesudah;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-102;2;Pipa tembaga sepanjang 75 m - 10 cm;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-103;2;Pasang Thermokopel pada unit Indoor dan Outdoor;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-104;2;Instalasi unit (jarak unit indoor ke dinding 300 - 400 mm);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-105;2;Instalasi unit (jarak unit indoor ke lantai 1400 - 1500 mm);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-106;2;Instalasi unit (jarak unit outdoor ke dinding 500 mm);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-107;2;Instalasi unit (jarak unit outdoor ke lantai 750 - 1000 mm);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-108;2;Instalasi pemasangan air sampler unit Indoor (Metode Air Enthalpy);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-109;2;Instalasi pemasangan air sampler unit Outdoor (Metode Air Enthalpy);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-110;2;Proses pemvakuman;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-111;2;Test kebocoran pipa;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-112;2;Kondisi Temperatur Pengujian;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-113;2;Indoor Chamber: TDB (27?) TWB (19?) Outdoor Chamber: TDB (35?) TWB (24?);Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-114;2;"""Atur AC pada posisi:
+58;2;Koordinat GPS;Entri tersedia;null;1;;1
+59;2;Nomor LTHE;Entri tersedia;null;1;;1
+60;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+61;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+62;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
+63;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;RADIO;"Baik;Tidak Baik";1;;2
+64;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+65;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;RADIO;"Baik;Tidak Baik";1;;2
+66;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
+67;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+68;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+69;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
+70;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+71;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);RADIO;"Baik;Tidak Baik";1;;2
+72;2;Berat unit indoor sebelum;RADIO;"Baik;Tidak Baik";1;;2
+73;2;Berat unit indoor sesudah;RADIO;"Baik;Tidak Baik";1;;2
+74;2;Berat unit outdoor sebelum;RADIO;"Baik;Tidak Baik";1;;2
+75;2;Berat unit outdoor sesudah;RADIO;"Baik;Tidak Baik";1;;2
+76;2;Pipa tembaga sepanjang 75 m - 10 cm;RADIO;"Baik;Tidak Baik";1;;2
+77;2;Pasang Thermokopel pada unit Indoor dan Outdoor;RADIO;"Baik;Tidak Baik";1;;2
+78;2;Instalasi unit (jarak unit indoor ke dinding 300 - 400 mm);RADIO;"Baik;Tidak Baik";1;;2
+79;2;Instalasi unit (jarak unit indoor ke lantai 1400 - 1500 mm);RADIO;"Baik;Tidak Baik";1;;2
+80;2;Instalasi unit (jarak unit outdoor ke dinding 500 mm);RADIO;"Baik;Tidak Baik";1;;2
+81;2;Instalasi unit (jarak unit outdoor ke lantai 750 - 1000 mm);RADIO;"Baik;Tidak Baik";1;;2
+82;2;Instalasi pemasangan air sampler unit Indoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;2
+83;2;Instalasi pemasangan air sampler unit Outdoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;2
+84;2;Proses pemvakuman;RADIO;"Baik;Tidak Baik";1;;2
+85;2;Test kebocoran pipa;RADIO;"Baik;Tidak Baik";1;;2
+86;2;Kondisi Temperatur Pengujian;RADIO;"Baik;Tidak Baik";1;;2
+87;2;Indoor Chamber: TDB (27?) TWB (19?) Outdoor Chamber: TDB (35?) TWB (24?);RADIO;"Baik;Tidak Baik";1;;2
+88;2;"""Atur AC pada posisi:
 ? Mode : Cool
 ? Kecepatan fan : Maksimum
 ? Posisi pengarah hembusan udara : Maksimum
-? Temperatur Remote Control : Suhu terendah/minimum""";Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-115;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-116;2;Hasil penilaian;Drop down menu;null;1;"""Baik pengujian dapat dimulai
-Tidak diterima unit dikemas kembali untuk dikembalikan""";2
-117;2;Keterangan tambahan;Manual entry;null;0;;2
-118;2;Nomor seri unit indoor;Manual entry;null;1;;3
-119;2;Nomor seri unit outdoor;Manual entry;null;1;;3
-120;2;Kapasitas normal (Btu/h);Manual entry;null;1;;3
-121;2;Daya normal (W);Manual entry;null;1;;3
-122;2;Kapasitas maksimum (Btu/h);Manual entry;null;1;;3
-123;2;Daya maksimum (W);Manual entry;null;1;;3
-124;2;Tegangan (V);Manual entry;null;1;;3
-125;2;Fase;Manual entry;null;1;;3
-126;2;Hz;Manual entry;null;1;;3
-127;2;Current (A);Manual entry;null;1;;3
-128;2;Berat unit indoor (kg);Manual entry;null;1;;3
-129;2;Berat unit outdoor (kg);Manual entry;null;1;;3
-130;2;Dimensi unit indoor (mm W*H*D);Manual entry;null;1;;3
-131;2;Dimensi unit outdoor (mm W*H*D);Manual entry;null;1;;3
-132;2;Tipe refrigeran;Manual entry;null;1;;3
-133;2;Informasi sampel sudah sesuai;Drop down menu;null;1;Ya;2
-134;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;Manual entry & drop down menu;null;1;"""Sesuai
-Tidak sesuai""";2
-135;2;Record ID;Auto-populated (?);null;1;Hanya aktif dari sampel uji telah diperiksa dan diunggah melalui Formulir 2 atau aktivasi khusus dari Tim Pengawasan DJEBTKE;3
-136;2;Laboratorium Pengujian;Auto-populated;null;1;;3
-137;2;Tanggal Penerimaan Sampel Uji;Manual entry;null;1;Saat mulai mengisi atau saat formulir dikirimkan;3
-138;2;Nama Petugas Penguji;Auto-populated (?);null;1;;3
-139;2;Nama Petugas Pemeriksa;Auto-populated (?);null;1;;3
-140;2;Informasi sampel sudah sesuai;Drop down menu;null;1;"""Ya";3
-141;2;Muatan refrigeran;Manual entry;null;1;;3
-142;2;Tipe refrigeran;Manual entry;null;1;;3
-143;2;Time (min);;null;0;;3
-144;2;Voltage (V);;null;0;;3
-145;2;Frequency (Hz);;null;0;;3
-146;2;Current (A);;null;0;;3
-147;2;Dry-bulb temperature air entering indoor side  (oC);;null;0;;3
-148;2;Wet-bulb temperature air entering indoor side (oC);;null;0;;3
-149;2;Dry-bulb & Wet-bulb temperature outdoor side (oC);;null;0;;3
-150;2;Standard airflow rate (m3/s);;null;0;;3
-151;2;Airflow rate (m3/s);;null;0;;3
-152;2;Dry bulb temperature air leaving indoor side (oC);;null;0;;3
-153;2;Wet bulb temperature air leaving indoor side (oC);;null;0;;3
-154;2;Test Unit Static Pressure (Pa);;null;0;;3
-155;2;Atmospheric pressure (kPa);;null;0;;3
-156;2;Indoor unit fan speed (RPM);;null;0;;3
-157;2;Inverter compressor set* (Hz);;null;0;;3
-158;2;Total cooling capacity (Btu/h)[W];;null;0;;3
-159;2;Latent cooling capacity (Btu/h);;null;0;;3
-160;2;Sensible cooling capacity (Btu/h);;null;0;;3
-161;2;Sensible heat ratio (%);;null;0;;3
-162;2;Effective Power input (W);;null;0;;3
-163;2;EER (Btu/h/W);;null;0;;3
-164;2;EER (Btu/h/W);Entri tersedia;null;0;;3
-165;2;CSPF (Wh/Wh);Entri tersedia;null;0;;3
-166;2;Variasi hasil pengujian terhadap EER SHE (%);Hitung dengan formula;null;0;;3
-167;2;Variasi hasil pengujian terhadap CSPF SHE (%);Hitung dengan formula;null;0;;3
-168;2;Variasi hasil pengujian terhadap EER Nameplate (%);Hitung dengan formula;null;0;;3
-169;2;Variasi hasil pengujian terhadap CSPF Nameplate (%);Hitung dengan formula;null;0;;3
-170;2;Koordinat GPS;Entri tersedia;null;1;;1
-171;2;Nomor LTHE;Entri tersedia;null;1;;1
+? Temperatur Remote Control : Suhu terendah/minimum""";RADIO;"Baik;Tidak Baik";1;;2
+89;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;RADIO;"Baik;Tidak Baik";1;;2
+90;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;RADIO;"Baik;Tidak Baik";1;;2
+91;2;Hasil penilaian;RADIO;"Baik, dapat dilanjutkan ke pengecekan kondisi pengujian;Tidak diterima, unit dikemas kembali untuk dikembalikan";1;;2
+92;2;Keterangan tambahan;TEXT;null;0;;2
+93;2;Nomor seri unit indoor;TEXT;null;1;;3
+94;2;Nomor seri unit outdoor;TEXT;null;1;;3
+95;2;Kapasitas normal (Btu/h);TEXT;null;1;;3
+96;2;Daya normal (W);TEXT;null;1;;3
+97;2;Kapasitas maksimum (Btu/h);TEXT;null;1;;3
+98;2;Daya maksimum (W);TEXT;null;1;;3
+99;2;Tegangan (V);TEXT;null;1;;3
+100;2;Fase;TEXT;null;1;;3
+101;2;Hz;TEXT;null;1;;3
+102;2;Current (A);TEXT;null;1;;3
+103;2;Berat unit indoor (kg);TEXT;null;1;;3
+104;2;Berat unit outdoor (kg);TEXT;null;1;;3
+105;2;Dimensi unit indoor (mm W*H*D);TEXT;null;1;;3
+106;2;Dimensi unit outdoor (mm W*H*D);TEXT;null;1;;3
+107;2;Tipe refrigeran;TEXT;null;1;;3
+108;2;Muatan refrigeran;TEXT;null;1;;3
+109;2;Time (min);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+110;2;Voltage (V);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+111;2;Frequency (Hz);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+112;2;Current (A);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+113;2;Dry-bulb temperature air entering indoor side  (oC);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+114;2;Wet-bulb temperature air entering indoor side (oC);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+115;2;Dry-bulb & Wet-bulb temperature outdoor side (oC);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+116;2;Standard airflow rate (m3/s);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+117;2;Airflow rate (m3/s);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+118;2;Dry bulb temperature air leaving indoor side (oC);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+119;2;Wet bulb temperature air leaving indoor side (oC);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+120;2;Test Unit Static Pressure (Pa);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+121;2;Atmospheric pressure (kPa);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+122;2;Indoor unit fan speed (RPM);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+123;2;Inverter compressor set* (Hz);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+124;2;Total cooling capacity (Btu/h)[W];TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+125;2;Latent cooling capacity (Btu/h);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+126;2;Sensible cooling capacity (Btu/h);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+127;2;Sensible heat ratio (%);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+128;2;Effective Power input (W);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+129;2;EER (Btu/h/W);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
+130;2;EER (Btu/h/W);THREE;"PENGUJIAN;SHE;NAMEPLATE";0;;3
+131;2;CSPF (Wh/Wh);THREE;"PENGUJIAN;SHE;NAMEPLATE";0;;3
+132;2;Variasi hasil pengujian terhadap EER SHE (%);FORMULA;null;0;;3
+133;2;Variasi hasil pengujian terhadap CSPF SHE (%);FORMULA;null;0;;3
+134;2;Variasi hasil pengujian terhadap EER Nameplate (%);FORMULA;null;0;;3
+135;2;Variasi hasil pengujian terhadap CSPF Nameplate (%);FORMULA;null;0;;3
+136;2;Lampirkan foto LTHE;FILE;null;1;;4
+137;2;Nomor SHE;TEXT;null;1;;4
+138;2;Jumlah Bintang;TEXT;null;1;;4
+139;2;Nilai Efisiensi Energi (EER/CSPF);TEXT;null;1;;4
+140;2;Model Unit Dalam;TEXT;null;1;;4
+141;2;Model Unit Luar;TEXT;null;1;;4
+142;2;Daya;TEXT;null;1;;4
+143;2;Kapasitas Pendingin;TEXT;null;1;;4
