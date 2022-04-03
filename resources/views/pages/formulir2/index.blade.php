@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Pengisian Formulir 2')
+@section('title-menu', 'Pemeriksaan Sampel Uji')
 @section('contents')
 <div class="row">
   <div class="col-md-12">

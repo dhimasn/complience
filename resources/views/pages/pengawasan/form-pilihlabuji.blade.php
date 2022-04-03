@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Pemilihan Lab Uji')
+@section('title-menu', 'Aktivasi Pendataan Uji Petik')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>

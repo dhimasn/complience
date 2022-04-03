@@ -23,6 +23,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.master', function($view)
+        {
+            $routeListFormulir = array('pengawasan.pemilihanlabuji','form4.pilihproduk','form2.index','form3.index');
+            $routeListPendataan = array('pengawasan.pemilihanlabuji','form4.pilihproduk');
+            $routeListLab = array('form2.index','form3.index');
+            $result['routeListFormulir'] = $routeListFormulir;
+            $result['routeListPendataan'] = $routeListPendataan;
+            $result['routeListLab'] = $routeListLab;
+            $view->with('result', $result);
+        });
     }
 }

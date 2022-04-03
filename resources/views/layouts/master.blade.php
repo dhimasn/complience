@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="{{asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}"
     type="text/css">
   <!-- Page plugins -->
-  <!-- Argon CSS -->
+  {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css"> --}}
   <link rel="stylesheet" href="{{asset('assets/css/argon.css?v='.env('APP_VERSION'))}}" type="text/css">
   @yield('styles')
 </head>
@@ -60,33 +60,80 @@
                 <i class="fas fa-th-large text-yellow-cus"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-              <a class="nav-link {{\Request::route()->getName() == 'pengawasan.index' ? 'active' : ''}}" href="{{route('pengawasan.index')}}">
-                <i class="fas fa-table text-yellow-cus"></i>
-                <span class="nav-link-text">Pengawasan</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="far fa-save text-yellow-cus"></i>
+                <span class="nav-link-text">High Risk Tool</span>
               </a>
-              <a class="nav-link {{\Request::route()->getName() == 'lab.index' ? 'active' : ''}}" href="{{route('lab.index')}}">
-                <i class="fas fa-tags text-yellow-cus"></i>
-                <span class="nav-link-text">Pengujian Lab</span>
+            </li>
+            <li class="nav-item">
+              <a data-toggle="collapse" href="#formuliCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'active' : ''}}" aria-controls="formuliCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'true' : 'false'}}">
+                  <i class="fas fa-clipboard-list text-yellow-cus"></i>
+                <span class="nav-link-text">Formulir</span>
               </a>
-              {{-- <a class="nav-link" href="{{'/'}}">
-                <i class="fas fa-table text-yellow-cus"></i>
-                <span class="nav-link-text">Data Pengawasan</span>
-              </a> --}}
+              <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'show' : ''}}" id="formuliCollapse" style="">
+                <ul class="nav ms-4">
+                  <li class="nav-item ">
+                    <a class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'active' : ''}}" data-toggle="collapse" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'true' : 'false'}}" href="#pendataanCollapse">
+                      <span class="sidenav-normal"> Aktivasi Pendataan</span>
+                    </a>
+                    <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'show' : ''}}" id="pendataanCollapse" style="">
+                      <ul class="nav nav-sm">
+                        <li class="nav-item">
+                          <a class="nav-link {{\Request::route()->getName() == 'pengawasan.pemilihanlabuji' ? 'active' : ''}}" href="{{route('pengawasan.pemilihanlabuji')}}">
+                            <span class="sidenav-normal">Aktivasi Pendataan Uji Petik</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link {{\Request::route()->getName() == 'form4.pilihproduk' ? 'active' : ''}}" href="{{route('form4.pilihproduk')}}">
+                            <span class="sidenav-normal">Aktivasi Pendataan RRT dan Pengujian Lainnya</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link {{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'active' : ''}}" data-toggle="collapse" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'true' : 'false'}}" href="#labUjiCollapse">
+                      <span class="sidenav-normal"> Rekam Data Lab Uji</span>
+                    </a>
+                    <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'show' : ''}}" id="labUjiCollapse">
+                      <ul class="nav nav-sm">
+                        <li class="nav-item">
+                          <a class="nav-link {{\Request::route()->getName() == 'form2.index' ? 'active' : ''}}" href="{{route('form2.index')}}">
+                            <span class="sidenav-normal">Pemeriksaan Sampel Uji</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link {{\Request::route()->getName() == 'form3.index' ? 'active' : ''}}" href="{{route('form3.index')}}">
+                            <span class="sidenav-normal">Hasil Pengujian</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
               <a class="nav-link {{\Request::route()->getName() == 'masterdata.complience' ? 'active' : ''}}" href="{{route('masterdata.complience')}}">
                 <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">Master Data</span>
               </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
                 <i class="fas fa-box text-yellow-cus"></i>
                 <span class="nav-link-text">Data Produk</span>
               </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="fas fa-users text-yellow-cus"></i>
                 <span class="nav-link-text">Pengelolaan User</span>
               </a>
             </li>
           </ul>
-          <!-- Divider -->
 
           <!-- Heading -->
         </div>

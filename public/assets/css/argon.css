@@ -5654,13 +5654,9 @@ input[type='button'].btn-block
 
 .nav
 {
-    display: flex;
-
     margin-bottom: 0;
     padding-left: 0;
-
     list-style: none; 
-
     flex-wrap: wrap;
 }
 
@@ -21451,7 +21447,7 @@ textarea[resize='horizontal']
     font-size: 1.4rem;
     line-height: 1.5rem; 
 
-    min-width: 3rem;
+    min-width: 2.3rem;
 }
 .navbar-vertical .navbar-nav .nav-link .dropdown-menu
 {
@@ -21501,7 +21497,7 @@ textarea[resize='horizontal']
 {
     transform: rotate(90deg); 
 
-    color: #5e72e4;
+    color: #fff;
 }
 .navbar-vertical .navbar-nav .nav .nav-link
 {
@@ -21596,7 +21592,7 @@ textarea[resize='horizontal']
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav-link
 {
-    padding: .675rem 2.5rem;
+    padding: .675rem 0.9rem .675rem 2rem;
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item
 {
@@ -21604,7 +21600,7 @@ textarea[resize='horizontal']
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item > .nav-link.active
 {
-    margin-left: 1.5rem;
+    margin-left: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
 
@@ -21625,14 +21621,12 @@ textarea[resize='horizontal']
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav .nav-link
 {
-    padding-top: .45rem;
-    padding-bottom: .45rem;
-    padding-left: 3.5rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    padding-left: 4.2rem;
+    padding-right: 1rem;
 }
-.navbar-vertical.navbar-expand-xs .navbar-nav .nav .nav .nav-link
-{
-    padding-left: 4.25rem;
-}
+
 @media (min-width: 576px)
 {
     .navbar-vertical.navbar-expand-sm
