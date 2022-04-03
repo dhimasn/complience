@@ -116,16 +116,49 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{\Request::route()->getName() == 'masterdata.complience' ? 'active' : ''}}" href="{{route('masterdata.complience')}}">
-                <i class="fas fa-database text-yellow-cus"></i>
+              <a data-toggle="collapse" href="#masterDataCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'active' : ''}}" aria-controls="masterDataCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'true' : 'false'}}">
+                  <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">Master Data</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
-                <i class="fas fa-box text-yellow-cus"></i>
-                <span class="nav-link-text">Data Produk</span>
-              </a>
+              <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'show' : ''}}" id="masterDataCollapse" style="">
+                <ul class="nav ms-4">
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.complience' ? 'active' : ''}}" href="{{route('masterdata.complience')}}">
+                      <span class="sidenav-normal">Inspeksi Visual</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">
+                      <span class="sidenav-normal">Uji Petik</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">
+                      <span class="sidenav-normal">Round Robin Testing</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">
+                      <span class="sidenav-normal">Pengujian Ulang</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">
+                      <span class="sidenav-normal">Pengujian Lainnya</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
+                      <span class="sidenav-normal">Produk Microsite</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">
+                      <span class="sidenav-normal">Laboratorium Uji</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
