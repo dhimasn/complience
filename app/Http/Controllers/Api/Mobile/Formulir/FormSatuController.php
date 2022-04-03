@@ -39,7 +39,7 @@ class FormSatuController extends Controller
             if(!empty($result)){
 
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
+                $response['message'] = "200";
                 $response['data'] = $result;
             }
             
@@ -51,7 +51,7 @@ class FormSatuController extends Controller
             throw $e;
         }
         
-        return response()->json($response, 200);
+        return response()->json($response, 201);
     }
 
     public function PostData(Request $request){
@@ -104,9 +104,10 @@ class FormSatuController extends Controller
                 $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data);
 
             }
+
             DB::commit();
             $response['success'] = true;
-            $response['message'] = "200 Ok";
+            $response['message'] = "200";
 
         }catch(Exception $e)
         {
@@ -114,7 +115,7 @@ class FormSatuController extends Controller
             throw($e);
         }
 
-        return response()->json($response, 200);
+        return response()->json($response, 201);
 
     }
 
@@ -128,7 +129,7 @@ class FormSatuController extends Controller
                
                 $this->formInpeksi_db->deleteDataProdukInspeksi($deleteId);
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
+                $response['message'] = "200";
             
             }
 
@@ -138,24 +139,28 @@ class FormSatuController extends Controller
             throw $e;
         }
         DB::commit();
-        return response()->json($response, 200);
+        return response()->json($response, 201);
     }
 
     public function GetList(Request $request){
         try{
 
+            $result = array();
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
 
-            $result = $this->formInpeksi_db->getListDataProduk();
+            $data = $this->formSatu_db->getListDataProduk();
 
-            if(!empty($result)){
-            
-                $data = ProductResponse::responseProduk($result);
-            
+            if(!empty($data)){
+                
+                foreach($data as $dt){
+                    $resProduk = ProductResponse::responseProduk($dt);
+                    array_push($result,$resProduk);
+                }
+               
                 $response['success'] = true;
-                $response['message'] = "200 Ok";
-                $response['data'] = $data;
+                $response['message'] = "200";
+                $response['data'] = $result;
             
             }
 
@@ -165,26 +170,30 @@ class FormSatuController extends Controller
             throw $e;
         }
         DB::commit();
-        return response()->json($response, 200);
+        return response()->json($response, 201);
     }
 
     public function GetDetail(Request $request){
         try{
-          
+            
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
 
-            $detailId = $request->detail_id;
+            $record_id = $request->record_id;
             
-            $result = $this->formInpeksi_db->getDetailProduk($detailId);
-
+            $result = $this->formSatu_db->getDetailProduk($record_id);
+           
             if(!empty($result)){
-            
+                
                 $data = ProductResponse::responseProduk($result);
-            
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
-                $response['data'] = $data;
+                
+                if(!empty($data)){
+
+                    $response['success'] = true;
+                    $response['message'] = "200";
+                    $response['data'] = $data;
+
+                }
             
             }
 
@@ -194,7 +203,7 @@ class FormSatuController extends Controller
             throw $e;
         }
         DB::commit();
-        return response()->json($response, 200);
+        return response()->json($response, 201);
     }
 
     public function constantaFormSatu($form){
