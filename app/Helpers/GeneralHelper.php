@@ -2,20 +2,15 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class GeneralHelper
 {
-  public static function generateRecordId($length = 8)
+  public static function generateRecordId($length = 12)
   {
-    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $string = '';
-    for ($i = 0; $i < $length; $i++) {
-      $string .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $string;
+    $randomString = Str::random($length);
+    return strtoupper($randomString);
   }
   public static function csvToArray($filename = '', $delimiter = ';')
   {

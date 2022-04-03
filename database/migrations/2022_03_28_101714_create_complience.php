@@ -14,7 +14,7 @@ class CreateComplience extends Migration
     public function up()
     {
         Schema::create('complience', function (Blueprint $table) {
-            $table->string('record_id');
+            $table->string('record_id', 20);
             $table->integer('product_id')->nullable();
             $table->integer('pengawas_id');
             $table->string('no_she');
