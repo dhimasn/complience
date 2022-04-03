@@ -35,7 +35,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab_uji}}">
+                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab->nama ?? "-"}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>

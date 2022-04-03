@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use PDO;
 
 class Complience extends Model
 {
@@ -11,5 +12,9 @@ class Complience extends Model
     public $incrementing = false;
 
     protected $table = 'complience';
+    
+    public function lab(){
+        return $this->belongsTo(LabUji::class, 'lab_uji');
+    }
     
 }

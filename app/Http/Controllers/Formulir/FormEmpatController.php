@@ -6,6 +6,7 @@ use App\Helpers\ProductHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Formulir4;
+use App\Models\LabUji;
 use Session;
 
 class FormEmpatController extends Controller
@@ -19,7 +20,8 @@ class FormEmpatController extends Controller
     {
         $productHelper = new ProductHelper();
         $products = $productHelper->getAllProducts(2);
-        return view('pages.formulir4.form', compact('products'));
+        $labUjis = LabUji::get();
+        return view('pages.formulir4.form', compact('products','labUjis'));
     }
     public function store(Request $request)
     {

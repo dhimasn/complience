@@ -46,10 +46,9 @@
               <div class="form-group">
                 <label class="form-control-label">Lab Uji Tujuan</label>
                 <select name="lab_uji" class="form-control form-complience">
-                  <option value="1">Qualis</option>
-                  <option value="2">TUV Rheinland</option>
-                  <option value="3">B2TkE-BRIN</option>
-                  <option value="4">B4T-Kemenperin</option>
+                  @foreach ($labUjis as $labUji)
+                    <option value="{{$labUji->id}}">{{$labUji->nama}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

@@ -15,7 +15,7 @@ class CreateComplience extends Migration
     {
         Schema::create('complience', function (Blueprint $table) {
             $table->string('record_id');
-            $table->integer('product_id');
+            $table->integer('product_id')->nullable();
             $table->integer('pengawas_id');
             $table->string('no_she');
             $table->string('merek')->nullable();
@@ -27,7 +27,7 @@ class CreateComplience extends Migration
             $table->string('kode')->nullable();
             $table->string('negara')->nullable();
             $table->string('harga')->nullable();
-            $table->string('lab_uji')->nullable();
+            $table->integer('lab_uji')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('kegiatan')->comment("1: Uji Petik 2:RRT");
             $table->timestamps();

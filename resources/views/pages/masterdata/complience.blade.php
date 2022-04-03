@@ -28,7 +28,7 @@
                   <td>{{$item->merek}}</td>
                   <td>{{$item->updated_at}}</td>
                   <td>-</td>
-                  <td>{{$item->lab_uji}}</td>
+                  <td>{{$item->lab->nama ?? "-"}}</td>
                   <td>{{$item->kegiatan == '1' ? 'Uji Petik' : 'Round Robin'}}</td>
                   <td>{{$status[$item->status] ?? ''}}</td>
                 </tr>
