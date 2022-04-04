@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Helpers;
 
 use App\Models\UserRoleDB;
 use App\Models\UserDB;

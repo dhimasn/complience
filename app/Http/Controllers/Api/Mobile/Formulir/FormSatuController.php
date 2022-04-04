@@ -3,16 +3,11 @@
 namespace App\Http\Controllers\Api\Mobile\Formulir;
 
 use App\User;
-use App\Repo\UserDb;
-use App\Helper\JsonDecode;
 use App\Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Complience;
-use App\Models\FormData;
-use App\Models\Formulir1;
-use App\Repository\FormulirSatu;
-use App\Response\ProductResponse;
+use App\Helpers\FormulirSatu;
+use App\Helpers\ProductResponse;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -160,10 +155,10 @@ class FormSatuController extends Controller
 
                 //    }
 
-                   print_r($form_1);exit;
+                print_r($form_1);exit;
 
-                   //$this->formSatu_db->createCompliance($record_id , $data_request);
-                   // $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data, $uji_petik);
+                //$this->formSatu_db->createCompliance($record_id , $data_request);
+                // $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data, $uji_petik);
 
                 }
 
