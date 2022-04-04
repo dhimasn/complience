@@ -23,6 +23,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
+                <label class="form-control-label">Kegiatan</label>
+                <input class="form-control form-complience" readonly value="Uji Petik">
+              </div>
+              <div class="form-group">
                 <label class="form-control-label">Pilih Lab Uji Tujuan</label>
                 <select name="17" class="form-control form-complience">
                   <option value="1">Qualis</option>
