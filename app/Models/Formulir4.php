@@ -30,8 +30,8 @@ class Formulir4 extends Model
             $complience->negara = $request->input('7');
             $complience->harga = $request->input('8');
             $complience->lab_uji = $request->input('lab_uji');
-            $complience->status = $request->input('kegiatan') == '1' ? '3' : '2'; // RRT
-            $complience->kegiatan = $request->input('kegiatan') == '1' ? '2' : '1'; // RRT
+            $complience->status = $request->input('kegiatan') == '1' ? '3' : '4';
+            $complience->kegiatan = $request->input('kegiatan') == '1' ? '2' : '1';
             $complience->save();
 
             $forms = FormData::where('jenis_form', 4)->get();
