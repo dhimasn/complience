@@ -33,7 +33,7 @@
                   <td>{{$item->merek}}</td>
                   <td>{{$item->kapasitas}}</td>
                   <td>{{$item->model}}</td>
-                  <td>{{$item->formulir1->lokasi_pengawasan}}</td>
+                  <td>{{$item->lokasi_pengawasan}}</td>
                   <td>{{$item->pengawas_id}}</td>
                   <td>{{$item->created_at}}</td>
                 </tr>

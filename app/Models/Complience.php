@@ -17,8 +17,8 @@ class Complience extends Model
         return $this->belongsTo(LabUji::class, 'lab_uji');
     }
 
-    public function formulir1(){
-        return $this->belongsTo(Formulir1::class, 'record_id', 'record_id');
-    }
+    // public function formulir1(){
+    //     return $this->belongsTo(Formulir1::class, 'record_id', 'record_id');
+    // }
     
 }
