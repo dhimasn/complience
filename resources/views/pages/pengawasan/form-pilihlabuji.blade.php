@@ -23,8 +23,13 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
+                <input type="hidden" name="record_id" value="{{$complience->record_id}}">
+                <label class="form-control-label">Kegiatan</label>
+                <input class="form-control form-complience" readonly value="Uji Petik">
+              </div>
+              <div class="form-group">
                 <label class="form-control-label">Pilih Lab Uji Tujuan</label>
-                <select name="17" class="form-control form-complience">
+                <select name="lab_uji" class="form-control form-complience">
                   <option value="1">Qualis</option>
                   <option value="2">TUV Rheinland</option>
                   <option value="3">B2TkE-BRIN</option>

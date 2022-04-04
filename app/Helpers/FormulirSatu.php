@@ -29,7 +29,6 @@ class FormulirSatu
     public function createCompliance($record_id, $data_request){
         $complience = new Complience();
         $complience->record_id = $record_id;
-        //$complience->product_id = $data_request['id'];
         $complience->pengawas_id = 2;
         $complience->no_she = $data_request['pc1'];
         $complience->merek = $data_request['pc2'];
@@ -40,13 +39,13 @@ class FormulirSatu
         $complience->kapasitas = $data_request['pc6'];
         $complience->negara = $data_request['pc11'];
         $complience->harga = $data_request['pc12'];
-        //$complience->lab_uji = $data_request['pc4'];
         $complience->kegiatan = 2;
         $complience->status = 1;
         $complience->save();
     }
 
     public function createFormulirSatu($record_id, $arr_form_data, $data_request){
+        
         
         $store = new Formulir1();
         $store->record_id = $record_id;

@@ -11,13 +11,18 @@ class PengawasanController extends Controller
         return view('pages.pengawasan.index');
     }
     public function pemilihanLabUji(){
-        $compliences = Complience::where('status', 1)->get();
+        $compliences = Complience::where('status', 2)->orderBy('created_at', 'desc')->get();
         return view('pages.pengawasan.pilihlabuji', compact('compliences'));
     }
-    public function formPemilihanLabUji(){
-        return view('pages.pengawasan.form-pilihlabuji');
+    public function formPemilihanLabUji($record_id){
+        $complience = Complience::where('record_id', $record_id)->first();
+        return view('pages.pengawasan.form-pilihlabuji', compact('complience'));
     }
-    public function storePemilihanLabUji(){
+    public function storePemilihanLabUji(Request $request){
+        $complience = Complience::where('record_id', $request->input('record_id'))->first();
+        $complience->lab_uji = $request->input('lab_uji');
+        $complience->status = 4;
+        $complience->save();
         return back()->with('success', 'Data telah terkirim ke Lab tujuan');
     }
 }

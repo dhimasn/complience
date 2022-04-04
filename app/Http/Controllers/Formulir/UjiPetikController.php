@@ -13,7 +13,7 @@ use Session;
 class UjiPetikController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('status', 2)->where('lab_uji', '!=', '')->get();
+        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->get();
         return view('pages.ujipetik.index', compact('compliences'));
     }
     public function form($record_id){
@@ -24,7 +24,7 @@ class UjiPetikController extends Controller
     }
     public function store(Request $request){
         $formulir = new Formulir2();
-        $status = 4;
+        $status = 6;
         $jenis_form = 2;
         if ($formulir->storeData($request, $status, $jenis_form)) {
             Session::flash('success', 'Disimpan Kedalam Database');
