@@ -20,7 +20,7 @@ Route::get('lab', 'LabController@index')->name('lab.index');
 
 Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
 Route::get('pengawasan/pemilihan-lab-uji', 'PengawasanController@pemilihanLabUji')->name('pengawasan.pemilihanlabuji');
-Route::get('pengawasan/pemilihan-lab-uji/detail', 'PengawasanController@formPemilihanLabUji')->name('pengawasan.pemilihanlabuji.detail');
+Route::get('pengawasan/pemilihan-lab-uji/detail/{record_id}', 'PengawasanController@formPemilihanLabUji')->name('pengawasan.pemilihanlabuji.detail');
 Route::post('pengawasan/pemilihan-lab-uji/store', 'PengawasanController@storePemilihanLabUji')->name('pengawasan.pemilihanlabuji.store');
 
 Route::group(['prefix' => 'data-master'], function () { 
