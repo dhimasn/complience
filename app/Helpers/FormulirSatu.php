@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repo;
+namespace App\Helpers;
 
 use App\Helpers\GeneralHelper;
 use App\Models\Complience;
@@ -75,5 +75,19 @@ class FormulirSatu
         ->first();
         return $result;
     }
+
+    public function getDetailFormulirSatu($produk_id){
+        $result = Formulir1::where('id_inspeksi_visual', $produk_id)
+        ->first();
+        return $result;
+    }
+
+    // public function updateFormulirSatu(){
+    //     $result = Complience::where('status', 1)
+    //     ->where('complience.record_id', $record_id)
+    //     ->join('formulir_1', 'formulir_1.record_id', '=', 'complience.record_id')
+    //     ->first();
+    //     return $result;
+    // }
 
 }
