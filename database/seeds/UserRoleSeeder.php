@@ -12,7 +12,15 @@ class UserRoleSeeder extends Seeder
     public function run()
     {
         \DB::table('user_roles')->insert([
-            'category_user' => "Pengawas"
+            [
+                'category_user' => "Super Admin"
+            ],
+            [
+                'category_user' => "Pengawas"
+            ],
+            [
+                'category_user' => "Laboratiorum"
+            ]
         ]);
     }
 }

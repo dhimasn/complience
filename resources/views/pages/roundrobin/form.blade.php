@@ -3,14 +3,14 @@
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
-  .form-complience{
+  .form-complience {
     border-top: 1px solid #fff !important;
     border-right: 1px solid #fff !important;
     border-left: 1px solid #fff !important;
     border-bottom: 1px solid #707070 !important;
     height: 25px !important;
     padding: 0 !important;
-}
+  }
 </style>
 @endsection
 @section('contents')
@@ -31,11 +31,13 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Record ID</label>
-                <input class="form-control form-complience" type="text" name="record_id" readonly value="{{$complience->record_id}}">
+                <input class="form-control form-complience" type="text" name="record_id" readonly
+                  value="{{$complience->record_id}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab->nama ?? '-'}}">
+                <input class="form-control form-complience" type="text" readonly
+                  value="{{$complience->lab->nama ?? '-'}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
@@ -70,19 +72,23 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" readonly value="{{$complience->no_she}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="10" readonly
+                  value="{{$complience->no_she}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Merek</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="11" readonly value="{{$complience->merek}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="11" readonly
+                  value="{{$complience->merek}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kapasitas</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="12" readonly value="{{$complience->kapasitas}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="12" readonly
+                  value="{{$complience->kapasitas}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Teknologi</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly value="{{$complience->teknologi}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
+                  value="{{$complience->teknologi}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Informasi sampel sudah sesuai</label>
@@ -95,15 +101,18 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" readonly value="{{$complience->manufaktur}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="14" readonly
+                  value="{{$complience->manufaktur}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kode atau Tanggal Produksi</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" readonly value="{{$complience->kode}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" readonly
+                  value="{{$complience->kode}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" readonly value="{{$complience->negara}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" readonly
+                  value="{{$complience->negara}}" type="text">
               </div>
             </div>
           </div>
@@ -111,10 +120,11 @@
       </div>
     </div>
   </div>
+  @foreach ($forms as $form)
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Cek Fisik, Unit Indoor</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
       </div>
     </div>
   </div>
@@ -124,18 +134,10 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              @foreach ($formUnitIndoor as $indoor)
+              @foreach ($form->childForm as $child)
               <div class="form-group">
-                <label class="form-control-label">{!!nl2br($indoor)!!}</label><br>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option1">
-                  <label class="form-check-label">Baik</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option2">
-                  <label class="form-check-label">Tidak Baik</label>
-                </div>
-                <input class="form-control form-complience" placeholder="Masukan Catatan" name="10" value="" type="text">
+                <label class="form-control-label">{!!nl2br($child->data_point)!!}</label><br>
+                {!!$helpers->formInput($child->data_entry_type, $child->id, $child->data_input)!!}
               </div>
               @endforeach
             </div>
@@ -144,106 +146,9 @@
       </div>
     </div>
   </div>
-  <div class="header-body">
-    <div class="row align-items-center pb-1 ml-2">
-      <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Cek Fisik, Unit Outdoor</h6>
-      </div>
-    </div>
-  </div>
+  @endforeach
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              @foreach ($formUnitOutdoor as $outdoor)
-              <div class="form-group">
-                <label class="form-control-label">{!!nl2br($outdoor)!!}</label><br>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option1">
-                  <label class="form-check-label">Baik</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option2">
-                  <label class="form-check-label">Tidak Baik</label>
-                </div>
-                <input class="form-control form-complience" placeholder="Masukan Catatan" name="10" value="" type="text">
-              </div>
-              @endforeach
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="header-body">
-    <div class="row align-items-center pb-1 ml-2">
-      <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Pengecekan Pra-Pengujian</h6>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              @foreach ($forms as $item)
-              <div class="form-group">
-                <label class="form-control-label">{!!nl2br($item)!!}</label><br>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option1">
-                  <label class="form-check-label">Baik</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="option2">
-                  <label class="form-check-label">Tidak Baik</label>
-                </div>
-                <input class="form-control form-complience" placeholder="Masukan Catatan" name="10" value="" type="text">
-              </div>
-              @endforeach
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="header-body">
-    <div class="row align-items-center pb-1 ml-2">
-      <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Hasil Final Cek Fisik</h6>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="form-control-label">Hasil penilaian</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" value="option1">
-                  <label class="form-check-label">Baik, dapat dilanjutkan ke pengecekan kondisi pengujian</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" value="option2">
-                  <label class="form-check-label">Tidak diterima, unit dikemas kembali untuk dikembalikan</label>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <label class="form-control-label">Keterangan tambahan</label>
-                <input class="form-control" type="file">
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="16" value="" type="text">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="text-center mb-6">
         <button class="btn btn-yellow button-comp" submit>
           Kirim

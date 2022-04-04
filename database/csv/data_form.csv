@@ -170,10 +170,12 @@ Supermarket""";1
 152;10;2;Test kebocoran pipa;RADIO;"Baik;Tidak Baik";1;;5
 153;10;2;Kondisi Temperatur Pengujian;RADIO;"Baik;Tidak Baik";1;;5
 154;10;2;Indoor Chamber: TDB (27?) TWB (19?) Outdoor Chamber: TDB (35?) TWB (24?);RADIO;"Baik;Tidak Baik";1;;5
-155;10;2;"""Atur AC pada posisi:
-? Mode : Cool
-? Kecepatan fan : Maksimum
-? Posisi pengarah hembusan udara : Maksimum
-? Temperatur Remote Control : Suhu terendah/minimum""";RADIO;"Baik;Tidak Baik";1;;5
+155;10;2;"Atur AC pada posisi:
+       - Mode : Cool
+       - Kecepatan fan : Maksimum
+       - Posisi pengarah hembusan udara : Maksimum
+       - Temperatur Remote Control : Suhu terendah/minimum";RADIO;"Baik;Tidak Baik";1;;5
 156;10;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;RADIO;"Baik;Tidak Baik";1;;5
 157;10;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;RADIO;"Baik;Tidak Baik";1;;5
+158;11;2;Hasil penilaian;RADIO;"Baik, dapat dilanjutkan ke pengecekan kondisi pengujian;Tidak diterima, unit dikemas kembali untuk dikembalikan";1;;5
+159;11;2;Keterangan tambahan;TEXT;null;1;;5

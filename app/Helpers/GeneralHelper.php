@@ -46,4 +46,35 @@ class GeneralHelper
       return null;
     }
   }
+  public static function formInput($type, $name, $opsi = null, $placeHolder = null)
+  {
+    $result = "";
+    switch ($type) {
+      case 'TEXT':
+        $result = '<input class="form-control form-complience" name="' . $name . '" type="text">';
+        break;
+
+      case 'RADIO':
+        $class = strlen($opsi) < 25 ? 'form-check-inline' : '';
+        $opsi = explode(";", $opsi);
+        foreach ($opsi as $val) {
+          $result .= '<div class="form-check '.$class.'">';
+          $result .= '<input class="form-check-input" type="radio" name="' . $name . '" value="'.$val.'">
+            <label class="form-check-label">'.$val.'</label>';
+            $result .= '</div>';
+        }
+        break;
+
+      case 'FILE':
+        $result = '<input class="form-control" name="' . $name . '" type="file">';
+        break;
+
+      default:
+        # code...
+        break;
+    }
+
+
+    return $result;
+  }
 }
