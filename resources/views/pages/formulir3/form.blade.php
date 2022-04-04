@@ -86,7 +86,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kode atau Tanggal Produksi</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" readonly value="{{$complience->kode}}" type="text">
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="15" readonly value="{{$complience->kode_produk}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>

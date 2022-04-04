@@ -16,7 +16,8 @@ class PengawasanController extends Controller
     }
     public function formPemilihanLabUji($record_id){
         $complience = Complience::where('record_id', $record_id)->first();
-        return view('pages.pengawasan.form-pilihlabuji', compact('complience'));
+        $form_data = json_decode($complience->formulir1->form_data, true);
+        return view('pages.pengawasan.form-pilihlabuji', compact('complience','form_data'));
     }
     public function storePemilihanLabUji(Request $request){
         $complience = Complience::where('record_id', $request->input('record_id'))->first();
