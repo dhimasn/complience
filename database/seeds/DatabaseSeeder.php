@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FieldMobileSeeder::class);
         $this->call(MasterColumnSeeder::class);
         $this->call(ProductSeeder::class);
-        $this->call(FormFormulir4Seeder::class);
         $this->call(LabUjiSeeder::class);
         $this->call(FromCategorySeeder::class);
     }

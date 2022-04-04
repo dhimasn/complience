@@ -92,9 +92,9 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Informasi sampel sudah sesuai</label>
-                <select class="form-control form-complience">
-                  <option value="Ya">Ya</option>
-                  <option value="Tidak">Tidak</option>
+                <select name="sampel_sesuai" class="form-control form-complience">
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
                 </select>
               </div>
             </div>

@@ -6,9 +6,9 @@ use App\Helpers\GeneralHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Complience;
 use App\Models\FormCategory;
-use App\Models\FormData;
-use App\Models\FormLabDB;
+use App\Models\Formulir2;
 use Illuminate\Http\Request;
+use Session;
 
 class UjiPetikController extends Controller
 {
@@ -23,9 +23,14 @@ class UjiPetikController extends Controller
         return view('pages.ujipetik.form',compact('forms', 'complience','helpers'));
     }
     public function store(Request $request){
-        $complience = Complience::where('record_id', $request->input('record_id'))->first();
-        $complience->status = 4;
-        $complience->save();
-        return back()->with('success', 'Disimpan Kedalam Database');
+        $formulir = new Formulir2();
+        $status = 4;
+        $jenis_form = 2;
+        if ($formulir->storeData($request, $status, $jenis_form)) {
+            Session::flash('success', 'Disimpan Kedalam Database');
+        } else {
+            Session::flash('error');
+        }
+        return back();
     }
 }
