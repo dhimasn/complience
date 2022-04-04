@@ -59,6 +59,7 @@ class FormSatuController extends Controller
            
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
+            $res = 401;
             
             $arr_form_data = array();
             $data_request = $request[0];
@@ -101,13 +102,14 @@ class FormSatuController extends Controller
             if(!empty($record_id)){
 
                 $this->formSatu_db->createCompliance($record_id , $data_request);
-                $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data);
+                $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data, $data_request);
 
             }
 
             DB::commit();
             $response['success'] = true;
             $response['message'] = "200";
+            $res = 201;
 
         }catch(Exception $e)
         {
@@ -115,7 +117,53 @@ class FormSatuController extends Controller
             throw($e);
         }
 
-        return response()->json($response, 201);
+        return response()->json($response, $res);
+
+    }
+
+    public function PostDataPetik(Request $request){
+
+        try{
+
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $res = 401;
+            
+            $arr_form_data = array();
+            $uji_petik = $request[0];
+            $forms = $this->formSatu_db->getFormData();
+
+            if(!empty($uji_petik)){
+
+                foreach ($forms as $form) {
+
+                     //seacrh data 
+                     $id_form = $this->constantaFormSatu($form);
+
+                    
+
+                }
+
+            }
+
+            $record_id = GeneralHelper::generateRecordId();
+
+            if(!empty($record_id)){
+
+                //$this->formSatu_db->createCompliance($record_id , $data_request);
+                $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data, $uji_petik);
+
+            }
+
+        }catch(Exception $e)
+        {
+            DB::rollBack();
+            throw($e);
+        }
+
+        return response()->json($response, $res);
+
+        
 
     }
 
@@ -173,6 +221,9 @@ class FormSatuController extends Controller
         return response()->json($response, 201);
     }
 
+    public function GetListPetik(Request $request){
+    }
+
     public function GetDetail(Request $request){
         try{
             
@@ -204,6 +255,9 @@ class FormSatuController extends Controller
         }
         DB::commit();
         return response()->json($response, 201);
+    }
+
+    public function GetDetailPetik(Request $request){
     }
 
     public function constantaFormSatu($form){
