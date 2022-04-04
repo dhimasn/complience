@@ -89,15 +89,17 @@ var Layout = (function() {
 
 
         // Manage actions
-
         switch (action) {
-            case 'sidenav-pin':
-                pinSidenav();
-            break;
 
-            case 'sidenav-unpin':
-                unpinSidenav();
-            break;
+            // case 'sidenav-pin':
+						// 	console.log('pinned')
+            //     pinSidenav();
+            // break;
+
+            // case 'sidenav-unpin':
+						// 	console.log('unpinned')
+            //     unpinSidenav();
+            // break;
 
             case 'search-show':
                 target = $this.data('target');

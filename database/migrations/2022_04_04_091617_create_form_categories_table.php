@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormulir2 extends Migration
+class CreateFormCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateFormulir2 extends Migration
      */
     public function up()
     {
-        Schema::create('formulir_2', function (Blueprint $table) {
+        Schema::create('form_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('record_id');
-            $table->integer('pengawas_id');
-            $table->tinyInteger('sampel_sesuai');
-            $table->longText('form_data');
+            $table->integer('category_product_id');
+            $table->string('title');
+            $table->tinyInteger('jenis_form')->comment("1: Formulir_1 2:Formulir_2(Uji Petik) 3:Formulir_3 4:Formulir_4 5:Formulir_2(RRT)");
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateFormulir2 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formulir_2');
+        Schema::dropIfExists('form_categories');
     }
 }

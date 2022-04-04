@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\ComplienceHelper;
 use App\Helpers\GeneralHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -13,20 +14,7 @@ class Formulir4 extends Model
     public function storeData($request){
         try{
             DB::beginTransaction();
-            $forms = FormFormulir4::all();
-            $arr_form_data = array();
-            foreach ($forms as $form) {
-                if ($form->data_entry_type == 'File') {
-                    $id_form = $form->id_form_roundrobin;
-                    if($request->hasFile($id_form)){
-                        $imageName = time() . '.' . $request->file($id_form)->extension();
-                        $request->$id_form->move(storage_path('images/round_robin'), $imageName);
-                        $arr_form_data[$id_form] = $imageName;
-                    }
-                } else {
-                    $arr_form_data[$form->id_form_roundrobin] = $request->input($form->id_form_roundrobin);
-                }
-            }
+            
             $record_id = GeneralHelper::generateRecordId();
             $complience = new Complience();
             $complience->record_id = $record_id;
@@ -45,11 +33,12 @@ class Formulir4 extends Model
             $complience->status = $request->input('kegiatan') == '1' ? '3' : '2'; // RRT
             $complience->kegiatan = $request->input('kegiatan') == '1' ? '2' : '1'; // RRT
             $complience->save();
-    
+
+            $forms = FormData::where('jenis_form', 4)->get();
             $store = new Formulir4();
             $store->record_id = $record_id;
             $store->pengawas_id = 2; // dummy
-            $store->form_data = json_encode($arr_form_data);
+            $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
             $store->save();
             DB::commit();
             return true;
