@@ -46,6 +46,7 @@ class FormulirSatu
 
     public function createFormulirSatu($record_id, $arr_form_data, $data_request){
         
+        
         $store = new Formulir1();
         $store->record_id = $record_id;
         $store->id_inspeksi_visual = $data_request['id'];
