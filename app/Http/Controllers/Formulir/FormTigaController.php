@@ -17,7 +17,7 @@ use stdClass;
 class FormTigaController extends Controller
 {
     public function index(){
-        $compliences = Complience::whereIn('status', [4,5])->get();
+        $compliences = Complience::whereIn('status', [5,6])->get();
         return view('pages.formulir3.index', compact('compliences'));
     }
     public function ujiPetik(){
