@@ -16,5 +16,9 @@ class Complience extends Model
     public function lab(){
         return $this->belongsTo(LabUji::class, 'lab_uji');
     }
+
+    public function formulir1(){
+        return $this->hasOne(Formulir1::class, 'record_id', 'record_id')
+    }
     
 }
