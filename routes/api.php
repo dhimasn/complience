@@ -27,7 +27,6 @@ Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => '
             Route::post('/get/form','FormSatuController@GetForm');
             Route::post('/post/one','FormSatuController@PostData');
             Route::post('/post/uji_petik','FormSatuController@PostDataPetik');
-            Route::get('/delete','FormSatuController@DeleteByIdProduct');
             Route::get('/get/list','FormSatuController@GetList');
             Route::get('/get/list/petik','FormSatuController@GetListPetik');
             Route::get('/get/detail','FormSatuController@GetDetail');
