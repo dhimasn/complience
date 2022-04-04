@@ -3,16 +3,11 @@
 namespace App\Http\Controllers\Api\Mobile\Formulir;
 
 use App\User;
-use App\Repo\UserDb;
-use App\Helper\JsonDecode;
 use App\Helpers\GeneralHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Complience;
-use App\Models\FormData;
-use App\Models\Formulir1;
-use App\Repo\FormulirSatu;
-use App\Response\ProductResponse;
+use App\Helpers\FormulirSatu;
+use App\Helpers\ProductResponse;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +28,7 @@ class FormSatuController extends Controller
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
+            $res = 401;
                    
             $result = $this->formSatu_db->getFormData();
 
@@ -41,6 +37,7 @@ class FormSatuController extends Controller
                 $response['success'] = true;
                 $response['message'] = "200";
                 $response['data'] = $result;
+                $res = 201;
             }
             
             DB::commit();
@@ -51,7 +48,7 @@ class FormSatuController extends Controller
             throw $e;
         }
         
-        return response()->json($response, 201);
+        return response()->json($response, $res);
     }
 
     public function PostData(Request $request){
@@ -77,11 +74,13 @@ class FormSatuController extends Controller
                         if($form->id == 9 || $form->id == 24){
 
                             if(!empty($data_request[$id_form])){
-                               
+                                
                                 //upload image
                                 $imageName = $id_form.'_'.time();
+                             
                                 $dirLocation = 'images/formulir_1';
-                                $upload_image = GeneralHelper::uploadImageBase64($data_request[$id_form],$imageName, $dirLocation);
+                                $upload_image = GeneralHelper::uploadImageBase64($data_request[$id_form], $imageName, $dirLocation);
+                               
                                 $arr_form_data[$form->id] = $upload_image;
                             }
                             
@@ -129,29 +128,44 @@ class FormSatuController extends Controller
             $response['message'] = "401 Unauthorized";
             $res = 401;
             
-            $arr_form_data = array();
+            $arr_form_data = [];
             $uji_petik = $request[0];
-            $forms = $this->formSatu_db->getFormData();
-
+            
             if(!empty($uji_petik)){
 
-                foreach ($forms as $form) {
+                $form_1 = $this->formSatu_db->getDetailFormulirSatu($uji_petik['up1']);
 
-                     //seacrh data 
-                     $id_form = $this->constantaFormSatu($form);
+                if(!empty($form_1)){
 
-                    
+                    if(!empty($uji_petik['up2'])){
+
+                         //upload image
+                         $imageName = 'up2_'.time();
+                         $dirLocation = 'images/formulir_1/uji_petik';
+                         $upload_image = GeneralHelper::uploadImageBase64($uji_petik['up2'], $imageName, $dirLocation);
+                         $arr_form_data[47] = $upload_image;
+
+                    }
+
+                    if(!empty($uji_petik['up3'])){
+
+                        //upload image
+                        $imageName = 'up2_'.time();
+                        $dirLocation = 'images/formulir_1/uji_petik';
+                        $upload_image = GeneralHelper::uploadImageBase64($uji_petik['up2'], $imageName, $dirLocation);
+                        $arr_form_data[48] = $upload_image;
+
+                    }
+
+                    $this->formSatu_db->updateFormulirSatu($form_1);
+                    $this->formSatu_db->createFormulirSatuUjiPetik($form_1 , $arr_form_data, $uji_petik);
+
+                    DB::commit();
+                    $response['success'] = true;
+                    $response['message'] = "200";
+                    $res = 201;
 
                 }
-
-            }
-
-            $record_id = GeneralHelper::generateRecordId();
-
-            if(!empty($record_id)){
-
-                //$this->formSatu_db->createCompliance($record_id , $data_request);
-                $this->formSatu_db->createFormulirSatu($record_id , $arr_form_data, $uji_petik);
 
             }
 
@@ -163,31 +177,6 @@ class FormSatuController extends Controller
 
         return response()->json($response, $res);
 
-        
-
-    }
-
-    public function DeleteByIdProduct(Request $request){
-        try{
-
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
-            $deleteId = $request[0]['id'];
-            if(!empty($deleteId)){
-               
-                $this->formInpeksi_db->deleteDataProdukInspeksi($deleteId);
-                $response['success'] = true;
-                $response['message'] = "200";
-            
-            }
-
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
-        }
-        DB::commit();
-        return response()->json($response, 201);
     }
 
     public function GetList(Request $request){
@@ -196,6 +185,7 @@ class FormSatuController extends Controller
             $result = array();
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
+            $res = 401;
 
             $data = $this->formSatu_db->getListDataProduk();
 
@@ -209,6 +199,7 @@ class FormSatuController extends Controller
                 $response['success'] = true;
                 $response['message'] = "200";
                 $response['data'] = $result;
+                $res = 201;
             
             }
 
@@ -218,7 +209,7 @@ class FormSatuController extends Controller
             throw $e;
         }
         DB::commit();
-        return response()->json($response, 201);
+        return response()->json($response, $res);
     }
 
     public function GetListPetik(Request $request){
@@ -229,6 +220,7 @@ class FormSatuController extends Controller
             
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
+            $res = 401;
 
             $record_id = $request->record_id;
             
@@ -243,6 +235,7 @@ class FormSatuController extends Controller
                     $response['success'] = true;
                     $response['message'] = "200";
                     $response['data'] = $data;
+                    $res = 201;
 
                 }
             
@@ -254,7 +247,7 @@ class FormSatuController extends Controller
             throw $e;
         }
         DB::commit();
-        return response()->json($response, 201);
+        return response()->json($response, $res);
     }
 
     public function GetDetailPetik(Request $request){
@@ -385,7 +378,6 @@ class FormSatuController extends Controller
                 $result = false; 
         }
 
-       
         return $result;
         
     }

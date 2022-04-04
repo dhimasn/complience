@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Repo;
+namespace App\Helpers;
 
 use App\Helpers\GeneralHelper;
 use App\Models\Complience;
 use App\Models\FormData;
 use App\Models\Formulir1;
+use App\Models\uji_petik;
 use DateTime;
 use stdClass;
 use Exception;
@@ -39,7 +40,7 @@ class FormulirSatu
         $complience->kapasitas = $data_request['pc6'];
         $complience->negara = $data_request['pc11'];
         $complience->harga = $data_request['pc12'];
-        $complience->kegiatan = 2;
+        $complience->kegiatan = 1;
         $complience->status = 1;
         $complience->save();
     }
@@ -59,6 +60,20 @@ class FormulirSatu
         
     }
 
+    public function createFormulirSatuUjiPetik($form_1 , $arr_form_data, $data_request){
+        
+        $store = new uji_petik();
+        $store->record_id = $form_1->record_id;
+        $store->id_inspeksi_visual = $form_1->id_inspeksi_visual;
+        $store->lokasi_pengawasan = $form_1->lokasi_pengawasan;
+        $store->lat_long = $form_1->lat_long;
+        $store->pengawas_id = 2; // dummy
+        $store->form_data = json_encode($arr_form_data);
+        $store->datetime_offline = $data_request['tanggal'];
+        $store->save();
+
+    }
+
     public function getListDataProduk(){
 
         $result = Complience::where('status', 1)
@@ -74,6 +89,20 @@ class FormulirSatu
         ->join('formulir_1', 'formulir_1.record_id', '=', 'complience.record_id')
         ->first();
         return $result;
+    }
+
+    public function getDetailFormulirSatu($produk_id){
+        $result = Formulir1::where('id_inspeksi_visual', $produk_id)
+        ->first();
+        return $result;
+    }
+
+    public function updateFormulirSatu($form_1){
+       
+        $result = Complience::where('record_id', $form_1->record_id)
+        ->update(['kegiatan' => 2]);
+        return $result;
+
     }
 
 }

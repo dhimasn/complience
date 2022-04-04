@@ -36,11 +36,13 @@ class GeneralHelper
     if (!empty($base64)) {
       $base64 = "data:image/jpeg;base64,".$base64;
       $extension = explode('/', mime_content_type($base64))[1];
+     
       $image = str_replace('data:image/' . $extension . ';base64,', '', $base64);
       $image = str_replace(' ', '+', $image);
       $dirDate = date("Y") . '/' . date("m") . '/' . date("d");
       $dirLocation = $dirLocation . '/' . $dirDate . '/';
       $filePath = $dirLocation . $fileName . '.' . $extension;
+
       Storage::disk('public')->put($filePath, base64_decode($image), 'public');
       return $filePath;
     } else {
