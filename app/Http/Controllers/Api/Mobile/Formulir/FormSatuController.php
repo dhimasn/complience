@@ -67,7 +67,7 @@ class FormSatuController extends Controller
                 foreach ($forms as $form) {
 
                     //seacrh data 
-                    $id_form = $this->constantaFormSatu($form);
+                    $id_form = $this->formSatu_db->constantaFormSatu($form);
 
                     if($id_form != false){
 
@@ -213,6 +213,36 @@ class FormSatuController extends Controller
     }
 
     public function GetListPetik(Request $request){
+        try{
+
+            $result = array();
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $res = 401;
+
+            $data = $this->formSatu_db->getListDataUjiPetik();
+
+            if(!empty($data)){
+                
+                foreach($data as $dt){
+                    $resProduk = ProductResponse::responsePetik($dt);
+                    array_push($result,$resProduk);
+                }
+               
+                $response['success'] = true;
+                $response['message'] = "200";
+                $response['data'] = $result;
+                $res = 201;
+            
+            }
+
+        }catch(Exception $e)
+        {
+            DB::rollBack();
+            throw $e;
+        }
+        DB::commit();
+        return response()->json($response, $res);
     }
 
     public function GetDetail(Request $request){
@@ -251,135 +281,36 @@ class FormSatuController extends Controller
     }
 
     public function GetDetailPetik(Request $request){
-    }
+        try{
 
-    public function constantaFormSatu($form){
+            $response['success'] = false;
+            $response['message'] = "401 Unauthorized";
+            $res = 401;
 
-        switch ($form) {
-
-            //lokasi pengawasan
-            case ($form->id == 8):
-                $result = 'lp1';
-                break;
-            case ($form->id == 5):
-                $result = 'lp2';
-                break;
-            case ($form->id == 6):
-                $result = 'lp3';
-                break;
-            case ($form->id == 7):
-                $result = 'lp4';
-                break;
-            case ($form->id == 4):
-                $result = 'lp5';
-                break;
-            case ($form->id == 170):
-                $result = 'lp6';
-                break;
-            case ($form->id == 9):
-                $result = 'lp7';
-                break;
+            $record_id = $request->record_id;
             
-            //tenaga penjual
-            case ($form->id == 10):
-                $result = 'tp1';
-                break;
-            case ($form->id == 11):
-                $result = 'tp2';
-                break;
-            case ($form->id == 12):
-                $result = 'tp3';
-                break;
-            case ($form->id == 13):
-                $result = 'tp4';
-                break;
-            case ($form->id == 14):
-                $result = 'tp5';
-                break;
+            $result = $this->formSatu_db->getDetailUjiPetik($record_id);
+           
+            if(!empty($result)){
+                                    
+                $data = ProductResponse::responsePetik($result);
+                
+                if(!empty($data)){
+
+                    $response['success'] = true;
+                    $response['message'] = "200";
+                    $response['data'] = $data;
+                    $res = 201;
+
+                }
             
-            //produk compliance
-            case ($form->id == 171):
-                $result = 'pc1';
-                break;
-            case ($form->id == 16):
-                $result = 'pc2';
-                break;
-            case ($form->id == 23):
-                $result = 'pc3';
-                break;
-            case ($form->id == 18):
-                $result = 'pc4';
-                break;
-            case ($form->id == 30):
-                $result = 'pc5';
-                break;
-            case ($form->id == 57):
-                $result = 'pc6';
-                break;
-            case ($form->id == 53):
-                $result = 'pc7';
-                break;
-            case ($form->id == 26):
-                $result = 'pc8';
-                break;
-            case ($form->id == 19):
-                $result = 'pc9';
-                break;
-            case ($form->id == 20):
-                $result = 'pc10';
-                break;
-            case ($form->id == 21):
-                $result = 'pc11';
-                break;
-            case ($form->id == 22):
-                $result = 'pc12';
-                break;
-            case ($form->id == 24):
-                $result = 'pc13';
-                break;
+            }
 
-            //LTHE
-            case ($form->id == 31):
-                $result = 'lthe1';
-                break;
-            case ($form->id == 32):
-                $result = 'lthe2';
-                break;
-            case ($form->id == 33):
-                $result = 'lthe3';
-                break;
-            case ($form->id == 34):
-                $result = 'lthe4';
-                break;
-            case ($form->id == 35):
-                $result = 'lthe5';
-                break;
+        }catch(Exception $e){
 
-            //REGULASI LAIN
-            case ($form->id == 38):
-                $result = 'rl1';
-                break;
-            case ($form->id == 39):
-                $result = 'rl2';
-                break;
-            case ($form->id == 40):
-                $result = 'rl3';
-                break;
-            case ($form->id == 41):
-                $result = 'rl4';
-                break;
-            case ($form->id == 36):
-                $result = 'rl5';
-                break;
-            case ($form->id == 37):
-                $result = 'rl6';
-                break;
-            default:
-                $result = false; 
         }
-
-        return $result;
-        
+        DB::commit();
+        return response()->json($response, $res);
     }
-
+    
 }

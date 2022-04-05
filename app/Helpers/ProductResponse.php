@@ -238,6 +238,27 @@ class ProductResponse extends Controller
         
         return $arr_form_data;
 
+    
+    }
+
+    public static function responsePetik($data){
+        $arr_form_data = array();
+
+        $dt = json_decode($data['form_data'], true);
+
+        if(isset($dt[8])){
+            $arr_form_data['up2'] = $dt[47];
+        }else{
+            $arr_form_data['up2'] = "";
+        }
+
+        if(isset($dt[5])){
+            $arr_form_data['up3'] = $dt[48];
+        }else{
+            $arr_form_data['up3'] = "";
+        }
+
+        return $arr_form_data;
     }
     
 }
