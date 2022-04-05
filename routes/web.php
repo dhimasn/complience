@@ -27,6 +27,11 @@ Route::group(['prefix' => 'data-master'], function () {
     Route::get('produk', 'MasterDataController@produk')->name('masterdata.produk');
     Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
     Route::get('complience/detail', 'MasterDataController@detailComplience')->name('masterdata.detailcomplience');
+    Route::group(['namespace' => 'MasterData'], function () {
+        Route::get('round-robin', 'RoundRobinController@index')->name('masterdata.roundrobin');
+        Route::get('pengujian-ulang', 'PengujianUlangController@index')->name('masterdata.pengujian_ulang');
+        Route::get('pengujian-lainnya', 'PengujianLainnyaController@index')->name('masterdata.pengujian_lainnya');
+    });
 });
 Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
     Route::get('formulir-2', 'FormDuaController@index')->name('form2.index');
