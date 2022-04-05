@@ -40,8 +40,8 @@ class FormulirSatu
         $complience->kapasitas = $data_request['pc6'];
         $complience->negara = $data_request['pc11'];
         $complience->harga = $data_request['pc12'];
-        $complience->kegiatan = 1;
-        $complience->status = 1;
+        $complience->kegiatan = 2;
+        $complience->status = 2;
         $complience->save();
     }
 

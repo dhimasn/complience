@@ -26,7 +26,7 @@ class Formulir4 extends Model
             $complience->teknologi = $request->input('4');
             $complience->model = $request->input('model');
             $complience->manufaktur = $request->input('5');
-            $complience->kode = $request->input('6');
+            $complience->kode_produk = $request->input('6');
             $complience->negara = $request->input('7');
             $complience->harga = $request->input('8');
             $complience->lab_uji = $request->input('lab_uji');
