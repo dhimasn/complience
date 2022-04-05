@@ -36,7 +36,7 @@ class GeneralHelper
     if (!empty($base64)) {
       $base64 = "data:image/jpeg;base64,".$base64;
       // $extension = explode('/', mime_content_type($base64))[1];
-     $extension = 'jpeg';
+      $extension = 'jpeg';
       $image = str_replace('data:image/' . $extension . ';base64,', '', $base64);
       $image = str_replace(' ', '+', $image);
       $dirDate = date("Y") . '/' . date("m") . '/' . date("d");
