@@ -30,7 +30,7 @@ class Formulir4 extends Model
             $complience->negara = $request->input('7');
             $complience->harga = $request->input('8');
             $complience->lab_uji = $request->input('lab_uji');
-            $complience->status = $request->input('kegiatan') == '1' ? '3' : '4';
+            $complience->status = $request->input('kegiatan') == '3' ? '3' : '4';
             $complience->kegiatan = $request->input('kegiatan');
             $complience->save();
 

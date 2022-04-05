@@ -123,12 +123,12 @@
               <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'show' : ''}}" id="masterDataCollapse" style="">
                 <ul class="nav ms-4">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.inspeksi_visual' ? 'active' : ''}}" href="{{route('masterdata.inspeksi_visual')}}">
                       <span class="sidenav-normal">Inspeksi Visual</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.uji_petik' ? 'active' : ''}}" href="{{route('masterdata.uji_petik')}}">
                       <span class="sidenav-normal">Uji Petik</span>
                     </a>
                   </li>

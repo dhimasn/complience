@@ -28,6 +28,9 @@ Route::group(['prefix' => 'data-master'], function () {
     Route::get('complience', 'MasterDataController@complience')->name('masterdata.complience');
     Route::get('complience/detail', 'MasterDataController@detailComplience')->name('masterdata.detailcomplience');
     Route::group(['namespace' => 'MasterData'], function () {
+        Route::get('inspeksi-visual', 'InspeksiVisualController@index')->name('masterdata.inspeksi_visual');
+        Route::get('uji-petik', 'PengujianLainnyaController@index')->name('masterdata.uji_petik');
+
         Route::get('round-robin', 'RoundRobinController@index')->name('masterdata.roundrobin');
         Route::get('pengujian-ulang', 'PengujianUlangController@index')->name('masterdata.pengujian_ulang');
         Route::get('pengujian-lainnya', 'PengujianLainnyaController@index')->name('masterdata.pengujian_lainnya');

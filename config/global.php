@@ -15,8 +15,10 @@ return [
     // '11' => 'Selesai (Uji Petik)',
   ],
   'kegiatan' => [
-    "1" => "Round Robin",
-    "2" => "Pengujian Ulang",
-    "3" => "Pengujian Lainnya",
+    "1" => "Inspeksi Visual",
+    "2" => "Uji Petik",
+    "3" => "Round Robin",
+    "4" => "Pengujian Ulang",
+    "5" => "Pengujian Lainnya",
   ]
 ];

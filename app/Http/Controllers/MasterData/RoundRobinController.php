@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RoundRobinController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('kegiatan', 1)->get();
+        $compliences = Complience::where('kegiatan', 3)->get();
         return view('pages.masterdata.round_robin.index', compact('compliences'));
     }
 }
