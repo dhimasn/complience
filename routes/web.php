@@ -60,4 +60,12 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
 
 Auth::routes(['register' => false]);
 
+//kelola user
+Route::get('user','KelolaUserController@index')->name('user.index');
+Route::post('/user/create','KelolaUserController@createUser'); //add
+Route::post('/user/update','KelolaUserController@updateUser'); //edit
+Route::post('/user/delete','KelolaUserController@deleteUser'); //delete
+Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
+Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
+
 Route::get('/home', 'HomeController@index')->name('home');

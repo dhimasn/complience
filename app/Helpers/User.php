@@ -67,8 +67,9 @@ class User
     }
 
     public function getListDataUser(){
-        $result = UserDB::where('state', 1)
-            ->get();
+        $result = UserDB::join('user_roles','user_roles.id','=','users.id_user_role')
+        ->leftjoin('lab_ujis','lab_ujis.id','=','users.id_lab')
+        ->get();
         return $result;
     }
 

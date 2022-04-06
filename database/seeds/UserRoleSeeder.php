@@ -19,7 +19,7 @@ class UserRoleSeeder extends Seeder
                 'category_user' => "Pengawas"
             ],
             [
-                'category_user' => "Laboratiorum"
+                'category_user' => "Laboratorium"
             ]
         ]);
     }

@@ -161,7 +161,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link {{\Request::route()->getName() == 'user.index' ? 'active' : ''}}" href="{{route('user.index')}}">
                 <i class="fas fa-users text-yellow-cus"></i>
                 <span class="nav-link-text">Pengelolaan User</span>
               </a>

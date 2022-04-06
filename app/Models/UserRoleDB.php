@@ -6,10 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserRoleDB extends Model
 {
-     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'user_role';
+    protected $table = 'user_roles';
 }
