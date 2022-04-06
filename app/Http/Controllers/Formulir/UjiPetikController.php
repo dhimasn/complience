@@ -24,7 +24,7 @@ class UjiPetikController extends Controller
     }
     public function store(Request $request){
         $formulir = new Formulir2();
-        $status = 6;
+        $status = 4;
         $jenis_form = 2;
         if ($formulir->storeData($request, $status, $jenis_form)) {
             Session::flash('success', 'Disimpan Kedalam Database');
