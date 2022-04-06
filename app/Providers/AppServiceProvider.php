@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         {
             $routeListFormulir = array('pengawasan.pemilihanlabuji','form4.pilihproduk','form2.index','form3.index');
             $routeListPendataan = array('pengawasan.pemilihanlabuji','form4.pilihproduk');
-            $routeListMaster = array('masterdata.complience','masterdata.produk');
+            $routeListMaster = array('masterdata.inspeksi_visual','masterdata.uji_petik','masterdata.roundrobin','masterdata.pengujian_ulang','masterdata.pengujian_lainnya','masterdata.produk');
             $routeListLab = array('form2.index','form3.index');
             $result['routeListFormulir'] = $routeListFormulir;
             $result['routeListPendataan'] = $routeListPendataan;

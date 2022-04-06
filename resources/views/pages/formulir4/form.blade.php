@@ -32,9 +32,9 @@
                 <div class="row">
                   <div class="col-md-6">
                     <select name="kegiatan" class="form-control form-complience" id="kegiatan_input">
-                      <option value="1">Round Robin Testing</option>
-                      <option value="2">Pengujian Ulang</option>
-                      <option value="3">Lainnya</option>
+                      <option value="3">Round Robin Testing</option>
+                      <option value="4">Pengujian Ulang</option>
+                      <option value="5">Lainnya</option>
                     </select>
                   </div>
                   <div class="col-md-6">

@@ -123,27 +123,27 @@
               <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'show' : ''}}" id="masterDataCollapse" style="">
                 <ul class="nav ms-4">
                   <li class="nav-item">
-                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.complience' ? 'active' : ''}}" href="{{route('masterdata.complience')}}">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.inspeksi_visual' ? 'active' : ''}}" href="{{route('masterdata.inspeksi_visual')}}">
                       <span class="sidenav-normal">Inspeksi Visual</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.uji_petik' ? 'active' : ''}}" href="{{route('masterdata.uji_petik')}}">
                       <span class="sidenav-normal">Uji Petik</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.roundrobin' ? 'active' : ''}}" href="{{route('masterdata.roundrobin')}}">
                       <span class="sidenav-normal">Round Robin Testing</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.pengujian_ulang' ? 'active' : ''}}" href="{{route('masterdata.pengujian_ulang')}}">
                       <span class="sidenav-normal">Pengujian Ulang</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.pengujian_lainnya' ? 'active' : ''}}" href="{{route('masterdata.pengujian_lainnya')}}">
                       <span class="sidenav-normal">Pengujian Lainnya</span>
                     </a>
                   </li>
