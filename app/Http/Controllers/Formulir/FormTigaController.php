@@ -18,8 +18,9 @@ use Session;
 class FormTigaController extends Controller
 {
     public function index(){
-        $compliences = Complience::whereIn('status', [5,6])->get();
-        return view('pages.formulir3.index', compact('compliences'));
+        $compliences = Complience::whereIn('status', [5,6])->orderBy('updated_at')->get();
+        $kegiatan = config('global.kegiatan');
+        return view('pages.formulir3.index', compact('compliences','kegiatan'));
     }
     public function ujiPetik(){
         return view('pages.formulir3.ujipetik');

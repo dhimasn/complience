@@ -33,7 +33,7 @@
                   <td>{{$item->kapasitas}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td>{{$item->kegiatan == '1' ? 'Uji Petik' : 'Round Robin'}}</td>
+                  <td>{{$kegiatan[$item->kegiatan]}}{{$item->kegiatan=='5' ? ' ('.$item->formulir4->kegiatan_lainnya.')' : ''}}</td>
                 </tr>
                 @endforeach
               </tbody>

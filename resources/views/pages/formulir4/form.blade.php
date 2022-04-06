@@ -39,7 +39,7 @@
                   </div>
                   <div class="col-md-6">
                     <input id="kegiatan_lainnya" class="form-control form-complience d-none" placeholder="Lainnya"
-                      name="9" value="">
+                      name="kegiatan_lainnya" value="">
                   </div>
                 </div>
               </div>

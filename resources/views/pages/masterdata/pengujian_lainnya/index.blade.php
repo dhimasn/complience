@@ -25,7 +25,7 @@
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td>{{$item->kegiatan == '1' ? 'Uji Petik' : 'Round Robin'}}</td>
+                  <td>{{$item->formulir4->kegiatan_lainnya}}</td>
                   <td>{{$status[$item->status] ?? ''}}</td>
                 </tr>
                 @endforeach
