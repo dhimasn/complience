@@ -38,7 +38,6 @@ Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => '
 
 });
 
-
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
@@ -47,10 +46,3 @@ Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => '
 Route::get('/form/create','KelolaFormController@createForm'); //add
 Route::get('/form/update','KelolaFormController@updateForm'); //edit
 Route::get('/form/delete','KelolaFormController@deleteForm'); //delete
-
-//kelola user
-Route::post('/user/create','KelolaUserController@createUser'); //add
-Route::post('/user/update','KelolaUserController@updateUser'); //edit
-Route::post('/user/delete','KelolaUserController@deleteUser'); //delete
-Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
-Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
