@@ -24,6 +24,6 @@ class PengawasanController extends Controller
         $complience->lab_uji = $request->input('lab_uji');
         $complience->status = 4;
         $complience->save();
-        return back()->with('success', 'Data telah terkirim ke Lab tujuan');
+        return redirect()->route('pengawasan.pemilihanlabuji')->with('success', 'Data telah terkirim ke Lab tujuan');
     }
 }

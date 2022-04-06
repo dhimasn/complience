@@ -31,6 +31,6 @@ class UjiPetikController extends Controller
         } else {
             Session::flash('error');
         }
-        return back();
+        return redirect()->route('ujipetik.index');
     }
 }

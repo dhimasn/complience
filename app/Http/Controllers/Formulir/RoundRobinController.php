@@ -31,7 +31,7 @@ class RoundRobinController extends Controller
         } else {
             Session::flash('error');
         }
-        return back();
+        return redirect()->route('roundrobin.index');
     }
 }
 
