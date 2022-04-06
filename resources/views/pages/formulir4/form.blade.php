@@ -39,7 +39,7 @@
                   </div>
                   <div class="col-md-6">
                     <input id="kegiatan_lainnya" class="form-control form-complience d-none" placeholder="Lainnya"
-                      name="9" value="">
+                      name="kegiatan_lainnya" value="">
                   </div>
                 </div>
               </div>
@@ -205,7 +205,7 @@
   });
   $("#kegiatan_input").change(function(){
     var value = $(this).val();
-    if(value=="3"){
+    if(value=="5"){
       $("#kegiatan_lainnya").removeClass('d-none');
     }else{
       $("#kegiatan_lainnya").addClass('d-none');

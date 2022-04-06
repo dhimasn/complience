@@ -22,8 +22,7 @@ class PengawasanController extends Controller
     public function storePemilihanLabUji(Request $request){
         $complience = Complience::where('record_id', $request->input('record_id'))->first();
         $complience->lab_uji = $request->input('lab_uji');
-        $complience->status = 4;
         $complience->save();
-        return back()->with('success', 'Data telah terkirim ke Lab tujuan');
+        return redirect()->route('pengawasan.pemilihanlabuji')->with('success', 'Data telah terkirim ke Lab tujuan');
     }
 }

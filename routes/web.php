@@ -18,7 +18,7 @@ Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('lab', 'LabController@index')->name('lab.index');
 
-Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
+// Route::get('pengawasan', 'PengawasanController@index')->name('pengawasan.index');
 Route::get('pengawasan/pemilihan-lab-uji', 'PengawasanController@pemilihanLabUji')->name('pengawasan.pemilihanlabuji');
 Route::get('pengawasan/pemilihan-lab-uji/detail/{record_id}', 'PengawasanController@formPemilihanLabUji')->name('pengawasan.pemilihanlabuji.detail');
 Route::post('pengawasan/pemilihan-lab-uji/store', 'PengawasanController@storePemilihanLabUji')->name('pengawasan.pemilihanlabuji.store');
@@ -29,7 +29,7 @@ Route::group(['prefix' => 'data-master'], function () {
     Route::get('complience/detail', 'MasterDataController@detailComplience')->name('masterdata.detailcomplience');
     Route::group(['namespace' => 'MasterData'], function () {
         Route::get('inspeksi-visual', 'InspeksiVisualController@index')->name('masterdata.inspeksi_visual');
-        Route::get('uji-petik', 'PengujianLainnyaController@index')->name('masterdata.uji_petik');
+        Route::get('uji-petik', 'UjiPetikController@index')->name('masterdata.uji_petik');
 
         Route::get('round-robin', 'RoundRobinController@index')->name('masterdata.roundrobin');
         Route::get('pengujian-ulang', 'PengujianUlangController@index')->name('masterdata.pengujian_ulang');
@@ -40,8 +40,8 @@ Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Contr
     Route::get('formulir-2', 'FormDuaController@index')->name('form2.index');
     
     Route::get('formulir-3', 'FormTigaController@index')->name('form3.index');
-    Route::get('formulir-3/round-robin', 'FormTigaController@roundRobin')->name('form3.roundrobin');
-    Route::get('formulir-3/uji-petik', 'FormTigaController@ujiPetik')->name('form3.ujipetik');
+    // Route::get('formulir-3/round-robin', 'FormTigaController@roundRobin')->name('form3.roundrobin');
+    // Route::get('formulir-3/uji-petik', 'FormTigaController@ujiPetik')->name('form3.ujipetik');
     Route::get('formulir-3/form/{record_id}', 'FormTigaController@form')->name('form3.form');
     Route::post('formulir-3/store', 'FormTigaController@store')->name('form3.store');
 

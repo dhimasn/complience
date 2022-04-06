@@ -9,16 +9,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Complience;
 use App\Models\FormLabDB;
+use App\Models\Formulir3;
 use App\Repo\InpeksiDb;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use stdClass;
+use Session;
 
 class FormTigaController extends Controller
 {
     public function index(){
-        $compliences = Complience::whereIn('status', [5,6])->get();
-        return view('pages.formulir3.index', compact('compliences'));
+        $compliences = Complience::whereIn('status', [5,6])->orderBy('updated_at')->get();
+        $kegiatan = config('global.kegiatan');
+        return view('pages.formulir3.index', compact('compliences','kegiatan'));
     }
     public function ujiPetik(){
         return view('pages.formulir3.ujipetik');
@@ -52,7 +54,24 @@ class FormTigaController extends Controller
         $complience = Complience::where('record_id', $record_id)->first();
         return view('pages.formulir3.form', compact('pengujianForm', 'complience'));
     }
-    public function store(){
-        return back()->with('success', 'Disimpan Kedalam Database');
+    public function store(Request $request){
+        $complience = Complience::where('record_id', $request->input('record_id'))->first();
+        if(!empty($complience)){
+            $formulir = new Formulir3();
+            if($complience->status == '5'){
+                $status = 8;
+            }elseif($complience->status == '6'){
+                $status = 7;
+            }
+            $jenis_form = 3;
+            if ($formulir->storeData($request, $status, $jenis_form)) {
+                Session::flash('success', 'Disimpan Kedalam Database');
+            } else {
+                Session::flash('error');
+            }
+        }else{
+            Session::flash('error');
+        }
+        return redirect()->route('form3.index');
     }
 }

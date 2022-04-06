@@ -13,7 +13,7 @@ use Session;
 class UjiPetikController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->get();
+        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->orderBy('updated_at')->get();
         return view('pages.ujipetik.index', compact('compliences'));
     }
     public function form($record_id){
@@ -31,6 +31,6 @@ class UjiPetikController extends Controller
         } else {
             Session::flash('error');
         }
-        return back();
+        return redirect()->route('ujipetik.index');
     }
 }

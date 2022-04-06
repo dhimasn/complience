@@ -13,7 +13,7 @@ use Session;
 class RoundRobinController extends Controller
 {
     public function index(){
-        $complience = Complience::where('status', 3)->get();
+        $complience = Complience::where('status', 3)->orderBy('updated_at')->get();
         return view('pages.roundrobin.index', compact('complience'));
     }
     public function form($record_id){
@@ -31,7 +31,7 @@ class RoundRobinController extends Controller
         } else {
             Session::flash('error');
         }
-        return back();
+        return redirect()->route('roundrobin.index');
     }
 }
 
