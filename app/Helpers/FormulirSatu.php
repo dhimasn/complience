@@ -6,7 +6,7 @@ use App\Helpers\GeneralHelper;
 use App\Models\Complience;
 use App\Models\FormData;
 use App\Models\Formulir1;
-use App\Models\uji_petik;
+use App\Models\Uji_petik;
 use DateTime;
 use stdClass;
 use Exception;
@@ -62,7 +62,7 @@ class FormulirSatu
 
     public function createFormulirSatuUjiPetik($form_1 , $arr_form_data, $data_request){
         
-        $store = new uji_petik();
+        $store = new Uji_petik();
         $store->record_id = $form_1->record_id;
         $store->id_inspeksi_visual = $form_1->id_inspeksi_visual;
         $store->lokasi_pengawasan = $form_1->lokasi_pengawasan;
