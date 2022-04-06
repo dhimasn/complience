@@ -115,7 +115,7 @@ class FormulirSatu
     public function updateFormulirSatu($form_1){
        
         $result = Complience::where('record_id', $form_1->record_id)
-        ->update(['status' => 2]);
+        ->update(['status' => 2,'kegiatan'=>2]);
         return $result;
 
     }
