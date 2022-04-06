@@ -129,53 +129,54 @@ Supermarket""";1
 111;5;2;EER (Btu/h/W);TWO;"FULL-LOAD; 50% FULL-LOAD";0;;3
 112;6;2;EER (Btu/h/W);THREE;"PENGUJIAN;SHE;NAMEPLATE";0;;3
 113;6;2;CSPF (Wh/Wh);THREE;"PENGUJIAN;SHE;NAMEPLATE";0;;3
-114;6;2;Variasi hasil pengujian terhadap EER SHE (%);FORMULA;null;0;;3
-115;6;2;Variasi hasil pengujian terhadap CSPF SHE (%);FORMULA;null;0;;3
-116;6;2;Variasi hasil pengujian terhadap EER Nameplate (%);FORMULA;null;0;;3
-117;6;2;Variasi hasil pengujian terhadap CSPF Nameplate (%);FORMULA;null;0;;3
-118;7;2;Lampirkan foto LTHE;FILE;null;1;;4
-119;7;2;Nomor SHE;TEXT;null;1;;4
-120;7;2;Jumlah Bintang;TEXT;null;1;;4
-121;7;2;Nilai Efisiensi Energi (EER/CSPF);TEXT;null;1;;4
-122;7;2;Model Unit Dalam;TEXT;null;1;;4
-123;7;2;Model Unit Luar;TEXT;null;1;;4
-124;7;2;Daya;TEXT;null;1;;4
-125;7;2;Kapasitas Pendingin;TEXT;null;1;;4
-126;8;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
-127;8;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-128;8;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-129;8;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
-130;8;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;RADIO;"Baik;Tidak Baik";1;;2
-131;8;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-132;8;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;RADIO;"Baik;Tidak Baik";1;;2
-133;9;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
-134;9;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-135;9;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-136;9;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
-137;9;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-138;9;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);RADIO;"Baik;Tidak Baik";1;;2
-139;10;2;Berat unit indoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
-140;10;2;Berat unit indoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
-141;10;2;Berat unit outdoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
-142;10;2;Berat unit outdoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
-143;10;2;Pipa tembaga sepanjang 75 m - 10 cm;RADIO;"Baik;Tidak Baik";1;;5
-144;10;2;Pasang Thermokopel pada unit Indoor dan Outdoor;RADIO;"Baik;Tidak Baik";1;;5
-145;10;2;Instalasi unit (jarak unit indoor ke dinding 300 - 400 mm);RADIO;"Baik;Tidak Baik";1;;5
-146;10;2;Instalasi unit (jarak unit indoor ke lantai 1400 - 1500 mm);RADIO;"Baik;Tidak Baik";1;;5
-147;10;2;Instalasi unit (jarak unit outdoor ke dinding 500 mm);RADIO;"Baik;Tidak Baik";1;;5
-148;10;2;Instalasi unit (jarak unit outdoor ke lantai 750 - 1000 mm);RADIO;"Baik;Tidak Baik";1;;5
-149;10;2;Instalasi pemasangan air sampler unit Indoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;5
-150;10;2;Instalasi pemasangan air sampler unit Outdoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;5
-151;10;2;Proses pemvakuman;RADIO;"Baik;Tidak Baik";1;;5
-152;10;2;Test kebocoran pipa;RADIO;"Baik;Tidak Baik";1;;5
-153;10;2;Kondisi Temperatur Pengujian;RADIO;"Baik;Tidak Baik";1;;5
-154;10;2;Indoor Chamber: TDB (27?) TWB (19?) Outdoor Chamber: TDB (35?) TWB (24?);RADIO;"Baik;Tidak Baik";1;;5
-155;10;2;"Atur AC pada posisi:
+114;6;2;Upload Data Hasil Lab Uji;FILE;null;0;;3
+115;6;2;Variasi hasil pengujian terhadap EER SHE (%);FORMULA;null;0;;3
+116;6;2;Variasi hasil pengujian terhadap CSPF SHE (%);FORMULA;null;0;;3
+117;6;2;Variasi hasil pengujian terhadap EER Nameplate (%);FORMULA;null;0;;3
+118;6;2;Variasi hasil pengujian terhadap CSPF Nameplate (%);FORMULA;null;0;;3
+119;7;2;Lampirkan foto LTHE;FILE;null;1;;4
+120;7;2;Nomor SHE;TEXT;null;1;;4
+121;7;2;Jumlah Bintang;TEXT;null;1;;4
+122;7;2;Nilai Efisiensi Energi (EER/CSPF);TEXT;null;1;;4
+123;7;2;Model Unit Dalam;TEXT;null;1;;4
+124;7;2;Model Unit Luar;TEXT;null;1;;4
+125;7;2;Daya;TEXT;null;1;;4
+126;7;2;Kapasitas Pendingin;TEXT;null;1;;4
+127;8;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
+128;8;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+129;8;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+130;8;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
+131;8;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;RADIO;"Baik;Tidak Baik";1;;2
+132;8;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;RADIO;"Baik;Tidak Baik";1;;2
+133;8;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;RADIO;"Baik;Tidak Baik";1;;2
+134;9;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
+135;9;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+136;9;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+137;9;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
+138;9;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
+139;9;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);RADIO;"Baik;Tidak Baik";1;;2
+140;10;2;Berat unit indoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
+141;10;2;Berat unit indoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
+142;10;2;Berat unit outdoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
+143;10;2;Berat unit outdoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
+144;10;2;Pipa tembaga sepanjang 75 m - 10 cm;RADIO;"Baik;Tidak Baik";1;;5
+145;10;2;Pasang Thermokopel pada unit Indoor dan Outdoor;RADIO;"Baik;Tidak Baik";1;;5
+146;10;2;Instalasi unit (jarak unit indoor ke dinding 300 - 400 mm);RADIO;"Baik;Tidak Baik";1;;5
+147;10;2;Instalasi unit (jarak unit indoor ke lantai 1400 - 1500 mm);RADIO;"Baik;Tidak Baik";1;;5
+148;10;2;Instalasi unit (jarak unit outdoor ke dinding 500 mm);RADIO;"Baik;Tidak Baik";1;;5
+149;10;2;Instalasi unit (jarak unit outdoor ke lantai 750 - 1000 mm);RADIO;"Baik;Tidak Baik";1;;5
+150;10;2;Instalasi pemasangan air sampler unit Indoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;5
+151;10;2;Instalasi pemasangan air sampler unit Outdoor (Metode Air Enthalpy);RADIO;"Baik;Tidak Baik";1;;5
+152;10;2;Proses pemvakuman;RADIO;"Baik;Tidak Baik";1;;5
+153;10;2;Test kebocoran pipa;RADIO;"Baik;Tidak Baik";1;;5
+154;10;2;Kondisi Temperatur Pengujian;RADIO;"Baik;Tidak Baik";1;;5
+155;10;2;Indoor Chamber: TDB (27?) TWB (19?) Outdoor Chamber: TDB (35?) TWB (24?);RADIO;"Baik;Tidak Baik";1;;5
+156;10;2;"Atur AC pada posisi:
        - Mode : Cool
        - Kecepatan fan : Maksimum
        - Posisi pengarah hembusan udara : Maksimum
        - Temperatur Remote Control : Suhu terendah/minimum";RADIO;"Baik;Tidak Baik";1;;5
-156;10;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;RADIO;"Baik;Tidak Baik";1;;5
-157;10;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;RADIO;"Baik;Tidak Baik";1;;5
-158;11;2;Hasil penilaian;RADIO;"Baik, dapat dilanjutkan ke pengecekan kondisi pengujian;Tidak diterima, unit dikemas kembali untuk dikembalikan";1;;5
-159;11;2;Keterangan tambahan;TEXT;null;1;;5
+157;10;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;RADIO;"Baik;Tidak Baik";1;;5
+158;10;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;RADIO;"Baik;Tidak Baik";1;;5
+159;11;2;Hasil penilaian;RADIO;"Baik, dapat dilanjutkan ke pengecekan kondisi pengujian;Tidak diterima, unit dikemas kembali untuk dikembalikan";1;;5
+160;11;2;Keterangan tambahan;TEXT;null;1;;5
