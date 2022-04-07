@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Repo\User;
+use App\Helpers\User;
 use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,6 +20,11 @@ class KelolaUserController extends Controller
     public function __construct()
     {
         $this->UserDB = new User();
+    }
+    
+    public function index(){
+        $users = $this->UserDB->getListDataUser();
+        return view('pages.user.index', compact('users'));
     }
 
     public function createUser(Request $request){
