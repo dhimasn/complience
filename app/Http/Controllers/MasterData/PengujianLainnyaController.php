@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PengujianLainnyaController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('kegiatan', 5)->get();
+        $compliences = Complience::where('kegiatan', 5)->orderBy('updated_at', 'desc')->get();
         return view('pages.masterdata.pengujian_lainnya.index', compact('compliences'));
     }
 }

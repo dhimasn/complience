@@ -13,7 +13,7 @@ use Session;
 class UjiPetikController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->orderBy('updated_at')->get();
+        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->orderBy('updated_at', 'desc')->get();
         return view('pages.ujipetik.index', compact('compliences'));
     }
     public function form($record_id){

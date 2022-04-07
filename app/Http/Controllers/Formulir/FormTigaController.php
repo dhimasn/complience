@@ -18,7 +18,7 @@ use Session;
 class FormTigaController extends Controller
 {
     public function index(){
-        $compliences = Complience::whereIn('status', [5,6])->orderBy('updated_at')->get();
+        $compliences = Complience::whereIn('status', [5,6])->orderBy('updated_at', 'desc')->get();
         $kegiatan = config('global.kegiatan');
         return view('pages.formulir3.index', compact('compliences','kegiatan'));
     }
