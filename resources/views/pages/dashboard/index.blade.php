@@ -12,7 +12,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Total Inpeksi April</h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Produsen Dalam Negeri</h5>
             <span class="h2 font-weight-bold mb-0">35</span>
           </div>
           <div class="col-auto">
@@ -30,7 +30,25 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Total Model Inspeksi 2022</h5>
+            <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Importir</h5>
+            <span class="h2 font-weight-bold mb-0">35</span>
+          </div>
+          <div class="col-auto">
+            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+              <i class="ni ni-active-40"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-md-6">
+    <div class="card card-stats">
+      <!-- Card body -->
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title text-uppercase text-muted mb-0">Total Produk Diinspeksi</h5>
             <span class="h2 font-weight-bold mb-0">490</span>
           </div>
           <div class="col-auto">
@@ -60,28 +78,15 @@
       </div>
     </div>
   </div>
-  <div class="col-xl-3 col-md-6">
-    <div class="card card-stats">
-      <!-- Card body -->
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <h5 class="card-title text-uppercase text-muted mb-0">Total Toko Dikunjungi</h5>
-            <span class="h2 font-weight-bold mb-0">924</span>
-          </div>
-          <div class="col-auto">
-            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-              <i class="ni ni-money-coins"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="row">
   <div class="col-md-6">
-    <div id="map" style="height: 380px"></div>
+    <div class="card">
+      <div class="card-header py-1">
+        Peta Sebaran Inspeksi
+      </div>
+      <div id="map" style="height: 380px"></div>
+    </div>
   </div>
   <div class="col-md-6">
     <div class="card">
@@ -89,7 +94,7 @@
         Persentase Kepatuhan
       </div>
       <div class="card-body p-1">
-        <canvas id="chartVerifikasi" height="195"></canvas>
+        <canvas id="chartVerifikasi" height="220"></canvas>
       </div>
     </div>
   </div>

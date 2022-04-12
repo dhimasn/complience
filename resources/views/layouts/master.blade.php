@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Complience System - EBTKE ESDM">
   <meta name="author" content="Creative Tim">
-  <title>@yield('title-menu') - Complience System</title>
+  <title>@yield('title-menu') - Compliance System</title>
   <!-- Favicon -->
   <!-- <link rel="icon" href="assets/img/brand/favicon.png" type="image/png"> -->
   <!-- Fonts -->
@@ -81,12 +81,12 @@
                     <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'show' : ''}}" id="pendataanCollapse" style="">
                       <ul class="nav nav-sm">
                         <li class="nav-item">
-                          <a class="nav-link {{\Request::route()->getName() == 'pengawasan.pemilihanlabuji' ? 'active' : ''}}" href="{{route('pengawasan.pemilihanlabuji')}}">
+                          <a class="nav-link nav-third-child {{\Request::route()->getName() == 'pengawasan.pemilihanlabuji' ? 'active' : ''}}" href="{{route('pengawasan.pemilihanlabuji')}}">
                             <span class="sidenav-normal">Aktivasi Pendataan Uji Petik</span>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link {{\Request::route()->getName() == 'form4.pilihproduk' ? 'active' : ''}}" href="{{route('form4.pilihproduk')}}">
+                          <a class="nav-link nav-third-child {{\Request::route()->getName() == 'form4.pilihproduk' ? 'active' : ''}}" href="{{route('form4.pilihproduk')}}">
                             <span class="sidenav-normal">Aktivasi Pendataan RRT dan Pengujian Lainnya</span>
                           </a>
                         </li>
@@ -100,12 +100,12 @@
                     <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'show' : ''}}" id="labUjiCollapse">
                       <ul class="nav nav-sm">
                         <li class="nav-item">
-                          <a class="nav-link {{\Request::route()->getName() == 'form2.index' ? 'active' : ''}}" href="{{route('form2.index')}}">
+                          <a class="nav-link nav-third-child {{\Request::route()->getName() == 'form2.index' ? 'active' : ''}}" href="{{route('form2.index')}}">
                             <span class="sidenav-normal">Pemeriksaan Sampel Uji</span>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link {{\Request::route()->getName() == 'form3.index' ? 'active' : ''}}" href="{{route('form3.index')}}">
+                          <a class="nav-link nav-third-child {{\Request::route()->getName() == 'form3.index' ? 'active' : ''}}" href="{{route('form3.index')}}">
                             <span class="sidenav-normal">Hasil Pengujian</span>
                           </a>
                         </li>

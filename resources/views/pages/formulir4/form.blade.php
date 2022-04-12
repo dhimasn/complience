@@ -44,8 +44,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-control-label">Lab Uji Tujuan</label>
-                <select name="lab_uji" class="form-control form-complience">
+                <label class="form-control-label">Lab Uji Tujuan (Lebih dari satu)</label>
+                <select name="lab_uji[]" class="form-control form-complience select2" multiple="multiple">
                   @foreach ($labUjis as $labUji)
                     <option value="{{$labUji->id}}">{{$labUji->nama}}</option>
                   @endforeach
@@ -99,7 +99,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="form-control-label">model</label>
+                <label class="form-control-label">Model</label>
                 <input class="form-control form-complience" name="model" placeholder="" value="" type="text">
               </div>
             </div>

@@ -34,7 +34,7 @@ class GeneralHelper
   public static function uploadImageBase64($base64, $fileName, $dirLocation)
   {
     if (!empty($base64)) {
-      $base64 = "data:image/jpeg;base64,".$base64;
+      $base64 = "data:image/jpeg;base64," . $base64;
       // $extension = explode('/', mime_content_type($base64))[1];
       $extension = 'jpeg';
       $image = str_replace('data:image/' . $extension . ';base64,', '', $base64);
@@ -61,10 +61,10 @@ class GeneralHelper
         $class = strlen($opsi) < 25 ? 'form-check-inline' : '';
         $opsi = explode(";", $opsi);
         foreach ($opsi as $val) {
-          $result .= '<div class="form-check '.$class.'">';
-          $result .= '<input class="form-check-input" type="radio" name="' . $name . '" value="'.$val.'">
-            <label class="form-check-label">'.$val.'</label>';
-            $result .= '</div>';
+          $result .= '<div class="form-check ' . $class . '">';
+          $result .= '<input class="form-check-input" type="radio" name="' . $name . '" value="' . $val . '">
+            <label class="form-check-label">' . $val . '</label>';
+          $result .= '</div>';
         }
         break;
 
@@ -77,6 +77,22 @@ class GeneralHelper
         break;
     }
 
+
+    return $result;
+  }
+  public static function formRead($type, $value)
+  {
+    $result = "";
+    switch ($type) {
+      case 'FILE':
+        $value = asset("storage/".$value);
+        $result = '<br><a href="'.$value.'" target="_blank" class="btn btn-link">Lihat File</a>';
+        break;
+
+      default:
+        $result = '<input class="form-control form-complience" value="' . $value . '" type="text">';
+        break;
+    }
 
     return $result;
   }

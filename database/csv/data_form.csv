@@ -24,7 +24,7 @@ Department store
 Hypermarket
 General store
 Supermarket""";1
-9;22;2;Lampirkan foto tampak depan Lokasi Pengawasan;Photo;null;1;;1
+9;22;2;Lampirkan foto tampak depan Lokasi Pengawasan;FILE;null;1;;1
 10;22;2;Apakah tenaga penjual familiar dengan LTHE?;Drop down menu;null;1;Ya Sedikit Tidak;1
 11;22;2;Seberapa seringkah tenaga penjual menemukan produk tanpa LTHE?;Drop down menu;null;0;Tidak pernah Jarang Sering Sangat sering;1
 12;22;2;Apakah yang dilakukan oleh pihak ritel saat produk tanpa LTHE ditemukan?;Drop down menu;null;1;Mengembalikan produk pada pemasok untuk mencantumkan label Menahan produk sampai produk pengganti berlabel diterima dari pemasok Tidak melakukan apa-apa - menjual produk seadanya;1
@@ -39,7 +39,7 @@ Supermarket""";1
 21;22;2;Negara Asal;Manual entry;null;1;;1
 22;22;2;Harga;Manual entry;null;1;;1
 23;22;2;Model;Manual entry;null;0;;1
-24;22;2;Lampirkan foto LTHE;Photo;null;1;;1
+24;22;2;Lampirkan foto LTHE;FILE;null;1;;1
 25;22;2;Nomor Registrasi;"Manual entry then ""easy fill""";null;1;"Fitur lookup sudah diaktifkan disini kalau tidak ditemukan buka pilihan ""tidak ditemukan""";1
 26;22;2;Jumlah Bintang;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
 27;22;2;Nilai Efisiensi Energi EER;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
@@ -61,11 +61,11 @@ Supermarket""";1
 43;22;2;(Apabila Ya) Pilih dari Entri Data yang Direkam;Single or multiple;null;1;Pilihan produk yang direkam (Merek 4 digit nomor SHE terakhir). Formulir Pendataan Uji Petik dibuka untuk tiap Entri Data yg dipilih;1
 44;22;2;(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Lab Uji Tujuan;Drop down menu;null;0;Qualis TUV Rheinland B2TKE-BRIN B4T-Kemenperin;1
 45;22;2;(Aktifkan Entri Tambahan untuk Entri Data yg dipilih) Cara Pengiriman;Drop down menu;null;1;Diantar langsung Pengiriman jarak dekat Pengiriman jarak jauh;1
-46;22;2;Lampirkan foto Formulir Transmisi;Photo;null;0;;1
-47;22;2;Lampirkan foto Bukti Pembayaran;Photo;null;0;;1
-48;22;2;Lampirkan foto Kemasan Tersegel;Photo;null;0;;1
+46;22;2;Lampirkan foto Formulir Transmisi;FILE;null;0;;1
+47;22;2;Lampirkan foto Bukti Pembayaran;FILE;null;0;;1
+48;22;2;Lampirkan foto Kemasan Tersegel;FILE;null;0;;1
 49;22;2;Kapasitas Pendinginan;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
-50;22;2;Lampirkan foto LTHE;Photo;null;1;;1
+50;22;2;Lampirkan foto LTHE;FILE;null;1;;1
 51;22;2;Nomor SHE;"Manual entry then ""easy fill""";null;1;"Fitur lookup sudah diaktifkan disini kalau tidak ditemukan buka pilihan ""tidak ditemukan""";1
 52;22;2;Jumlah Bintang;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
 53;22;2;Nilai Efisiensi Energi CSPF;Pre-populated from registry;null;1;Buka pilihan manual entry apabila tidak sesuai;1
@@ -159,7 +159,7 @@ Supermarket""";1
 141;10;2;Berat unit indoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
 142;10;2;Berat unit outdoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
 143;10;2;Berat unit outdoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
-144;10;2;Pipa tembaga sepanjang 75 m - 10 cm;RADIO;"Baik;Tidak Baik";1;;5
+144;10;2;Pipa tembaga sepanjang 7.5 m +- 10 cm;RADIO;"Baik;Tidak Baik";1;;5
 145;10;2;Pasang Thermokopel pada unit Indoor dan Outdoor;RADIO;"Baik;Tidak Baik";1;;5
 146;10;2;Instalasi unit (jarak unit indoor ke dinding 300 - 400 mm);RADIO;"Baik;Tidak Baik";1;;5
 147;10;2;Instalasi unit (jarak unit indoor ke lantai 1400 - 1500 mm);RADIO;"Baik;Tidak Baik";1;;5
@@ -178,5 +178,5 @@ Supermarket""";1
        - Temperatur Remote Control : Suhu terendah/minimum";RADIO;"Baik;Tidak Baik";1;;5
 157;10;2;Jaga perbedaan tekanan air discharge AC yang diuji di dalam receiving chamber dan ruang chamber sebesar 0 Pa;RADIO;"Baik;Tidak Baik";1;;5
 158;10;2;Kecepatan aliran udara (air velocity) antara 15m/dt - 35m/dt dengan mengatur nozzle pada receiving chamber;RADIO;"Baik;Tidak Baik";1;;5
-159;11;2;Hasil penilaian;RADIO;"Baik, dapat dilanjutkan ke pengecekan kondisi pengujian;Tidak diterima, unit dikemas kembali untuk dikembalikan";1;;5
+159;11;2;Hasil penilaian;RADIO;"Sesuai Standar;Tidak Sesuai Standar";1;;5
 160;11;2;Keterangan tambahan;TEXT;null;1;;5

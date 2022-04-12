@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Detail Data Complience')
+@section('title-menu', 'Detail Data Compliance')
 @section('styles')
 <style>
   input[type='radio'] {
