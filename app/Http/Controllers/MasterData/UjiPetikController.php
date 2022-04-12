@@ -47,7 +47,9 @@ class UjiPetikController extends Controller
             foreach ($formData as $key => $value) {
                 $keyForm[] = $key;
             }
-            $formsInspeksi = FormData::whereIn('id', $keyForm)->get();
+            $formsInspeksi = FormCategory::whereHas('childForm', function($q) use($keyForm){
+                $q->whereIn('id', $keyForm);
+            })->get();
             $helper = new GeneralHelper();
             $forms = FormCategory::where('jenis_form', 5)->get();
             $helper = new GeneralHelper();

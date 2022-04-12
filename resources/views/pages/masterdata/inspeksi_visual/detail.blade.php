@@ -106,11 +106,11 @@
     </div>
   </div>
 </div>
-
+@foreach ($formsInspeksi as $form)
 <div class="header-body">
   <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
-      <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual</h6>
+      <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
     </div>
   </div>
 </div>
@@ -120,7 +120,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12">
-            @foreach ($formsInspeksi as $item)
+            @foreach ($form->childForm as $item)
               @foreach ($formData as $key => $formValue)
                 @if ($key == $item->id)
                 <div class="form-group">
@@ -136,7 +136,7 @@
     </div>
   </div>
 </div>
-
+@endforeach
 @endsection
 @section('scripts')
 <script src="{{asset('assets/vendor/select2/dist/js/select2.full.min.js')}}"></script>

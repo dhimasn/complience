@@ -23,7 +23,9 @@ class InspeksiVisualController extends Controller
             foreach ($formData as $key => $value) {
                 $keyForm[] = $key;
             }
-            $formsInspeksi = FormData::whereIn('id', $keyForm)->get();
+            $formsInspeksi = FormCategory::whereHas('childForm', function($q) use($keyForm){
+                $q->whereIn('id', $keyForm);
+            })->get();
             $helper = new GeneralHelper();
             return view('pages.masterdata.inspeksi_visual.detail', compact('complience','formsInspeksi','helper','formData'));
         }else{

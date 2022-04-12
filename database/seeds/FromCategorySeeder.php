@@ -14,7 +14,53 @@ class FromCategorySeeder extends Seeder
         \DB::table('form_categories')->insert([
             [
                 'category_product_id' => 2,
-                'title' => 'Cek Fisik, Unit Indoor',
+                'title' => 'Informasi Umum  (form 1)', // 1
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Data Ritel', // 2
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Pengalaman terhadap Label Tanda Hemat Energi', // 3
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Detail Produk',
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Pemeriksaan visual + entri data ketidaksesuaian (3) - LABEL LAMA',
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Compliance LTHE',
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Aktifkan Rekaman Sampel Uji Petik',
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Compliance Regulasi Lainnya',
+                'jenis_form' => 1,
+            ],
+            [
+                'category_product_id' => 2,
+                'title' => 'Pemeriksaan visual + entri data ketidaksesuaian (3) - LABEL BARU', // 9
+                'jenis_form' => 1,
+            ],
+
+            [
+                'category_product_id' => 2,
+                'title' => 'Cek Fisik, Unit Indoor', // 10
                 'jenis_form' => 2,
             ],
             [
@@ -24,7 +70,7 @@ class FromCategorySeeder extends Seeder
             ],
             [
                 'category_product_id' => 2,
-                'title' => 'Hasil Final Cek Fisik',
+                'title' => 'Hasil Final Cek Fisik', // 12
                 'jenis_form' => 2,
             ],
             [
@@ -34,7 +80,7 @@ class FromCategorySeeder extends Seeder
             ],
             [
                 'category_product_id' => 2,
-                'title' => 'Hasil Pengujian',
+                'title' => 'Hasil Pengujian', // 14
                 'jenis_form' => 3,
             ],
             [
@@ -44,7 +90,7 @@ class FromCategorySeeder extends Seeder
             ],
             [
                 'category_product_id' => 2,
-                'title' => 'Pemeriksaan Visual',
+                'title' => 'Pemeriksaan Visual', // 16
                 'jenis_form' => 4,
             ],
             [
@@ -54,7 +100,7 @@ class FromCategorySeeder extends Seeder
             ],
             [
                 'category_product_id' => 2,
-                'title' => 'Cek Fisik, Unit Outdoor',
+                'title' => 'Cek Fisik, Unit Outdoor', // 18
                 'jenis_form' => 5,
             ],
             [
@@ -64,7 +110,7 @@ class FromCategorySeeder extends Seeder
             ],
             [
                 'category_product_id' => 2,
-                'title' => 'Hasil Final Cek Fisik',
+                'title' => 'Hasil Final Cek Fisik', // 20
                 'jenis_form' => 5,
             ],
         ]);
