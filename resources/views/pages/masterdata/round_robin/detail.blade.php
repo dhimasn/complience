@@ -214,7 +214,7 @@
                   @foreach ($form->childForm as $child)
                   <div class="form-group">
                     <label class="form-control-label">{!!nl2br($child->data_point)!!}</label><br>
-                    {!!$helpers->formInput($child->data_entry_type, $child->id, $child->data_input)!!}
+                    {!!$helpers->formRead($child->data_entry_type, $child->id, $child->data_input)!!}
                   </div>
                   @endforeach
                 </div>
