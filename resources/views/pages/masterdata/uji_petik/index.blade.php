@@ -13,14 +13,16 @@
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
-                <th>Tanggal Update</th>
+                <th>Pengawas</th>
                 <th>Lokasi Pengawasan</th>
+                <th>Ketidaksesuaian</th>
                 <th>Status</th>
+                <th>Tanggal Update</th>
               </thead>
               <tbody>
                 @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('masterdata.detailcomplience')}}">{{$item->record_id}}</a></td>
+                  <td><a href="{{route('masterdata.uji_petik.detail', $item->record_id)}}">{{$item->record_id}}</a></td>
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>

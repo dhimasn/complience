@@ -14,18 +14,16 @@
                 <th>Model Produk</th>
                 <th>Merek</th>
                 <th>Tanggal Update</th>
-                <th>Kegiatan</th>
                 <th>Status</th>
               </thead>
               <tbody>
                 @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('masterdata.detailcomplience')}}">{{$item->record_id}}</a></td>
+                  <td><a href="{{route('masterdata.pengujian_ulang.detail', $item->record_id)}}">{{$item->record_id}}</a></td>
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td>{{$item->kegiatan == '1' ? 'Uji Petik' : 'Round Robin'}}</td>
                   <td>{{$status[$item->status] ?? ''}}</td>
                 </tr>
                 @endforeach

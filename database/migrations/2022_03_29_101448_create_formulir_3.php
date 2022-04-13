@@ -17,7 +17,6 @@ class CreateFormulir3 extends Migration
             $table->id();
             $table->string('record_id');
             $table->integer('pengawas_id');
-            $table->tinyInteger('sampel_sesuai');
             $table->longText('form_data');
             $table->timestamps();
         });

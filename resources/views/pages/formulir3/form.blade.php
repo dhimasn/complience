@@ -71,13 +71,6 @@
                 <label class="form-control-label">Teknologi</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" readonly value="{{$complience->teknologi}}" type="text">
               </div>
-              <div class="form-group">
-                <label class="form-control-label">Informasi sampel sudah sesuai</label>
-                <select name="sampel_sesuai" class="form-control form-complience">
-                  <option value="1">Ya</option>
-                  <option value="0">Tidak</option>
-                </select>
-              </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
@@ -248,15 +241,15 @@
                 <tbody>
                   <tr>
                     <th>EER (Btu/h/W)</th>
-                    <td><input class="form-control form-complience" name="112[]"></td>
-                    <td><input class="form-control form-complience" name="112[]"></td>
-                    <td><input class="form-control form-complience" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="eerPengujian_input" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="eerSHE_input" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="eerNP_input" name="112[]"></td>
                   </tr>
                   <tr>
                     <th>CSPF (Wh/Wh)</th>
-                    <td><input class="form-control form-complience" name="113[]"></td>
-                    <td><input class="form-control form-complience" name="113[]"></td>
-                    <td><input class="form-control form-complience" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="cspfPengujian_input" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="cspfSHE_input" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" id="cspfNP_input" name="113[]"></td>
                   </tr>
                 </tbody>
               </table>
@@ -271,7 +264,7 @@
                     <strong>Variasi hasil pengujian terhadap EER SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    
+                    <strong id="eerSHE"></strong>
                   </div>
                 </div>
               </div>
@@ -281,7 +274,7 @@
                     <strong>Variasi hasil pengujian terhadap CSPF SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    
+                    <strong id="cspfSHE"></strong>
                   </div>
                 </div>
               </div>
@@ -291,7 +284,7 @@
                     <strong>Variasi hasil pengujian terhadap EER Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    
+                    <strong id="eerNP"></strong>
                   </div>
                 </div>
               </div>
@@ -301,7 +294,7 @@
                     <strong>Variasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
-                    
+                    <strong id="cspfNP"></strong>
                   </div>
                 </div>
               </div>
@@ -317,4 +310,38 @@
     </div>
   </div>
 </form>
+@endsection
+@section('scripts')
+    <script>
+      $(".inputFormula").keyup(function(e){
+        let eerPengujian_input = parseInt($("#eerPengujian_input").val());
+        let eerSHE_input = parseInt($("#eerSHE_input").val());
+        let eerNP_input = parseInt($("#eerNP_input").val());
+        
+        let cspfPengujian_input = parseInt($("#cspfPengujian_input").val());
+        let cspfSHE_input = parseInt($("#cspfSHE_input").val());
+        let cspfNP_input = parseInt($("#cspfNP_input").val());
+
+        let eerSHE = ((eerPengujian_input/eerSHE_input) * 100) - 100;
+        console.log(eerPengujian_input);
+        console.log(eerSHE_input);
+        let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
+        let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
+        let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
+        $("#eerSHE").text(roundTo(eerSHE, 7));
+        $("#cspfSHE").text(roundTo(cspfSHE, 7));
+        $("#eerNP").text(roundTo(eerNP, 7));
+        $("#cspfNP").text(roundTo(cspfNP, 7));
+      });
+      function roundTo(n, digits) {
+        if (digits === undefined) {
+          digits = 0;
+        }
+
+        var multiplicator = Math.pow(10, digits);
+        n = parseFloat((n * multiplicator).toFixed(11));
+        var test =(Math.round(n) / multiplicator);
+        return +(test.toFixed(digits));
+      }
+    </script>
 @endsection

@@ -17,7 +17,7 @@ class CreateComplience extends Migration
             $table->string('record_id', 20);
             $table->integer('product_id')->nullable();
             $table->integer('pengawas_id');
-            $table->string('no_she');
+            $table->string('no_she')->nullable();
             $table->string('merek')->nullable();
             $table->string('teknologi')->nullable();
             $table->string('model')->nullable();

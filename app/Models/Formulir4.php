@@ -29,18 +29,20 @@ class Formulir4 extends Model
             $complience->kode_produk = $request->input('6');
             $complience->negara = $request->input('7');
             $complience->harga = $request->input('8');
-            $complience->lab_uji = $request->input('lab_uji');
             $complience->status = $request->input('kegiatan') == '3' ? '3' : '4';
             $complience->kegiatan = $request->input('kegiatan');
             $complience->save();
 
-            $forms = FormData::where('jenis_form', 4)->get();
-            $store = new Formulir4();
-            $store->record_id = $record_id;
-            $store->pengawas_id = 2; // dummy
-            $store->kegiatan_lainnya = $request->input('kegiatan_lainnya') !== "" ? $request->input('kegiatan_lainnya') : null;
-            $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
-            $store->save();
+            foreach ($request->input('lab_uji') as $lab_uji) {
+                $forms = FormData::where('jenis_form', 4)->get();
+                $store = new Formulir4();
+                $store->record_id = $record_id;
+                $store->pengawas_id = 2; // dummy
+                $store->lab_uji = $lab_uji;
+                $store->kegiatan_lainnya = $request->input('kegiatan_lainnya') !== "" ? $request->input('kegiatan_lainnya') : null;
+                $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
+                $store->save();
+            }
             DB::commit();
             return true;
         }catch(\Exception $e){

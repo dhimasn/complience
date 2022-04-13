@@ -18,6 +18,7 @@ class CreateFormulir4 extends Migration
             $table->string('record_id');
             $table->integer('pengawas_id');
             $table->longText('form_data');
+            $table->integer('lab_uji');
             $table->string('kegiatan_lainnya')->nullable();
             $table->timestamps();
         });

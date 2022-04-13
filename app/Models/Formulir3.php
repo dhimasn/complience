@@ -29,7 +29,6 @@ class Formulir3 extends Model
         $store = $this;
         $store->record_id = $record_id;
         $store->pengawas_id = 2; // dummy
-        $store->sampel_sesuai = $request->input('sampel_sesuai');
         $store->form_data = json_encode($request->except(['_token', 'record_id','sampel_sesuai']));
         // $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
         $store->save();

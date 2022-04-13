@@ -18889,7 +18889,7 @@ a.btn-icon-only
 
 .card
 {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 
     border: 0; 
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
@@ -21592,7 +21592,7 @@ textarea[resize='horizontal']
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav .nav-link
 {
-    padding: .675rem 0.9rem .675rem 2rem;
+    padding: .675rem 0.9rem .675rem 1.4rem;
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item
 {
@@ -21600,12 +21600,9 @@ textarea[resize='horizontal']
 }
 .navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item > .nav-link.active
 {
-    margin-left: 1rem;
     padding-right: 1rem;
-    padding-left: 1rem;
-
+    padding-left: 1.4rem;
     border-right: 5px solid #ffee00;
-    
 }
 .navbar-vertical.navbar-expand-xs .lavalamp-object
 {
@@ -21623,8 +21620,12 @@ textarea[resize='horizontal']
 {
     padding-top: 0.45rem;
     padding-bottom: 0.45rem;
-    padding-left: 4.2rem;
+    padding-left: 3.7rem;
     padding-right: 1rem;
+}
+
+.nav-third-child{
+    padding-left: 4.5rem !important;
 }
 
 @media (min-width: 576px)
@@ -22878,13 +22879,13 @@ textarea[resize='horizontal']
 .nav-pills .nav-link
 {
     font-size: .875rem;
-    font-weight: 500;
+    font-weight: 600;
 
     padding: .75rem 1rem;
 
     transition: all .15s ease; 
 
-    color: #5e72e4;
+    color: #000;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
@@ -22896,8 +22897,8 @@ textarea[resize='horizontal']
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link
 {
-    color: #fff;
-    background-color: #5e72e4;
+    color: #000;
+    background-color: #f1f1f1;
 }
 
 @media (max-width: 575.98px)
