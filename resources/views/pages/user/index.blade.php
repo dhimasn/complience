@@ -5,8 +5,9 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body p-2">
-      <a class="btn btn-yellow button-pilih-formulir-dash" href="{{route('user.form')}}">Tambah</a>
-        <br>      
+      <div class="text-left mb-2">
+        <a class="btn btn-sm btn-primary" href="{{route('user.pilih')}}">Tambah</a> 
+      </div>  
         <div class="row">
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
@@ -26,9 +27,9 @@
                   <td>{{$user->category_user}}</td>
                   <td>{{$user->nama}}</td>
                   <td>
-                     <a class="btn btn-yellow button-pilih-formulir-dash" href="">detail</a>
-                     <a class="btn btn-yellow button-pilih-formulir-dash" href="">update</a>
-                     <a class="btn btn-yellow button-pilih-formulir-dash" href="">delete</a>
+                     <a class="btn btn-sm btn-info" href="{{route('user.detail', $user->id)}}">detail</a>
+                     <a class="btn btn-sm btn-warning" href="{{route('user.update', $user->id)}}">update</a>
+                     <a class="btn btn-sm btn-danger" href="{{route('user.delete', $user->id)}}">delete</a>
                   </td>
                   <td>{{$user->updated_at}}</td>
                 </tr>

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Tambah User')
+@section('title-menu', 'Tambah User Laboratorium')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
@@ -15,13 +15,13 @@
 @endsection
 @section('contents')
 
-<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data"> 
+<form action="{{route('user.store2')}}" method="post" enctype="multipart/form-data"> 
 
   @csrf
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Detail User</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">Detail User Laboratorium</h6>
       </div>
     </div>
   </div>
@@ -42,25 +42,23 @@
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="name" 
                   value="" type="text">
               </div>
-              <div class="form-group">
-                <label class="form-control-label">User Role</label>
-                <select name="sampel_sesuai" class="form-control form-complience">
-                  <option value="1">Tim Pengawas</option>
-                  <option value="0">Laboratorium</option>
-                </select>
-              </div>
-              <div class="form-group">
-              <label class="form-control-label">Laboratorium</label>
-                <select name="sampel_sesuai" class="form-control form-complience">
-                  <option value="1">Tim Pengawas</option>
-                  <option value="0">Laboratorium</option>
-                </select>
-              </div>
+              
               <div class="form-group">
                 <label class="form-control-label">email</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="email" 
                   value="" type="text">
               </div>
+
+              <div class="form-group">
+                <label class="form-control-label">Laboratorium</label>
+                <select name="id_lab"  class="form-control form-complience">
+                  <option value="" disabled selected="true">Pilih Laboratorium</option>
+                  @foreach ($listLab as $id_Lab => $lab)
+                  <option value="{{$lab['id']}}">{{$lab['nama']}}</option>
+                  @endforeach
+                </select>
+              </div>
+
               <div class="form-group">
                 <label class="form-control-label">Password</label>
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="Password" 

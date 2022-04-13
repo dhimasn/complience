@@ -70,10 +70,13 @@ Auth::routes(['register' => false]);
 
 //kelola user
 Route::get('user','KelolaUserController@index')->name('user.index');
-Route::get('/user/create','KelolaUserController@form')->name('user.form');
-Route::post('/user/store','KelolaUserController@store')->name('user.store'); 
-Route::post('/user/update','KelolaUserController@updateUser'); //edit
-Route::post('/user/delete','KelolaUserController@deleteUser'); //delete
-Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
+Route::get('/user/create/pengawasan','KelolaUserController@formPengawasan')->name('user.pengawasan');
+Route::get('/user/create/lab','KelolaUserController@formLaboratorium')->name('user.lab');
+Route::post('/user/store','KelolaUserController@store')->name('user.store');
+Route::post('/user/store2','KelolaUserController@store2')->name('user.store2');  
+Route::get('/user/pilih','KelolaUserController@pilihUser')->name('user.pilih');  
+Route::get('/user/detail{id}','KelolaUserController@GetDetailUser')->name('user.detail');
+Route::post('/user/update','KelolaUserController@updateUser')->name('user.update');  
+Route::post('/user/delete','KelolaUserController@deleteUser')->name('user.delete'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
