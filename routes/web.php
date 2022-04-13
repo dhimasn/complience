@@ -62,10 +62,10 @@ Auth::routes(['register' => false]);
 
 //kelola user
 Route::get('user','KelolaUserController@index')->name('user.index');
-Route::post('/user/create','KelolaUserController@createUser'); //add
+Route::get('/user/create','KelolaUserController@form')->name('user.form');
+Route::post('/user/store','KelolaUserController@store')->name('user.store'); 
 Route::post('/user/update','KelolaUserController@updateUser'); //edit
 Route::post('/user/delete','KelolaUserController@deleteUser'); //delete
 Route::get('/user/get/list','KelolaUserController@GetListUser');  //detail
-Route::get('/user/get/detail','KelolaUserController@GetDetailUser'); //list
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -27,37 +27,36 @@ class KelolaUserController extends Controller
         return view('pages.user.index', compact('users'));
     }
 
-    public function createUser(Request $request){
+    public function form(Request $request){
+        
+        $user = array(
+            'username',
+            'name',
+            'id_user_role',
+            'id_lab',
+            'email',
+            'password',
+        );
 
-        try{
+        return view('pages.user.form', compact('user')); 
 
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
+    }
 
-            $user['nama_user'] = $request->nama_user;
-            $user['id_user_role'] = $request->id_user_role;
- 
-            if(!empty($user)){
-                
-                $result = $this->UserDB->createUser($user);
+    public function store(Request $request){
+        
+        print_r($request[0]);exit;
 
-                if($result == true){
+        //$formulir = new Formulir2();
+        //$status = 5;
+        //$jenis_form = 5;
+        //if ($formulir->storeData($request, $status, $jenis_form)) {
+            //Session::flash('success', 'Disimpan Kedalam Database');
+        //} else {
+            //Session::flash('error');
+        //}
 
-                    $response['success'] = true;
-                    $response['message'] = "200 Ok";
-                    $response['data'] = $result;
+        return redirect()->route('user.index');
 
-                }
-
-            }
-
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
-        }
-        DB::commit();
-        return response()->json($response, 200);       
     }
 
     public function updateUser(Request $request){
