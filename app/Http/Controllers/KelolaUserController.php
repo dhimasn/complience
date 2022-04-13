@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Helpers\User;
-use App\Helper\JsonDecode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repo\Inspeksi;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use stdClass;
+use Session;
 
 class KelolaUserController extends Controller
 {
@@ -27,37 +24,65 @@ class KelolaUserController extends Controller
         return view('pages.user.index', compact('users'));
     }
 
-    public function createUser(Request $request){
+    public function pilihUser(){
+        return view('pages.user.pilihuser');
+    }
 
-        try{
+    public function formPengawasan(){
+        return view('pages.user.formPengawasan'); 
+    }
 
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
+    public function formLaboratorium(Request $request){   
+        $listLab = $this->UserDB->getListLabRole();
+        return view('pages.user.formLaboratorium', compact('listLab')); 
+    }
 
-            $user['nama_user'] = $request->nama_user;
-            $user['id_user_role'] = $request->id_user_role;
- 
-            if(!empty($user)){
-                
-                $result = $this->UserDB->createUser($user);
+    public function store(Request $request){
 
-                if($result == true){
+        $check = $this->UserDB->getUserBynameUserandRole($request, 2);
 
-                    $response['success'] = true;
-                    $response['message'] = "200 Ok";
-                    $response['data'] = $result;
+        if(!empty($check)){
 
-                }
+            Session::flash('Data Sudah Ada');
 
+        }else{
+
+            $user = $this->UserDB->createUser($request, 2);
+
+            if($user){
+                Session::flash('success', 'Disimpan Kedalam Database');
+            } else {
+                Session::flash('error');
             }
 
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
         }
-        DB::commit();
-        return response()->json($response, 200);       
+
+        return redirect()->route('user.index');
+
+    }
+
+    public function store2(Request $request){
+
+        $check = $this->UserDB->getUserBynameUserandRole($request, 3);
+
+        if(!empty($check)){
+
+            Session::flash('Data Sudah Ada');
+
+        }else{
+
+            $user = $this->UserDB->createUser($request, 3);
+
+            if($user){
+                Session::flash('success', 'Disimpan Kedalam Database');
+            } else {
+                Session::flash('error');
+            }
+
+        }
+
+        return redirect()->route('user.index');
+
     }
 
     public function updateUser(Request $request){
@@ -111,54 +136,23 @@ class KelolaUserController extends Controller
         return response()->json($response, 200);
     }
 
-    public function GetListUser(Request $request){
-        try{
+    public function GetDetailUser($id){
+        
+        //get user by id
+        //$user = 
 
             $response['success'] = false;
             $response['message'] = "401 Unauthorized";
 
-            $result = $this->UserDB->getListDataUser();
+            //$result = $this->UserDB->getUserByIdUser($request->id_user);
 
-            if(!empty($result)){
+            // if(!empty($result)){
             
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
-                $response['data'] = $result;
+            //     $response['success'] = true;
+            //     $response['message'] = "200 Ok";
+            //     $response['data'] = $result;
             
-            }
-
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
-        }
-        DB::commit();
-        return response()->json($response, 200);
-    }
-
-    public function GetDetailUser(Request $request){
-        try{
-
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
-
-            $result = $this->UserDB->getUserByIdUser($request->id_user);
-
-            if(!empty($result)){
-            
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
-                $response['data'] = $result;
-            
-            }
-
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
-        }
-        DB::commit();
-        return response()->json($response, 200);
+            // }
     }
 
 }
