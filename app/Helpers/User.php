@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\LabUji;
 use App\Models\UserRoleDB;
 use App\Models\UserDB;
 use DateTime;
@@ -19,28 +20,37 @@ class User
         
     }
 
-    public function createUser($dt){
+    public function createUser($dt,$role){
 
-        $result = null;
-
-        $user = $this->getUserBynameUserandRole($dt);
-
-        if(empty($user)){
-            $result = UserDB::create([
-                'nama_user'=> $dt['nama_user'],
-                'id_user_role' => $dt['id_user_role'],
-                'state' => 1
-            ]);
-        }
-        
+        $result = UserDB::create([
+            'username'=> $dt->input('username'),
+            'name' =>  $dt->input('name'),
+            'id_user_role' => $role,
+            'email'=>  $dt->input('email'),
+            'password' =>  bcrypt($dt->input('password')),
+        ]);
         return $result;
+
     }
 
 
-    public function getUserBynameUserandRole($dt){
-        $result = UserDB::where('nama_user', $dt['nama_user'])
-        ->where('id_user_role', $dt['id_user_role'])
+    public function getUserBynameUserandRole($dt, $role){
+        $result = UserDB::where('username', $dt->input('username'))
+        ->orWhere('email',$dt->input('email'))
+        ->where('id_user_role', $role)
         ->first();
+        return $result;
+    }
+
+    public function getListLabRole(){
+        $result = LabUji::get();
+        return $result;
+    }
+
+    public function getListDataUser(){
+        $result = UserDB::join('user_roles','user_roles.id','=','users.id_user_role')
+        ->leftjoin('lab_ujis','lab_ujis.id','=','users.id_lab')
+        ->get();
         return $result;
     }
 
@@ -66,11 +76,5 @@ class User
         return $result;
     }
 
-    public function getListDataUser(){
-        $result = UserDB::join('user_roles','user_roles.id','=','users.id_user_role')
-        ->leftjoin('lab_ujis','lab_ujis.id','=','users.id_lab')
-        ->get();
-        return $result;
-    }
-
+   
 }
