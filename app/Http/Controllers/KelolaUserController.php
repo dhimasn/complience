@@ -85,74 +85,46 @@ class KelolaUserController extends Controller
 
     }
 
-    public function updateUser(Request $request){
-        try{
+    public function store3(Request $request){
 
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
-            
-            $update['id_user'] = $request->id_user;
-            $update['nama_user'] = $request->nama_user;
-            $update['id_user_role'] = $request->id_user_role;
-            
-            if(!empty($update)){
-               
-                $this->UserDB->updateDataUser($update);
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
-            
-            }
+        //update database
+        $user = $this->UserDB->updateDataUser($request);
 
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
+        if($user){
+            Session::flash('success', 'Disimpan Kedalam Database');
+        } else {
+            Session::flash('error');
         }
-        DB::commit();
-        return response()->json($response, 200);
+
+        return redirect()->route('user.index');
+
+    }
+
+    public function GetDetailUser($username){
+        $user = $this->UserDB->getUserByUserName($username);
+        return view('pages.user.detail', compact('user'));
+    }
+
+    public function updateUser($username){
+        $listLab = null;
+        $user = $this->UserDB->getUserByUserName($username);
+        if(!empty($user->id_lab)){
+            $listLab = $this->UserDB->getListLabRole();
+        }
+        return view('pages.user.update', compact('user','listLab'));
     }
 
     public function deleteUser(Request $request){
-        try{
+        //delete database
+        //$user = $this->UserDB->updateDataUser($request);
 
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
-            $deleteIds = $request['id_user'];
-            
-            if(!empty($deleteIds)){
-               
-                $this->UserDB->deleteDataUser($deleteIds);
-                $response['success'] = true;
-                $response['message'] = "200 Ok";
-            
-            }
-
-        }catch(Exception $e)
-        {
-            DB::rollBack();
-            throw $e;
+        if($user){
+            Session::flash('success', 'Disimpan Kedalam Database');
+        } else {
+            Session::flash('error');
         }
-        DB::commit();
-        return response()->json($response, 200);
-    }
 
-    public function GetDetailUser($id){
-        
-        //get user by id
-        //$user = 
-
-            $response['success'] = false;
-            $response['message'] = "401 Unauthorized";
-
-            //$result = $this->UserDB->getUserByIdUser($request->id_user);
-
-            // if(!empty($result)){
-            
-            //     $response['success'] = true;
-            //     $response['message'] = "200 Ok";
-            //     $response['data'] = $result;
-            
-            // }
+        return redirect()->route('user.index');
     }
 
 }

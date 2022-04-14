@@ -153,7 +153,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link {{\Request::route()->getName() == 'laboratorium.index' ? 'active' : ''}}" href="{{route('laboratorium.index')}}">
                       <span class="sidenav-normal">Laboratorium Uji</span>
                     </a>
                   </li>
