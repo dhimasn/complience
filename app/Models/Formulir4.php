@@ -51,4 +51,7 @@ class Formulir4 extends Model
             return false;
         }
     }
+    public function lab(){
+        return $this->belongsTo(LabUji::class, 'lab_uji');
+    }
 }
