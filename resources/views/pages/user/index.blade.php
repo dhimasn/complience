@@ -27,9 +27,9 @@
                   <td>{{$user->category_user}}</td>
                   <td>{{$user->nama}}</td>
                   <td>
-                     <a class="btn btn-sm btn-info" href="{{route('user.detail', $user->id)}}">detail</a>
-                     <a class="btn btn-sm btn-warning" href="{{route('user.update', $user->id)}}">update</a>
-                     <a class="btn btn-sm btn-danger" href="{{route('user.delete', $user->id)}}">delete</a>
+                     <a class="btn btn-sm btn-info" href="{{route('user.detail', $user->username)}}">detail</a>
+                     <a class="btn btn-sm btn-warning" href="{{route('user.update', $user->username)}}">update</a>
+                     <a class="btn btn-sm btn-danger" href="{{route('user.delete', $user->username)}}">delete</a>
                   </td>
                   <td>{{$user->updated_at}}</td>
                 </tr>

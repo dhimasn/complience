@@ -54,8 +54,8 @@ class User
         return $result;
     }
 
-    public function getUserByIdUser($id_user){
-        $result = UserDB::where('id_user', $id_user)
+    public function getUserByUserName($username){
+        $result = UserDB::where('username', $username)
             ->first();
         return $result;
     }
@@ -68,11 +68,11 @@ class User
     }
 
     public function updateDataUser($dt){
-
-        $result = UserDB::where('state', 1)
-            ->where('id_user',$dt['id_user'])
-            ->update(['nama_user' => $dt['nama_user'],
-                'id_user_role'=> $dt['id_user_role']]);        
+        $result = UserDB::where('username', $dt->input('username'))
+            ->update(['name' => $dt->input('name'),
+                'email'=>  $dt->input('email'),
+                'password' =>  bcrypt($dt->input('password')),
+            ]);        
         return $result;
     }
 
