@@ -20,17 +20,29 @@ class User
         
     }
 
-    public function createUser($dt,$role){
-
-        $result = UserDB::create([
-            'username'=> $dt->input('username'),
-            'name' =>  $dt->input('name'),
-            'id_user_role' => $role,
-            'email'=>  $dt->input('email'),
-            'password' =>  bcrypt($dt->input('password')),
-        ]);
+    public function createUser($dt, $role){
+        $result = new UserDB();
+        $result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->id_user_role = $role;
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
         return $result;
+           
+    }
 
+    public function createUserLab($dt, $role){
+        $result = new UserDB();
+        $result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->id_user_role = $role;
+        $result->id_lab =$dt->input('id_lab');
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
+        return $result;
+           
     }
 
 
@@ -66,11 +78,14 @@ class User
     }
 
     public function updateDataUser($dt){
-        $result = UserDB::where('username', $dt->input('username'))
-            ->update(['name' => $dt->input('name'),
-                'email'=>  $dt->input('email'),
-                'password' =>  bcrypt($dt->input('password')),
-            ]);        
+      
+        $result = UserDB::where('username', $dt->input('username'));
+        //$result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->id_lab =$dt->input('id_lab');
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
         return $result;
     }
 

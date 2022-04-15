@@ -71,7 +71,7 @@ class KelolaUserController extends Controller
 
         }else{
 
-            $user = $this->UserDB->createUser($request, 3);
+            $user = $this->UserDB->createUserLab($request, 3);
 
             if($user){
                 Session::flash('success', 'Disimpan Kedalam Database');
