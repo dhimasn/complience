@@ -45,7 +45,7 @@
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
           <i class="fas fa-user-circle user-profile" style="min-width: 2rem;margin-right: 1rem;"></i>
-          <span class="nav-link-text">Admin</span>
+          <span class="nav-link-text">{{\Auth::user()->username}}</span>
         </a>
       </div>
       <div class="navbar-inner">
@@ -67,6 +67,7 @@
                 <span class="nav-link-text">High Risk Tool</span>
               </a>
             </li>
+            @if (\Auth::user()->id_user_role == 2 || \Auth::user()->id_user_role == 3)
             <li class="nav-item">
               <a data-toggle="collapse" href="#formuliCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'active' : ''}}" aria-controls="formuliCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'true' : 'false'}}">
                   <i class="fas fa-clipboard-list text-yellow-cus"></i>
@@ -74,6 +75,7 @@
               </a>
               <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'show' : ''}}" id="formuliCollapse" style="">
                 <ul class="nav ms-4">
+                  @if (\Auth::user()->id_user_role == 2)
                   <li class="nav-item ">
                     <a class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'active' : ''}}" data-toggle="collapse" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListPendataan']) ? 'true' : 'false'}}" href="#pendataanCollapse">
                       <span class="sidenav-normal"> Aktivasi Pendataan</span>
@@ -93,6 +95,8 @@
                       </ul>
                     </div>
                   </li>
+                  @endif
+                  @if (\Auth::user()->id_user_role == 3)
                   <li class="nav-item ">
                     <a class="nav-link {{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'active' : ''}}" data-toggle="collapse" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'true' : 'false'}}" href="#labUjiCollapse">
                       <span class="sidenav-normal"> Rekam Data Lab Uji</span>
@@ -112,9 +116,11 @@
                       </ul>
                     </div>
                   </li>
+                  @endif
                 </ul>
               </div>
             </li>
+            @endif
             <li class="nav-item">
               <a data-toggle="collapse" href="#masterDataCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'active' : ''}}" aria-controls="masterDataCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListMaster']) ? 'true' : 'false'}}">
                   <i class="fas fa-database text-yellow-cus"></i>
@@ -152,19 +158,34 @@
                       <span class="sidenav-normal">Produk Microsite</span>
                     </a>
                   </li>
+                  @if (\Auth::user()->id_user_role == 1 || \Auth::user()->id_user_role == 2)
                   <li class="nav-item">
                     <a class="nav-link {{\Request::route()->getName() == 'laboratorium.index' ? 'active' : ''}}" href="{{route('laboratorium.index')}}">
                       <span class="sidenav-normal">Laboratorium Uji</span>
                     </a>
                   </li>
+                  @endif
                 </ul>
               </div>
             </li>
+            @if (\Auth::user()->id_user_role == 1 || \Auth::user()->id_user_role == 2)
             <li class="nav-item">
               <a class="nav-link {{\Request::route()->getName() == 'user.index' ? 'active' : ''}}" href="{{route('user.index')}}">
                 <i class="fas fa-users text-yellow-cus"></i>
                 <span class="nav-link-text">Pengelolaan User</span>
               </a>
+            </li>
+            @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt text-yellow-cus"></i>
+                <span class="nav-link-text">Log Out</span>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
             </li>
           </ul>
 

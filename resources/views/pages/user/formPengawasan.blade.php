@@ -49,7 +49,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Password</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="Password" 
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="password" 
                   value="" type="text">
               </div>
             </div>

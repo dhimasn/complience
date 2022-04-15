@@ -124,7 +124,7 @@
               @foreach ($formData as $key => $formValue)
                 @if ($key == $item->id)
                 <div class="form-group">
-                  <label class="form-control-label">{{$item->data_point}}</label>
+                  <label class="form-control-label">{!!$item->data_point!!}</label>
                   {!!$helper->formRead($item->data_entry_type, $formValue)!!}
                 </div>
                 @endif

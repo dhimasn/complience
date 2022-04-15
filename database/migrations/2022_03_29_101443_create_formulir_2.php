@@ -19,6 +19,8 @@ class CreateFormulir2 extends Migration
             $table->integer('pengawas_id');
             $table->tinyInteger('sampel_sesuai');
             $table->longText('form_data');
+            $table->integer('lab_uji')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('1: created 2:sended');
             $table->timestamps();
         });
     }

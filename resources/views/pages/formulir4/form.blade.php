@@ -74,7 +74,7 @@
               <div class="form-group">
                 <input type="hidden" name="id_product" value="" id="id_product">
                 <label class="form-control-label">Nomor SHE/No Registrasi</label>
-                <select name="1" id="" class="form-control form-complience select2">
+                <select required name="1" id="" class="form-control form-complience select2">
                   <option value="" disabled selected="true">Pilih Nomor SHE/No Registrasi</option>
                   @foreach ($products as $id_product => $product)
                   <option value="{{$product['No. Registrasi/No. SHE']}}" data-id="{{$id_product}}"
@@ -84,15 +84,15 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Merek</label>
-                <input class="form-control form-complience" name="2" id="merek" value="" type="text">
+                <input class="form-control form-complience" required name="2" id="merek" value="" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kapasitas Pengenal (PK)</label>
-                <input class="form-control form-complience" name="3" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="3" placeholder="" value="" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Teknologi</label>
-                <select name="4" class="form-control form-complience">
+                <select required name="4" class="form-control form-complience">
                   <option value="Standard">Standard</option>
                   <option value="Fixed Speed">Fixed Speed</option>
                   <option value="Inverter">Inverter</option>
@@ -100,25 +100,25 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Model</label>
-                <input class="form-control form-complience" name="model" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="model" placeholder="" value="" type="text">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
-                <input class="form-control form-complience" name="5" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="5" placeholder="" value="" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kode atau Tanggal Produksi</label>
-                <input class="form-control form-complience" name="6" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="6" placeholder="" value="" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>
-                <input class="form-control form-complience" name="7" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="7" placeholder="" value="" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Harga</label>
-                <input class="form-control form-complience" name="8" placeholder="" value="" type="text">
+                <input class="form-control form-complience" required name="8" placeholder="" value="" type="text">
               </div>
             </div>
           </div>
@@ -141,41 +141,41 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="form-control-label">Lampirkan foto LTHE</label>
-                <input class="form-control" placeholder="" name="136" value="" type="file">
+                <input class="form-control" required name="136" value="" type="file">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="137" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="137" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Jumlah Bintang</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="138" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="138" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nilai Efisiensi Energi (EER/CSPF)</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="139" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="139" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Model Unit Dalam</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="140" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="140" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Model Unit Luar</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="141" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="141" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Daya</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="142" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="142" value=""
                   type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kapasitas Pendingin</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="143" value=""
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="143" value=""
                   type="text">
               </div>
             </div>

@@ -22,7 +22,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab->nama ?? "-"}}">
+                <input class="form-control form-complience" type="text" readonly value="{{\Auth::user()->labUji->nama}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
@@ -241,15 +241,15 @@
                 <tbody>
                   <tr>
                     <th>EER (Btu/h/W)</th>
-                    <td><input class="form-control form-complience inputFormula" id="eerPengujian_input" name="112[]"></td>
-                    <td><input class="form-control form-complience inputFormula" id="eerSHE_input" name="112[]"></td>
-                    <td><input class="form-control form-complience inputFormula" id="eerNP_input" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="eerPengujian_input" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="eerSHE_input" name="112[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="eerNP_input" name="112[]"></td>
                   </tr>
                   <tr>
                     <th>CSPF (Wh/Wh)</th>
-                    <td><input class="form-control form-complience inputFormula" id="cspfPengujian_input" name="113[]"></td>
-                    <td><input class="form-control form-complience inputFormula" id="cspfSHE_input" name="113[]"></td>
-                    <td><input class="form-control form-complience inputFormula" id="cspfNP_input" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="cspfPengujian_input" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="cspfSHE_input" name="113[]"></td>
+                    <td><input class="form-control form-complience inputFormula" required type="number" id="cspfNP_input" name="113[]"></td>
                   </tr>
                 </tbody>
               </table>

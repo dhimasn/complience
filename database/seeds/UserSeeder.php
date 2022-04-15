@@ -16,23 +16,25 @@ class UserSeeder extends Seeder
                 'username' => "superadmin",
                 'name' => "super budi",
                 'id_user_role' => 1,
-                'email' => "budisantoso@gmail.com",
-                'password' => bcrypt("1234"),
+                'id_lab' => null,
+                'email' => "admin@mail.com",
+                'password' => bcrypt("1234aa"),
             ],
             [
                 'username' => "tim pengawas",
                 'name' => "Santoso",
                 'id_user_role' => 2,
-                'email' => "santoso@gmail.com",
-                'password' => bcrypt("1234"), 
+                'id_lab' => null,
+                'email' => "pengawas@mail.com",
+                'password' => bcrypt("1234aa"), 
             ],
             [
                 'username' => "labstaff",
                 'name' => "andy",
                 'id_user_role' => 3,
                 'id_lab' => 3,
-                'email' => "andy@gmail.com",
-                'password' => bcrypt("1234"), 
+                'email' => "lab@mail.com",
+                'password' => bcrypt("1234aa"), 
             ]
 
         ]);

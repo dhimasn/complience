@@ -13,12 +13,15 @@ class UserRoleSeeder extends Seeder
     {
         \DB::table('user_roles')->insert([
             [
+                'id' => 1,
                 'category_user' => "Super Admin"
             ],
             [
+                'id' => 2,
                 'category_user' => "Pengawas"
             ],
             [
+                'id' => 3,
                 'category_user' => "Laboratorium"
             ]
         ]);

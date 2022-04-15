@@ -20,6 +20,7 @@ class CreateFormulir4 extends Migration
             $table->longText('form_data');
             $table->integer('lab_uji');
             $table->string('kegiatan_lainnya')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('1: created 2:sended');
             $table->timestamps();
         });
     }

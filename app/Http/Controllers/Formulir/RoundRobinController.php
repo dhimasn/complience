@@ -13,7 +13,9 @@ use Session;
 class RoundRobinController extends Controller
 {
     public function index(){
-        $complience = Complience::where('status', 3)->orderBy('updated_at', 'desc')->get();
+        $complience = Complience::whereHas('formulir4s', function ($q) {
+            $q->where('lab_uji', \Auth::user()->id_lab)->where('status', 1);
+         })->orderBy('updated_at', 'desc')->get();
         return view('pages.roundrobin.index', compact('complience'));
     }
     public function form($record_id){
