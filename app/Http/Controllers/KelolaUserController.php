@@ -114,12 +114,12 @@ class KelolaUserController extends Controller
         return view('pages.user.update', compact('user','listLab'));
     }
 
-    public function deleteUser(Request $request){
+    public function deleteUser($username){
         //delete database
-        //$user = $this->UserDB->updateDataUser($request);
+        $user = $this->UserDB->deleteDataUser($username);
 
         if($user){
-            Session::flash('success', 'Disimpan Kedalam Database');
+            Session::flash('success', 'Haspus data berhasil');
         } else {
             Session::flash('error');
         }
