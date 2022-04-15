@@ -15,7 +15,7 @@
 @endsection
 @section('contents')
 
-<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data"> 
+<form action="{{route('user.store3')}}" method="post" enctype="multipart/form-data"> 
 
   @csrf
   <div class="header-body">
@@ -49,8 +49,11 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Password</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name=password" 
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="password" 
                   value="" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control form-complience" type="hidden" name="record_id" value="{{$user->record_id}}">
               </div>
               @php
                 if(isset($user->id_lab)){

@@ -30,19 +30,24 @@ class KelolaLabUjiController extends Controller
         return redirect()->route('laboratorium.index');
     }
 
-    public function detail(){
-
+    public function store2(Request $request){
+        $labUji = new LabUji();
+        if ($labUji->storeData2($request)) {
+            Session::flash('success', 'Disimpan Kedalam Database');
+        } else {
+            Session::flash('error');
+        }
+        return redirect()->route('laboratorium.index');
     }
 
-    public function update($nama){
-        $lab = LabUji::where('nama', $nama)->first();
+    public function update($record_id){
+        $lab = LabUji::where('record_id', $record_id)->first();
         return view('pages.laboratorium.update', compact('lab'));
     }
 
-    public function delete($nama){
-        //delete database
-        $user = LabUji::where('nama', $nama)->delete();
+    public function delete($record_id){
 
+        $user = LabUji::where('record_id', $record_id)->delete();
         if($user){
             Session::flash('success', 'Haspus data berhasil');
         } else {

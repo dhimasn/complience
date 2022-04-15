@@ -26,8 +26,8 @@
                     <td>{{$i}}</td>
                     <td>{{$lab->nama}}</td>
                     <td>
-                      <a class="btn btn-sm btn-warning" href="{{route('laboratorium.update', $lab->nama)}}">update</a>
-                      <a class="btn btn-sm btn-danger" href="{{route('laboratorium.delete', $lab->nama)}}">delete</a>
+                      <a class="btn btn-sm btn-warning" href="{{route('laboratorium.update', $lab->record_id)}}">update</a>
+                      <a class="btn btn-sm btn-danger" href="{{route('laboratorium.delete', $lab->record_id)}}">delete</a>
                     </td>
                     <td>{{$lab->updated_at}}</td>
                   </tr>
