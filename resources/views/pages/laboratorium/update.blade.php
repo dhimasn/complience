@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'Update User')
+@section('title-menu', 'Tambah User Laboratorium')
 @section('styles')
 <link rel="stylesheet" href="{{asset('assets/vendor/select2/dist/css/select2.min.css')}}" type="text/css">
 <style>
@@ -14,14 +14,13 @@
 </style>
 @endsection
 @section('contents')
+<form action="{{route('laboratorium.store2')}}" method="post" enctype="multipart/form-data"> 
+@csrf
 
-<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data"> 
-
-  @csrf
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Detail User Pengawasan</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">Detail User Laboratorium</h6>
       </div>
     </div>
   </div>
@@ -33,40 +32,10 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label">Username</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="username" 
-                  value="{{$user->username}}" type="text">
+                <label class="form-control-label">Nama Laboratorium</label>
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="namalab" 
+                  value="{{$lab->nama}}" type="text">
               </div>
-              <div class="form-group">
-                <label class="form-control-label">name</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="name" 
-                  value="{{$user->name}}" type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">email</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="email" 
-                  value="{{$user->email}}" type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Password</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="Password" 
-                  value="" type="text">
-              </div>
-              @php
-                if(isset($user->id_lab)){
-              @endphp
-              <div class="form-group">
-                <label class="form-control-label">Laboratorium</label>
-                <select name="id_lab"  class="form-control form-complience">
-                  <option value="" disabled selected="true">Pilih Laboratorium</option>
-                  @foreach ($listLab as $id_Lab => $lab)
-                  <option value="{{$lab['id']}}">{{$lab['nama']}}</option>
-                  @endforeach
-                </select>
-              </div>
-              @php
-                }
-              @endphp
             </div>
           </div>
         </div>

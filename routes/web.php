@@ -76,27 +76,21 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::post('/user/store2','KelolaUserController@store2')->name('user.store2');  
     Route::get('/user/pilih','KelolaUserController@pilihUser')->name('user.pilih');  
     Route::get('/user/detail/{username}','KelolaUserController@GetDetailUser')->name('user.detail');
-    Route::get('/user/update/{username}','KelolaUserController@updateUser')->name('user.update');  
-    Route::post('/user/delete/{username}','KelolaUserController@deleteUser')->name('user.delete');
+    Route::post('/user/update/{username}','KelolaUserController@updateUser')->name('user.update');  
+    Route::get('/user/delete/{username}','KelolaUserController@deleteUser')->name('user.delete');
 
-
-    //kelola lab
-    // Route::get('lab','KelolaUserController@index')->name('laboratorium.index');
-    // Route::get('/lab/create/lab','KelolaUserController@formLaboratorium')->name('laboratorium.add');
-    // Route::post('/lab/store','KelolaUserController@store')->name('laboratorium.store');  
-    // Route::get('/lab/detail/{id}','KelolaUserController@GetDetailUser')->name('laboratorium.detail');
-    // Route::post('/lab/update','KelolaUserController@updateUser')->name('laboratorium.update');  
-    // Route::post('/lab/delete','KelolaUserController@deleteUser')->name('laboratorium.delete');
 
     //kelola lab
     Route::get('lab','KelolaLabUjiController@index')->name('laboratorium.index');
     Route::get('/lab/create/lab','KelolaLabUjiController@formLaboratorium')->name('laboratorium.add');
     Route::post('/lab/store','KelolaLabUjiController@store')->name('laboratorium.store');  
-    Route::get('/lab/detail/{id}','KelolaLabUjiController@GetDetailUser')->name('laboratorium.detail');
-    Route::post('/lab/update','KelolaLabUjiController@updateUser')->name('laboratorium.update');  
-    Route::post('/lab/delete','KelolaLabUjiController@deleteUser')->name('laboratorium.delete');
+    Route::post('/lab/store2','KelolaLabUjiController@store2')->name('laboratorium.store2');
+    Route::get('/lab/update/{nama}','KelolaLabUjiController@update')->name('laboratorium.update');  
+    Route::get('/lab/delete/{nama}','KelolaLabUjiController@delete')->name('laboratorium.delete');
+
 });
+
 // Route::get('/home', 'HomeController@index')->name('home');
-
-
 Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');

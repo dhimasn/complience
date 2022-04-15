@@ -14,10 +14,9 @@
 </style>
 @endsection
 @section('contents')
+<form action="{{route('laboratorium.store')}}" method="post" enctype="multipart/form-data"> 
+@csrf
 
-<form action="{{route('user.store2')}}" method="post" enctype="multipart/form-data"> 
-
-  @csrf
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
@@ -33,38 +32,10 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label">Username</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="username" 
+                <label class="form-control-label">Nama Laboratorium</label>
+                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="namalab" 
                   value="" type="text">
               </div>
-              <div class="form-group">
-                <label class="form-control-label">name</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="name" 
-                  value="" type="text">
-              </div>
-              
-              <div class="form-group">
-                <label class="form-control-label">email</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="email" 
-                  value="" type="text">
-              </div>
-
-              <div class="form-group">
-                <label class="form-control-label">Laboratorium</label>
-                <select name="id_lab"  class="form-control form-complience">
-                  <option value="" disabled selected="true">Pilih Laboratorium</option>
-                  @foreach ($listLab as $id_Lab => $lab)
-                  <option value="{{$lab['id']}}">{{$lab['nama']}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="form-control-label">Password</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" name="Password" 
-                  value="" type="text">
-              </div>
-
             </div>
           </div>
         </div>
