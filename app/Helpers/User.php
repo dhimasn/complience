@@ -60,10 +60,8 @@ class User
         return $result;
     }
 
-    public function deleteDataUser($idUser){
-        $result = UserDB::where('state', 1)
-                ->where('id_user',$idUser)
-                ->update(['state' => 4]);
+    public function deleteDataUser($username){
+        $result = UserDB::where('username', $username)->delete();
         return $result;
     }
 

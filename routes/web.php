@@ -81,11 +81,11 @@ Route::post('/user/delete/{username}','KelolaUserController@deleteUser')->name('
 
 
 //kelola lab
-Route::get('lab','KelolaUserController@index')->name('laboratorium.index');
-Route::get('/lab/create/lab','KelolaUserController@formLaboratorium')->name('laboratorium.add');
-Route::post('/lab/store','KelolaUserController@store')->name('laboratorium.store');  
-Route::get('/lab/detail/{id}','KelolaUserController@GetDetailUser')->name('laboratorium.detail');
-Route::post('/lab/update','KelolaUserController@updateUser')->name('laboratorium.update');  
-Route::post('/lab/delete','KelolaUserController@deleteUser')->name('laboratorium.delete');
+Route::get('lab','KelolaLabUjiController@index')->name('laboratorium.index');
+Route::get('/lab/create/lab','KelolaLabUjiController@formLaboratorium')->name('laboratorium.add');
+Route::post('/lab/store','KelolaLabUjiController@store')->name('laboratorium.store');  
+Route::get('/lab/detail/{id}','KelolaLabUjiController@GetDetailUser')->name('laboratorium.detail');
+Route::post('/lab/update','KelolaLabUjiController@updateUser')->name('laboratorium.update');  
+Route::post('/lab/delete','KelolaLabUjiController@deleteUser')->name('laboratorium.delete');
 
 Route::get('/home', 'HomeController@index')->name('home');
