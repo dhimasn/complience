@@ -36,6 +36,9 @@
                 <input class="form-control form-complience" placeholder="Masukan Jawaban" name="namalab" 
                   value="{{$lab->nama}}" type="text">
               </div>
+              <div class="form-group">
+                <input class="form-control form-complience" type="hidden" name="record_id" value="{{$lab->record_id}}">
+              </div>
             </div>
           </div>
         </div>

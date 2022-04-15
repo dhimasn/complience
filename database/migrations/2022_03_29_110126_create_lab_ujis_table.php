@@ -15,6 +15,7 @@ class CreateLabUjisTable extends Migration
     {
         Schema::create('lab_ujis', function (Blueprint $table) {
             $table->id();
+            $table->string('record_id');
             $table->string('nama');
             $table->timestamps();
         });
