@@ -12,6 +12,7 @@
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
               <thead class="thead-comp">
+                <th>No</th>
                 <th>User Name</th>
                 <th>email </th>
                 <th>Role</th>
@@ -20,8 +21,12 @@
                 <th>Tanggal Update</th>
               </thead>
               <tbody>
+                @php
+                  $i = 1;
+                @endphp
                 @foreach ($users as $user)
                 <tr>
+                  <td>{{$i}}</td>
                   <td>{{$user->username}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->category_user}}</td>
@@ -33,6 +38,9 @@
                   </td>
                   <td>{{$user->updated_at}}</td>
                 </tr>
+                @php
+                  $i++;
+                @endphp
                 @endforeach
               </tbody>
             </table>
