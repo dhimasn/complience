@@ -28,7 +28,8 @@ class Formulir3 extends Model
         // $forms = FormData::where('jenis_form', $jenis_form)->get();
         $store = $this;
         $store->record_id = $record_id;
-        $store->pengawas_id = 2; // dummy
+        $store->pengawas_id = \Auth::user()->id;
+        $store->lab_uji = \Auth::user()->id_lab;
         $store->form_data = json_encode($request->except(['_token', 'record_id','sampel_sesuai']));
         // $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
         $store->save();
@@ -37,5 +38,12 @@ class Formulir3 extends Model
         $complience = Complience::where('record_id', $record_id)->first();
         $complience->status = $status;
         $complience->save();
+
+        $complience = Formulir2::where('record_id', $record_id)->where('lab_uji', \Auth::user()->id_lab)->first();
+        $complience->status = 2;
+        $complience->save();
+    }
+    public function lab(){
+        return $this->belongsTo(LabUji::class, 'lab_uji');
     }
 }

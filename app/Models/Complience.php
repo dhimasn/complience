@@ -35,5 +35,11 @@ class Complience extends Model
     public function formulir3s(){
         return $this->hasMany(Formulir3::class, 'record_id', 'record_id');
     }
+    public function formulir2s(){
+        return $this->hasMany(Formulir2::class, 'record_id', 'record_id');
+    }
+    public function ujipetiks(){
+        return $this->hasMany(Uji_petik::class, 'record_id', 'record_id');
+    }
     
 }

@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Models\UserRole;
+use App\Models\LabUji;
+use App\Models\UserRoleDB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +41,9 @@ class User extends Authenticatable
     ];
 
     public function role_user(){
-        return $this->belongsTo(UserRole::class, 'id_user_role');
+        return $this->belongsTo(UserRoleDB::class, 'id_user_role');
+    }
+    public function labUji(){
+        return $this->belongsTo(LabUji::class, 'id_lab');
     }
 }

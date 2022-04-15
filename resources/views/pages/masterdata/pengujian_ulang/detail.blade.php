@@ -117,7 +117,7 @@
 </div>
 <div id="nav-pills-tabs-component" class="tab-pane tab-example-result fade active show" role="tabpanel"
   aria-labelledby="nav-pills-tabs-component-tab">
-  <div class="nav-wrapper">
+  <div class="nav-wrapper pb-0">
     <ul class="nav nav-pills nav-fill flex-column d-flex flex-md-row" id="tabs-icons-text" role="tablist">
       <li class="nav-item">
         <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab"
@@ -133,10 +133,11 @@
           role="tab" aria-controls="tabs-icons-text-3" aria-selected="false">Hasil Pengujian</a>
       </li>
     </ul>
+    <hr class="my-3 p-0">
   </div>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade active show" id="tabs-icons-text-1">
-      <div class="header-body">
+      {{-- <div class="header-body">
         <div class="row align-items-center pb-1 ml-2">
           <div class="col-lg-12">
             <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual</h6>
@@ -193,54 +194,127 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-      @foreach ($forms as $form)
-      <div class="header-body">
-        <div class="row align-items-center pb-1 ml-2">
-          <div class="col-lg-12">
-            <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
+      </div> --}}
+      @foreach ($dataForm4 as $form)
+        <div class="header-body">
+          <div class="row align-items-center pb-1 ml-2">
+            <div class="col-lg-12">
+              <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  @foreach ($form->childForm as $child)
-                  <div class="form-group">
-                    <label class="form-control-label">{!!nl2br($child->data_point)!!}</label><br>
-                    {!!$helpers->formInput($child->data_entry_type, $child->id, $child->data_input)!!}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    @foreach ($form->childForm as $child)
+                      @foreach ($valueForm4 as $key => $formValue)
+                        @if ($key == $child->id)
+                        <div class="form-group">
+                          <label class="form-control-label">{!!$child->data_point!!}</label>
+                          {!!$helpers->formRead($child->data_entry_type, $formValue)!!}
+                        </div>
+                        @endif
+                      @endforeach
+                    @endforeach
                   </div>
-                  @endforeach
                 </div>
               </div>
             </div>
           </div>
         </div>
+        @endforeach
+    </div>
+    <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+      <div id="tab-sampelUjis" class="tab-pane tab-example-result fade active show" role="tabpanel"
+        aria-labelledby="tab-sampelUjis-tab">
+        <div class="nav-wrapper pb-0">
+          <ul class="nav nav-pills nav-fill flex-column d-flex flex-md-row" id="tab-sampelUji" role="tablist">
+            @forelse ($complience->formulir2s as $form2)
+            <li class="nav-item mb-3">
+              <a class="nav-link mb-sm-3 mb-md-0 {{$loop->iteration == 1 ? " active" : '' }}"
+                id="tab-sampelUji-{{$loop->iteration}}-tab" data-toggle="tab" href="#tab-sampelUji-{{$loop->iteration}}" role="tab"
+                aria-controls="tab-sampelUji-{{$loop->iteration}}" aria-selected="true">{{$form2->lab->nama}}</a>
+            </li>
+            @empty
+            <div class="row pb-5 mx-auto">
+              <div class="col-lg-12 text-center">
+                <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Sampel Uji Belum Tersedia</h6>
+              </div>
+            </div>
+            @endforelse
+          </ul>
+        </div>
+        <div class="tab-content" id="pemeriksaanSampel">
+          @foreach ($complience->formulir2s as $form2)
+          <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-sampelUji-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-sampelUji-{{$loop->iteration}}">
+            @foreach ($dataForm2 as $form)
+            <div class="header-body">
+              <div class="row align-items-center pb-1 ml-2">
+                <div class="col-lg-12">
+                  <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        @foreach ($form->childForm as $child)
+                          @foreach ($valueForm2 as $key => $formValue)
+                            @if ($key == $child->id)
+                            <div class="form-group">
+                              <label class="form-control-label">{!!$child->data_point!!}</label>
+                              {!!$helpers->formRead($child->data_entry_type, $formValue)!!}
+                            </div>
+                            @endif
+                          @endforeach
+                        @endforeach
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
+          @endforeach
+        </div>
       </div>
-      @endforeach
     </div>
     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-      @include('pages.masterdata.partials.formulir3')
+      <div id="tab-hasilPengujians" class="tab-pane tab-example-result fade active show" role="tabpanel"
+        aria-labelledby="tab-hasilPengujians-tab">
+        <div class="nav-wrapper pb-0">
+          <ul class="nav nav-pills nav-fill flex-column d-flex flex-md-row" id="tab-hasilPengujian" role="tablist">
+            @forelse($complience->formulir3s as $form3)
+            <li class="nav-item mb-3">
+              <a class="nav-link mb-sm-3 mb-md-0 {{$loop->iteration == 1 ? " active" : '' }}"
+                id="tab-hasilPengujian-{{$loop->iteration}}-tab" data-toggle="tab" href="#tab-hasilPengujian-{{$loop->iteration}}" role="tab"
+                aria-controls="tab-hasilPengujian-{{$loop->iteration}}" aria-selected="true">{{$form3->lab->nama}}</a>
+            </li>
+            @empty
+              <div class="row pb-5 mx-auto">
+                <div class="col-lg-12 text-center">
+                  <h6 class="h2 text-black d-inline-block mb-0">Hasil Pengujian Belum Tersedia</h6>
+                </div>
+              </div>
+            @endforelse 
+          </ul>
+        </div>
+        <div class="tab-content" id="hasilPengujian">
+          @foreach ($complience->formulir3s as $form3)
+          <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-hasilPengujian-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-hasilPengujian-{{$loop->iteration}}">
+            @include('pages.masterdata.partials.formulir3')
+          </div>
+          @endforeach
+        </div>
+      </div>
     </div>
   </div>
 </div>
-@endsection
-@section('scripts')
-<script src="{{asset('assets/vendor/select2/dist/js/select2.full.min.js')}}"></script>
-<script>
-  $(document).ready(function() {
-    $('.select2').select2();
-  });
-  $('.select2').change(function(){
-    var id = $(this).find(':selected').data('id');
-    var merek = $(this).find(':selected').data('merek');
-    $("#id_product").val(id);
-    $("#merek").val(merek);
-  });
-</script>
 @endsection

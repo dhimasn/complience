@@ -42,18 +42,26 @@ class UjiPetikController extends Controller
         );
         $complience = Complience::where('record_id', $record_id)->first();
         if (!empty($complience)) {
-            $formData = json_decode($complience->formulir1->form_data, true);
-            $keyForm = array();
-            foreach ($formData as $key => $value) {
-                $keyForm[] = $key;
-            }
-            $formsInspeksi = FormCategory::whereHas('childForm', function($q) use($keyForm){
-                $q->whereIn('id', $keyForm);
+            $inspeksi = json_decode($complience->ujipetiks->form_data, true);
+            $sampeUji = json_decode($complience->formulir2->form_data, true);
+            $hasilPengujian = json_decode($complience->formulir3->form_data, true);
+            
+            $formsInspeksi = FormCategory::whereHas('childForm', function($q) use($inspeksi){
+                $q->whereIn('id', array_keys($inspeksi));
+            })->get();
+            $formsSampeUji = FormCategory::whereHas('childForm', function($q) use($sampeUji){
+                $q->whereIn('id', array_keys($sampeUji));
             })->get();
             $helper = new GeneralHelper();
-            $forms = FormCategory::where('jenis_form', 5)->get();
-            $helper = new GeneralHelper();
-            return view('pages.masterdata.uji_petik.detail', compact('forms', 'helper', 'complience', 'pengujianForm','formsInspeksi','formData'));
+            return view('pages.masterdata.uji_petik.detail', compact(
+                'helper', 
+                'complience', 
+                'inspeksi',
+                'sampeUji',
+                'hasilPengujian',
+                'formsInspeksi',
+                'formsSampeUji',
+                'pengujianForm'));
         } else {
             abort(404);
         }
