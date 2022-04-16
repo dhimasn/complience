@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\GeneralHelper;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -15,6 +16,7 @@ class UserSeeder extends Seeder
             [
                 'username' => "superadmin",
                 'name' => "super budi",
+                'record_id' => GeneralHelper::generateRecordId(),
                 'id_user_role' => 1,
                 'id_lab' => null,
                 'email' => "admin@mail.com",
@@ -23,6 +25,7 @@ class UserSeeder extends Seeder
             [
                 'username' => "tim pengawas",
                 'name' => "Santoso",
+                'record_id' => GeneralHelper::generateRecordId(),
                 'id_user_role' => 2,
                 'id_lab' => null,
                 'email' => "pengawas@mail.com",
@@ -31,6 +34,7 @@ class UserSeeder extends Seeder
             [
                 'username' => "labstaff",
                 'name' => "andy",
+                'record_id' => GeneralHelper::generateRecordId(),
                 'id_user_role' => 3,
                 'id_lab' => 3,
                 'email' => "lab@mail.com",

@@ -20,17 +20,35 @@ class User
         
     }
 
-    public function createUser($dt,$role){
+    public function createUser($dt, $role){
 
-        $result = UserDB::create([
-            'username'=> $dt->input('username'),
-            'name' =>  $dt->input('name'),
-            'id_user_role' => $role,
-            'email'=>  $dt->input('email'),
-            'password' =>  bcrypt($dt->input('password')),
-        ]);
+        $record_id = GeneralHelper::generateRecordId();
+        $result = new UserDB();
+        $result->record_id = $record_id;
+        $result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->id_user_role = $role;
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
         return $result;
+           
+    }
 
+    public function createUserLab($dt, $role){
+
+        $record_id = GeneralHelper::generateRecordId();
+        $result = new UserDB();
+        $result->record_id = $record_id;
+        $result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->id_user_role = $role;
+        $result->id_lab =$dt->input('id_lab');
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
+        return $result;
+           
     }
 
 
@@ -48,29 +66,41 @@ class User
     }
 
     public function getListDataUser(){
-        $result = UserDB::join('user_roles','user_roles.id','=','users.id_user_role')
+        $result = UserDB::leftjoin('user_roles','user_roles.id','=','users.id_user_role')
         ->leftjoin('lab_ujis','lab_ujis.id','=','users.id_lab')
+        ->select(
+            'users.record_id',
+            'users.username',
+            'users.email',
+            'users.updated_at',
+            'user_roles.category_user',
+            'lab_ujis.nama'
+        )
         ->get();
         return $result;
     }
 
-    public function getUserByUserName($username){
-        $result = UserDB::where('username', $username)
+    public function getUserByRecordId($record_id){
+        $result = UserDB::where('record_id', $record_id)
             ->first();
         return $result;
     }
 
-    public function deleteDataUser($username){
-        $result = UserDB::where('username', $username)->delete();
+    public function deleteDataUser($record_id){
+        $result = UserDB::where('record_id', $record_id)->delete();
         return $result;
     }
 
     public function updateDataUser($dt){
-        $result = UserDB::where('username', $dt->input('username'))
-            ->update(['name' => $dt->input('name'),
-                'email'=>  $dt->input('email'),
-                'password' =>  bcrypt($dt->input('password')),
-            ]);        
+        $result = UserDB::where('record_id', $dt->input('record_id'))->first();
+        if(isset($result->id_lab)){
+            $result->id_lab =$dt->input('id_lab');
+        }
+        $result->username = $dt->input('username');
+        $result->name = $dt->input('name');
+        $result->email = $dt->input('email');
+        $result->password =bcrypt($dt->input('password'));
+        $result->save();
         return $result;
     }
 

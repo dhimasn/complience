@@ -71,7 +71,7 @@ class KelolaUserController extends Controller
 
         }else{
 
-            $user = $this->UserDB->createUser($request, 3);
+            $user = $this->UserDB->createUserLab($request, 3);
 
             if($user){
                 Session::flash('success', 'Disimpan Kedalam Database');
@@ -100,23 +100,23 @@ class KelolaUserController extends Controller
 
     }
 
-    public function GetDetailUser($username){
-        $user = $this->UserDB->getUserByUserName($username);
+    public function GetDetailUser($record_id){
+        $user = $this->UserDB->getUserByRecordId($record_id);
         return view('pages.user.detail', compact('user'));
     }
 
-    public function updateUser($username){
+    public function updateUser($record_id){
         $listLab = null;
-        $user = $this->UserDB->getUserByUserName($username);
+        $user = $this->UserDB->getUserByRecordId($record_id);
         if(!empty($user->id_lab)){
             $listLab = $this->UserDB->getListLabRole();
         }
         return view('pages.user.update', compact('user','listLab'));
     }
 
-    public function deleteUser($username){
+    public function deleteUser($record_id){
         //delete database
-        $user = $this->UserDB->deleteDataUser($username);
+        $user = $this->UserDB->deleteDataUser($record_id);
 
         if($user){
             Session::flash('success', 'Haspus data berhasil');
