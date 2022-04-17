@@ -41,6 +41,7 @@ class UjiPetikController extends Controller
             'EER (Btu/h/W)',
         );
         $complience = Complience::where('record_id', $record_id)->first();
+        $formsSampeUji = false;
         if (!empty($complience)) {
             $inspeksi = json_decode($complience->ujipetiks->form_data, true);
             $sampeUji = json_decode($complience->formulir2->form_data, true);

@@ -126,10 +126,11 @@
       </div>
     </div>
   </div>
+  @foreach ($forms as $form)
   <div class="header-body">
     <div class="row align-items-center pb-1 ml-2">
       <div class="col-lg-12">
-        <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual</h6>
+        <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
       </div>
     </div>
   </div>
@@ -139,55 +140,23 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
+              @foreach ($form->childForm as $child)
               <div class="form-group">
-                <label class="form-control-label">Lampirkan foto LTHE</label>
-                <input class="form-control" required name="136" value="" type="file">
+                <label class="form-control-label">{!!nl2br($child->data_point)!!}</label><br>
+                {!!$helpers->formInput($child->data_entry_type, $child->id, $child->data_input)!!}
               </div>
-              <div class="form-group">
-                <label class="form-control-label">Nomor SHE</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="137" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Jumlah Bintang</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="138" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Nilai Efisiensi Energi (EER/CSPF)</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="139" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Model Unit Dalam</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="140" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Model Unit Luar</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="141" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Daya</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="142" value=""
-                  type="text">
-              </div>
-              <div class="form-group">
-                <label class="form-control-label">Kapasitas Pendingin</label>
-                <input class="form-control form-complience" placeholder="Masukan Jawaban" required name="143" value=""
-                  type="text">
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
       </div>
-      <div class="text-center mb-6">
-        <button class="btn btn-yellow button-comp" submit>
-          Kirim untuk Aktivasi Formulir di Lab Uji
-        </button>
-      </div>
     </div>
+  </div>
+  @endforeach
+  <div class="text-center mb-6">
+    <button class="btn btn-yellow button-comp" submit>
+      Kirim untuk Aktivasi Formulir di Lab Uji
+    </button>
   </div>
 </form>
 @endsection

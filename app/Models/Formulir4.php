@@ -37,7 +37,7 @@ class Formulir4 extends Model
                 $forms = FormData::where('jenis_form', 4)->get();
                 $store = new Formulir4();
                 $store->record_id = $record_id;
-                $store->pengawas_id = 2; // dummy
+                $store->pengawas_id = \Auth::user()->id;
                 $store->lab_uji = $lab_uji;
                 $store->kegiatan_lainnya = $request->input('kegiatan_lainnya') !== "" ? $request->input('kegiatan_lainnya') : null;
                 $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
