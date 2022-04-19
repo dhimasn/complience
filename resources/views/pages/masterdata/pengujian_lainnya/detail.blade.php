@@ -32,21 +32,8 @@
                 value="{{$complience->record_id}}">
             </div>
             <div class="form-group">
-              <label class="form-control-label">Laboratorium Pengujian</label>
-              <input class="form-control form-complience" type="text" readonly
-                value="{{$complience->lab->nama ?? '-'}}">
-            </div>
-            <div class="form-group">
               <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
-              <input class="form-control form-complience" type="text" readonly value="{{$complience->updated_at}}">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Nama Petugas Pemeriksa</label>
-              <input class="form-control form-complience" type="text">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Nama Petugas Persetujuan</label>
-              <input class="form-control form-complience" type="text">
+              <input class="form-control form-complience" type="text" readonly value="{{$complience->created_at}}">
             </div>
           </div>
         </div>
@@ -137,64 +124,6 @@
   </div>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade active show" id="tabs-icons-text-1">
-      {{-- <div class="header-body">
-        <div class="row align-items-center pb-1 ml-2">
-          <div class="col-lg-12">
-            <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Visual</h6>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-control-label">Lampirkan foto LTHE</label>
-                    <input class="form-control" placeholder="" name="136" value="" type="file">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Nomor SHE</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="137" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Jumlah Bintang</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="138" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Nilai Efisiensi Energi (EER/CSPF)</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="139" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Model Unit Dalam</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="140" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Model Unit Luar</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="141" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Daya</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="142" value=""
-                      type="text">
-                  </div>
-                  <div class="form-group">
-                    <label class="form-control-label">Kapasitas Pendingin</label>
-                    <input class="form-control form-complience" placeholder="Masukan Jawaban" name="143" value=""
-                      type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --}}
       @foreach ($dataForm4 as $form)
         <div class="header-body">
           <div class="row align-items-center pb-1 ml-2">
@@ -250,6 +179,39 @@
         <div class="tab-content" id="pemeriksaanSampel">
           @foreach ($complience->formulir2s as $form2)
           <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-sampelUji-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-sampelUji-{{$loop->iteration}}">
+            <div class="header-body">
+              <div class="row align-items-center pb-1 ml-2">
+                <div class="col-lg-12">
+                  <h6 class="h2 text-black d-inline-block mb-0">Informasi Lab</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label">Tanggal & Waktu Input</label>
+                          <input class="form-control form-complience" type="text" readonly value="{{$form2->updated_at}}">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Nama Pemeriksa</label>
+                          <input class="form-control form-complience" type="text" readonly
+                            value="{{$form2->nama_pemeriksan}}">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Nama Persetujuan</label>
+                          <input class="form-control form-complience" type="text" readonly
+                            value="{{$form2->nama_persetujuan}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             @foreach ($dataForm2 as $form)
             <div class="header-body">
               <div class="row align-items-center pb-1 ml-2">

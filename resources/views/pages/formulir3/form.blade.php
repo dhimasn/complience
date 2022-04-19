@@ -30,11 +30,11 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Pemeriksa</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_pemeriksa" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Persetujuan</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_persetujuan" type="text">
               </div>
             </div>
           </div>
@@ -323,8 +323,6 @@
         let cspfNP_input = parseInt($("#cspfNP_input").val());
 
         let eerSHE = ((eerPengujian_input/eerSHE_input) * 100) - 100;
-        console.log(eerPengujian_input);
-        console.log(eerSHE_input);
         let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
         let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
         let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;

@@ -13,7 +13,8 @@ class RoundRobinController extends Controller
     public function index()
     {
         $compliences = Complience::where('kegiatan', 3)->orderBy('updated_at', 'desc')->get();
-        return view('pages.masterdata.round_robin.index', compact('compliences'));
+        $status = config('global.status');
+        return view('pages.masterdata.round_robin.index', compact('compliences','status'));
     }
     public function detail($record_id)
     {
@@ -40,18 +41,20 @@ class RoundRobinController extends Controller
             'EER (Btu/h/W)',
         );
         $complience = Complience::where('record_id', $record_id)->first();
+        $dataForm2 = false;
         if (!empty($complience)) {
             $valueForm4 = json_decode($complience->formulir4->form_data, true);
-            $valueForm2 = json_decode($complience->formulir2->form_data, true);
-            $valueForm3 = json_decode($complience->formulir3->form_data, true);
+            $valueForm2 = isset($complience->formulir2->form_data) ? json_decode($complience->formulir2->form_data, true) :false;
+            $valueForm3 = isset($complience->formulir3->form_data) ? json_decode($complience->formulir3->form_data, true) :false;
             $dataForm4 = FormCategory::whereHas('childForm', function($q) use($valueForm4){
                 $q->whereIn('id', array_keys($valueForm4));
             })->get();
             
-            $dataForm2 = FormCategory::whereHas('childForm', function($q) use($valueForm2){
-                $q->whereIn('id', array_keys($valueForm2));
-            })->get();
-            // dd($valueForm3);
+            if($valueForm2){
+                $dataForm2 = FormCategory::whereHas('childForm', function($q) use($valueForm2){
+                    $q->whereIn('id', array_keys($valueForm2));
+                })->get();
+            }
             $helpers = new GeneralHelper();
         } else {
             abort(404);

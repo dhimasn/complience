@@ -18,7 +18,9 @@ class CreateFormulir3 extends Migration
             $table->string('record_id');
             $table->integer('pengawas_id');
             $table->longText('form_data');
-            $table->integer('lab_uji');
+            $table->integer('lab_uji')->nullable();
+            $table->string('nama_pemeriksan')->nullable();
+            $table->string('nama_persetujuan')->nullable();
             $table->timestamps();
         });
     }

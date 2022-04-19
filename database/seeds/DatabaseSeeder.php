@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterColumnSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(LabUjiSeeder::class);
-        $this->call(FromCategorySeeder::class);      
+        $this->call(FromCategorySeeder::class);    
+        \Artisan::call('passport:install');  
     }
 }

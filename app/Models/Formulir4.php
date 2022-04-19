@@ -19,7 +19,7 @@ class Formulir4 extends Model
             $complience = new Complience();
             $complience->record_id = $record_id;
             $complience->product_id = $request->input('id_product');
-            $complience->pengawas_id = 2;
+            $complience->pengawas_id = \Auth::user()->id;
             $complience->no_she = $request->input('1');
             $complience->merek = $request->input('2');
             $complience->kapasitas = $request->input('3');
@@ -37,7 +37,7 @@ class Formulir4 extends Model
                 $forms = FormData::where('jenis_form', 4)->get();
                 $store = new Formulir4();
                 $store->record_id = $record_id;
-                $store->pengawas_id = 2; // dummy
+                $store->pengawas_id = \Auth::user()->id;
                 $store->lab_uji = $lab_uji;
                 $store->kegiatan_lainnya = $request->input('kegiatan_lainnya') !== "" ? $request->input('kegiatan_lainnya') : null;
                 $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");

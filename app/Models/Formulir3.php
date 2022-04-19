@@ -25,13 +25,15 @@ class Formulir3 extends Model
 
     protected function storeFormulir($request, $jenis_form){
         $record_id = $request->input('record_id');
-        // $forms = FormData::where('jenis_form', $jenis_form)->get();
+        $forms = FormData::where('jenis_form', $jenis_form)->get();
         $store = $this;
         $store->record_id = $record_id;
         $store->pengawas_id = \Auth::user()->id;
         $store->lab_uji = \Auth::user()->id_lab;
-        $store->form_data = json_encode($request->except(['_token', 'record_id','sampel_sesuai']));
-        // $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
+        $store->nama_pemeriksan = $request->input('nama_pemeriksa');
+        $store->nama_persetujuan = $request->input('nama_persetujuan');
+        // $store->form_data = json_encode($request->except(['_token', 'record_id','sampel_sesuai']));
+        $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "formulir_3");
         $store->save();
     }
     protected function updateComplience($record_id, $status){

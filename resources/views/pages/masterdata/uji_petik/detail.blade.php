@@ -40,14 +40,6 @@
               <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
               <input class="form-control form-complience" type="text" readonly value="{{$complience->updated_at}}">
             </div>
-            <div class="form-group">
-              <label class="form-control-label">Nama Petugas Pemeriksa</label>
-              <input class="form-control form-complience" type="text">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Nama Petugas Persetujuan</label>
-              <input class="form-control form-complience" type="text">
-            </div>
           </div>
         </div>
       </div>
@@ -153,7 +145,7 @@
                       @foreach ($inspeksi as $key => $formValue)
                         @if ($key == $item->id)
                         <div class="form-group">
-                          <label class="form-control-label">{{$item->data_point}}</label>
+                          <label class="form-control-label">{!!$item->data_point!!}</label>
                           {!!$helper->formRead($item->data_entry_type, $formValue)!!}
                         </div>
                         @endif
@@ -168,40 +160,95 @@
       @endforeach
     </div>
     <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-      @foreach ($formsSampeUji as $form)
-      <div class="header-body">
-        <div class="row align-items-center pb-1 ml-2">
-          <div class="col-lg-12">
-            <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
-          </div>
+      @if (!$formsSampeUji)
+      <div class="row pb-5 mx-auto">
+        <div class="col-lg-12 text-center">
+          <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Sampel Uji Belum Tersedia</h6>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12">
-                  @foreach ($form->childForm as $item)
-                    @foreach ($sampeUji as $key => $formValue)
-                      @if ($key == $item->id)
-                      <div class="form-group">
-                        <label class="form-control-label">{!!$item->data_point!!}</label>
-                        {!!$helper->formRead($item->data_entry_type, $formValue)!!}
-                      </div>
-                      @endif
-                    @endforeach
-                  @endforeach
+      @else
+        <div class="header-body">
+          <div class="row align-items-center pb-1 ml-2">
+            <div class="col-lg-12">
+              <h6 class="h2 text-black d-inline-block mb-0">Informasi Lab</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label">Tanggal & Waktu Input</label>
+                      <input class="form-control form-complience" type="text" readonly value="{{$complience->formulir2->updated_at}}">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label">Nama Pemeriksa</label>
+                      <input class="form-control form-complience" type="text" readonly
+                        value="{{$complience->formulir2->nama_pemeriksan}}">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label">Nama Persetujuan</label>
+                      <input class="form-control form-complience" type="text" readonly
+                        value="{{$complience->formulir2->nama_persetujuan}}">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      @endforeach
+        @forelse ($formsSampeUji as $form)
+        <div class="header-body">
+          <div class="row align-items-center pb-1 ml-2">
+            <div class="col-lg-12">
+              <h6 class="h2 text-black d-inline-block mb-0">{{$form->title}}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    @foreach ($form->childForm as $item)
+                      @foreach ($sampeUji as $key => $formValue)
+                        @if ($key == $item->id)
+                        <div class="form-group">
+                          <label class="form-control-label">{!!$item->data_point!!}</label>
+                          {!!$helper->formRead($item->data_entry_type, $formValue)!!}
+                        </div>
+                        @endif
+                      @endforeach
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @empty
+        <div class="row pb-5 mx-auto">
+          <div class="col-lg-12 text-center">
+            <h6 class="h2 text-black d-inline-block mb-0">Pemeriksaan Sampel Uji Belum Tersedia</h6>
+          </div>
+        </div>
+        @endforelse
+      @endif
     </div>
     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-      @include('pages.masterdata.partials.formulir3')
+      @if ($valueForm3)
+        @include('pages.masterdata.partials.formulir3')
+      @else
+      <div class="row pb-5 mx-auto">
+        <div class="col-lg-12 text-center">
+          <h6 class="h2 text-black d-inline-block mb-0">Hasil Pengujian Belum Tersedia</h6>
+        </div>
+      </div>
+      @endif
     </div>
   </div>
 </div>

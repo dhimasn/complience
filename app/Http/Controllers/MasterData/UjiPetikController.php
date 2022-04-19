@@ -14,7 +14,8 @@ class UjiPetikController extends Controller
     public function index()
     {
         $compliences = Complience::where('kegiatan', 2)->orderBy('updated_at', 'desc')->get();
-        return view('pages.masterdata.uji_petik.index', compact('compliences'));
+        $status = config('global.status');
+        return view('pages.masterdata.uji_petik.index', compact('compliences','status'));
     }
     public function detail($record_id)
     {
@@ -41,24 +42,29 @@ class UjiPetikController extends Controller
             'EER (Btu/h/W)',
         );
         $complience = Complience::where('record_id', $record_id)->first();
+        $formsSampeUji = false;
         if (!empty($complience)) {
-            $inspeksi = json_decode($complience->ujipetiks->form_data, true);
-            $sampeUji = json_decode($complience->formulir2->form_data, true);
-            $hasilPengujian = json_decode($complience->formulir3->form_data, true);
-            
+            // dd($complience->ujipetiks->form_data);
+            $inspeksi = json_decode($complience->formulir1->form_data, true);
+            $ujipetik = json_decode($complience->ujipetik->form_data, true);
+            $sampeUji = isset($complience->formulir2->form_data) ? json_decode($complience->formulir2->form_data, true) : false;
+            $valueForm3 = isset($complience->formulir3->form_data) ? json_decode($complience->formulir3->form_data, true) : false;
+            $inspeksi = $ujipetik+$inspeksi;
             $formsInspeksi = FormCategory::whereHas('childForm', function($q) use($inspeksi){
                 $q->whereIn('id', array_keys($inspeksi));
             })->get();
-            $formsSampeUji = FormCategory::whereHas('childForm', function($q) use($sampeUji){
-                $q->whereIn('id', array_keys($sampeUji));
-            })->get();
+            if($sampeUji){
+                $formsSampeUji = FormCategory::whereHas('childForm', function($q) use($sampeUji){
+                    $q->whereIn('id', array_keys($sampeUji));
+                })->get();
+            }
             $helper = new GeneralHelper();
             return view('pages.masterdata.uji_petik.detail', compact(
                 'helper', 
                 'complience', 
                 'inspeksi',
                 'sampeUji',
-                'hasilPengujian',
+                'valueForm3',
                 'formsInspeksi',
                 'formsSampeUji',
                 'pengujianForm'));

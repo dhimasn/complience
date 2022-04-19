@@ -17,7 +17,8 @@
         "laravel/passport": "9.*",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
-        "paragonie/random_compat": "2.*"
+        "paragonie/random_compat": "2.*",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

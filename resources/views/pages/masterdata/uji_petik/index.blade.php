@@ -26,9 +26,11 @@
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
-                  <td>{{$item->updated_at}}</td>
-                  <td>{{$item->formulir1->lokasi_pengawasan}}</td>
+                  <td>{{$item->pengawas_id}}</td>
+                  <td>{{$item->ujipetik->lokasi_pengawasan}}</td>
+                  <td></td>
                   <td>{{$status[$item->status] ?? ''}}</td>
+                  <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach
               </tbody>
@@ -39,4 +41,11 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+  $(document).ready( function () {
+    $('table').DataTable();
+} );
+</script>
 @endsection

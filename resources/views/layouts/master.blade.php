@@ -34,6 +34,7 @@
   <!-- Page plugins -->
   {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css"> --}}
   <link rel="stylesheet" href="{{asset('assets/css/argon.css?v='.env('APP_VERSION'))}}" type="text/css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" type="text/css">
   @yield('styles')
 </head>
 
@@ -283,6 +284,7 @@
   <script src="{{asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
   <script src="{{asset('assets/js/argon.js')}}"></script>
   <script src="{{asset('assets/js/main.js')}}"></script>
+  <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   <script>
     @if(session()->has('success'))
       $("#modalSuccessInput").modal('show');

@@ -90,7 +90,7 @@ class GeneralHelper
         break;
 
       default:
-        $result = '<input class="form-control form-complience" value="' . $value . '" type="text">';
+        $result = '<input class="form-control form-complience" readonly value="' . $value . '" type="text">';
         break;
     }
 
