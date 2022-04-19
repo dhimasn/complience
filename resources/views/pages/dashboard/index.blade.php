@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Importir</h5>
-            <span class="h2 font-weight-bold mb-0">35</span>
+            <span class="h2 font-weight-bold mb-0">-</span>
           </div>
           <div class="col-auto">
             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -51,7 +51,7 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Total Produk Diinspeksi</h5>
-            <span class="h2 font-weight-bold mb-0">490</span>
+            <span class="h2 font-weight-bold mb-0">{{$totalProdukInspeksi}}</span>
           </div>
           <div class="col-auto">
             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -69,7 +69,7 @@
         <div class="row">
           <div class="col">
             <h5 class="card-title text-uppercase text-muted mb-0">Pengawas Lapangan</h5>
-            <span class="h2 font-weight-bold mb-0">20</span>
+            <span class="h2 font-weight-bold mb-0">{{$totalPengawasLapangan}}</span>
           </div>
           <div class="col-auto">
             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -141,7 +141,7 @@
           labels: ["Sesuai","Tidak Sesuai"],
           datasets: [
               {
-                  data: [20, 80],
+                  data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
                   backgroundColor: ["#7ba7b0","#f39800"]
               }]
       };
