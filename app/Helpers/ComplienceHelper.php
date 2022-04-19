@@ -17,6 +17,8 @@ class ComplienceHelper
           $imageName = time() . '.' . $request->file($id_form)->extension();
           $request->$id_form->move($dirPath, $imageName);
           $arr_form_data[$id_form] = $dirPath.'/'.$imageName;
+        }else{
+          $arr_form_data[$id_form] = '';
         }
       } else {
         $arr_form_data[$form->id] = $request->input($form->id);

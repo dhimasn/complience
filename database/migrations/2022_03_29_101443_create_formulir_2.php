@@ -20,6 +20,8 @@ class CreateFormulir2 extends Migration
             $table->tinyInteger('sampel_sesuai');
             $table->longText('form_data');
             $table->integer('lab_uji')->nullable();
+            $table->string('nama_pemeriksan')->nullable();
+            $table->string('nama_persetujuan')->nullable();
             $table->tinyInteger('status')->default(1)->comment('1: created 2:sended');
             $table->timestamps();
         });

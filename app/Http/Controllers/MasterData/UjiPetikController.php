@@ -14,7 +14,8 @@ class UjiPetikController extends Controller
     public function index()
     {
         $compliences = Complience::where('kegiatan', 2)->orderBy('updated_at', 'desc')->get();
-        return view('pages.masterdata.uji_petik.index', compact('compliences'));
+        $status = config('global.status');
+        return view('pages.masterdata.uji_petik.index', compact('compliences','status'));
     }
     public function detail($record_id)
     {

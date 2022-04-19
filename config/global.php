@@ -20,5 +20,15 @@ return [
     "3" => "Round Robin",
     "4" => "Pengujian Ulang",
     "5" => "Pengujian Lainnya",
+  ],
+  'status' => [
+    '1' => 'Tidak Uji Petik',
+    '2' => 'Pemilihan Lab Uji',
+    '3' => 'Pemeriksaan Sampel Uji',
+    '4' => 'Pemeriksaan Sampel Uji',
+    '5' => 'Pengujian',
+    '6' => 'Pengujian',
+    '7' => 'Selesai',
+    '8' => 'Selesai',
   ]
 ];

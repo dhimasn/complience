@@ -13,7 +13,8 @@ class RoundRobinController extends Controller
     public function index()
     {
         $compliences = Complience::where('kegiatan', 3)->orderBy('updated_at', 'desc')->get();
-        return view('pages.masterdata.round_robin.index', compact('compliences'));
+        $status = config('global.status');
+        return view('pages.masterdata.round_robin.index', compact('compliences','status'));
     }
     public function detail($record_id)
     {

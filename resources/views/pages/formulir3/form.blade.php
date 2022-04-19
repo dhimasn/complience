@@ -323,8 +323,6 @@
         let cspfNP_input = parseInt($("#cspfNP_input").val());
 
         let eerSHE = ((eerPengujian_input/eerSHE_input) * 100) - 100;
-        console.log(eerPengujian_input);
-        console.log(eerSHE_input);
         let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
         let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
         let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
