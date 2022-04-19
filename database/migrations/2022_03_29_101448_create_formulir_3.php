@@ -21,6 +21,8 @@ class CreateFormulir3 extends Migration
             $table->integer('lab_uji')->nullable();
             $table->string('nama_pemeriksan')->nullable();
             $table->string('nama_persetujuan')->nullable();
+            $table->double('deviasi_eer_she')->nullable();
+            $table->double('deviasi_cspf_she')->nullable();
             $table->timestamps();
         });
     }
