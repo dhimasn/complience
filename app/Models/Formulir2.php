@@ -33,6 +33,8 @@ class Formulir2 extends Model
         $store->pengawas_id = \Auth::user()->id;
         $store->lab_uji = \Auth::user()->id_lab;
         $store->sampel_sesuai = $request->input('sampel_sesuai');
+        $store->nama_pemeriksan = $request->input('nama_pemeriksa');
+        $store->nama_persetujuan = $request->input('nama_persetujuan');
         $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "round_robin");
         $store->save();
     }

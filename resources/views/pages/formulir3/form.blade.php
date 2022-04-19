@@ -30,11 +30,11 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Pemeriksa</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_pemeriksa" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Persetujuan</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_persetujuan" type="text">
               </div>
             </div>
           </div>

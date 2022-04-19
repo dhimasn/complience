@@ -35,7 +35,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text" readonly value="{{$complience->lab->nama ?? "-"}}">
+                <input class="form-control form-complience" type="text" readonly value="{{\Auth::user()->labUji->nama}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>
@@ -43,11 +43,11 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Pemeriksa</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_pemeriksa" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Petugas Persetujuan</label>
-                <input class="form-control form-complience" type="text">
+                <input class="form-control form-complience" name="nama_persetujuan" type="text">
               </div>
             </div>
           </div>
