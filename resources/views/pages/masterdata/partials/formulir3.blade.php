@@ -195,7 +195,7 @@
             </table>
             <div class="form-group mt-2 mb-4">
               <label class="form-control-label">Upload Data Hasil Lab Uji</label>
-              {{-- <br><a href="{{asset($valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a> --}}
+              <br><a href="{{asset('storage/'.$valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a>
             </div>
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
