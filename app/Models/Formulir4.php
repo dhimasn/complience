@@ -19,7 +19,7 @@ class Formulir4 extends Model
             $complience = new Complience();
             $complience->record_id = $record_id;
             $complience->product_id = $request->input('id_product');
-            $complience->pengawas_id = 2;
+            $complience->pengawas_id = \Auth::user()->id;
             $complience->no_she = $request->input('1');
             $complience->merek = $request->input('2');
             $complience->kapasitas = $request->input('3');

@@ -82,7 +82,7 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Foto Lokasi Pengawasan</label>
-                <img class="img-umum" src="{{asset('storage/'.$form_data['9'])}}" alt="">
+                <img class="img-umum" src="{{isset($form_data['9']) ? asset('storage/'.$form_data['9']) : ''}}" alt="Lokasi Pengawasan Img">
               </div>
             </div>
           </div>

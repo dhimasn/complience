@@ -24,6 +24,8 @@
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
+                  <td>{{$item->pengawas_id}}</td>
+                  {{-- <td>{{$item->formulir1->lokasi_pengawasan}}</td> --}}
                   <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach
