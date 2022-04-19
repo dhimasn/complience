@@ -237,6 +237,39 @@
         <div class="tab-content" id="pemeriksaanSampel">
           @foreach ($complience->formulir2s as $form2)
           <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-sampelUji-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-sampelUji-{{$loop->iteration}}">
+            <div class="header-body">
+              <div class="row align-items-center pb-1 ml-2">
+                <div class="col-lg-12">
+                  <h6 class="h2 text-black d-inline-block mb-0">Informasi Lab</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label">Tanggal & Waktu Input</label>
+                          <input class="form-control form-complience" type="text" readonly value="{{$form2->updated_at}}">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Nama Pemeriksa</label>
+                          <input class="form-control form-complience" type="text" readonly
+                            value="{{$form2->nama_pemeriksan}}">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Nama Persetujuan</label>
+                          <input class="form-control form-complience" type="text" readonly
+                            value="{{$form2->nama_persetujuan}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             @foreach ($dataForm2 as $form)
             <div class="header-body">
               <div class="row align-items-center pb-1 ml-2">

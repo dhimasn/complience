@@ -1,6 +1,39 @@
 <div class="header-body">
   <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
+      <h6 class="h2 text-black d-inline-block mb-0">Informasi Lab</h6>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="form-control-label">Tanggal & Waktu Input</label>
+              <input class="form-control form-complience" type="text" readonly value="{{$complience->formulir3->updated_at}}">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Nama Pemeriksa</label>
+              <input class="form-control form-complience" type="text" readonly
+                value="{{$complience->formulir3->nama_pemeriksan}}">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Nama Persetujuan</label>
+              <input class="form-control form-complience" type="text" readonly
+                value="{{$complience->formulir3->nama_persetujuan}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="header-body">
+  <div class="row align-items-center pb-1 ml-2">
+    <div class="col-lg-12">
       <h6 class="h2 text-black d-inline-block mb-0">Data Nameplate Produk</h6>
     </div>
   </div>
@@ -162,7 +195,7 @@
             </table>
             <div class="form-group mt-2 mb-4">
               <label class="form-control-label">Upload Data Hasil Lab Uji</label>
-              <br><a href="{{asset($valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a>
+              {{-- <br><a href="{{asset($valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a> --}}
             </div>
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
