@@ -200,7 +200,7 @@
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
                 <div class="col-md-7 text-left">
-                  <strong>Variasi hasil pengujian terhadap EER SHE (%)</strong>
+                  <strong>Deviasi hasil pengujian terhadap EER SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
                   <strong id="eerSHE"></strong>
@@ -210,7 +210,7 @@
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
                 <div class="col-md-7 text-left">
-                  <strong>Variasi hasil pengujian terhadap CSPF SHE (%)</strong>
+                  <strong>Deviasi hasil pengujian terhadap CSPF SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
                   <strong id="cspfSHE"></strong>
@@ -220,7 +220,7 @@
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
                 <div class="col-md-7 text-left">
-                  <strong>Variasi hasil pengujian terhadap EER Nameplate (%)</strong>
+                  <strong>Deviasi hasil pengujian terhadap EER Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
                   <strong id="eerNP"></strong>
@@ -230,7 +230,7 @@
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
                 <div class="col-md-7 text-left">
-                  <strong>Variasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
+                  <strong>Deviasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
                   <strong id="cspfNP"></strong>
