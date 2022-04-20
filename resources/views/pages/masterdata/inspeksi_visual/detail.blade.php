@@ -48,7 +48,7 @@
 <div class="header-body">
   <div class="row align-items-center pb-1 ml-2">
     <div class="col-lg-12">
-      <h6 class="h2 text-black d-inline-block mb-0">Detail Produk</h6>
+      <h6 class="h2 text-black d-inline-block mb-0">Detail Produk EBTKE</h6>
     </div>
   </div>
 </div>
@@ -75,11 +75,6 @@
             </div>
             <div class="form-group">
               <label class="form-control-label">Teknologi</label>
-              <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
-                value="{{$complience->teknologi}}" type="text">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Sampel Sudah sesuai</label>
               <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
                 value="{{$complience->teknologi}}" type="text">
             </div>
