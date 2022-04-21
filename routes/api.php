@@ -41,8 +41,3 @@ Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => '
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
-//kelola pertanyaan formulir  
-Route::get('/form/create','KelolaFormController@createForm'); //add
-Route::get('/form/update','KelolaFormController@updateForm'); //edit
-Route::get('/form/delete','KelolaFormController@deleteForm'); //delete
