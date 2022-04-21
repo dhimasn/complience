@@ -31,6 +31,9 @@ class Formulir4 extends Model
             $complience->harga = $request->input('8');
             $complience->status = $request->input('kegiatan') == '3' ? '3' : '4';
             $complience->kegiatan = $request->input('kegiatan');
+            if($request->input('kegiatan') != '3'){
+                $complience->lab_uji = $request->input('lab_uji')[0];
+            }
             $complience->save();
 
             foreach ($request->input('lab_uji') as $lab_uji) {
@@ -53,5 +56,9 @@ class Formulir4 extends Model
     }
     public function lab(){
         return $this->belongsTo(LabUji::class, 'lab_uji');
+    }
+
+    public function detail(){
+        return $this->belongsTo(Complience::class, 'record_id');
     }
 }

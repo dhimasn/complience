@@ -12,7 +12,7 @@ class Formulir3 extends Model
     public function storeData($request, $status, $jenis_form){
         try{
             DB::beginTransaction();
-            $this->updateComplience($request->input('record_id'), $status);
+            $this->updateComplience($request->input('record_id'), $request->input('form_id'), $status);
             $this->storeFormulir($request, $jenis_form);
             DB::commit();
             return true;
@@ -25,11 +25,12 @@ class Formulir3 extends Model
 
     protected function storeFormulir($request, $jenis_form){
         $record_id = $request->input('record_id');
+        $lab_id = $request->input('lab_id');
         $forms = FormData::where('jenis_form', $jenis_form)->get();
         $store = $this;
         $store->record_id = $record_id;
         $store->pengawas_id = \Auth::user()->id;
-        $store->lab_uji = \Auth::user()->id_lab;
+        $store->lab_uji = $lab_id;
         $store->nama_pemeriksan = $request->input('nama_pemeriksa');
         $store->nama_persetujuan = $request->input('nama_persetujuan');
         $store->deviasi_eer_she = $request->input('eerSHE');
@@ -38,12 +39,12 @@ class Formulir3 extends Model
         $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "formulir_3");
         $store->save();
     }
-    protected function updateComplience($record_id, $status){
+    protected function updateComplience($record_id, $form_id, $status){
         $complience = Complience::where('record_id', $record_id)->first();
         $complience->status = $status;
         $complience->save();
 
-        $complience = Formulir2::where('record_id', $record_id)->where('lab_uji', \Auth::user()->id_lab)->first();
+        $complience = Formulir2::where('id', $form_id)->first();
         $complience->status = 2;
         $complience->save();
     }

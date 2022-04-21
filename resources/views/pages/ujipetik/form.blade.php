@@ -35,7 +35,9 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Laboratorium Pengujian</label>
-                <input class="form-control form-complience" type="text" readonly value="{{\Auth::user()->labUji->nama}}">
+                <input type="hidden" name="lab_id" value="{{$complience->lab_uji}}">
+                <input class="form-control form-complience" type="text" readonly
+                  value="{{\Auth::user()->id_user_role == 3 ? \Auth::user()->labUji->nama : $complience->lab->nama}}">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tanggal & Waktu Inspeksi Sampel</label>

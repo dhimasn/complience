@@ -21,6 +21,7 @@
                 <th>Merek</th>
                 <th>Kapasitas</th>
                 <th>Model</th>
+                <th>Lab</th>
                 <th>Tanggal Penerimaan</th>
               </thead>
               <tbody>
@@ -31,6 +32,7 @@
                   <td>{{$item->merek}}</td>
                   <td>{{$item->kapasitas}}</td>
                   <td>{{$item->model}}</td>
+                  <td>{{$item->lab->nama}}</td>
                   <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach

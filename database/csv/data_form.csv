@@ -142,19 +142,19 @@ Supermarket""";1
 124;16;2;Model Unit Luar;TEXT;null;1;;4
 125;16;2;Daya;TEXT;null;1;;4
 126;16;2;Kapasitas Pendingin;TEXT;null;1;;4
-127;17;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
-128;17;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-129;17;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-130;17;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
-131;17;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;RADIO;"Baik;Tidak Baik";1;;2
-132;17;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;RADIO;"Baik;Tidak Baik";1;;2
-133;17;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;RADIO;"Baik;Tidak Baik";1;;2
-134;18;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;2
-135;18;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-136;18;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-137;18;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;2
-138;18;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;RADIO;"Baik;Tidak Baik";1;;2
-139;18;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);RADIO;"Baik;Tidak Baik";1;;2
+127;17;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;5
+128;17;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit indoor;RADIO;"Baik;Tidak Baik";1;;5
+129;17;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit indoor;RADIO;"Baik;Tidak Baik";1;;5
+130;17;2;Kondisi kipas pada unit indoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;5
+131;17;2;Tidak ada komponen aksesoris yang hilang atau tidak lengkap seperti yang dijelaskan di dalam buku petunjuk pengoperasian. Seperti installing holder screw remote control dan lain-lain;RADIO;"Baik;Tidak Baik";1;;5
+132;17;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit indoor;RADIO;"Baik;Tidak Baik";1;;5
+133;17;2;Pipa penghubung tube refrigerant antara unit indoor dan outdoor tidak penyok;RADIO;"Baik;Tidak Baik";1;;5
+134;18;2;Kondisi kemasan produk AC tidak rusak;RADIO;"Baik;Tidak Baik";1;;5
+135;18;2;Periksa kondisi fisik produk AC secara visual seperti bodi unit outdoor;RADIO;"Baik;Tidak Baik";1;;5
+136;18;2;Kondisi fin atau sirip alat penukar kalor tidak rusak deformasi berubah warna pada unit outdoor;RADIO;"Baik;Tidak Baik";1;;5
+137;18;2;Kondisi kipas pada unit outdoor tidak retak rusak atau menyentuh bagian lainnya;RADIO;"Baik;Tidak Baik";1;;5
+138;18;2;Pastikan terdapat penutup katub atau tidak ada kerusakan pada ulir sambungan pipa antara unit outdoor;RADIO;"Baik;Tidak Baik";1;;5
+139;18;2;Pipa 2 way dan 3 way valve dalam keadaan tertutup (Tidak ada kebocoran gas);RADIO;"Baik;Tidak Baik";1;;5
 140;19;2;Berat unit indoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
 141;19;2;Berat unit indoor sesudah;RADIO;"Baik;Tidak Baik";1;;5
 142;19;2;Berat unit outdoor sebelum;RADIO;"Baik;Tidak Baik";1;;5
