@@ -62,6 +62,9 @@ class FormSatuController extends Controller
             $data_request = $request[0];
             $forms = $this->formSatu_db->getFormData();
 
+            //mapping konstanta
+            $data_request = $this->formSatu_db->mappingConstanta($data_request);
+
             if(!empty($data_request)){
 
                 foreach ($forms as $form) {

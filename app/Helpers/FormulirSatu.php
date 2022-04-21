@@ -30,7 +30,7 @@ class FormulirSatu
     public function createCompliance($record_id, $data_request){
         $complience = new Complience();
         $complience->record_id = $record_id;
-        $complience->pengawas_id = 2;
+        $complience->pengawas_id = $data_request['userid'];
         $complience->no_she = $data_request['pc1'];
         $complience->merek = $data_request['pc2'];
         $complience->teknologi = $data_request['pc4'];
@@ -53,7 +53,7 @@ class FormulirSatu
         $store->id_inspeksi_visual = $data_request['id'];
         $store->lokasi_pengawasan = $data_request['lp2'];
         $store->lat_long = $data_request['lp6'];
-        $store->pengawas_id = 2; // dummy
+        $store->pengawas_id = $data_request['userid'];
         $store->form_data = json_encode($arr_form_data);
         $store->datetime_offline = $data_request['tanggal'];
         $store->save();
@@ -247,6 +247,200 @@ class FormulirSatu
 
         return $result;
         
+    }
+
+    public function mappingConstanta($data_request){
+       
+        //Tenaga penjual
+        if($data_request['tp1'] == 1){
+            $data_request['tp1'] = "Ya";
+        }
+        
+        if ($data_request['tp1'] == 2){
+            $data_request['tp1'] = "Sedikit";
+        }
+        
+        if ($data_request['tp1'] == 3){
+            $data_request['tp1'] = "Tidak";
+        }
+
+
+        if($data_request['tp2'] == 1){
+            $data_request['tp2'] = "Tidak pernah";
+        } 
+        
+        if ($data_request['tp2'] == 2){
+            $data_request['tp2'] = "Jarang";
+        }
+        
+        if ($data_request['tp2'] == 3){
+            $data_request['tp2'] = "Sering";
+        }
+
+        if ($data_request['tp2'] == 4){
+            $data_request['tp2'] = "Sangat Sering";
+        }
+
+        if($data_request['tp3'] == 1){
+            $data_request['tp3'] = "Mengembalikan produk pada pemasok untuk mencantumkan label";
+        } 
+        
+        if ($data_request['tp3'] == 2){
+            $data_request['tp3'] = "Menahan produk sampai produk pengganti berlabel diterima dari pemasok";
+        }
+        
+        if ($data_request['tp3'] == 3){
+            $data_request['tp3'] = "Tidak melakukan apa-apa - menjual produk seadanya";
+        }
+
+        if($data_request['tp4'] == 1){
+            $data_request['tp4'] = "Ya";
+        } 
+        
+        if ($data_request['tp4'] == 2){
+            $data_request['tp4'] = "Sering";
+        }
+        
+        if ($data_request['tp4'] == 3){
+            $data_request['tp4'] = "Kadang-kadang";
+        }
+
+        if ($data_request['tp4'] == 4){
+            $data_request['tp4'] = "Tidak pernah";
+        }
+
+        if($data_request['tp5'] == 1){
+            $data_request['tp5'] = "Ya";
+        } 
+        
+        if ($data_request['tp5'] == 2){
+            $data_request['tp5'] = "Sebagian";
+        }
+        
+        if ($data_request['tp5'] == 3){
+            $data_request['tp5'] = "Tidak";
+        }
+
+        //lthe
+        if ($data_request['lthe1'] == 1){
+            $data_request['lthe1'] = "Ya";
+        }
+        
+        if ($data_request['lthe1'] == 2){
+            $data_request['lthe1'] = "Tidak";
+        }
+
+        if ($data_request['lthe2'] == 1){
+            $data_request['lthe2'] = "Ya";
+        }
+        
+        if ($data_request['lthe2'] == 2){
+            $data_request['lthe2'] = "Tidak";
+        }
+
+        if ($data_request['lthe3'] == 1){
+            $data_request['lthe3'] = "Label jelas dan mudah terlihat";
+        }
+        
+        if ($data_request['lthe3'] == 2){
+            $data_request['lthe3'] = "Label kabur atau rusak karena tindakan produsen atau importir";
+        }
+
+        if ($data_request['lthe3'] == 3){
+            $data_request['lthe3'] = "Label kabur atau rusak karena tindakan pengecer";
+        }
+        
+        if ($data_request['lthe3'] == 4){
+            $data_request['lthe3'] = "Label sebagian atau seluruhnya ditutupi oleh label lain atau informasi pemasaran";
+        }
+
+        if ($data_request['lthe3'] == 5){
+            $data_request['lthe3'] = "Tidak berlaku - label tidak dibubuhkan";
+        }
+
+        if ($data_request['lthe4'] == 1){
+            $data_request['lthe4'] = "Label terlihat benar dan sesuai dengan persyaratan";
+        }
+
+        if ($data_request['lthe4'] == 2){
+            $data_request['lthe4'] = "Desain label salah (warna, ukuran, dll)";
+        }
+
+        if ($data_request['lthe4'] == 3){
+            $data_request['lthe4'] = "Label tampaknya palsu";
+        }
+
+        if ($data_request['lthe4'] == 4){
+            $data_request['lthe4'] = "Label tidak sesuai dengan model fisik produk";
+        }
+
+        if ($data_request['lthe4'] == 5){
+            $data_request['lthe4'] = "Tidak berlaku - label tidak dibubuhkan";
+        }
+
+        //regulasi lainya
+        if ($data_request['rl1'] == 1){
+            $data_request['rl1'] = "Ya";
+        }
+
+        if ($data_request['rl1'] == 2){
+            $data_request['rl1'] = "Tidak yakin";
+        }
+
+        if ($data_request['rl1'] == 3){
+            $data_request['rl1'] = "Tidak";
+        }
+
+        if ($data_request['rl2'] == 1){
+            $data_request['rl2'] = "Ya";
+        }
+
+        if ($data_request['rl2'] == 2){
+            $data_request['rl2'] = "Tidak yakin";
+        }
+
+        if ($data_request['rl2'] == 3){
+            $data_request['rl2'] = "Tidak";
+        }
+
+        if ($data_request['rl3'] == 1){
+            $data_request['rl3'] = "Ya";
+        }
+
+        if ($data_request['rl3'] == 2){
+            $data_request['rl3'] = "Tidak yakin";
+        }
+
+        if ($data_request['rl3'] == 3){
+            $data_request['rl3'] = "Tidak";
+        }
+
+        if ($data_request['rl4'] == 1){
+            $data_request['rl4'] = "Ya";
+        }
+
+        if ($data_request['rl4'] == 2){
+            $data_request['rl4'] = "Tidak yakin";
+        }
+
+        if ($data_request['rl4'] == 3){
+            $data_request['rl4'] = "Tidak";
+        }
+
+        if ($data_request['rl5'] == 1){
+            $data_request['rl5'] = "Label dan Produk Tampak Sesuai";
+        }
+
+        if ($data_request['rl5'] == 2){
+            $data_request['rl5'] = "Label dan Produk Tampak Mencurigakan dan Memerlukan Penyelidikan Lebih lanjut";
+        }
+
+        if ($data_request['rl5'] == 3){
+            $data_request['rl5'] = "Label dan Produk Tampak Mencurigakan dan direkomendasikan untuk pengujian verifikasi";
+        }
+
+       return $data_request;
+
     }
 
 }
