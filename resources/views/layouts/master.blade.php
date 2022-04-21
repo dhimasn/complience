@@ -50,10 +50,10 @@
       let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
       let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
       let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
-      $("#eerSHE"+id).text(roundTo(eerSHE, 7));
-      $("#cspfSHE"+id).text(roundTo(cspfSHE, 7));
-      $("#eerNP"+id).text(roundTo(eerNP, 7));
-      $("#cspfNP"+id).text(roundTo(cspfNP, 7));
+      $(".eerSHE"+id).text(roundTo(eerSHE, 7));
+      $(".cspfSHE"+id).text(roundTo(cspfSHE, 7));
+      $(".eerNP"+id).text(roundTo(eerNP, 7));
+      $(".cspfNP"+id).text(roundTo(cspfNP, 7));
     }
 
       function roundTo(n, digits) {

@@ -360,17 +360,24 @@
                   <div class="col-md-12">
                    <table class="table table-bordered">
                     <tr>
-                      <th>Laboratorium</th>
-                      <th>Deviasi EER SHE (%)</th>
-                      <th>Deviasi CSPF SHE (%)</th>
+                      <td>Laboratorium</td>
+                      <td>Deviasi EER SHE (%)</td>
+                      <td>Deviasi CSPF SHE (%)</td>
+                      <td>Deviasi EER Nameplate (%)</td>
+                      <td>Deviasi CSPF Nameplate (%)</td>
                     </tr>
                     <tbody>
                       @forelse($complience->formulir3s as $form3)
                       <tr>
-                        <td>{{$form3->lab->nama}}</td>
-                        <td>{{$form3->deviasi_eer_she}}</td>
-                        <td>{{$form3->deviasi_cspf_she}}</td>
+                        <td><strong>{{$form3->lab->nama}}</strong></td>
+                        <td><strong>{{$form3->deviasi_eer_she}}</strong></td>
+                        <td><strong>{{$form3->deviasi_cspf_she}}</strong></td>
+                        <td><strong class="eerNP{{$loop->iteration}}"></strong></td>
+                        <td><strong class="cspfNP{{$loop->iteration}}"></strong></td>
                       </tr>
+                      <script>
+                        hitungDeviasi('{{$loop->iteration}}');
+                      </script>
                       @empty
                       <tr>
                         <td colspan="3" align="center">Data Belum Tersedia</td>

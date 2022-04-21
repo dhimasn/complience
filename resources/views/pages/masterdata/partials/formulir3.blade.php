@@ -207,7 +207,7 @@
                   <strong>Deviasi hasil pengujian terhadap EER SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="eerSHE{{$loop->iteration}}"></strong>
+                  <strong class="eerSHE{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@
                   <strong>Deviasi hasil pengujian terhadap CSPF SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="cspfSHE{{$loop->iteration}}"></strong>
+                  <strong class="cspfSHE{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@
                   <strong>Deviasi hasil pengujian terhadap EER Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="eerNP{{$loop->iteration}}"></strong>
+                  <strong class="eerNP{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -237,7 +237,7 @@
                   <strong>Deviasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="cspfNP{{$loop->iteration}}"></strong>
+                  <strong class="cspfNP{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -247,6 +247,3 @@
     </div>
   </div>
 </div>
-<script>
-    hitungDeviasi('{{$loop->iteration}}');
-</script>
