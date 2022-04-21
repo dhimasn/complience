@@ -32,6 +32,8 @@ class Formulir3 extends Model
         $store->lab_uji = \Auth::user()->id_lab;
         $store->nama_pemeriksan = $request->input('nama_pemeriksa');
         $store->nama_persetujuan = $request->input('nama_persetujuan');
+        $store->deviasi_eer_she = $request->input('eerSHE');
+        $store->deviasi_cspf_she = $request->input('cspfSHE');
         // $store->form_data = json_encode($request->except(['_token', 'record_id','sampel_sesuai']));
         $store->form_data = ComplienceHelper::convertJsonForm($forms, $request, "formulir_3");
         $store->save();
@@ -47,5 +49,16 @@ class Formulir3 extends Model
     }
     public function lab(){
         return $this->belongsTo(LabUji::class, 'lab_uji');
+    }
+    public function validasiPengujian(){
+        $result = 'Sesuai';
+        if(isset($this->deviasi_eer_she) && isset($this->deviasi_cspf_she)){
+            if($this->deviasi_eer_she >= 10 || $this->deviasi_eer_she <= -10){
+                $result = 'Tidak Sesuai';
+            }elseif($this->deviasi_cspf_she >= 6 || $this->deviasi_cspf_she <= -6){
+                $result = 'Tidak Sesuai';
+            }
+        }
+        return $result;
     }
 }

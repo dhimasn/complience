@@ -257,31 +257,32 @@
                 <label class="form-control-label">Upload Data Hasil Lab Uji</label>
                 <input class="form-control" name="114" value="" type="file">
               </div>
-              <div class="text-right">*Hitung dengan formula</div>
               <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
                 <div class="row">
                   <div class="col-md-7 text-left">
-                    <strong>Variasi hasil pengujian terhadap EER SHE (%)</strong>
+                    <strong>Deviasi hasil pengujian terhadap EER SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
                     <strong id="eerSHE"></strong>
+                    <input type="hidden" name="eerSHE" id="input_eerSHE">
                   </div>
                 </div>
               </div>
               <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
                 <div class="row">
                   <div class="col-md-7 text-left">
-                    <strong>Variasi hasil pengujian terhadap CSPF SHE (%)</strong>
+                    <strong>Deviasi hasil pengujian terhadap CSPF SHE (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
                     <strong id="cspfSHE"></strong>
+                    <input type="hidden" name="cspfSHE" id="input_cspfSHE">
                   </div>
                 </div>
               </div>
               <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
                 <div class="row">
                   <div class="col-md-7 text-left">
-                    <strong>Variasi hasil pengujian terhadap EER Nameplate (%)</strong>
+                    <strong>Deviasi hasil pengujian terhadap EER Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
                     <strong id="eerNP"></strong>
@@ -291,7 +292,7 @@
               <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
                 <div class="row">
                   <div class="col-md-7 text-left">
-                    <strong>Variasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
+                    <strong>Deviasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                   </div>
                   <div class="col-md-5 text-right">
                     <strong id="cspfNP"></strong>
@@ -328,6 +329,10 @@
         let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
         $("#eerSHE").text(roundTo(eerSHE, 7));
         $("#cspfSHE").text(roundTo(cspfSHE, 7));
+
+        $("#input_eerSHE").val(roundTo(eerSHE, 7));
+        $("#input_cspfSHE").val(roundTo(cspfSHE, 7));
+
         $("#eerNP").text(roundTo(eerNP, 7));
         $("#cspfNP").text(roundTo(cspfNP, 7));
       });

@@ -21,14 +21,14 @@
               </thead>
               <tbody>
                 @foreach ($compliences as $item)
-                <tr>
+                <tr class="{{null !== $item->formulir3 && $item->formulir3->validasiPengujian() == 'Tidak Sesuai' ? 'table-danger' : ''}}">
                   <td><a href="{{route('masterdata.uji_petik.detail', $item->record_id)}}">{{$item->record_id}}</a></td>
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
                   <td>{{$item->pengawas_id}}</td>
                   <td>{{$item->ujipetik->lokasi_pengawasan}}</td>
-                  <td></td>
+                  <td>{{null !== $item->formulir3 ? $item->formulir3->validasiPengujian() : ''}}</td>
                   <td>{{$status[$item->status] ?? ''}}</td>
                   <td>{{$item->updated_at}}</td>
                 </tr>
