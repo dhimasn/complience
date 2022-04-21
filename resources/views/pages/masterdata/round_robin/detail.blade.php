@@ -200,7 +200,7 @@
                         @if ($key == $child->id)
                         <div class="form-group">
                           <label class="form-control-label">{!!$child->data_point!!}</label>
-                          {!!$helpers->formRead($child->data_entry_type, $formValue)!!}
+                          {!!$helpers->formRead($child->data_entry_type, $formValue, $child->input_keterangan)!!}
                         </div>
                         @endif
                       @endforeach
@@ -293,7 +293,7 @@
                             @if ($key == $child->id)
                             <div class="form-group">
                               <label class="form-control-label">{!!$child->data_point!!}</label>
-                              {!!$helpers->formRead($child->data_entry_type, $formValue)!!}
+                              {!!$helpers->formRead($child->data_entry_type, $formValue, $child->input_keterangan)!!}
                             </div>
                             @endif
                           @endforeach

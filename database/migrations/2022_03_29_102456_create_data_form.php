@@ -23,6 +23,7 @@ class CreateDataForm extends Migration
             $table->tinyInteger('mandatory');
             $table->text('notes');
             $table->tinyInteger('jenis_form')->comment("1: Formulir_1 2:Formulir_2(Uji Petik) 3:Formulir_3 4:Formulir_4 5:Formulir_2(RRT)");
+            $table->tinyInteger('input_keterangan')->comment("0: Tidak aktif 1: Aktif");
             $table->timestamps();
         });
     }

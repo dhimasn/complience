@@ -25,7 +25,14 @@ class ComplienceHelper
           $arr_form_data[$id_form] = '';
         }
       } else {
-        $arr_form_data[$form->id] = $request->input($form->id);
+        if($form->input_keterangan==1){
+          $arr_form_data[$form->id] = array(
+            $request->input($form->id),
+            $request->input($form->id.'_keterangan'),
+          );
+        }else{
+          $arr_form_data[$form->id] = $request->input($form->id);
+        }
       }
     }
     return json_encode($arr_form_data);

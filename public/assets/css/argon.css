@@ -29862,7 +29862,14 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 .card-body-dashboard{
     padding: 1.5rem 3rem !important;
 }
-
+.keterangan_form{
+    border-top: 1px solid #fff !important;
+    border-right: 1px solid #fff !important;
+    border-left: 1px solid #fff !important;
+    border-bottom: 1px solid #fff !important;
+    height: 25px !important;
+    padding: 0 !important;
+}
 .form-complience{
     border-top: 1px solid #fff !important;
     border-right: 1px solid #fff !important;

@@ -8,6 +8,7 @@ use App\Models\Complience;
 use App\Models\FormCategory;
 use App\Models\FormData;
 use Illuminate\Http\Request;
+use Session;
 
 class InspeksiVisualController extends Controller
 {
@@ -31,5 +32,9 @@ class InspeksiVisualController extends Controller
         }else{
             abort(404);
         }
+    }
+    public function simpan(Request $request, $record_id){
+        Session::flash('success', 'Disimpan Kedalam Database');
+        return redirect()->route('masterdata.inspeksi_visual.detail', $record_id);
     }
 }
