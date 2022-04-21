@@ -40,20 +40,12 @@ class PengujianLainnyaController extends Controller
             'EER (Btu/h/W)',
         );
         $complience = Complience::where('record_id', $record_id)->first();
-        $dataForm2 = false;
         if (!empty($complience)) {
             $valueForm4 = json_decode($complience->formulir4->form_data, true);
-            $valueForm2 = isset($complience->formulir2->form_data) ? json_decode($complience->formulir2->form_data, true) :false;
-            $valueForm3 = isset($complience->formulir3->form_data) ? json_decode($complience->formulir3->form_data, true) :false;
             $dataForm4 = FormCategory::whereHas('childForm', function($q) use($valueForm4){
                 $q->whereIn('id', array_keys($valueForm4));
             })->get();
             
-            if($valueForm2){
-                $dataForm2 = FormCategory::whereHas('childForm', function($q) use($valueForm2){
-                    $q->whereIn('id', array_keys($valueForm2));
-                })->get();
-            }
             $helpers = new GeneralHelper();
         } else {
             abort(404);
@@ -63,10 +55,7 @@ class PengujianLainnyaController extends Controller
             'complience', 
             'pengujianForm',
             'valueForm4',
-            'valueForm2',
-            'valueForm3',
             'dataForm4',
-            'dataForm2',
         ));
     }
 }

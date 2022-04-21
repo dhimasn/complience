@@ -206,13 +206,18 @@
                           <input class="form-control form-complience" type="text" readonly
                             value="{{$form2->nama_persetujuan}}">
                         </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Sampel Sudah sesuai</label>
+                          <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
+                            value="{{$form2->sampel_sesuai == '0' ? 'Tidak Sesuai' : 'Sesuai'}}" type="text">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            @foreach ($dataForm2 as $form)
+            @foreach ($form2->formList() as $form)
             <div class="header-body">
               <div class="row align-items-center pb-1 ml-2">
                 <div class="col-lg-12">
@@ -227,7 +232,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         @foreach ($form->childForm as $child)
-                          @foreach ($valueForm2 as $key => $formValue)
+                          @foreach ($form2->formJson() as $key => $formValue)
                             @if ($key == $child->id)
                             <div class="form-group">
                               <label class="form-control-label">{!!$child->data_point!!}</label>
@@ -270,6 +275,9 @@
         </div>
         <div class="tab-content" id="hasilPengujian">
           @foreach ($complience->formulir3s as $form3)
+          @php
+              $valueForm3 = $form3->formJson();
+          @endphp
           <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-hasilPengujian-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-hasilPengujian-{{$loop->iteration}}">
             @include('pages.masterdata.partials.formulir3')
           </div>

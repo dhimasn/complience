@@ -114,6 +114,10 @@
         <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3"
           role="tab" aria-controls="tabs-icons-text-3" aria-selected="false">Hasil Pengujian</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-4-tab" data-toggle="tab" href="#tabs-icons-text-4"
+          role="tab" aria-controls="tabs-icons-text-4" aria-selected="false">Rangkuman Pengujian</a>
+      </li>
     </ul>
     <hr class="my-3 p-0">
   </div>
@@ -270,7 +274,7 @@
                 </div>
               </div>
             </div>
-            @foreach ($dataForm2 as $form)
+            @foreach ($form2->formList() as $form)
             <div class="header-body">
               <div class="row align-items-center pb-1 ml-2">
                 <div class="col-lg-12">
@@ -285,7 +289,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         @foreach ($form->childForm as $child)
-                          @foreach ($valueForm2 as $key => $formValue)
+                          @foreach ($form2->formJson() as $key => $formValue)
                             @if ($key == $child->id)
                             <div class="form-group">
                               <label class="form-control-label">{!!$child->data_point!!}</label>
@@ -328,6 +332,9 @@
         </div>
         <div class="tab-content" id="hasilPengujian">
           @foreach ($complience->formulir3s as $form3)
+          @php
+              $valueForm3 = $form3->formJson();
+          @endphp
           <div class="tab-pane fade {{$loop->iteration == 1 ? " active show" : '' }}" id="tab-hasilPengujian-{{$loop->iteration}}" role="tabpanel" aria-labelledby="tab-hasilPengujian-{{$loop->iteration}}">
             @include('pages.masterdata.partials.formulir3')
           </div>
@@ -335,6 +342,53 @@
         </div>
       </div>
     </div>
+    <div class="tab-pane fade" id="tabs-icons-text-4" role="tabpanel" aria-labelledby="tabs-icons-text-4-tab">
+      <div id="tab-hasilPengujians" class="tab-pane tab-example-result fade active show" role="tabpanel"
+        aria-labelledby="tab-hasilPengujians-tab">
+        <div class="header-body">
+          <div class="row align-items-center pb-1 ml-2">
+            <div class="col-lg-12">
+              <h6 class="h2 text-black d-inline-block mb-0">Rangkuman Pengujian</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                   <table class="table table-bordered">
+                    <tr>
+                      <th>Laboratorium</th>
+                      <th>Deviasi EER SHE (%)</th>
+                      <th>Deviasi CSPF SHE (%)</th>
+                    </tr>
+                    <tbody>
+                      @forelse($complience->formulir3s as $form3)
+                      <tr>
+                        <td>{{$form3->lab->nama}}</td>
+                        <td>{{$form3->deviasi_eer_she}}</td>
+                        <td>{{$form3->deviasi_cspf_she}}</td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td colspan="3" align="center">Data Belum Tersedia</td>
+                      </tr>
+                      @endforelse 
+                    </tbody>
+                   </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+    
 @endsection

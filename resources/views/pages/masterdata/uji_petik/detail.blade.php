@@ -241,7 +241,9 @@
     </div>
     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
       @if ($valueForm3)
-        @include('pages.masterdata.partials.formulir3')
+        @foreach ($complience->formulir3s as $form3)
+          @include('pages.masterdata.partials.formulir3')
+        @endforeach
       @else
       <div class="row pb-5 mx-auto">
         <div class="col-lg-12 text-center">

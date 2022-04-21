@@ -181,15 +181,15 @@
               <tbody>
                 <tr>
                   <th>EER (Btu/h/W)</th>
-                  <td><input class="form-control form-complience inputFormula" readonly id="eerPengujian_input" value="{{$valueForm3['112'][0]}}" name="112[]"></td>
-                  <td><input class="form-control form-complience inputFormula" readonly id="eerSHE_input" value="{{$valueForm3['112'][1]}}" name="112[]"></td>
-                  <td><input class="form-control form-complience inputFormula" readonly id="eerNP_input" value="{{$valueForm3['112'][2]}}" name="112[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="eerPengujian_input{{$loop->iteration}}" value="{{$valueForm3['112'][0]}}" name="112[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="eerSHE_input{{$loop->iteration}}" value="{{$valueForm3['112'][1]}}" name="112[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="eerNP_input{{$loop->iteration}}" value="{{$valueForm3['112'][2]}}" name="112[]"></td>
                 </tr>
                 <tr>
                   <th>CSPF (Wh/Wh)</th>
-                  <td><input class="form-control form-complience inputFormula" readonly id="cspfPengujian_input" value="{{$valueForm3['113'][0]}}" name="113[]"></td>
-                  <td><input class="form-control form-complience inputFormula" readonly id="cspfSHE_input" value="{{$valueForm3['113'][1]}}" name="113[]"></td>
-                  <td><input class="form-control form-complience inputFormula" readonly id="cspfNP_input" value="{{$valueForm3['113'][2]}}" name="113[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="cspfPengujian_input{{$loop->iteration}}" value="{{$valueForm3['113'][0]}}" name="113[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="cspfSHE_input{{$loop->iteration}}" value="{{$valueForm3['113'][1]}}" name="113[]"></td>
+                  <td><input class="form-control form-complience inputFormula" readonly id="cspfNP_input{{$loop->iteration}}" value="{{$valueForm3['113'][2]}}" name="113[]"></td>
                 </tr>
               </tbody>
             </table>
@@ -207,7 +207,7 @@
                   <strong>Deviasi hasil pengujian terhadap EER SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="eerSHE"></strong>
+                  <strong id="eerSHE{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@
                   <strong>Deviasi hasil pengujian terhadap CSPF SHE (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="cspfSHE"></strong>
+                  <strong id="cspfSHE{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@
                   <strong>Deviasi hasil pengujian terhadap EER Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="eerNP"></strong>
+                  <strong id="eerNP{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -237,7 +237,7 @@
                   <strong>Deviasi hasil pengujian terhadap CSPF Nameplate (%)</strong>
                 </div>
                 <div class="col-md-5 text-right">
-                  <strong id="cspfNP"></strong>
+                  <strong id="cspfNP{{$loop->iteration}}"></strong>
                 </div>
               </div>
             </div>
@@ -247,34 +247,6 @@
     </div>
   </div>
 </div>
-@section('scripts')
-    <script>
-        let eerPengujian_input = parseInt($("#eerPengujian_input").val());
-        let eerSHE_input = parseInt($("#eerSHE_input").val());
-        let eerNP_input = parseInt($("#eerNP_input").val());
-        
-        let cspfPengujian_input = parseInt($("#cspfPengujian_input").val());
-        let cspfSHE_input = parseInt($("#cspfSHE_input").val());
-        let cspfNP_input = parseInt($("#cspfNP_input").val());
-
-        let eerSHE = ((eerPengujian_input/eerSHE_input) * 100) - 100;
-        let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
-        let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
-        let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
-        $("#eerSHE").text(roundTo(eerSHE, 7));
-        $("#cspfSHE").text(roundTo(cspfSHE, 7));
-        $("#eerNP").text(roundTo(eerNP, 7));
-        $("#cspfNP").text(roundTo(cspfNP, 7));
-
-        function roundTo(n, digits) {
-          if (digits === undefined) {
-            digits = 0;
-          }
-
-          var multiplicator = Math.pow(10, digits);
-          n = parseFloat((n * multiplicator).toFixed(11));
-          var test =(Math.round(n) / multiplicator);
-          return +(test.toFixed(digits));
-        }
-    </script>
-@endsection
+<script>
+    hitungDeviasi('{{$loop->iteration}}');
+</script>

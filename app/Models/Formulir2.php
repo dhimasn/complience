@@ -56,4 +56,13 @@ class Formulir2 extends Model
     public function detail(){
         return $this->belongsTo(Complience::class, 'record_id');
     }
+    public function formJson(){
+        return isset($this->form_data) ? json_decode($this->form_data, true) :false;
+    }
+    public function formList(){
+        $form = isset($this->form_data) ? json_decode($this->form_data, true) :false;
+        return FormCategory::whereHas('childForm', function($q) use($form){
+            $q->whereIn('id', array_keys($form));
+        })->get();
+    }
 }
