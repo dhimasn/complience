@@ -13,7 +13,12 @@ use Session;
 class UjiPetikController extends Controller
 {
     public function index(){
-        $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->orderBy('updated_at', 'desc')->get();
+        $userRole = \Auth::user()->id_user_role;
+        if($userRole == 3){
+            $compliences = Complience::where('status', 4)->where('lab_uji', \Auth::user()->id_lab)->orderBy('updated_at', 'desc')->get();
+        }elseif($userRole == 2){
+            $compliences = Complience::where('status', 4)->where('lab_uji', '!=', '')->orderBy('updated_at', 'desc')->get();
+        }
         return view('pages.ujipetik.index', compact('compliences'));
     }
     public function form($record_id){

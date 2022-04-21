@@ -74,11 +74,6 @@
               <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
                 value="{{$complience->teknologi}}" type="text">
             </div>
-            <div class="form-group">
-              <label class="form-control-label">Sampel Sudah sesuai</label>
-              <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
-                value="{{$complience->teknologi}}" type="text">
-            </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
@@ -263,6 +258,11 @@
                           <label class="form-control-label">Nama Persetujuan</label>
                           <input class="form-control form-complience" type="text" readonly
                             value="{{$form2->nama_persetujuan}}">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Sampel Sudah sesuai</label>
+                          <input class="form-control form-complience" placeholder="Masukan Jawaban" name="13" readonly
+                            value="{{$form2->sampel_sesuai == '0' ? 'Tidak Sesuai' : 'Sesuai'}}" type="text">
                         </div>
                       </div>
                     </div>

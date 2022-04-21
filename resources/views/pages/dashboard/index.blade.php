@@ -92,14 +92,12 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card">
       <div class="card-header py-1">
         Peta Sebaran Inspeksi
       </div>
-      <div id="map" style="height: 500px"></div>
+      <div id="map" style="height: 383px"></div>
     </div>
   </div>
 </div>

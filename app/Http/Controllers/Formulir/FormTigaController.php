@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Complience;
 use App\Models\FormLabDB;
+use App\Models\Formulir2;
 use App\Models\Formulir3;
 use App\Repo\InpeksiDb;
 use Exception;
@@ -18,9 +19,22 @@ use Session;
 class FormTigaController extends Controller
 {
     public function index(){
-        $compliences = Complience::whereIn('status', [5,6])->whereHas('formulir2s', function ($q) {
-            $q->where('lab_uji', \Auth::user()->id_lab)->where('status', 1);
-         })->orderBy('updated_at', 'desc')->get();
+        $userRole = \Auth::user()->id_user_role;
+        // if($userRole == 3){
+        //     $compliences = Complience::whereIn('status', [5,6])->whereHas('formulir2s', function ($q) {
+        //         $q->where('lab_uji', \Auth::user()->id_lab)->where('status', 1);
+        //      })->orderBy('updated_at', 'desc')->get();
+        // }elseif($userRole == 2){
+        //     $compliences = Complience::whereIn('status', [5,6])->whereHas('formulir2s', function ($q) {
+        //         $q->where('status', 1);
+        //      })->orderBy('updated_at', 'desc')->get();
+        // }
+        // $userRole = \Auth::user()->id_user_role;
+        if ($userRole == 3) {
+            $compliences = Formulir2::where('lab_uji', \Auth::user()->id_lab)->where('status', 1)->orderBy('updated_at', 'desc')->get();
+        } elseif ($userRole == 2) {
+            $compliences = Formulir2::where('status', 1)->orderBy('updated_at', 'desc')->get();
+        }
         $kegiatan = config('global.kegiatan');
         return view('pages.formulir3.index', compact('compliences','kegiatan'));
     }
@@ -53,16 +67,15 @@ class FormTigaController extends Controller
             'Effective Power input (W)',
             'EER (Btu/h/W)',
         );
-        $complience = Complience::where('record_id', $record_id)->first();
+        $complience = Formulir2::findOrFail($record_id);
         return view('pages.formulir3.form', compact('pengujianForm', 'complience'));
     }
     public function store(Request $request){
         $complience = Complience::where('record_id', $request->input('record_id'))->first();
         if(!empty($complience)){
             $formulir = new Formulir3();
-            if($complience->status == '5'){
-                $status = 8;
-            }elseif($complience->status == '6'){
+            $status = 8;
+            if($complience->status == '6'){
                 $status = 7;
             }
             $jenis_form = 3;

@@ -97,7 +97,7 @@
                     </div>
                   </li>
                   @endif
-                  @if (\Auth::user()->id_user_role == 3)
+                  @if (\Auth::user()->id_user_role == 2 || \Auth::user()->id_user_role == 3)
                   <li class="nav-item ">
                     <a class="nav-link {{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'active' : ''}}" data-toggle="collapse" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListLab']) ? 'true' : 'false'}}" href="#labUjiCollapse">
                       <span class="sidenav-normal"> Rekam Data Lab Uji</span>

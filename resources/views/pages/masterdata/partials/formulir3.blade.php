@@ -195,7 +195,11 @@
             </table>
             <div class="form-group mt-2 mb-4">
               <label class="form-control-label">Upload Data Hasil Lab Uji</label>
-              <br><a href="{{asset('storage/'.$valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a>
+              @if (empty($valueForm3['114']))
+              <br><a class="btn btn-link">Tidak ada file</a>  
+              @else
+                <br><a href="{{asset('storage/'.$valueForm3['114'])}}" target="_blank" class="btn btn-link">Lihat File</a>
+              @endif
             </div>
             <div class="alert alert-secondary mb-1 pt-1 pb-2" role="alert">
               <div class="row">
@@ -245,7 +249,6 @@
 </div>
 @section('scripts')
     <script>
-      $("document").ready(function(e){
         let eerPengujian_input = parseInt($("#eerPengujian_input").val());
         let eerSHE_input = parseInt($("#eerSHE_input").val());
         let eerNP_input = parseInt($("#eerNP_input").val());
@@ -262,16 +265,16 @@
         $("#cspfSHE").text(roundTo(cspfSHE, 7));
         $("#eerNP").text(roundTo(eerNP, 7));
         $("#cspfNP").text(roundTo(cspfNP, 7));
-      });
-      function roundTo(n, digits) {
-        if (digits === undefined) {
-          digits = 0;
-        }
 
-        var multiplicator = Math.pow(10, digits);
-        n = parseFloat((n * multiplicator).toFixed(11));
-        var test =(Math.round(n) / multiplicator);
-        return +(test.toFixed(digits));
-      }
+        function roundTo(n, digits) {
+          if (digits === undefined) {
+            digits = 0;
+          }
+
+          var multiplicator = Math.pow(10, digits);
+          n = parseFloat((n * multiplicator).toFixed(11));
+          var test =(Math.round(n) / multiplicator);
+          return +(test.toFixed(digits));
+        }
     </script>
 @endsection

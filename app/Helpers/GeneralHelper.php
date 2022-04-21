@@ -85,8 +85,12 @@ class GeneralHelper
     $result = "";
     switch ($type) {
       case 'FILE':
-        $value = asset("storage/".$value);
-        $result = '<br><a href="'.$value.'" target="_blank" class="btn btn-link">Lihat File</a>';
+        if($value == '' || $value == null){
+          $result = '<br><a class="btn btn-link">Tidak Ada file</a>';
+        }else{
+          $value = asset("storage/".$value);
+          $result = '<br><a href="'.$value.'" target="_blank" class="btn btn-link">Lihat File</a>';
+        }
         break;
 
       default:
