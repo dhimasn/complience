@@ -15,7 +15,7 @@
                 <th>Merek</th>
                 <th>Pengawas</th>
                 <th>Lokasi Pengawasan</th>
-                <th>Tanggal Update</th>
+                <th>Tanggal Inspeksi</th>
               </thead>
               <tbody>
                 @foreach ($compliences as $item)
@@ -24,8 +24,8 @@
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
-                  <td>{{$item->pengawas_id}}</td>
-                  {{-- <td>{{$item->formulir1->lokasi_pengawasan}}</td> --}}
+                  <td>{{$item->formulir1->pengawas->name}}</td>
+                  <td>{{$item->formulir1->lokasi_pengawasan}}</td>
                   <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach

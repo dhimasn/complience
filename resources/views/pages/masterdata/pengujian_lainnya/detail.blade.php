@@ -288,3 +288,8 @@
   </div>
 </div>
 @endsection
+@section('scripts')
+<script>
+  hitungDeviasi('1');
+</script>
+@endsection

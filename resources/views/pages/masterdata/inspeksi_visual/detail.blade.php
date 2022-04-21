@@ -122,7 +122,7 @@
                   @if ($key == $item->id)
                   <div class="form-group">
                     <label class="form-control-label">{!!$item->data_point!!}</label>
-                    {!!$helper->formRead($item->data_entry_type, $formValue, $child->input_keterangan)!!}
+                    {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
                   </div>
                   @endif
                 @endforeach

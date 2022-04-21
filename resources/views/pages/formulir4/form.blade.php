@@ -44,12 +44,16 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-control-label">Lab Uji Tujuan (Lebih dari satu)</label>
-                <select name="lab_uji[]" class="form-control form-complience select2" multiple="multiple">
+                <label class="form-control-label">Lab Uji Tujuan <span id="text_lebih">(Lebih dari satu)</span></label>
+                <select name="lab_uji[]" class="form-control form-complience select2 input_lab" multiple="multiple">
                   @foreach ($labUjis as $labUji)
-                    <option value="{{$labUji->id}}">{{$labUji->nama}}</option>
+                    <option data-name="{{$labUji->nama}}" value="{{$labUji->id}}">{{$labUji->nama}}</option>
                   @endforeach
                 </select>
+              </div>
+              <div class="form-group">
+                <div class="listlab">
+                </div>
               </div>
             </div>
           </div>
@@ -172,12 +176,38 @@
     $("#id_product").val(id);
     $("#merek").val(merek);
   });
+  $(".input_lab").change(function(){
+    var values = $(".input_lab option:selected").map(function() {
+                    return $(this).data("name");
+                  }).get();
+    var text = "";
+    var no = 1;
+    for (var i = 0; i < values.length; i++) {
+        value = no+". "+values[i];
+        text += '<label class="form-control-label">'+value+'</label><br>';
+        no++;
+    }
+    $(".listlab").empty();
+    $(".listlab").append(text);
+    console.log(values);
+  });
   $("#kegiatan_input").change(function(){
+    $(".listlab").empty();
+    $(".input_lab").val([]).change();
     var value = $(this).val();
     if(value=="5"){
       $("#kegiatan_lainnya").removeClass('d-none');
     }else{
       $("#kegiatan_lainnya").addClass('d-none');
+    }
+
+    if(value=='3'){
+      $(".input_lab").attr('multiple','multiple');
+      $("#text_lebih").show();
+          
+    }else{
+      $("#text_lebih").hide();
+      $(".input_lab").removeAttr('multiple');
     }
   });
 </script>

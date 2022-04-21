@@ -22,7 +22,7 @@
                 <th>Kapasitas</th>
                 <th>Model</th>
                 <th>Lokasi Pengawasan</th>
-                <th>Inspektur</th>
+                <th>Pengawas</th>
                 <th>Tanggal Inspeksi</th>
               </thead>
               <tbody>
@@ -34,7 +34,7 @@
                   <td>{{$item->kapasitas}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->formulir1->lokasi_pengawasan}}</td>
-                  <td>{{$item->pengawas_id}}</td>
+                  <td>{{$item->formulir1->pengawas->name}}</td>
                   <td>{{$item->created_at}}</td>
                 </tr>
                 @endforeach

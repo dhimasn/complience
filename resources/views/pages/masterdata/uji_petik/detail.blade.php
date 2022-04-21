@@ -146,7 +146,7 @@
                         @if ($key == $item->id)
                         <div class="form-group">
                           <label class="form-control-label">{!!$item->data_point!!}</label>
-                          {!!$helper->formRead($item->data_entry_type, $formValue, $child->input_keterangan)!!}
+                          {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
                         </div>
                         @endif
                       @endforeach
@@ -219,7 +219,7 @@
                         @if ($key == $item->id)
                         <div class="form-group">
                           <label class="form-control-label">{!!$item->data_point!!}</label>
-                          {!!$helper->formRead($item->data_entry_type, $formValue, $child->input_keterangan)!!}
+                          {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
                         </div>
                         @endif
                       @endforeach
@@ -267,5 +267,6 @@
     $("#id_product").val(id);
     $("#merek").val(merek);
   });
+  hitungDeviasi('1');
 </script>
 @endsection

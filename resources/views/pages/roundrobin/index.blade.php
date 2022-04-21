@@ -20,7 +20,7 @@
               <tbody>
                 @foreach ($complience as $item)
                 <tr>
-                  <td><a href="{{route('roundrobin.form', $item->id)}}">{{$item->record_id}}</a></td>
+                  <td><a href="{{route('roundrobin.form', $item->id)}}">{{$item->record_id}}{{$loop->iteration}}</a></td>
                   <td>{{$item->detail->no_she}}</td>
                   <td>{{$item->detail->merek}}</td>
                   <td>{{$item->detail->kapasitas}}</td>

@@ -380,7 +380,7 @@
                       </script>
                       @empty
                       <tr>
-                        <td colspan="3" align="center">Data Belum Tersedia</td>
+                        <td colspan="5" align="center">Data Belum Tersedia</td>
                       </tr>
                       @endforelse 
                     </tbody>
