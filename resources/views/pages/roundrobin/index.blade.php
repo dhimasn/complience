@@ -15,18 +15,18 @@
                 <th>Kapasitas</th>
                 <th>Model</th>
                 <th>Lab</th>
-                <th>Tanggal Pemilihan Lab Uji</th>
+                <th>Tanggal Pendataan</th>
               </thead>
               <tbody>
                 @foreach ($complience as $item)
                 <tr>
-                  <td><a href="{{route('roundrobin.form', $item->id)}}">{{$item->record_id}}{{$loop->iteration}}</a></td>
-                  <td>{{$item->detail->no_she}}</td>
-                  <td>{{$item->detail->merek}}</td>
-                  <td>{{$item->detail->kapasitas}}</td>
-                  <td>{{$item->detail->model}}</td>
-                  <td>{{$item->lab->nama}}</td>
-                  <td>{{$item->detail->updated_at}}</td>
+                  <td><a href="{{route('roundrobin.form', $item->formulir4->id)}}">{{$item->record_id}}{{$loop->iteration}}</a></td>
+                  <td>{{$item->no_she}}</td>
+                  <td>{{$item->merek}}</td>
+                  <td>{{$item->kapasitas}}</td>
+                  <td>{{$item->model}}</td>
+                  {{-- <td>{{$item->lab->nama}}</td> --}}
+                  <td>{{$item->updated_at}}</td>
                 </tr>
                 @endforeach
               </tbody>
