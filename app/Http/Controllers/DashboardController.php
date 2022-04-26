@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Complience;
 use App\Models\Formulir1;
+use App\Models\Uji_petik;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -37,5 +38,13 @@ class DashboardController extends Controller
             }
         }
         return view('pages.dashboard.index', compact('dataForm','totalProdukInspeksi','totalPengawasLapangan','ketidaksesuai'));
+    }
+    public function getProdukToko($name){
+        $result = array();
+        $ujiPetik = Uji_petik::where('lokasi_pengawasan', 'like', '%'.$name.'%')->get();
+        foreach ($ujiPetik as $value) {
+            
+        }
+        return response()->json(['comp' => $result], 200);
     }
 }
