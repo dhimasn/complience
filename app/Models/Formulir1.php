@@ -11,4 +11,7 @@ class Formulir1 extends Model
     public function pengawas(){
         return $this->belongsTo(User::class, 'pengawas_id');
     }
+    public function formulir3(){
+        return $this->hasOne(Formulir3::class, 'record_id', 'record_id');
+    }
 }

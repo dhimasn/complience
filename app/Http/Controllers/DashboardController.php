@@ -16,6 +16,7 @@ class DashboardController extends Controller
             $latLong = explode(',', $form1->lat_long);
             $dataForm[] = array(
                 'lokasi_pengawasan' => $form1->lokasi_pengawasan,
+                'sesuai' => null !== $form1->formulir3 && $form1->formulir3->validasiPengujian() == 'Tidak Sesuai' ? '1' : '0',
                 'lat' => $latLong[0],
                 'long' => $latLong[1],
             );
