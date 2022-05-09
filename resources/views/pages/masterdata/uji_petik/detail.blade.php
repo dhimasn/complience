@@ -146,7 +146,7 @@
                         @if ($key == $item->id)
                         <div class="form-group">
                           <label class="form-control-label">{!!$item->data_point!!}</label>
-                          {!!$helper->formRead($item->data_entry_type, $formValue)!!}
+                          {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
                         </div>
                         @endif
                       @endforeach
@@ -219,7 +219,7 @@
                         @if ($key == $item->id)
                         <div class="form-group">
                           <label class="form-control-label">{!!$item->data_point!!}</label>
-                          {!!$helper->formRead($item->data_entry_type, $formValue)!!}
+                          {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
                         </div>
                         @endif
                       @endforeach
@@ -241,7 +241,9 @@
     </div>
     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
       @if ($valueForm3)
-        @include('pages.masterdata.partials.formulir3')
+        @foreach ($complience->formulir3s as $form3)
+          @include('pages.masterdata.partials.formulir3')
+        @endforeach
       @else
       <div class="row pb-5 mx-auto">
         <div class="col-lg-12 text-center">
@@ -265,5 +267,6 @@
     $("#id_product").val(id);
     $("#merek").val(merek);
   });
+  hitungDeviasi('1');
 </script>
 @endsection

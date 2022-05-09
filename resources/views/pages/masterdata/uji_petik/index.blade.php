@@ -15,7 +15,7 @@
                 <th>Merek</th>
                 <th>Pengawas</th>
                 <th>Lokasi Pengawasan</th>
-                <th>Ketidaksesuaian</th>
+                <th>Ketidaksesuaian (%)</th>
                 <th>Status</th>
                 <th>Tanggal Update</th>
               </thead>
@@ -26,9 +26,9 @@
                   <td>{{$item->no_she}}</td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
-                  <td>{{$item->pengawas_id}}</td>
+                  <td>{{$item->formulir1->pengawas->name}}</td>
                   <td>{{$item->ujipetik->lokasi_pengawasan}}</td>
-                  <td>{{null !== $item->formulir3 ? $item->formulir3->validasiPengujian() : ''}}</td>
+                  <td>{{null !== $item->formulir3 ? $item->formulir3->deviasi_eer_she : '-'}}</td>
                   <td>{{$status[$item->status] ?? ''}}</td>
                   <td>{{$item->updated_at}}</td>
                 </tr>

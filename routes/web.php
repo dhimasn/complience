@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:web'], function () {
         Route::group(['namespace' => 'MasterData'], function () {
             Route::get('inspeksi-visual', 'InspeksiVisualController@index')->name('masterdata.inspeksi_visual');
             Route::get('inspeksi-visual/detail{record_id}', 'InspeksiVisualController@detail')->name('masterdata.inspeksi_visual.detail');
+            Route::post('inspeksi-visual/detail{record_id}', 'InspeksiVisualController@simpan')->name('masterdata.inspeksi_visual.simpan');
 
             Route::get('uji-petik', 'UjiPetikController@index')->name('masterdata.uji_petik');
             Route::get('uji-petik/detail/{record_id}', 'UjiPetikController@detail')->name('masterdata.uji_petik.detail');

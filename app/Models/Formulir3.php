@@ -62,4 +62,13 @@ class Formulir3 extends Model
         }
         return $result;
     }
+    public function formJson(){
+        return isset($this->form_data) ? json_decode($this->form_data, true) :false;
+    }
+    public function formList(){
+        $form = isset($this->form_data) ? json_decode($this->form_data, true) :false;
+        return FormCategory::whereHas('childForm', function($q) use($form){
+            $q->whereIn('id', array_keys($form));
+        })->get();
+    }
 }

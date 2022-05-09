@@ -62,7 +62,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nama Inspektur</label>
-                <input class="form-control form-complience" readonly name="16" value="{{$complience->pengawas_id}}" type="text">
+                <input class="form-control form-complience" readonly name="16" value="{{$complience->formulir1->pengawas->name}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tipe Lokasi Pengawasan</label>

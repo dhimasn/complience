@@ -35,6 +35,38 @@
   {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css"> --}}
   <link rel="stylesheet" href="{{asset('assets/css/argon.css?v='.env('APP_VERSION'))}}" type="text/css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" type="text/css">
+  <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  <script>
+    function hitungDeviasi(id){
+      let eerPengujian_input = parseInt($("#eerPengujian_input"+id).val());
+      let eerSHE_input = parseInt($("#eerSHE_input"+id).val());
+      let eerNP_input = parseInt($("#eerNP_input"+id).val());
+      
+      let cspfPengujian_input = parseInt($("#cspfPengujian_input"+id).val());
+      let cspfSHE_input = parseInt($("#cspfSHE_input"+id).val());
+      let cspfNP_input = parseInt($("#cspfNP_input"+id).val());
+
+      let eerSHE = ((eerPengujian_input/eerSHE_input) * 100) - 100;
+      let cspfSHE = ((cspfPengujian_input/cspfSHE_input) * 100) - 100;
+      let eerNP = ((eerPengujian_input/eerNP_input) * 100) - 100;
+      let cspfNP = ((cspfPengujian_input/cspfNP_input) * 100) - 100;
+      $(".eerSHE"+id).text(roundTo(eerSHE, 7));
+      $(".cspfSHE"+id).text(roundTo(cspfSHE, 7));
+      $(".eerNP"+id).text(roundTo(eerNP, 7));
+      $(".cspfNP"+id).text(roundTo(cspfNP, 7));
+    }
+
+      function roundTo(n, digits) {
+        if (digits === undefined) {
+          digits = 0;
+        }
+
+        var multiplicator = Math.pow(10, digits);
+        n = parseFloat((n * multiplicator).toFixed(11));
+        var test =(Math.round(n) / multiplicator);
+        return +(test.toFixed(digits));
+      }
+  </script>
   @yield('styles')
 </head>
 
@@ -277,7 +309,7 @@
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->
-  <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+  
   <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/js-cookie/js.cookie.js')}}"></script>
   <script src="{{asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>

@@ -49,7 +49,7 @@ class GeneralHelper
       return null;
     }
   }
-  public static function formInput($type, $name, $opsi = null, $placeHolder = null)
+  public static function formInput($type, $name, $opsi = null, $keterangan = null)
   {
     $result = "";
     switch ($type) {
@@ -76,26 +76,38 @@ class GeneralHelper
         # code...
         break;
     }
+    if($keterangan){
+      $result .= '<input class="form-control form-complience" placeholder="Keterangan Tambahan" name="' . $name . '_keterangan" type="text">';
+    }
 
 
     return $result;
   }
-  public static function formRead($type, $value)
+  public static function formRead($type, $value, $keterangan)
   {
     $result = "";
+    if($keterangan){
+      $inputValue = $value[0];
+      $keteranganValue = $value[1];
+    }else{
+      $inputValue = $value;
+    }
     switch ($type) {
       case 'FILE':
-        if($value == '' || $value == null){
+        if($inputValue == '' || $inputValue == null){
           $result = '<br><a class="btn btn-link">Tidak Ada file</a>';
         }else{
-          $value = asset("storage/".$value);
-          $result = '<br><a href="'.$value.'" target="_blank" class="btn btn-link">Lihat File</a>';
+          $inputValue = asset("storage/".$inputValue);
+          $result = '<br><a href="'.$inputValue.'" target="_blank" class="btn btn-link">Lihat File</a>';
         }
         break;
 
       default:
-        $result = '<input class="form-control form-complience" readonly value="' . $value . '" type="text">';
+        $result = '<input class="form-control form-complience" readonly value="' . $inputValue . '" type="text">';
         break;
+    }
+    if($keterangan){
+      $result .= '<input class="form-control keterangan_form" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
     }
 
     return $result;
