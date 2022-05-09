@@ -39,6 +39,31 @@
       <div class="card-header py-2">
         Jumlah Produk
       </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">AC</h5>
+                <span class="h2 font-weight-bold mb-0">35</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Kulkas</h5>
+                <span class="h2 font-weight-bold mb-0">35</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header py-2">
+        Jumlah Produk Inspeksi
+      </div>
       <div class="card-body p-1">
         <canvas id="barJumlahProduk" height="160"></canvas>
       </div>
@@ -432,16 +457,6 @@
     var data = {
         labels: ["AC","Kulkas"],
         datasets: [
-            {
-              label: 'Importir',
-              data: [20, 50],
-              backgroundColor: "#7ba7b0"
-            },
-            {
-              label: 'Produk Lokal',
-              data: [7, 8],
-              backgroundColor: "#f39800"
-            },
             {
               label: 'Produk Inspeksi '+yearNow,
               data: [7, 0],
