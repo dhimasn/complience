@@ -37,7 +37,8 @@ class DashboardController extends Controller
                 }
             }
         }
-        return view('pages.dashboard.index', compact('dataForm','totalProdukInspeksi','totalPengawasLapangan','ketidaksesuai'));
+        $kepatuhan = $this->countKepatuhan($forms1);
+        return view('pages.dashboard.index', compact('dataForm','totalProdukInspeksi','totalPengawasLapangan','ketidaksesuai','kepatuhan'));
     }
     public function getProdukToko($name){
         $result = array();
@@ -46,5 +47,52 @@ class DashboardController extends Controller
             
         }
         return response()->json(['comp' => $result], 200);
+    }
+    public function countKepatuhan($form1){
+        $result['1'] = 0; // Label Kabur/Tidak terlihat/Rusak – data dari Visibilitas LTHE 
+        $result['2'] = 0; // Desain Label Tidak Sesuai – data dari Kesesuaian Visual LTHE 
+        $result['3'] = 0; // Label palsu – data dari Kesesuaian Visual LTHE
+        $result['4'] = 0; // Label tidak sesuai dengan produk - data dari Kesesuaian Visual LTHE
+        $result['5'] = 0; // Tidak ada label – data dari Kesesuain Visual LTHE 
+        $dataForms = array();
+
+        $creteria['1'] = array(
+            "Label kabur atau rusak karena tindakan produsen atau importir",
+            "Label kabur atau rusak karena tindakan pengecer",
+            "Label sebagian atau seluruhnya ditutupi oleh label lain atau informasi pemasaran",
+        ); 
+        $creteria['2'] = array(
+            "Desain label salah (warna, ukuran, dll)"
+        ); 
+        $creteria['3'] = array(
+            "Label tampaknya palsu"
+        ); 
+        $creteria['4'] = array(
+            "Label tidak sesuai dengan model fisik produk"
+        ); 
+
+        foreach ($form1 as $key) {
+            $dataForms[] = json_decode($key->form_data, true);
+        }
+        foreach ($dataForms as $dataForm) {
+            $visibilitasLthe = $dataForm[33];
+            $kesesuaian = $dataForm[34];
+            if($visibilitasLthe == "Tidak berlaku - label tidak dibubuhkan" || $kesesuaian == "Tidak berlaku - label tidak dibubuhkan"){
+                $result['5']++;
+            }
+            if(in_array($visibilitasLthe, $creteria['1'])){
+                $result['1']++;
+            }
+            if(in_array($kesesuaian, $creteria['2'])){
+                $result['2']++;
+            }
+            if(in_array($kesesuaian, $creteria['3'])){
+                $result['3']++;
+            }
+            if(in_array($kesesuaian, $creteria['4'])){
+                $result['4']++;
+            }
+        }
+        return $result;
     }
 }

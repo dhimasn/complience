@@ -421,12 +421,18 @@
         datasets: [
             {
               label: 'AC',
-              data: [1, 2,3, 5, 6],
+              data: [
+                {{$kepatuhan['1']}}, 
+                {{$kepatuhan['2']}},
+                {{$kepatuhan['3']}},
+                {{$kepatuhan['4']}},
+                {{$kepatuhan['5']}}
+              ],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [7, 8, 2, 1, 6],
+              data: [0,0,0,0,0],
               backgroundColor: "#f39800"
             },
         ]
