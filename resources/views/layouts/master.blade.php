@@ -104,7 +104,11 @@
             <li class="nav-item">
               <a data-toggle="collapse" href="#formuliCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'active' : ''}}" aria-controls="formuliCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'true' : 'false'}}">
                   <i class="fas fa-clipboard-list text-yellow-cus"></i>
-                <span class="nav-link-text">Formulir</span>
+                @if (\Auth::user()->id_user_role == 2)
+                  <span class="nav-link-text">Formulir Inspeksi</span>
+                @elseif(\Auth::user()->id_user_role == 3)
+                  <span class="nav-link-text">Formulir</span>
+                @endif
               </a>
               <div class="collapse {{in_array(\Request::route()->getName(), $result['routeListFormulir']) ? 'show' : ''}}" id="formuliCollapse" style="">
                 <ul class="nav ms-4">
@@ -186,12 +190,12 @@
                       <span class="sidenav-normal">Pengujian Lainnya</span>
                     </a>
                   </li>
+                  @if (\Auth::user()->id_user_role == 1 || \Auth::user()->id_user_role == 2)
                   <li class="nav-item">
                     <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
                       <span class="sidenav-normal">Produk Microsite</span>
                     </a>
                   </li>
-                  @if (\Auth::user()->id_user_role == 1 || \Auth::user()->id_user_role == 2)
                   <li class="nav-item">
                     <a class="nav-link {{\Request::route()->getName() == 'laboratorium.index' ? 'active' : ''}}" href="{{route('laboratorium.index')}}">
                       <span class="sidenav-normal">Laboratorium Uji</span>
