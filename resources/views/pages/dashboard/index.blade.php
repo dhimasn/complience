@@ -211,26 +211,35 @@
                   <th scope="col">Pengawas</th>
                   <th scope="col">Lab</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Tanggal</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">
-                    AC
-                  </th>
-                  <td>
-                    Daikin
-                  </td>
-                  <td>
-                    Pengawas
-                  </td>
-                  <td>
-                    Qualis
-                  </td>
-                  <td>
-                    Pemilihan Lab Uji
-                  </td>
-                </tr>
+                @foreach ($statusUjiPetiks as $statusUjiPetik)
+                  <tr>
+                    <th scope="row">
+                      AC
+                    </th>
+                    <td>
+                      {{$statusUjiPetik->model}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->merek}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->pengawas->name}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->lab->nama ?? ''}}
+                    </td>
+                    <td>
+                      {{$status[$statusUjiPetik->status] ?? ''}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->updated_at}}
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -250,7 +259,7 @@
       </div>
       <div class="table-responsive px-3">
         <span>Total 1</span>
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush table-hasil-inspeksi">
           <thead class="thead-light">
             <tr>
               <th scope="col">No SHE</th>
@@ -264,23 +273,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                AC
-              </th>
-              <td>
-                Daikin
-              </td>
-              <td>
-                Pengawas
-              </td>
-              <td>
-                Qualis
-              </td>
-              <td>
-                Pemilihan Lab Uji
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -340,7 +333,7 @@
         iconMarker = redIcon;
       }
       var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title, icon: iconMarker });
-      marker.bindPopup(`<div class="text-center">Toko<br><a style="text-decoration: underline;" data-target="#modalDetailToko" class="linkDetail" data-toggle="modal" data-name="${title}" href="#">${title}</a></div>`);
+      marker.bindPopup(`<div class="text-center">Toko<br><a style="text-decoration: underline;" class="linkDetail" data-name="${title}" href="#">${title}</a></div>`);
       markers.addLayer(marker);
     }
 
@@ -567,28 +560,32 @@
     });
     // END Produk
 
-    $('.linkDetail').click(function(){
-      var titleName = $(this).data('name');
-      $("#titleName").text(titleName);
-    });
-    document.querySelector('.legend').innerHTML = myChartA.generateLegend();
-
-    var legendItems = document.querySelector('.legend').getElementsByTagName('li');
-    for (var i = 0; i < legendItems.length; i++) {
-      legendItems[i].addEventListener("click", legendClickCallback.bind(this,i), false);
-    }
-
-    function legendClickCallback(legendItemIndex){
-      document.querySelectorAll('.myChart').forEach((chartItem,index)=>{
-        var chart = Chart.instances[index];
-        var dataItem = chart.data.datasets[legendItemIndex]    
-        if(dataItem.hidden == true || dataItem.hidden == null){
-          dataItem.hidden = false;
-        } else {
-          dataItem.hidden = true;
+    $(document).on("click", ".linkDetail", function(){
+      var name = $(this).data('name');
+      $.ajax({
+        url: "{{url('/')}}/api/v2/"+name,
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            $("#modalDetailToko").modal('show');
+            var resp = res.comp;
+            for (var key in resp) {
+               var obj = resp[key];
+               $(".table-hasil-inspeksi tbody").append(
+                  '<tr>'
+                    +`<td>${obj.no_she}</td>`
+                    +`<td>${obj.model}</td>`
+                    +`<td>${obj.merek}</td>`
+                    +`<td>${obj.tipe}</td>`
+                    +`<td>${obj.kepatuhan}</td>`
+                    +`<td>${obj.deviasi}</td>`
+                    +`<td>${obj.status}</td>`
+                    +`<td>${obj.datetime_offline}</td>`
+                  +'</tr>'
+                );
+            };
         }
-        chart.update();
-      })  
-    }
+      });
+    });
 </script>
 @endsection

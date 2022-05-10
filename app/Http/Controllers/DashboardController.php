@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $totalProdukInspeksi = Complience::get()->unique('no_she')->count();
         $totalPengawasLapangan = User::where('id_user_role', 2)->count();
         $complienceUjipetik = Complience::where('kegiatan', 2)->get();
-       
+        $statusUjiPetiks = Complience::whereNotIn('status', [7,8])->where('kegiatan', 2)->get();
         $ketidaksesuai['sesuai'] = 0;
         $ketidaksesuai['tidak_sesuai'] = 0;
         foreach ($complienceUjipetik as $comp) {
@@ -38,13 +38,47 @@ class DashboardController extends Controller
             }
         }
         $kepatuhan = $this->countKepatuhan($forms1);
-        return view('pages.dashboard.index', compact('dataForm','totalProdukInspeksi','totalPengawasLapangan','ketidaksesuai','kepatuhan'));
+        $status = config('global.status');
+        return view('pages.dashboard.index', compact(
+            'dataForm',
+            'totalProdukInspeksi',
+            'totalPengawasLapangan',
+            'ketidaksesuai',
+            'kepatuhan',
+            'statusUjiPetiks',
+            'status',
+        ));
     }
     public function getProdukToko($name){
         $result = array();
-        $ujiPetik = Uji_petik::where('lokasi_pengawasan', 'like', '%'.$name.'%')->get();
-        foreach ($ujiPetik as $value) {
-            
+        $ujiPetiks = Uji_petik::where('lokasi_pengawasan', 'like', '%'.$name.'%')->get();
+        $form1s = Formulir1::where('lokasi_pengawasan', 'like', '%'.$name.'%')->get();
+        $status = config('global.status');
+        foreach ($form1s as $form1) {
+            $dataForms = json_decode($form1->form_data, true);
+            $result[$form1->complience->record_id] = array(
+                'no_she' => $form1->complience->no_she ?? '-',
+                'model' => $form1->complience->model,
+                'merek' => $form1->complience->merek,
+                'tipe' => 'Inspeksi Visual',
+                'kepatuhan' => $dataForms[34],
+                'deviasi' => '-',
+                'status' => '-',
+                'datetime_offline' => $form1->datetime_offline,
+            );
+        }
+        foreach ($ujiPetiks as $ujiPetik) {
+            $dataForms = json_decode($ujiPetik->formulir1->form_data, true);
+            $result[$ujiPetik->complience->record_id] = array(
+                'no_she' => $ujiPetik->complience->no_she,
+                'model' => $ujiPetik->complience->model,
+                'merek' => $ujiPetik->complience->merek,
+                'tipe' => 'Uji Petik',
+                'kepatuhan' => $dataForms[34],
+                'deviasi' => $ujiPetik->formulir3->deviasi_eer_she ?? '-',
+                'status' => $status[$ujiPetik->complience->status] ?? '-',
+                'datetime_offline' => $ujiPetik->datetime_offline,
+            );
         }
         return response()->json(['comp' => $result], 200);
     }

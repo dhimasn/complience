@@ -88,6 +88,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/lab/update/{record_id}','KelolaLabUjiController@update')->name('laboratorium.update');  
     Route::get('/lab/delete/{record_id}','KelolaLabUjiController@delete')->name('laboratorium.delete');
 
+    //Api Web
+    Route::get('api/v2/{name}','DashboardController@getProdukToko')->name('api2.getProdukToko');
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');
