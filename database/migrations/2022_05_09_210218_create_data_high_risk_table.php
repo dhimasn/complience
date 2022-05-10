@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormulir4 extends Migration
+class CreateDataHighRiskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateFormulir4 extends Migration
      */
     public function up()
     {
-        Schema::create('formulir_4', function (Blueprint $table) {
+        Schema::create('data_high_risk', function (Blueprint $table) {
             $table->id();
             $table->string('record_id');
-            $table->integer('pengawas_id');
-            $table->longText('form_data');
-            $table->integer('lab_uji');
-            $table->string('kegiatan_lainnya')->nullable();
-            $table->tinyInteger('status')->default(1)->comment('1: created 2:sended');
+            $table->string('form_data');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateFormulir4 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formulir_4');
+        Schema::dropIfExists('data_high_risk');
     }
 }
