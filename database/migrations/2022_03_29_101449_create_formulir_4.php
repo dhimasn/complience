@@ -32,6 +32,6 @@ class CreateFormulir4 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formulir_1');
+        Schema::dropIfExists('formulir_4');
     }
 }
