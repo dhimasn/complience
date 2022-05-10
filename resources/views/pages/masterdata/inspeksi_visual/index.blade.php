@@ -9,7 +9,6 @@
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
               <thead class="thead-comp">
-                <th>Record ID</th>
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
@@ -20,8 +19,7 @@
               <tbody>
                 @foreach ($compliences as $item)
                 <tr>
-                  <td><a href="{{route('masterdata.inspeksi_visual.detail', $item->record_id)}}">{{$item->record_id}}</a></td>
-                  <td>{{$item->no_she}}</td>
+                  <td><a href="{{route('masterdata.inspeksi_visual.detail', $item->record_id)}}">{{$item->no_she}}</a></td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
                   <td>{{$item->formulir1->pengawas->name}}</td>

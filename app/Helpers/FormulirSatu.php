@@ -337,7 +337,7 @@ class FormulirSatu
         if ($data_request['lthe2'] == 2){
             $data_request['lthe2'] = "Tidak";
         }
-
+        // Visibilitas LTHE 33
         if ($data_request['lthe3'] == 1){
             $data_request['lthe3'] = "Label jelas dan mudah terlihat";
         }
@@ -358,6 +358,7 @@ class FormulirSatu
             $data_request['lthe3'] = "Tidak berlaku - label tidak dibubuhkan";
         }
 
+        // Kesesuaian visual LTHE 34
         if ($data_request['lthe4'] == 1){
             $data_request['lthe4'] = "Label terlihat benar dan sesuai dengan persyaratan";
         }

@@ -30033,6 +30033,10 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
     color: #fff;
     font-size: 4rem;
 }
+.text-black{
+    color: #000;
+    font-weight: normal;
+}
 .box-formulir-list{
     background-color: #000;
     border-radius: 19px;

@@ -6,6 +6,31 @@
 <link rel="stylesheet" type="text/css"
   href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
 <link rel="stylesheet" href="{{asset('assets/vendor/chartjs/dist/Chart.min.css')}}" type="text/css">
+<style>
+    .custom-legend{
+      display: flex;
+      justify-content: center;
+    }
+   .custom-legend .orange
+   {
+    background-color: #f39800;
+    height: 13px;
+    width: 31px;
+    margin-right: 7px;
+   }       
+   .custom-legend .blue
+   {
+    background-color: #7ba7b0;
+    height: 13px;
+    width: 31px;
+    margin-right: 7px;
+   }       
+   .legend{
+     display: flex;
+     align-items: center;
+     margin-right: 20px;
+   }
+</style>
 @endsection
 @section('contents')
 <div class="row">
@@ -13,6 +38,31 @@
     <div class="card">
       <div class="card-header py-2">
         Jumlah Produk
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">AC</h5>
+                <span class="h2 font-weight-bold mb-0">35</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Kulkas</h5>
+                <span class="h2 font-weight-bold mb-0">35</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header py-2">
+        Jumlah Produk Inspeksi
       </div>
       <div class="card-body p-1">
         <canvas id="barJumlahProduk" height="160"></canvas>
@@ -23,6 +73,18 @@
         Kepatuhan Uji Petik
       </div>
       <div class="card-body p-1">
+        <div class="row">
+          <div class="col-md-12 text-center custom-legend">
+            <div class="legend">
+              <div class="orange"></div>
+              <div>Tidak Sesuai</div>
+            </div>
+            <div class="legend">
+              <div class="blue"></div>
+              <div>Sesuai</div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-6">
             <canvas id="chartVerifikasiAC" height="300"></canvas>
@@ -136,7 +198,7 @@
         </div>
         <div class="card">
           <div class="card-header py-2">
-            Status Pendataan
+            Status Uji Petik
           </div>
           <div class="table-responsive">
             <!-- Projects table -->
@@ -144,6 +206,7 @@
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Produk</th>
+                  <th scope="col">Model</th>
                   <th scope="col">Merek</th>
                   <th scope="col">Pengawas</th>
                   <th scope="col">Lab</th>
@@ -180,7 +243,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Produk Inspeksi Toko <span id="titleName">Test</span></h5>
+        <h5 class="modal-title">Hasil Inspeksi</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -191,11 +254,13 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">No SHE</th>
-              <th scope="col">Produk</th>
+              <th scope="col">Model</th>
               <th scope="col">Merek</th>
-              <th scope="col">Pengawas</th>
-              <th scope="col">Lab</th>
+              <th scope="col">Tipe Inspeksi</th>
+              <th scope="col">Kepatuhan LTHE</th>
+              <th scope="col">Deviasi Uji Petik (%)</th>
               <th scope="col">Status</th>
+              <th scope="col">Tanggal Inspeksi</th>
             </tr>
           </thead>
           <tbody>
@@ -346,16 +411,28 @@
 
     // CHART Kepatuhan Inspeksi Visual
     var data = {
-        labels: ["Label Salah Format","Label Rusak", "Label Tidak Jelas", "Tidak Ada Label"],
+        labels: [
+          "Label Kabur/Tidak terlihat/Rusak",
+          "Desain Label Tidak Sesuai", 
+          "Label Palsu", 
+          "Label Tidak Sesuai Dengan Produk",
+          "Tidak ada label"
+        ],
         datasets: [
             {
               label: 'AC',
-              data: [1, 2,3, 5],
+              data: [
+                {{$kepatuhan['1']}}, 
+                {{$kepatuhan['2']}},
+                {{$kepatuhan['3']}},
+                {{$kepatuhan['4']}},
+                {{$kepatuhan['5']}}
+              ],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [7, 8, 2, 1],
+              data: [0,0,0,0,0],
               backgroundColor: "#f39800"
             },
         ]
@@ -375,7 +452,7 @@
           },
           responsive: true,
           legend: {
-            position: 'right',
+            position: 'top',
           },
         }
     });
@@ -386,16 +463,6 @@
     var data = {
         labels: ["AC","Kulkas"],
         datasets: [
-            {
-              label: 'Importir',
-              data: [20, 50],
-              backgroundColor: "#7ba7b0"
-            },
-            {
-              label: 'Produk Lokal',
-              data: [7, 8],
-              backgroundColor: "#f39800"
-            },
             {
               label: 'Produk Inspeksi '+yearNow,
               data: [7, 0],
@@ -504,5 +571,24 @@
       var titleName = $(this).data('name');
       $("#titleName").text(titleName);
     });
+    document.querySelector('.legend').innerHTML = myChartA.generateLegend();
+
+    var legendItems = document.querySelector('.legend').getElementsByTagName('li');
+    for (var i = 0; i < legendItems.length; i++) {
+      legendItems[i].addEventListener("click", legendClickCallback.bind(this,i), false);
+    }
+
+    function legendClickCallback(legendItemIndex){
+      document.querySelectorAll('.myChart').forEach((chartItem,index)=>{
+        var chart = Chart.instances[index];
+        var dataItem = chart.data.datasets[legendItemIndex]    
+        if(dataItem.hidden == true || dataItem.hidden == null){
+          dataItem.hidden = false;
+        } else {
+          dataItem.hidden = true;
+        }
+        chart.update();
+      })  
+    }
 </script>
 @endsection
