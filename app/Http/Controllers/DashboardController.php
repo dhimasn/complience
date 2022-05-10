@@ -63,7 +63,7 @@ class DashboardController extends Controller
                 'tipe' => 'Inspeksi Visual',
                 'kepatuhan' => $dataForms[34],
                 'deviasi' => '-',
-                'status' => '-',
+                'status' => 'Selesai',
                 'datetime_offline' => $form1->datetime_offline,
             );
         }

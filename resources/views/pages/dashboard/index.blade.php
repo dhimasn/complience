@@ -258,7 +258,6 @@
         </button>
       </div>
       <div class="table-responsive px-3">
-        <span>Total 1</span>
         <table class="table align-items-center table-flush table-hasil-inspeksi">
           <thead class="thead-light">
             <tr>
@@ -562,28 +561,31 @@
 
     $(document).on("click", ".linkDetail", function(){
       var name = $(this).data('name');
+      $("#modalDetailToko").modal('show');
+      $(".table-hasil-inspeksi tbody").empty();
+      $(".table-hasil-inspeksi tbody").append('<tr><td align="center" colspan="8">Loading ...<td></tr>');
       $.ajax({
         url: "{{url('/')}}/api/v2/"+name,
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            $("#modalDetailToko").modal('show');
-            var resp = res.comp;
-            for (var key in resp) {
-               var obj = resp[key];
-               $(".table-hasil-inspeksi tbody").append(
-                  '<tr>'
-                    +`<td>${obj.no_she}</td>`
-                    +`<td>${obj.model}</td>`
-                    +`<td>${obj.merek}</td>`
-                    +`<td>${obj.tipe}</td>`
-                    +`<td>${obj.kepatuhan}</td>`
-                    +`<td>${obj.deviasi}</td>`
-                    +`<td>${obj.status}</td>`
-                    +`<td>${obj.datetime_offline}</td>`
-                  +'</tr>'
-                );
-            };
+          $(".table-hasil-inspeksi tbody").empty();
+          var resp = res.comp;
+          for (var key in resp) {
+              var obj = resp[key];
+              $(".table-hasil-inspeksi tbody").append(
+                '<tr>'
+                  +`<td>${obj.no_she}</td>`
+                  +`<td>${obj.model}</td>`
+                  +`<td>${obj.merek}</td>`
+                  +`<td>${obj.tipe}</td>`
+                  +`<td>${obj.kepatuhan}</td>`
+                  +`<td>${obj.deviasi}</td>`
+                  +`<td>${obj.status}</td>`
+                  +`<td>${obj.datetime_offline}</td>`
+                +'</tr>'
+              );
+          };
         }
       });
     });
