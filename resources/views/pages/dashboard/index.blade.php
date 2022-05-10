@@ -369,7 +369,7 @@
         labels: ["Sesuai","Tidak Sesuai"],
         datasets: [
             {
-                data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
+                data: [0,0],
                 backgroundColor: ["#7ba7b0","#f39800"]
             }]
     };
@@ -391,14 +391,6 @@
           }
         }
     });
-    var data = {
-        labels: ["Sesuai","Tidak Sesuai"],
-        datasets: [
-            {
-                data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
-                backgroundColor: ["#7ba7b0","#f39800"]
-            }]
-    };
     // END Kepatuhan Uji petik
 
     // CHART Kepatuhan Inspeksi Visual
@@ -445,6 +437,21 @@
           responsive: true,
           legend: {
             position: 'top',
+          },
+          scales: {
+            xAxes: [{
+                ticks: {
+                    min: 0,
+                    max: 2,
+                    callback: function(value) {
+                      return (value / 2 * 100).toFixed(0) + '%';
+                    }
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: "Percentage"
+                }
+            }]
           },
         }
     });
