@@ -192,7 +192,7 @@
                   </li>
                   @if (\Auth::user()->id_user_role == 1 || \Auth::user()->id_user_role == 2)
                   <li class="nav-item">
-                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk' ? 'active' : ''}}" href="{{route('masterdata.produk')}}">
+                    <a class="nav-link {{\Request::route()->getName() == 'masterdata.produk.index' ? 'active' : ''}}" href="{{route('masterdata.produk.index', 'ac')}}">
                       <span class="sidenav-normal">Produk Microsite</span>
                     </a>
                   </li>

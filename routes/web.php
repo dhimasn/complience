@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth:web'], function () {
             
             Route::get('pengujian-lainnya', 'PengujianLainnyaController@index')->name('masterdata.pengujian_lainnya');
             Route::get('pengujian-lainnya/detail/{record_id}', 'PengujianLainnyaController@detail')->name('masterdata.pengujian_lainnya.detail');
+
+            Route::get('produk/{cat}', 'ProdukController@index')->name('masterdata.produk.index');
         });
     });
     Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
