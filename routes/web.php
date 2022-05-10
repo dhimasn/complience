@@ -18,7 +18,9 @@ Route::group(['middleware' => 'auth:web'], function () {
 
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
-    Route::get('high-risk','HighRiskController@index')->name('highrisk.index');
+    Route::get('highrisk/index','HighRiskController@index')->name('highrisk.index');
+
+    Route::get('highrisk/sync','HighRiskController@sync')->name('highrisk.sync');
 
     Route::get('lab', 'LabController@index')->name('lab.index');
 
