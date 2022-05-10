@@ -95,7 +95,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link {{\Request::route()->getName() == 'highrisk.index' ? 'active' : ''}}" href="{{route('highrisk.index')}}">
                 <i class="far fa-save text-yellow-cus"></i>
                 <span class="nav-link-text">High Risk Tool</span>
               </a>

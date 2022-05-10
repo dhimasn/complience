@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware' => 'auth:web'], function () { 
+
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+
+    Route::get('highrisk/index','HighRiskController@index')->name('highrisk.index');
+
+    Route::get('highrisk/sync','HighRiskController@sync')->name('highrisk.sync');
 
     Route::get('lab', 'LabController@index')->name('lab.index');
 
@@ -48,6 +53,7 @@ Route::group(['middleware' => 'auth:web'], function () {
             Route::get('produk/{cat}', 'ProdukController@index')->name('masterdata.produk.index');
         });
     });
+
     Route::group(['namespace' => 'Formulir'], function () { // Formulir Folder Controller
         Route::get('formulir-2', 'FormDuaController@index')->name('form2.index');
         
