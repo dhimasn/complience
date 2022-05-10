@@ -83,7 +83,7 @@ class GeneralHelper
 
     return $result;
   }
-  public static function formRead($type, $value, $keterangan)
+  public static function formRead($type, $value, $keterangan, $key = null)
   {
     $result = "";
     if($keterangan){
@@ -103,11 +103,11 @@ class GeneralHelper
         break;
 
       default:
-        $result = '<input class="form-control form-complience" readonly value="' . $inputValue . '" type="text">';
+        $result = '<input class="form-control form-complience form-read" name="'.$key.'" readonly value="' . $inputValue . '" type="text">';
         break;
     }
     if($keterangan){
-      $result .= '<input class="form-control keterangan_form" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
+      $result .= '<input class="form-control keterangan_form form-read" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
     }
 
     return $result;

@@ -122,7 +122,7 @@
                   @if ($key == $item->id)
                   <div class="form-group">
                     <label class="form-control-label">{!!$item->data_point!!}</label>
-                    {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan)!!}
+                    {!!$helper->formRead($item->data_entry_type, $formValue, $item->input_keterangan, $key)!!}
                   </div>
                   @endif
                 @endforeach
@@ -148,6 +148,7 @@
   $('.btn-submit').click(function(e){
     var type = $(this).data('type');
     if(type=='edit'){
+      $(".form-read").removeAttr('readonly');
       $(this).data('type', 'simpan');
       $(this).text('Simpan');
       $('input').attr('readonly', false);
