@@ -24,11 +24,13 @@ class HighRisk
 
 
     public function sync(){
+
         //join tabel
 
         //calculate high risk
 
         //save data
+   
     }
    
 }

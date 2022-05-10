@@ -22,7 +22,12 @@ class HighRiskController extends Controller
     }
 
     public function sync(){
-        $highrisk = $this->highrisk->sync();
+        
+        $sync_highrisk = $this->highrisk->sync();
+
+        $highrisk = Complience::where('status', 1)->where('kegiatan', 1)->orderBy('updated_at', 'desc')->get();
+        return view('pages.highrisk.index', compact('highrisk'));
+        
     }
 
 

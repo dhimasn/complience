@@ -5,6 +5,9 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body p-2">
+      <div class="text-left mb-2">
+        <a class="btn btn-sm btn-primary" href="{{route('highrisk.sync')}}">sync</a> 
+      </div>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
