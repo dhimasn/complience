@@ -16,18 +16,14 @@ class HighRiskController extends Controller
     }
     
     public function index(){
-        //$highrisk = $this->highrisk->getListDataHighRisk();
-        $highrisk = Complience::where('status', 1)->where('kegiatan', 1)->orderBy('updated_at', 'desc')->get();
+        $highrisk = $this->highrisk->getListDataHighRisk();
         return view('pages.highrisk.index', compact('highrisk'));
     }
 
     public function sync(){
-        
-        $sync_highrisk = $this->highrisk->sync();
-
+        $this->highrisk->sync();
         $highrisk = Complience::where('status', 1)->where('kegiatan', 1)->orderBy('updated_at', 'desc')->get();
         return view('pages.highrisk.index', compact('highrisk'));
-        
     }
 
 

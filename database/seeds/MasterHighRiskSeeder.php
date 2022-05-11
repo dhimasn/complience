@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class HighRiskSeeder extends Seeder
+class MasterHighRiskSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,75 +15,75 @@ class HighRiskSeeder extends Seeder
         \DB::table('master_high_risk')->insert([
             [
                 'high_risk_criteria' => "Just meets MEPS level (ΔEER < 0.225 Btu/h/W)",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 1,
-                'notes' => '',
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "High CSPF & Low Price Model (5-star models with Actual Price at least 25% lower than Expected Price)",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 1,
-                'notes' => '',
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Low Price Model (Price < NN,000,000 IDR)",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 2,
-                'notes' => '',
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Product from High Risk Country of Origin",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 2,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "High Market Share reported to DJEBTKE",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 1,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Flagged in online label checks",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 3,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Flagged during in-store inspections",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 2,
-                'notes' => '',
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Brand with history of non-compliances",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 3,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "New or unknown brand/model relative to previous year",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 1,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Suspicious product features and specifications",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 3,
-                'notes' => '', 
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Ambiguity in technical documents / registration application dossier",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 3,
-                'notes' => '',
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Received 3rd party complaint(s)",
-                'data_target' => '',
+                'data_target' => 'test',
                 'type' => 3,
-                'notes' => '',
+                'notes' => 'test',
             ]
         ]);
     }
