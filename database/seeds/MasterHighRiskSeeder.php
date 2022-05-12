@@ -15,51 +15,75 @@ class MasterHighRiskSeeder extends Seeder
         \DB::table('master_high_risk')->insert([
             [
                 'high_risk_criteria' => "Just meets MEPS level (ΔEER < 0.225 Btu/h/W)",
+                'data_target' => 'test',
                 'type' => 1,
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "High CSPF & Low Price Model (5-star models with Actual Price at least 25% lower than Expected Price)",
-                'type' => 1, 
+                'data_target' => 'test',
+                'type' => 1,
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Low Price Model (Price < NN,000,000 IDR)",
-                'type' => 2, 
+                'data_target' => 'test',
+                'type' => 2,
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Product from High Risk Country of Origin",
-                'type' => 2, 
+                'data_target' => 'test',
+                'type' => 2,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "High Market Share reported to DJEBTKE",
-                'type' => 1, 
+                'data_target' => 'test',
+                'type' => 1,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Flagged in online label checks",
-                'type' => 3, 
+                'data_target' => 'test',
+                'type' => 3,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Flagged during in-store inspections",
-                'type' => 2, 
+                'data_target' => 'test',
+                'type' => 2,
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Brand with history of non-compliances",
-                'type' => 3, 
+                'data_target' => 'test',
+                'type' => 3,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "New or unknown brand/model relative to previous year",
-                'type' => 1, 
+                'data_target' => 'test',
+                'type' => 1,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Suspicious product features and specifications",
-                'type' => 3, 
+                'data_target' => 'test',
+                'type' => 3,
+                'notes' => 'test', 
             ],
             [
                 'high_risk_criteria' => "Ambiguity in technical documents / registration application dossier",
-                'type' => 3, 
+                'data_target' => 'test',
+                'type' => 3,
+                'notes' => 'test',
             ],
             [
                 'high_risk_criteria' => "Received 3rd party complaint(s)",
-                'type' => 3, 
+                'data_target' => 'test',
+                'type' => 3,
+                'notes' => 'test',
             ]
         ]);
     }
