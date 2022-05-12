@@ -89,10 +89,24 @@
 
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link {{\Request::route()->getName() == 'dashboard.index' ? 'active' : ''}}" href="{{route('dashboard.index')}}">
-                <i class="fas fa-th-large text-yellow-cus"></i>
+              <a data-toggle="collapse" href="#dashboardCollapse" class="nav-link collapsed {{in_array(\Request::route()->getName(), $result['routeDashboard']) ? 'active' : ''}}" aria-controls="masterDataCollapse" role="button" aria-expanded="{{in_array(\Request::route()->getName(), $result['routeDashboard']) ? 'true' : 'false'}}">
+                <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
+              <div class="collapse {{in_array(\Request::route()->getName(), $result['routeDashboard']) ? 'show' : ''}}" id="dashboardCollapse" style="">
+                <ul class="nav ms-4">
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'dashboard.index' ? 'active' : ''}}" href="{{route('dashboard.index')}}">
+                      <span class="nav-link-text">Peralatan</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'dashboard.global' ? 'active' : ''}}" href="{{route('dashboard.global')}}">
+                      <span class="nav-link-text">Perbandingan Peralatan</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link {{\Request::route()->getName() == 'highrisk.index' ? 'active' : ''}}" href="{{route('highrisk.index')}}">

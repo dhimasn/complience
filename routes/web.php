@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:web'], function () { 
 
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/global', 'DashboardController@global')->name('dashboard.global');
 
     Route::get('highrisk/index','HighRiskController@index')->name('highrisk.index');
 

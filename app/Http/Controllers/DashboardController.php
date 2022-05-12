@@ -49,6 +49,9 @@ class DashboardController extends Controller
             'status',
         ));
     }
+    public function global(){
+        return view('pages.dashboard.global');
+    }
     public function getProdukToko($name){
         $result = array();
         $ujiPetiks = Uji_petik::where('lokasi_pengawasan', 'like', '%'.$name.'%')->get();

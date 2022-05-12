@@ -148,6 +148,7 @@
         <div class="row">
           <div class="col-6">
             <canvas id="barUjiPetikDate" height="150"></canvas>
+            <canvas id="barUjiPetik" height="150"></canvas>
           </div>
           <div class="col-6">
             <canvas id="barInspeksiVisualDate" height="150"></canvas>
@@ -409,7 +410,7 @@
     };
     var barInspeksiVisual = document.getElementById("barInspeksiVisual");
     new Chart(barInspeksiVisual, {
-        type: 'pie',
+        type: 'doughnut',
         data: data,
         options: {
           pieceLabel: {
@@ -456,12 +457,12 @@
         datasets: [
             {
               label: 'AC',
-              data: [20],
+              data: [0],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [7],
+              data: [0],
               backgroundColor: "#f39800"
             }
         ]
@@ -497,12 +498,12 @@
         datasets: [
             {
               label: 'AC',
-              data: [10],
+              data: [0],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [8],
+              data: [0],
               backgroundColor: "#f39800"
             }
         ]
@@ -534,17 +535,17 @@
 
     // CHART barUjiPetikDate
     var data = {
-        labels: ["MT C02"],
+        labels: ["2022"],
         datasets: [
             {
-              label: 'AC',
+              label: 'Sesuai',
               data: [10],
-              backgroundColor: "#7ba7b0"
+              backgroundColor: "#ffee00"
             },
             {
-              label: 'Kulkas',
+              label: 'Tidak Sesuai',
               data: [8],
-              backgroundColor: "#f39800"
+              backgroundColor: "#c7c7c7"
             }
         ]
     };
@@ -563,7 +564,7 @@
           },
           responsive: true,
           legend: {
-            display: false,
+            position: 'bottom'
           },
           title: {
             display: true,
@@ -572,20 +573,59 @@
         }
     });
     // END barUjiPetikDate
-
-    // CHART barInspeksiVisualDate
+    // CHART barUjiPetik
     var data = {
-        labels: ["MT C02"],
+        labels: ["Record 1","Record 2","Record 3"],
         datasets: [
             {
-              label: 'AC',
-              data: [10],
+              label: 'Label',
+              data: [4,2,7],
               backgroundColor: "#7ba7b0"
             },
             {
-              label: 'Kulkas',
-              data: [8],
+              label: 'Uji Petik',
+              data: [1,3,2],
               backgroundColor: "#f39800"
+            }
+        ]
+    };
+    var barUjiPetik = document.getElementById("barUjiPetik");
+    new Chart(barUjiPetik, {
+        type: 'bar',
+        data: data,
+        options: {
+          scales: {
+            xAxes: [{
+                stacked: true,
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+          },
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: ''
+          }
+        }
+    });
+    // END barUjiPetik
+
+    // CHART barInspeksiVisualDate
+    var data = {
+        labels: ["2022"],
+        datasets: [
+            {
+              label: 'Sesuai',
+              data: [10],
+              backgroundColor: "#ffee00"
+            },
+            {
+              label: 'Tidak Sesuai',
+              data: [8],
+              backgroundColor: "#c7c7c7"
             }
         ]
     };
@@ -604,7 +644,7 @@
           },
           responsive: true,
           legend: {
-            display: false,
+            position: 'bottom'
           },
           title: {
             display: true,
