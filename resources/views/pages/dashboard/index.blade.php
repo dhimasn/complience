@@ -103,18 +103,18 @@
   <div class="col-xl-12 col-md-12">
     <div class="card">
       <div class="card-header py-2">
-        <a data-toggle="tooltip" data-placement="top" title="Market Insights"><i class="fas fa-info-circle"></i></a>
+        <a data-toggle="tooltip" data-placement="top" title="Ringkasan informasi pasar untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
         Market Insights
       </div>
       <div class="card-body">
         <div class="row">
           <div class="col-md-4">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">JUMLAH PERUSAHAAN</h5>
-                <span class="h2 font-weight-bold mb-0">35</span>
-              </div>
-            </div>
+            <table>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH PERUSAHAAN</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+            </table>
           </div>
           <div class="col-md-4">
             <table>
@@ -126,6 +126,10 @@
                 <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH UNIT PRODUKSI TERLAPOR</h5></td>
                 <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
               </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table>
               <tr>
                 <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH IMPORTIR</h5></td>
                 <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
@@ -141,49 +145,29 @@
     </div>
     <div class="card">
       <div class="card-header py-2">
-        <a data-toggle="tooltip" data-placement="top" title="Compliance Insights"><i class="fas fa-info-circle"></i></a>
+        <a data-toggle="tooltip" data-placement="top" title="Rangkuman kegiatan pengawasan yang telah dilakukan untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
         Compliance Insights
       </div>
       <div class="card-body p-1">
         <div class="row">
-          <div class="col-6">
-            <canvas id="barUjiPetikDate" height="150"></canvas>
-            <canvas id="barUjiPetik" height="150"></canvas>
+          <div class="col-md-6">
+            <canvas id="barUjiPetikDate" height="250"></canvas>
+            <canvas id="barUjiPetik" height="135"></canvas>
           </div>
-          <div class="col-6">
-            <canvas id="barInspeksiVisualDate" height="150"></canvas>
-            <canvas id="barInspeksiVisual" height="150"></canvas>
+          <div class="col-md-6">
+            <canvas id="barInspeksiVisualDate" height="250"></canvas>
+            <canvas id="barInspeksiVisual" height="135"></canvas>
           </div>
         </div>
       </div>
     </div>
-    {{-- <div class="card">
-      <div class="card-header py-2">
-        Jumlah Produk Inspeksi
-      </div>
-      <div class="card-body p-1">
-        <canvas id="barJumlahProduk" height="160"></canvas>
-      </div>
-    </div> --}}
-    {{-- <div class="card">
-      <div class="card-header py-2">
-        Kepatuhan Uji Petik
-      </div>
-      <div class="card-body p-1">
-        <div class="row">
-          <div class="col-12">
-            <canvas id="chartVerifikasi" height="160"></canvas>
-          </div>
-        </div>
-      </div>
-    </div> --}}
   </div>
   <div class="col-xl-12 col-md-12">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header py-1">
-            <a data-toggle="tooltip" data-placement="top" title="Peta Sebaran Kegiatan Inspeksi"><i class="fas fa-info-circle"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Tampilan sebaran inspeksi yang telah dilakukan pada lokasi ritel untuk produk dan rentang periode yang dipilih. Pengguna dapat mengakses kegiatan inspeksi per lokasi ritel dengan mengklik label yang tampil"><i class="fas fa-info-circle"></i></a>
             Peta Sebaran Kegiatan Inspeksi
           </div>
           <div id="map" style="height: 383px"></div>
@@ -196,7 +180,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header py-2">
-            <a data-toggle="tooltip" data-placement="top" title="Status Uji Petik"><i class="fas fa-info-circle"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Daftar model yang telah atau sedang melalui verifikasi uji petik untuk produk dan rentang periode yang dipilih"><i class="fas fa-info-circle"></i></a>
             Status Uji Petik
           </div>
           <div class="table-responsive">
@@ -251,7 +235,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header py-2">
-            <a data-toggle="tooltip" data-placement="top" title="Dampak Regulasi"><i class="fas fa-info-circle"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Tampilan hasil perhitungan penghematan energi dan mitigasi emisi untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
              Dampak Regulasi
           </div>
           <div class="card-body p-1">
@@ -308,6 +292,7 @@
 <script src="{{asset('assets/vendor/leaflet/leaflet.js')}}"></script>
 <script src="{{asset('assets/vendor/chartjs/dist/Chart.min.js')}}"></script>
 <script src="{{asset('assets/vendor/chartjs/dist/plugin-labels.js')}}"></script>
+<script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js">
 </script>
 <script>
@@ -584,34 +569,46 @@
             {
               label: 'Label',
               data: [4,2,7],
-              backgroundColor: "#7ba7b0"
+              borderColor: "#7ba7b0",
+              backgroundColor: "#7ba7b0",
+              fill: false,
+              pointStyle: 'circle',
+              pointRadius: 8,
+              pointHoverRadius: 10,
+              showLine: false,
+              
             },
             {
               label: 'Uji Petik',
               data: [1,3,2],
-              backgroundColor: "#f39800"
+              borderColor: "#f39800",
+              backgroundColor: "#f39800",
+              fill: false,
+              pointStyle: 'circle',
+              pointRadius: 8,
+              pointHoverRadius: 10,
+              showLine: false,
             }
         ]
     };
     var barUjiPetik = document.getElementById("barUjiPetik");
     new Chart(barUjiPetik, {
-        type: 'bar',
+        type: 'line',
         data: data,
         options: {
-          scales: {
-            xAxes: [{
-                stacked: true,
-            }],
-            yAxes: [{
-                stacked: true
-            }]
-          },
           legend: {
             position: 'bottom'
           },
           title: {
             display: true,
             text: ''
+          },
+          scales : {
+              xAxes : [ {
+                  gridLines : {
+                      display : false
+                  }
+              } ]
           }
         }
     });
