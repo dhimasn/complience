@@ -58,7 +58,7 @@
                 <div class="col-sm-9">
                   <div class="row">
                     <div class="col-md-1">
-                      <input type="radio" name="periode" value="tahun">
+                      <input type="radio" name="periode" value="tahun" checked>
                     </div>
                     <div class="col-md-1">
                       <label class="">Tahun</label>
