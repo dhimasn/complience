@@ -53,32 +53,32 @@
           {
             label: 'AC',
             data: [10],
-            backgroundColor: "#53c43e"
+            backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
             data: [20],
-            backgroundColor: "#3da1bd"
+            backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
             data: [8],
-            backgroundColor: "#f39800"
+            backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
             data: [12],
-            backgroundColor: "#dc604a"
+            backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
             data: [5],
-            backgroundColor: "#da73a9"
+            backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
             data: [24],
-            backgroundColor: "#ffee00"
+            backgroundColor: "#4371c6"
           },
       ]
   };
@@ -114,32 +114,32 @@
           {
             label: 'AC',
             data: [10],
-            backgroundColor: "#53c43e"
+            backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
             data: [20],
-            backgroundColor: "#3da1bd"
+            backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
             data: [8],
-            backgroundColor: "#f39800"
+            backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
             data: [12],
-            backgroundColor: "#dc604a"
+            backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
             data: [5],
-            backgroundColor: "#da73a9"
+            backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
             data: [24],
-            backgroundColor: "#ffee00"
+            backgroundColor: "#4371c6"
           },
       ]
   };
@@ -175,32 +175,44 @@
         {
             label: 'AC',
             data: [0],
-            backgroundColor: "#53c43e"
+            backgroundColor: "#ee7d31",
+            borderColor: "#ee7d31",
+            fill: true
           },
           {
             label: 'Kulkas',
             data: [0],
-            backgroundColor: "#3da1bd"
+            backgroundColor: "#a4a6a3",
+            borderColor: "#a4a6a3",
+            fill: true
           },
           {
             label: 'Lampu LED',
             data: [0],
-            backgroundColor: "#f39800"
+            backgroundColor: "#f39800",
+            borderColor: "#f39800",
+            fill: true
           },
           {
             label: 'Penanak Nasi',
             data: [0],
-            backgroundColor: "#dc604a"
+            backgroundColor: "#72ae42",
+            borderColor: "#72ae42",
+            fill: true
           },
           {
             label: 'Kipas Angin',
             data: [0],
-            backgroundColor: "#da73a9"
+            backgroundColor: "#fec200",
+            borderColor: "#fec200",
+            fill: true
           },
           {
             label: 'Lampu CFL',
             data: [0],
-            backgroundColor: "#ffee00"
+            backgroundColor: "#4371c6",
+            borderColor: "#4371c6",
+            fill: true
           },
       ]
   };
@@ -233,35 +245,47 @@
   var data = {
       labels: ["2022"],
       datasets: [
-          {
+        {
             label: 'AC',
             data: [0],
-            backgroundColor: "#53c43e"
+            backgroundColor: "#ee7d31",
+            borderColor: "#ee7d31",
+            fill: true
           },
           {
             label: 'Kulkas',
             data: [0],
-            backgroundColor: "#3da1bd"
+            backgroundColor: "#a4a6a3",
+            borderColor: "#a4a6a3",
+            fill: true
           },
           {
             label: 'Lampu LED',
             data: [0],
-            backgroundColor: "#f39800"
+            backgroundColor: "#f39800",
+            borderColor: "#f39800",
+            fill: true
           },
           {
             label: 'Penanak Nasi',
             data: [0],
-            backgroundColor: "#dc604a"
+            backgroundColor: "#72ae42",
+            borderColor: "#72ae42",
+            fill: true
           },
           {
             label: 'Kipas Angin',
             data: [0],
-            backgroundColor: "#da73a9"
+            backgroundColor: "#fec200",
+            borderColor: "#fec200",
+            fill: true
           },
           {
             label: 'Lampu CFL',
             data: [0],
-            backgroundColor: "#ffee00"
+            backgroundColor: "#4371c6",
+            borderColor: "#4371c6",
+            fill: true
           },
       ]
   };
