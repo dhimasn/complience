@@ -58,30 +58,30 @@
                 <div class="col-sm-9">
                   <div class="row">
                     <div class="col-md-1">
-                      <input type="radio" name="periode" value="tahun" checked>
+                      <input type="radio" name="periode" value="tahun" {{$periode == 'tahun' ? 'checked' : ''}}>
                     </div>
                     <div class="col-md-1">
                       <label class="">Tahun</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="number" placeholder="Tahun" name="tahun" class="form-control form-complience">
+                      <input type="number" placeholder="Tahun" name="tahun" value="{{$tahun}}" class="form-control form-complience">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-1">
-                      <input type="radio" name="periode" value="date">
+                      <input type="radio" name="periode" value="date" {{$periode == 'date' ? 'checked' : ''}}>
                     </div>
                     <div class="col-md-1">
                       <label class="">Dari</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="date" name="dari" class="form-control form-complience">
+                      <input type="date" name="dari" class="form-control form-complience" value="{{$dariSelected}}">
                     </div>
                     <div class="col-md-1">
                       <label class="">Hingga</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="date" name="hingga" class="form-control form-complience">
+                      <input type="date" name="hingga" class="form-control form-complience" value="{{$hinggaSelected}}">
                     </div>
                   </div>
                 </div>
@@ -535,7 +535,11 @@
 
     // CHART barUjiPetikDate
     var data = {
-        labels: ["2022"],
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
         datasets: [
             {
               label: 'Sesuai',
@@ -615,7 +619,11 @@
 
     // CHART barInspeksiVisualDate
     var data = {
-        labels: ["2022"],
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
         datasets: [
             {
               label: 'Sesuai',
