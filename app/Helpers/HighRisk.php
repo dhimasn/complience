@@ -38,7 +38,7 @@ class HighRisk
             foreach($data as $dt){
                 
                 //calculate
-                $this->calculate($dt);
+                //$this->calculate($dt);
 
             }
            
@@ -49,12 +49,25 @@ class HighRisk
     }
 
     public function calculate($dt){
-
-       //criteria 1
+        $result = [];
+        //print_r(json_decode($dt->form_data));exit;
+        //$formdata1 = $dt->
+       
+        //criteria 1
 
         //criteria 2
 
         //criteria 3
+        // if(!empty($dt)){
+            
+        //     if($dt->harga < 10000){
+        //         $resul[3] = 1;
+        //     }else if($dt->harga < 10000){
+        //         $resul[3] = 2;
+        //     }else if($dt->harga < 10000){
+        //         $resul[3] = 3;
+        //     }
+        // }
 
         //criteria 4
 
@@ -76,6 +89,16 @@ class HighRisk
 
         //criteria 13
 
+    }
+
+    public function refrence(){
+        $data = DB::table('master_high_risk')->get();
+        return $data;
+    }
+
+    public function report(){
+        $data = DB::table('history_complience_high_risk')->get();
+        return $data;
     }
    
 }

@@ -1,13 +1,13 @@
 @extends('layouts.master')
-@section('title-menu', 'High Risk Produk')
+@section('title-menu', 'Report Non Compliance History')
 @section('contents')
 <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-body p-2">
-      <!-- <div class="text-left mb-2">
-        <a class="btn btn-sm btn-primary" href="{{route('highrisk.sync')}}">sync</a> 
-      </div> -->
+      <div class="text-left mb-2">
+        <a class="btn btn-sm btn-primary" href="{{route('highrisk.tambahReport')}}">Tambah</a> 
+      </div> 
         <div class="row">
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
@@ -15,13 +15,11 @@
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
-                <th>Star Rating (1-5)</th>
-                <th>EER (Btu/h/W)</th>
-                <th>CSPF (Wh/Wh)</th>
-                <th>Commpressor Type</th>
-                <th>Risk Rating</th>
-                <th>Verification Result</th>
-                <th>Produk/Import Volume</th>
+                <th>Kasus Ketidaksesuaian</th>
+                <th>Kementerian/Lembaga Terkait</th>
+                <th>Nama Inspektur</th>
+                <th>Tanggal Temuan</th>
+                <th>Bobot Resiko</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)
@@ -29,11 +27,11 @@
                   <td><a href="">{{$item->no_she}}</a></td>
                   <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
-                  <td>{{$item->teknologi}}</td>
-                  <td>{{$item->manufaktur}}</td>
+                  <td>{{$item->ketidaksesuaian}}</td>
+                  <td>{{$item->lembaga_terkait}}</td>
+                  <td>{{$item->pengawas_id}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td>2018-1-EER-OK</td>
-                  <td><a class="btn btn-sm btn-info" href="">detail</a></td>
+                  <td>{{$item->bobot}}</td>
                 </tr>
                 @endforeach
               </tbody>
