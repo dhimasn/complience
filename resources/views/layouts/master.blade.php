@@ -109,10 +109,34 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{\Request::route()->getName() == 'highrisk.index' ? 'active' : ''}}" href="{{route('highrisk.index')}}">
-                <i class="far fa-save text-yellow-cus"></i>
+              <a  class="nav-link" data-toggle="collapse" href="#highriskCollapse">
+                  <i class="fas fa-database text-yellow-cus"></i>
                 <span class="nav-link-text">High Risk Tool</span>
               </a>
+              <div class="collapse" id="highriskCollapse" style="" >
+                <ul class="nav ms-4">
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.index' ? 'active' : ''}}" href="{{route('highrisk.index')}}">
+                      <span class="sidenav-normal">High Risk Produk</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.report' ? 'active' : ''}}" href="{{route('highrisk.report')}}">
+                      <span class="sidenav-normal">Report History Non Complience</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.volume' ? 'active' : ''}}" href="{{route('highrisk.volume')}}">
+                      <span class="sidenav-normal">Volume produk</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.update' ? 'active' : ''}}" href="{{route('highrisk.update')}}">
+                      <span class="sidenav-normal">High Risk Kriteria</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             @if (\Auth::user()->id_user_role == 2 || \Auth::user()->id_user_role == 3)
             <li class="nav-item">
