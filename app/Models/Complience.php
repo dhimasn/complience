@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 use PDO;
 
 class Complience extends Model
@@ -16,7 +17,9 @@ class Complience extends Model
     public function lab(){
         return $this->belongsTo(LabUji::class, 'lab_uji');
     }
-
+    public function pengawas(){
+        return $this->belongsTo(User::class, 'pengawas_id');
+    }
     public function formulir1(){
         return $this->hasOne(Formulir1::class, 'record_id', 'record_id');
     }

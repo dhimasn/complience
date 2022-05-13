@@ -34,7 +34,19 @@ class InspeksiVisualController extends Controller
         }
     }
     public function simpan(Request $request, $record_id){
-        Session::flash('success', 'Disimpan Kedalam Database');
+        try{
+            $complience = Complience::where('record_id', $record_id)->first();
+            $formData = json_decode($complience->formulir1->form_data,true);
+            $updateForm = array();
+            foreach ($formData as $key => $value) {
+                $updateForm[$key] = $request->input($key);
+            }
+            $complience->formulir1->form_data = json_encode($updateForm);
+            $complience->formulir1->save();
+            Session::flash('success', 'Disimpan Kedalam Database');
+        }catch(\Exception $e){
+            report($e);
+        }
         return redirect()->route('masterdata.inspeksi_visual.detail', $record_id);
     }
 }

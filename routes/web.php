@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth:web'], function () { 
 
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/global', 'DashboardController@global')->name('dashboard.global');
 
     Route::get('highrisk/index','HighRiskController@index')->name('highrisk.index');
     Route::get('highrisk/report','HighRiskController@report')->name('highrisk.report');
@@ -53,6 +54,8 @@ Route::group(['middleware' => 'auth:web'], function () {
             
             Route::get('pengujian-lainnya', 'PengujianLainnyaController@index')->name('masterdata.pengujian_lainnya');
             Route::get('pengujian-lainnya/detail/{record_id}', 'PengujianLainnyaController@detail')->name('masterdata.pengujian_lainnya.detail');
+
+            Route::get('produk/{cat}', 'ProdukController@index')->name('masterdata.produk.index');
         });
     });
 
@@ -98,6 +101,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/lab/update/{record_id}','KelolaLabUjiController@update')->name('laboratorium.update');  
     Route::get('/lab/delete/{record_id}','KelolaLabUjiController@delete')->name('laboratorium.delete');
 
+    //Api Web
+    Route::get('api/v2/{name}','DashboardController@getProdukToko')->name('api2.getProdukToko');
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');

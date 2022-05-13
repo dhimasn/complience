@@ -34,170 +34,153 @@
 @endsection
 @section('contents')
 <div class="row">
-  <div class="col-xl-6 col-md-6">
+  <div class="col-xl-12 col-md-12">
     <div class="card">
-      <div class="card-header py-2">
-        Jumlah Produk
-      </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-md-3">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">AC</h5>
-                <span class="h2 font-weight-bold mb-0">35</span>
+          <div class="col-md-12">
+            <form action="" method="GET">
+              <div class="form-group row">
+                <label class="col-sm-2">Peralatan</label>
+                <div class="col-sm-3">
+                  <select name="pelaratan" class="form-control form-complience">
+                    <option value="2">AC</option>
+                    <option disabled value="">Kulkas</option>
+                    <option disabled value="">Kipas Angin</option>
+                    <option disabled value="">Penanak Nasi</option>
+                    <option disabled value="1">Lampu CFL</option>
+                    <option disabled value="">Lampu LED</option>
+                  </select>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Kulkas</h5>
-                <span class="h2 font-weight-bold mb-0">35</span>
+              <div class="form-group row">
+                <label class="col-sm-2">Periode</label>
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <input type="radio" name="periode" value="tahun" {{$periode == 'tahun' ? 'checked' : ''}}>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="">Tahun</label>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="number" placeholder="Tahun" name="tahun" value="{{$tahun}}" class="form-control form-complience">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-1">
+                      <input type="radio" name="periode" value="date" {{$periode == 'date' ? 'checked' : ''}}>
+                    </div>
+                    <div class="col-md-1">
+                      <label class="">Dari</label>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="date" name="dari" class="form-control form-complience" value="{{$dariSelected}}">
+                    </div>
+                    <div class="col-md-1">
+                      <label class="">Hingga</label>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="date" name="hingga" class="form-control form-complience" value="{{$hinggaSelected}}">
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header py-2">
-        Jumlah Produk Inspeksi
-      </div>
-      <div class="card-body p-1">
-        <canvas id="barJumlahProduk" height="160"></canvas>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header py-2">
-        Kepatuhan Uji Petik
-      </div>
-      <div class="card-body p-1">
-        <div class="row">
-          <div class="col-md-12 text-center custom-legend">
-            <div class="legend">
-              <div class="orange"></div>
-              <div>Tidak Sesuai</div>
-            </div>
-            <div class="legend">
-              <div class="blue"></div>
-              <div>Sesuai</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <canvas id="chartVerifikasiAC" height="300"></canvas>
-          </div>
-          <div class="col-6">
-            <canvas id="chartVerifikasiKulkas" height="300"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header py-2">
-        Dampak Regulasi
-      </div>
-      <div class="card-body p-1">
-        <div class="row">
-          <div class="col-6">
-            <canvas id="barDampakRegulasiEnergi" height="350"></canvas>
-          </div>
-          <div class="col-6">
-            <canvas id="barDampakRegulasiEmisi" height="350"></canvas>
+              <div class="form-group row">
+                <label class="col-sm-2"></label>
+                <div class="col-sm-3">
+                  <button class="btn btn-yellow button-comp" submit>
+                    Filter
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-6 col-md-6">
-    <div class="row">
-      <div class="col-xl-6 col-md-6">
-        <div class="card card-stats">
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Produsen Dalam Negeri</h5>
-                <span class="h2 font-weight-bold mb-0">35</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                  <i class="ni ni-active-40"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card card-stats">
-          <!-- Card body -->
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Total Produk Diinspeksi</h5>
-                <span class="h2 font-weight-bold mb-0">{{$totalProdukInspeksi}}</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                  <i class="ni ni-chart-bar-32"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="col-xl-12 col-md-12">
+    <div class="card">
+      <div class="card-header py-2">
+        <a data-toggle="tooltip" data-placement="top" title="Ringkasan informasi pasar untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
+        Market Insights
       </div>
-      <div class="col-xl-6 col-md-6">
-        <div class="card card-stats">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Importir</h5>
-                <span class="h2 font-weight-bold mb-0">-</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                  <i class="ni ni-active-40"></i>
-                </div>
-              </div>
-            </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <table>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH PERUSAHAAN</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+            </table>
           </div>
-        </div>
-        <div class="card card-stats">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Jumlah Perusahaan</h5>
-                <span class="h2 font-weight-bold mb-0">-</span>
-              </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                  <i class="ni ni-active-40"></i>
-                </div>
-              </div>
-            </div>
+          <div class="col-md-4">
+            <table>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH PRODUSEN DALAM NEGERI</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH UNIT PRODUKSI TERLAPOR</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH IMPORTIR</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+              <tr>
+                <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH UNIT IMPOR TERLAPOR</h5></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
     </div>
+    <div class="card">
+      <div class="card-header py-2">
+        <a data-toggle="tooltip" data-placement="top" title="Rangkuman kegiatan pengawasan yang telah dilakukan untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
+        Compliance Insights
+      </div>
+      <div class="card-body p-1">
+        <div class="row">
+          <div class="col-md-6">
+            <canvas id="barUjiPetikDate" height="250"></canvas>
+            <canvas id="barUjiPetik" height="135"></canvas>
+          </div>
+          <div class="col-md-6">
+            <canvas id="barInspeksiVisualDate" height="250"></canvas>
+            <canvas id="barInspeksiVisual" height="135"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header py-1">
+            <a data-toggle="tooltip" data-placement="top" title="Tampilan sebaran inspeksi yang telah dilakukan pada lokasi ritel untuk produk dan rentang periode yang dipilih. Pengguna dapat mengakses kegiatan inspeksi per lokasi ritel dengan mengklik label yang tampil"><i class="fas fa-info-circle"></i></a>
+            Peta Sebaran Kegiatan Inspeksi
+          </div>
+          <div id="map" style="height: 383px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-md-12">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header py-2">
-            Kepatuhan Inspeksi Visual
-          </div>
-          <div class="card-body p-1">
-              <canvas id="barInspeksiVisual" height="150"></canvas>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header py-1">
-            Peta Sebaran Inspeksi
-          </div>
-          <div id="map" style="height: 383px"></div>
-        </div>
-        <div class="card">
-          <div class="card-header py-2">
+            <a data-toggle="tooltip" data-placement="top" title="Daftar model yang telah atau sedang melalui verifikasi uji petik untuk produk dan rentang periode yang dipilih"><i class="fas fa-info-circle"></i></a>
             Status Uji Petik
           </div>
           <div class="table-responsive">
@@ -211,28 +194,59 @@
                   <th scope="col">Pengawas</th>
                   <th scope="col">Lab</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Tanggal</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">
-                    AC
-                  </th>
-                  <td>
-                    Daikin
-                  </td>
-                  <td>
-                    Pengawas
-                  </td>
-                  <td>
-                    Qualis
-                  </td>
-                  <td>
-                    Pemilihan Lab Uji
-                  </td>
-                </tr>
+                @foreach ($statusUjiPetiks as $statusUjiPetik)
+                  <tr>
+                    <th scope="row">
+                      AC
+                    </th>
+                    <td>
+                      {{$statusUjiPetik->model}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->merek}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->pengawas->name}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->lab->nama ?? ''}}
+                    </td>
+                    <td>
+                      {{$status[$statusUjiPetik->status] ?? ''}}
+                    </td>
+                    <td>
+                      {{$statusUjiPetik->updated_at}}
+                    </td>
+                  </tr>
+                @endforeach
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header py-2">
+            <a data-toggle="tooltip" data-placement="top" title="Tampilan hasil perhitungan penghematan energi dan mitigasi emisi untuk produk dan rentang periode yang dipilih."><i class="fas fa-info-circle"></i></a>
+             Dampak Regulasi
+          </div>
+          <div class="card-body p-1">
+            <div class="row">
+              <div class="col-6">
+                <canvas id="barDampakRegulasiEnergi" height="190"></canvas>
+              </div>
+              <div class="col-6">
+                <canvas id="barDampakRegulasiEmisi" height="190"></canvas>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -249,8 +263,7 @@
         </button>
       </div>
       <div class="table-responsive px-3">
-        <span>Total 1</span>
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush table-hasil-inspeksi">
           <thead class="thead-light">
             <tr>
               <th scope="col">No SHE</th>
@@ -264,23 +277,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                AC
-              </th>
-              <td>
-                Daikin
-              </td>
-              <td>
-                Pengawas
-              </td>
-              <td>
-                Qualis
-              </td>
-              <td>
-                Pemilihan Lab Uji
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -295,6 +292,7 @@
 <script src="{{asset('assets/vendor/leaflet/leaflet.js')}}"></script>
 <script src="{{asset('assets/vendor/chartjs/dist/Chart.min.js')}}"></script>
 <script src="{{asset('assets/vendor/chartjs/dist/plugin-labels.js')}}"></script>
+<script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js">
 </script>
 <script>
@@ -340,7 +338,7 @@
         iconMarker = redIcon;
       }
       var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title, icon: iconMarker });
-      marker.bindPopup(`<div class="text-center">Toko<br><a style="text-decoration: underline;" data-target="#modalDetailToko" class="linkDetail" data-toggle="modal" data-name="${title}" href="#">${title}</a></div>`);
+      marker.bindPopup(`<div class="text-center">Toko<br><a style="text-decoration: underline;" class="linkDetail" data-name="${title}" href="#">${title}</a></div>`);
       markers.addLayer(marker);
     }
 
@@ -348,65 +346,28 @@
     // end map
 
     //chart Kepatuhan Uji petik
-    var data = {
-        labels: ["Sesuai","Tidak Sesuai"],
-        datasets: [
-            {
-                data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
-                backgroundColor: ["#7ba7b0","#f39800"]
-            }]
-    };
-    var chartVerifikasiAC = document.getElementById("chartVerifikasiAC");
-    new Chart(chartVerifikasiAC, {
-        type: 'pie',
-        data: data,
-        options: {
-          pieceLabel: {
-            render: 'value' //show values
-          },
-          legend: {
-            display: false,
-          },
-          title: {
-            display: true,
-            text: 'AC'
-          }
-        }
-    });
-    var data = {
-        labels: ["Sesuai","Tidak Sesuai"],
-        datasets: [
-            {
-                data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
-                backgroundColor: ["#7ba7b0","#f39800"]
-            }]
-    };
-
-    var chartVerifikasiKulkas = document.getElementById("chartVerifikasiKulkas");
-    new Chart(chartVerifikasiKulkas, {
-        type: 'pie',
-        data: data,
-        options: {
-          pieceLabel: {
-            render: 'value' //show values
-          },
-          legend: {
-            display: false,
-          },
-          title: {
-            display: true,
-            text: 'Kulkas'
-          }
-        }
-    });
-    var data = {
-        labels: ["Sesuai","Tidak Sesuai"],
-        datasets: [
-            {
-                data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
-                backgroundColor: ["#7ba7b0","#f39800"]
-            }]
-    };
+    // var data = {
+    //     labels: ["Sesuai","Tidak Sesuai"],
+    //     datasets: [
+    //         {
+    //             data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
+    //             backgroundColor: ["#7ba7b0","#f39800"]
+    //         }]
+    // };
+    // var chartVerifikasi = document.getElementById("chartVerifikasi");
+    // new Chart(chartVerifikasi, {
+    //     type: 'pie',
+    //     data: data,
+    //     options: {
+    //       pieceLabel: {
+    //         render: 'value' //show values
+    //       },
+    //       title: {
+    //         display: true,
+    //         text: 'AC'
+    //       }
+    //     }
+    // });
     // END Kepatuhan Uji petik
 
     // CHART Kepatuhan Inspeksi Visual
@@ -428,61 +389,51 @@
                 {{$kepatuhan['4']}},
                 {{$kepatuhan['5']}}
               ],
-              backgroundColor: "#7ba7b0"
-            },
-            {
-              label: 'Kulkas',
-              data: [0,0,0,0,0],
-              backgroundColor: "#f39800"
-            },
+              backgroundColor: ["#36a2eb","#ff6384","#4bc0c0","#ff9f40","#f39800"]
+            }
         ]
     };
     var barInspeksiVisual = document.getElementById("barInspeksiVisual");
     new Chart(barInspeksiVisual, {
-        type: 'horizontalBar',
+        type: 'doughnut',
         data: data,
         options: {
           pieceLabel: {
             render: 'value' //show values
           },
-          elements: {
-            bar: {
-              borderWidth: 2,
-            }
-          },
           responsive: true,
           legend: {
-            position: 'top',
-          },
+            position: 'right',
+          }
         }
     });
     // END Kepatuhan Inspeksi Visual
 
     // CHART Produk
-    var yearNow = new Date().getFullYear();
-    var data = {
-        labels: ["AC","Kulkas"],
-        datasets: [
-            {
-              label: 'Produk Inspeksi '+yearNow,
-              data: [7, 0],
-              backgroundColor: "#f7dfa0"
-            },
-        ]
-    };
-    var barJumlahProduk = document.getElementById("barJumlahProduk");
-    new Chart(barJumlahProduk, {
-        type: 'horizontalBar',
-        data: data,
-        options: {
-          elements: {
-            bar: {
-              borderWidth: 2,
-            }
-          },
-          responsive: true,
-        }
-    });
+    // var yearNow = new Date().getFullYear();
+    // var data = {
+    //     labels: ["AC","Kulkas"],
+    //     datasets: [
+    //         {
+    //           label: 'Produk Inspeksi '+yearNow,
+    //           data: [7, 0],
+    //           backgroundColor: "#f7dfa0"
+    //         },
+    //     ]
+    // };
+    // var barJumlahProduk = document.getElementById("barJumlahProduk");
+    // new Chart(barJumlahProduk, {
+    //     type: 'horizontalBar',
+    //     data: data,
+    //     options: {
+    //       elements: {
+    //         bar: {
+    //           borderWidth: 2,
+    //         }
+    //       },
+    //       responsive: true,
+    //     }
+    // });
     // END Produk
 
     // CHART Dampak Regulasi (Penghematan energi)
@@ -491,12 +442,12 @@
         datasets: [
             {
               label: 'AC',
-              data: [20],
+              data: [0],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [7],
+              data: [0],
               backgroundColor: "#f39800"
             }
         ]
@@ -532,12 +483,12 @@
         datasets: [
             {
               label: 'AC',
-              data: [10],
+              data: [0],
               backgroundColor: "#7ba7b0"
             },
             {
               label: 'Kulkas',
-              data: [8],
+              data: [0],
               backgroundColor: "#f39800"
             }
         ]
@@ -567,28 +518,176 @@
     });
     // END Produk
 
-    $('.linkDetail').click(function(){
-      var titleName = $(this).data('name');
-      $("#titleName").text(titleName);
-    });
-    document.querySelector('.legend').innerHTML = myChartA.generateLegend();
-
-    var legendItems = document.querySelector('.legend').getElementsByTagName('li');
-    for (var i = 0; i < legendItems.length; i++) {
-      legendItems[i].addEventListener("click", legendClickCallback.bind(this,i), false);
-    }
-
-    function legendClickCallback(legendItemIndex){
-      document.querySelectorAll('.myChart').forEach((chartItem,index)=>{
-        var chart = Chart.instances[index];
-        var dataItem = chart.data.datasets[legendItemIndex]    
-        if(dataItem.hidden == true || dataItem.hidden == null){
-          dataItem.hidden = false;
-        } else {
-          dataItem.hidden = true;
+    // CHART barUjiPetikDate
+    var data = {
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
+        datasets: [
+            {
+              label: 'Sesuai',
+              data: [10],
+              backgroundColor: "#ffee00"
+            },
+            {
+              label: 'Tidak Sesuai',
+              data: [8],
+              backgroundColor: "#c7c7c7"
+            }
+        ]
+    };
+    var barUjiPetikDate = document.getElementById("barUjiPetikDate");
+    new Chart(barUjiPetikDate, {
+        type: 'bar',
+        data: data,
+        options: {
+          scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+          },
+          responsive: true,
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Uji Petik'
+          }
         }
-        chart.update();
-      })  
-    }
+    });
+    // END barUjiPetikDate
+    // CHART barUjiPetik
+    var data = {
+        labels: ["Record 1","Record 2","Record 3"],
+        datasets: [
+            {
+              label: 'Label',
+              data: [4,2,7],
+              borderColor: "#7ba7b0",
+              backgroundColor: "#7ba7b0",
+              fill: false,
+              pointStyle: 'circle',
+              pointRadius: 8,
+              pointHoverRadius: 10,
+              showLine: false,
+              
+            },
+            {
+              label: 'Uji Petik',
+              data: [1,3,2],
+              borderColor: "#f39800",
+              backgroundColor: "#f39800",
+              fill: false,
+              pointStyle: 'circle',
+              pointRadius: 8,
+              pointHoverRadius: 10,
+              showLine: false,
+            }
+        ]
+    };
+    var barUjiPetik = document.getElementById("barUjiPetik");
+    new Chart(barUjiPetik, {
+        type: 'line',
+        data: data,
+        options: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: ''
+          },
+          scales : {
+              xAxes : [ {
+                  gridLines : {
+                      display : false
+                  }
+              } ]
+          }
+        }
+    });
+    // END barUjiPetik
+
+    // CHART barInspeksiVisualDate
+    var data = {
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
+        datasets: [
+            {
+              label: 'Sesuai',
+              data: [10],
+              backgroundColor: "#ffee00"
+            },
+            {
+              label: 'Tidak Sesuai',
+              data: [8],
+              backgroundColor: "#c7c7c7"
+            }
+        ]
+    };
+    var barInspeksiVisualDate = document.getElementById("barInspeksiVisualDate");
+    new Chart(barInspeksiVisualDate, {
+        type: 'bar',
+        data: data,
+        options: {
+          scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+          },
+          responsive: true,
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: 'Inspeksi Visual'
+          }
+        }
+    });
+    // END barInspeksiVisualDate
+
+    $(document).on("click", ".linkDetail", function(){
+      var name = $(this).data('name');
+      $("#modalDetailToko").modal('show');
+      $(".table-hasil-inspeksi tbody").empty();
+      $(".table-hasil-inspeksi tbody").append('<tr><td align="center" colspan="8">Loading ...<td></tr>');
+      $.ajax({
+        url: "{{url('/')}}/api/v2/"+name,
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+          $(".table-hasil-inspeksi tbody").empty();
+          var resp = res.comp;
+          for (var key in resp) {
+              var obj = resp[key];
+              $(".table-hasil-inspeksi tbody").append(
+                '<tr>'
+                  +`<td>${obj.no_she}</td>`
+                  +`<td>${obj.model}</td>`
+                  +`<td>${obj.merek}</td>`
+                  +`<td>${obj.tipe}</td>`
+                  +`<td>${obj.kepatuhan}</td>`
+                  +`<td>${obj.deviasi}</td>`
+                  +`<td>${obj.status}</td>`
+                  +`<td>${obj.datetime_offline}</td>`
+                +'</tr>'
+              );
+          };
+        }
+      });
+    });
 </script>
 @endsection

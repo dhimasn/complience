@@ -32,31 +32,31 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label">Nomor SHE</label>
-                <input class="form-control form-complience" name="10" value="{{$complience->no_she}}" type="text">
+                <input class="form-control form-complience" name="no_she" value="{{$complience->no_she}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Merek</label>
-                <input class="form-control form-complience" name="11" value="{{$complience->merek}}" type="text">
+                <input class="form-control form-complience" name="merek" value="{{$complience->merek}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kapasitas</label>
-                <input class="form-control form-complience" name="12" value="{{$complience->kapasitas}}" type="text">
+                <input class="form-control form-complience" name="kapasitas" value="{{$complience->kapasitas}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Teknologi</label>
-                <input class="form-control form-complience" name="13" value="{{$complience->teknologi}}" type="text">
+                <input class="form-control form-complience" name="teknologi" value="{{$complience->teknologi}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Manufaktur / Importir</label>
-                <input class="form-control form-complience" name="14" value="{{$complience->manufaktur}}" type="text">
+                <input class="form-control form-complience" name="manufaktur" value="{{$complience->manufaktur}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Kode atau Tanggal Produksi</label>
-                <input class="form-control form-complience" name="15" value="{{$complience->kode_produk}}" type="text">
+                <input class="form-control form-complience" name="kode_produk" value="{{$complience->kode_produk}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Negara Asal</label>
-                <input class="form-control form-complience" name="16" value="{{$complience->negara}}" type="text">
+                <input class="form-control form-complience" name="negara" value="{{$complience->negara}}" type="text">
               </div>
             </div>
             <div class="col-md-6">
@@ -66,19 +66,41 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Tipe Lokasi Pengawasan</label>
-                <input class="form-control form-complience" name="16" value="{{$form_data['4']}}" type="text">
+                <select name="4" id="" class="form-control form-complience">
+                  <option {{$form_data['4'] == "Warung" ? 'selected' : ''}} value="Warung">Warung</option>
+                  <option {{$form_data['4'] == "Pasar tradisional" ? 'selected' : ''}} value="Pasar tradisional">Pasar tradisional</option>
+                  <option {{$form_data['4'] == "Toko" ? 'selected' : ''}} value="Toko">Toko</option>
+                  <option {{$form_data['4'] == "Dealer/Distributor" ? 'selected' : ''}} value="Dealer/Distributor">Dealer/Distributor</option>
+                  <option {{$form_data['4'] == "Chain" ? 'selected' : ''}} value="Chain">Chain</option>
+                  <option {{$form_data['4'] == "Department store" ? 'selected' : ''}} value="Department store">Department store</option>
+                  <option {{$form_data['4'] == "Hypermarket" ? 'selected' : ''}} value="Hypermarket">Hypermarket</option>
+                  <option {{$form_data['4'] == "General store" ? 'selected' : ''}} value="General store">General store</option>
+                  <option {{$form_data['4'] == "Supermarket" ? 'selected' : ''}} value="Supermarket">Supermarket</option>
+                  <option {{$form_data['4'] == "Gudang Produsen/Importir" ? 'selected' : ''}} value="Gudang Produsen/Importir">Gudang Produsen/Importir</option>
+                </select>
               </div>
               <div class="form-group">
                 <label class="form-control-label">Nama Lokasi Pengawasan</label>
-                <input class="form-control form-complience" name="16" value="{{$complience->formulir1->lokasi_pengawasan}}" type="text">
+                <input class="form-control form-complience" name="lokasi_pengawasan" value="{{$complience->formulir1->lokasi_pengawasan}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Alamat Lokasi Pengawasan</label>
-                <input class="form-control form-complience" name="16" value="{{$form_data['6']}}" type="text">
+                <input class="form-control form-complience" name="6" value="{{$form_data['6']}}" type="text">
               </div>
               <div class="form-group">
                 <label class="form-control-label">Wilayah Lokasi Pengawasan</label>
-                <input class="form-control form-complience" name="16" value="{{$form_data['7']}}" type="text">
+                <select name="7" id="" class="form-control form-complience">
+                  <option {{$form_data['7'] == "Jabodetabek" ? 'selected' : ''}} value="Jabodetabek">Jabodetabek</option>
+                  <option {{$form_data['7'] == "Jawa Tengah" ? 'selected' : ''}} value="Jawa Tengah">Jawa Tengah</option>
+                  <option {{$form_data['7'] == "Jawa Timur" ? 'selected' : ''}} value="Jawa Timur">Jawa Timur</option>
+                  <option {{$form_data['7'] == "DI Yogyakarta" ? 'selected' : ''}} value="DI Yogyakarta">DI Yogyakarta</option>
+                  <option {{$form_data['7'] == "Kalimantan" ? 'selected' : ''}} value="Kalimantan">Kalimantan</option>
+                  <option {{$form_data['7'] == "Kepulauan Maluku" ? 'selected' : ''}} value="Kepulauan Maluku">Kepulauan Maluku</option>
+                  <option {{$form_data['7'] == "Bali & Nusa Tenggara" ? 'selected' : ''}} value="Bali & Nusa Tenggara">Bali & Nusa Tenggara</option>
+                  <option {{$form_data['7'] == "Papua" ? 'selected' : ''}} value="Papua">Papua</option>
+                  <option {{$form_data['7'] == "Sulawesi" ? 'selected' : ''}} value="Sulawesi">Sulawesi</option>
+                  <option {{$form_data['7'] == "Sumatera" ? 'selected' : ''}} value="Sumatera">Sumatera</option>
+                </select>
               </div>
               <div class="form-group">
                 <label class="form-control-label">Foto Lokasi Pengawasan</label>

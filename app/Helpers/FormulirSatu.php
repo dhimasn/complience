@@ -252,6 +252,7 @@ class FormulirSatu
     public function mappingConstanta($data_request){
        
         //Tenaga penjual
+        // 10
         if($data_request['tp1'] == 1){
             $data_request['tp1'] = "Ya";
         }
@@ -264,7 +265,7 @@ class FormulirSatu
             $data_request['tp1'] = "Tidak";
         }
 
-
+        // 11
         if($data_request['tp2'] == 1){
             $data_request['tp2'] = "Tidak pernah";
         } 
@@ -281,6 +282,7 @@ class FormulirSatu
             $data_request['tp2'] = "Sangat Sering";
         }
 
+        // 12
         if($data_request['tp3'] == 1){
             $data_request['tp3'] = "Mengembalikan produk pada pemasok untuk mencantumkan label";
         } 
@@ -293,6 +295,7 @@ class FormulirSatu
             $data_request['tp3'] = "Tidak melakukan apa-apa - menjual produk seadanya";
         }
 
+        // 13
         if($data_request['tp4'] == 1){
             $data_request['tp4'] = "Ya";
         } 
@@ -309,6 +312,7 @@ class FormulirSatu
             $data_request['tp4'] = "Tidak pernah";
         }
 
+        // 14
         if($data_request['tp5'] == 1){
             $data_request['tp5'] = "Ya";
         } 
@@ -322,6 +326,7 @@ class FormulirSatu
         }
 
         //lthe
+        // 31
         if ($data_request['lthe1'] == 1){
             $data_request['lthe1'] = "Ya";
         }
@@ -330,6 +335,7 @@ class FormulirSatu
             $data_request['lthe1'] = "Tidak";
         }
 
+        // 32
         if ($data_request['lthe2'] == 1){
             $data_request['lthe2'] = "Ya";
         }
@@ -337,7 +343,9 @@ class FormulirSatu
         if ($data_request['lthe2'] == 2){
             $data_request['lthe2'] = "Tidak";
         }
-        // Visibilitas LTHE 33
+
+        // Visibilitas LTHE 
+        // 33
         if ($data_request['lthe3'] == 1){
             $data_request['lthe3'] = "Label jelas dan mudah terlihat";
         }
@@ -358,7 +366,8 @@ class FormulirSatu
             $data_request['lthe3'] = "Tidak berlaku - label tidak dibubuhkan";
         }
 
-        // Kesesuaian visual LTHE 34
+        // Kesesuaian visual LTHE 
+        // 34
         if ($data_request['lthe4'] == 1){
             $data_request['lthe4'] = "Label terlihat benar dan sesuai dengan persyaratan";
         }
@@ -380,6 +389,7 @@ class FormulirSatu
         }
 
         //regulasi lainya
+        // 38
         if ($data_request['rl1'] == 1){
             $data_request['rl1'] = "Ya";
         }
@@ -392,6 +402,7 @@ class FormulirSatu
             $data_request['rl1'] = "Tidak";
         }
 
+        // 39
         if ($data_request['rl2'] == 1){
             $data_request['rl2'] = "Ya";
         }
@@ -404,6 +415,7 @@ class FormulirSatu
             $data_request['rl2'] = "Tidak";
         }
 
+        // 40
         if ($data_request['rl3'] == 1){
             $data_request['rl3'] = "Ya";
         }
@@ -416,6 +428,7 @@ class FormulirSatu
             $data_request['rl3'] = "Tidak";
         }
 
+        // 41
         if ($data_request['rl4'] == 1){
             $data_request['rl4'] = "Ya";
         }
@@ -428,6 +441,7 @@ class FormulirSatu
             $data_request['rl4'] = "Tidak";
         }
 
+        // 36
         if ($data_request['rl5'] == 1){
             $data_request['rl5'] = "Label dan Produk Tampak Sesuai";
         }

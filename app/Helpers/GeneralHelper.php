@@ -103,11 +103,68 @@ class GeneralHelper
         break;
 
       default:
-        $result = '<input class="form-control form-complience" readonly value="' . $inputValue . '" type="text">';
+        $result = '<input class="form-control form-complience form-read" readonly value="' . $inputValue . '" type="text">';
         break;
     }
     if($keterangan){
-      $result .= '<input class="form-control keterangan_form" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
+      $result .= '<input class="form-control keterangan_form form-read" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
+    }
+
+    return $result;
+  }
+  public static function formReadInspeksiVisual($type, $value, $keterangan, $key)
+  {
+    $arrOption = array(10,11,12,13,14,31,32,33,34,38,39,40,41,36);
+    $arrOptionValue = array(
+      "10" => array("Ya","Sedikit","Tidak"),
+      "11" => array("Tidak pernah","Jarang","Sering","Sangat Sering"),
+      "12" => array("Mengembalikan produk pada pemasok untuk mencantumkan label","Menahan produk sampai produk pengganti berlabel diterima dari pemasok","Tidak melakukan apa-apa - menjual produk seadanya"),
+      "13" => array("Ya","Sering","Kadang-kadang","Tidak pernah"),
+      "14" => array("Ya","Sebagian","Tidak"),
+      "31" => array("Ya","Tidak"),
+      "32" => array("Ya","Tidak"),
+      "33" => array("Label jelas dan mudah terlihat","Label kabur atau rusak karena tindakan produsen atau importir","Label kabur atau rusak karena tindakan pengecer","Label sebagian atau seluruhnya ditutupi oleh label lain atau informasi pemasaran","Tidak berlaku - label tidak dibubuhkan"),
+      "34" => array("Label terlihat benar dan sesuai dengan persyaratan","Desain label salah (warna, ukuran, dll)","Label tampaknya palsu","Label tidak sesuai dengan model fisik produk","Tidak berlaku - label tidak dibubuhkan"),
+      "38" => array("Ya","Tidak yakin","Tidak"),
+      "39" => array("Ya","Tidak yakin","Tidak"),
+      "40" => array("Ya","Tidak yakin","Tidak"),
+      "41" => array("Ya","Tidak yakin","Tidak"),
+      "36" => array("Label dan Produk Tampak Sesuai","Label dan Produk Tampak Mencurigakan dan Memerlukan Penyelidikan Lebih lanjut","Label dan Produk Tampak Mencurigakan dan direkomendasikan untuk pengujian verifikasi")
+    );
+    $result = "";
+    if($keterangan){
+      $inputValue = $value[0];
+      $keteranganValue = $value[1];
+    }else{
+      $inputValue = $value;
+    }
+    switch ($type) {
+      case 'FILE':
+        if($inputValue == '' || $inputValue == null){
+          $result = '<br><a class="btn btn-link">Tidak Ada file</a>';
+        }else{
+          $inputValue = asset("storage/".$inputValue);
+          $result = '<br><a href="'.$inputValue.'" target="_blank" class="btn btn-link">Lihat File</a>';
+        }
+        break;
+
+      default:
+        if(in_array($key, $arrOption)){
+          $opt = '<select class="form-control form-complience form-read" name="'.$key.'" readonly>';
+          foreach ($arrOptionValue[$key] as $option => $value) {
+            $selected = $value == $inputValue ? 'selected' : '';
+            $opt .= '<option '.$selected.' value="'.$value.'">'.$value.'</option>';
+          }
+          $opt .= '</select>';
+          $result = $opt;
+        }else{
+          $result = '<input class="form-control form-complience form-read" name="'.$key.'" readonly value="' . $inputValue . '" type="text">';
+        }
+
+        break;
+    }
+    if($keterangan){
+      $result .= '<input class="form-control keterangan_form form-read" readonly value="Keterangan: ' . $keteranganValue . '" type="text">';
     }
 
     return $result;

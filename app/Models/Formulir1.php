@@ -14,4 +14,7 @@ class Formulir1 extends Model
     public function formulir3(){
         return $this->hasOne(Formulir3::class, 'record_id', 'record_id');
     }
+    public function complience(){
+        return $this->hasOne(Complience::class, 'record_id', 'record_id');
+    }
 }
