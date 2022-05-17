@@ -13,7 +13,6 @@
             <table class="table table-comp table-responsive">
               <thead class="thead-comp">
                 <th>Nomor SHE</th>
-                <th>Model Produk</th>
                 <th>Merek</th>
                 <th>Kasus Ketidaksesuaian</th>
                 <th>Kementerian/Lembaga Terkait</th>
@@ -25,7 +24,6 @@
                 @foreach ($highrisk as $item)
                 <tr>
                   <td><a href="">{{$item->no_she}}</a></td>
-                  <td>{{$item->model}}</td>
                   <td>{{$item->merek}}</td>
                   <td>{{$item->ketidaksesuaian}}</td>
                   <td>{{$item->lembaga_terkait}}</td>

@@ -16,10 +16,11 @@ class CreateHistoryComplienceHighRiskTable extends Migration
         Schema::create('history_complience_high_risk', function (Blueprint $table) {
             $table->id();
             $table->string('no_she')->nullable();
+            $table->string('model')->nullable();
             $table->string('merek')->nullable();
             $table->string('ketidaksesuaian')->nullable();
             $table->string('lembaga_terkait')->nullable();
-            $table->integer('pengawas_id');
+            $table->string('pengawas_id');
             $table->integer('bobot');
             $table->timestamps();
         });

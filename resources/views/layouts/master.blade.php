@@ -122,7 +122,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link {{\Request::route()->getName() == 'highrisk.report' ? 'active' : ''}}" href="{{route('highrisk.report')}}">
-                      <span class="sidenav-normal">Report History Non Complience</span>
+                      <span class="sidenav-normal">Lapor History Non Complience</span>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -131,8 +131,8 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.update' ? 'active' : ''}}" href="{{route('highrisk.update')}}">
-                      <span class="sidenav-normal">High Risk Kriteria</span>
+                    <a class="nav-link {{\Request::route()->getName() == 'highrisk.kriteria' ? 'active' : ''}}" href="{{route('highrisk.kriteria')}}">
+                      <span class="sidenav-normal">Kriteria High Risk</span>
                     </a>
                   </li>
                 </ul>
