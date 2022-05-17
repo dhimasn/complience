@@ -12,28 +12,26 @@
           <div class="col-md-12">
             <table class="table table-comp table-responsive">
               <thead class="thead-comp">
-                <th>Nomor SHE</th>
-                <th>Model Produk</th>
-                <th>Merek</th>
-                <th>Star Rating (1-5)</th>
-                <th>EER (Btu/h/W)</th>
-                <th>CSPF (Wh/Wh)</th>
-                <th>Commpressor Type</th>
-                <th>Risk Rating</th>
-                <th>Verification Result</th>
-                <th>Produk/Import Volume</th>
+                <th>No</th>
+                <th>Kriteria</th>
+                <th>Variabel Penilaian</th>
+                <th>Bobot "0"</th>
+                <th>Bobot "1"</th>
+                <th>Bobot "2"</th>
+                <th>Bobot "3"</th>
+                <th>Action</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)
                 <tr>
-                  <td><a href="">{{$item->no_she}}</a></td>
-                  <td>{{$item->model}}</td>
-                  <td>{{$item->merek}}</td>
-                  <td>{{$item->teknologi}}</td>
-                  <td>{{$item->manufaktur}}</td>
-                  <td>{{$item->updated_at}}</td>
-                  <td>2018-1-EER-OK</td>
-                  <td><a class="btn btn-sm btn-info" href="">detail</a></td>
+                  <td><a href="">{{$item->id}}</a></td>
+                  <td>{{$item->kriteria}}</td>
+                  <td>{{$item->variabel_penilaian}}</td>
+                  <td>{{$item->nol}}</td>
+                  <td>{{$item->satu}}</td>
+                  <td>{{$item->dua}}</td>
+                  <td>{{$item->tiga}}</td>
+                  <td><a class="btn btn-sm btn-info" href="{{route('highrisk.updateKriteria', $item->id)}}">ubah</a></td>
                 </tr>
                 @endforeach
               </tbody>

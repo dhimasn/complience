@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title-menu', 'High Risk Produk')
+@section('title-menu', 'Volume Produk')
 @section('contents')
 <div class="row">
   <div class="col-md-12">
@@ -15,13 +15,10 @@
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
-                <th>Star Rating (1-5)</th>
-                <th>EER (Btu/h/W)</th>
-                <th>CSPF (Wh/Wh)</th>
-                <th>Commpressor Type</th>
-                <th>Risk Rating</th>
-                <th>Verification Result</th>
-                <th>Produk/Import Volume</th>
+                <th>tahun 2019</th>
+                <th>tahun 2020</th>
+                <th>% annual init increase</th>
+                <th>Bobot Resiko</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)

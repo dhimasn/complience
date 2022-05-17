@@ -14,76 +14,58 @@ class MasterHighRiskSeeder extends Seeder
         //type: 1.micorsite, 2.inspection, 3.other
         \DB::table('master_high_risk')->insert([
             [
-                'high_risk_criteria' => "Just meets MEPS level (ΔEER < 0.225 Btu/h/W)",
-                'data_target' => 'test',
-                'type' => 1,
-                'notes' => 'test',
+                'id_kriteria' => 1,
+                'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
+                'variabel_penilaian' => 'EER (Btu/h/W)', // 1
+                'nol' => '>8.755',
+                'satu' => '>8.7175-8.755',
+                'dua' => '>8.605-8.7175',
+                'tiga' => '<8.605',
             ],
             [
-                'high_risk_criteria' => "High CSPF & Low Price Model (5-star models with Actual Price at least 25% lower than Expected Price)",
-                'data_target' => 'test',
-                'type' => 1,
-                'notes' => 'test',
+                'id_kriteria' => 2,
+                'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
+                'variabel_penilaian' => 'CSPF (Wh/Wh)', // 1
+                'nol' => '>3.25',
+                'satu' => '>3.225-3.25',
+                'dua' => '>3.15-3.225',
+                'tiga' => '<3.225',
             ],
             [
-                'high_risk_criteria' => "Low Price Model (Price < NN,000,000 IDR)",
-                'data_target' => 'test',
-                'type' => 2,
-                'notes' => 'test',
+                'id_kriteria' => 3,
+                'kriteria' => 'Merek dengan histori ketidaksesuaian',
+                'variabel_penilaian' => 'Nomor SHE dan merek, berdasarkan Master Data Pengawasan, catatan tambahan oleh inspektur', // 3
+                'nol' => 'Tidak ada histori ketidaksesuaian',
+                'satu' => 'Pelanggaran regulasi terkait bea cukai, pajak, Pelanggaran hak cipta',
+                'dua' => 'Gagal uji petik, Ditandai mencurigakan oleh inspektur',
+                'tiga' => 'Temuan pengawasan SNI keselamatan',
             ],
             [
-                'high_risk_criteria' => "Product from High Risk Country of Origin",
-                'data_target' => 'test',
-                'type' => 2,
-                'notes' => 'test', 
+                'id_kriteria' => 4,
+                'kriteria' => 'Merek baru atau tidak dikenal',
+                'variabel_penilaian' => 'Nomor SHE dan merek, berdasarkan analisis internal, dilakukan tahunan oleh inspektur', // 4
+                'nol' => 'Peningkatan jumlah model tidak lebih dari 50% dibandingkan tahun lalu',
+                'satu' => 'Peningkatan jumlah model antara 50% dan 100%',
+                'dua' => 'Peningkatan jumlah model antara 100% dan 300%',
+                'tiga' => 'Temuan pengawasan SNI keselamatan',
             ],
             [
-                'high_risk_criteria' => "High Market Share reported to DJEBTKE",
-                'data_target' => 'test',
-                'type' => 1,
-                'notes' => 'test', 
+                'id_kriteria' => 5,
+                'kriteria' => 'Pangsa pasar besar',
+                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas', // 2
+                'nol' => '<15,000 unit (½, ¾, 1 PK)',
+                'satu' =>'>15,000-30,000 unit (½, ¾, 1 PK) ',
+                'dua' => '>30,000-50,000 unit (½, ¾, 1 PK)',
+                'tiga' => '>50,000 unit (½, ¾, 1 PK)',
             ],
             [
-                'high_risk_criteria' => "Flagged in online label checks",
-                'data_target' => 'test',
-                'type' => 3,
-                'notes' => 'test', 
-            ],
-            [
-                'high_risk_criteria' => "Flagged during in-store inspections",
-                'data_target' => 'test',
-                'type' => 2,
-                'notes' => 'test',
-            ],
-            [
-                'high_risk_criteria' => "Brand with history of non-compliances",
-                'data_target' => 'test',
-                'type' => 3,
-                'notes' => 'test', 
-            ],
-            [
-                'high_risk_criteria' => "New or unknown brand/model relative to previous year",
-                'data_target' => 'test',
-                'type' => 1,
-                'notes' => 'test', 
-            ],
-            [
-                'high_risk_criteria' => "Suspicious product features and specifications",
-                'data_target' => 'test',
-                'type' => 3,
-                'notes' => 'test', 
-            ],
-            [
-                'high_risk_criteria' => "Ambiguity in technical documents / registration application dossier",
-                'data_target' => 'test',
-                'type' => 3,
-                'notes' => 'test',
-            ],
-            [
-                'high_risk_criteria' => "Received 3rd party complaint(s)",
-                'data_target' => 'test',
-                'type' => 3,
-                'notes' => 'test',
+                'id_kriteria' => 6,
+                'kriteria' => 'Pangsa pasar besar',
+                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas', // 2
+                'nol' => '<5,000 unit (½, ¾, 1 PK)',
+                'satu' =>'>5,000-10,000 unit (½, ¾, 1 PK) ',
+                'dua' => '>10,000-15,000 unit (½, ¾, 1 PK)',
+                'tiga' => '>15,000 unit (½, ¾, 1 PK)',
             ]
         ]);
     }
