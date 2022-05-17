@@ -31,7 +31,7 @@
                   <td>{{$item->satu}}</td>
                   <td>{{$item->dua}}</td>
                   <td>{{$item->tiga}}</td>
-                  <td><a class="btn btn-sm btn-info" href="">ubah</a></td>
+                  <td><a class="btn btn-sm btn-info" href="{{route('highrisk.updateKriteria', $item->id)}}">ubah</a></td>
                 </tr>
                 @endforeach
               </tbody>

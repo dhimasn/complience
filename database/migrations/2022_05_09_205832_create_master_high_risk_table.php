@@ -15,13 +15,13 @@ class CreateMasterHighRiskTable extends Migration
     {
         Schema::create('master_high_risk', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_kriteria');
             $table->string('kriteria');
             $table->string('variabel_penilaian');
             $table->string('nol');
             $table->string('satu');
             $table->string('dua');
             $table->string('tiga');
-            $table->string('notes');
             $table->timestamps();
         });
     }

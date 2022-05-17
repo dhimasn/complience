@@ -20,10 +20,17 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/global', 'DashboardController@global')->name('dashboard.global');
 
     Route::get('highrisk/index','HighRiskController@index')->name('highrisk.index');
+    
     Route::get('highrisk/report','HighRiskController@report')->name('highrisk.report');
-    Route::get('highrisk/report/tambah','HighRiskController@viewTambahReport')->name('highrisk.tambahReport');
+    Route::get('highrisk/report/tambah','HighRiskController@addReport')->name('highrisk.tambahReport');
+    Route::post('highrisk/report/simpan','HighRiskController@simpanReport')->name('highrisk.simpanReport');
+
     Route::get('highrisk/volume-produk','HighRiskController@volume')->name('highrisk.volume');
-    Route::get('highrisk/update','HighRiskController@update')->name('highrisk.update');
+
+    Route::get('highrisk/kriteria','HighRiskController@kriteria')->name('highrisk.kriteria');
+    Route::get('highrisk/kriteria/update/{id}','HighRiskController@updateKriteria')->name('highrisk.updateKriteria');
+    Route::post('highrisk/kriteria/simpan','HighRiskController@simpanKriteria')->name('highrisk.simpanKriteria');
+
 
     Route::get('highrisk/sync','HighRiskController@sync')->name('highrisk.sync');
 
