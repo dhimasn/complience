@@ -213,10 +213,10 @@
                       {{$statusUjiPetik->pengawas->name}}
                     </td>
                     <td>
-                      {{$statusUjiPetik->lab->nama ?? ''}}
+                      {{$statusUjiPetik->lab->nama ?? '-'}}
                     </td>
                     <td>
-                      {{$status[$statusUjiPetik->status] ?? ''}}
+                      {{$status[$statusUjiPetik->status] ?? '-'}}
                     </td>
                     <td>
                       {{$statusUjiPetik->updated_at}}
@@ -404,37 +404,12 @@
           responsive: true,
           legend: {
             position: 'right',
-          }
+          },
         }
     });
+    Chart.defaults.global.defaultFont = "Montserrat"
+    Chart.defaults.global.defaultFontFamily = "Montserrat"
     // END Kepatuhan Inspeksi Visual
-
-    // CHART Produk
-    // var yearNow = new Date().getFullYear();
-    // var data = {
-    //     labels: ["AC","Kulkas"],
-    //     datasets: [
-    //         {
-    //           label: 'Produk Inspeksi '+yearNow,
-    //           data: [7, 0],
-    //           backgroundColor: "#f7dfa0"
-    //         },
-    //     ]
-    // };
-    // var barJumlahProduk = document.getElementById("barJumlahProduk");
-    // new Chart(barJumlahProduk, {
-    //     type: 'horizontalBar',
-    //     data: data,
-    //     options: {
-    //       elements: {
-    //         bar: {
-    //           borderWidth: 2,
-    //         }
-    //       },
-    //       responsive: true,
-    //     }
-    // });
-    // END Produk
 
     // CHART Dampak Regulasi (Penghematan energi)
     var data = {
@@ -463,10 +438,10 @@
         options: {
           scales: {
             xAxes: [{
-                stacked: true
+                stacked: true,
             }],
             yAxes: [{
-                stacked: true
+                stacked: true,
             }]
           },
           responsive: true,
@@ -508,10 +483,10 @@
         options: {
           scales: {
             xAxes: [{
-                stacked: true
+                stacked: true,
             }],
             yAxes: [{
-                stacked: true
+                stacked: true,
             }]
           },
           responsive: true,
@@ -553,10 +528,10 @@
         options: {
           scales: {
             xAxes: [{
-                stacked: true
+                stacked: true,
             }],
             yAxes: [{
-                stacked: true
+                stacked: true,
             }]
           },
           responsive: true,
@@ -612,11 +587,11 @@
             text: ''
           },
           scales : {
-              xAxes : [ {
-                  gridLines : {
-                      display : false
-                  }
-              } ]
+            xAxes : [{
+                gridLines : {
+                  display : false
+                }
+            }]
           }
         }
     });
@@ -649,10 +624,10 @@
         options: {
           scales: {
             xAxes: [{
-                stacked: true
+                stacked: true,
             }],
             yAxes: [{
-                stacked: true
+                stacked: true,
             }]
           },
           responsive: true,

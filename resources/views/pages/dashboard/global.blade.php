@@ -162,6 +162,8 @@
         }
       }
   });
+  Chart.defaults.global.defaultFont = "Montserrat"
+  Chart.defaults.global.defaultFontFamily = "Montserrat"
   // END barUjiPetik
   
   // CHART barInspeksiVisual
