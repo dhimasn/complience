@@ -438,7 +438,11 @@
 
     // CHART Dampak Regulasi (Penghematan energi)
     var data = {
-        labels: ["GWh"],
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
         datasets: [
             {
               label: 'AC',
@@ -471,7 +475,7 @@
           },
           title: {
             display: true,
-            text: 'Penghematan Energi'
+            text: 'Penghematan Energi (GWh)'
           }
         }
     });
@@ -479,7 +483,11 @@
     
     // CHART Dampak Regulasi (Mitigasi Emisi)
     var data = {
-        labels: ["MT C02"],
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
         datasets: [
             {
               label: 'AC',
@@ -512,7 +520,7 @@
           },
           title: {
             display: true,
-            text: 'Mitigasi Emisi'
+            text: 'Mitigasi Emisi (MT C02)'
           }
         }
     });

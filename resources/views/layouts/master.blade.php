@@ -102,7 +102,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link {{\Request::route()->getName() == 'dashboard.global' ? 'active' : ''}}" href="{{route('dashboard.global')}}">
-                      <span class="nav-link-text">Perbandingan Peralatan</span>
+                      <span class="nav-link-text">Nasional</span>
                     </a>
                   </li>
                 </ul>
