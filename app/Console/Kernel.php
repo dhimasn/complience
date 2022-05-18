@@ -24,7 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('getproduct:microsite')->hourly();
+        $schedule->command('getproduct:microsite')
+        // ->hourly();
+        ->cron('* * * * *');
     }
 
     /**

@@ -11,14 +11,8 @@ class ProductController extends Controller
 {
   public function getAllProduct(Request $request)
   {
-    if (null == $request->input('category') || empty($request->input('category'))) {
-      $response['success'] = true;
-      $response['message'] = 401;
-      $response['data'] = "Wrong Params";
-      return response()->json($response, 200);
-    }
     try {
-      $category = $request->input('category');
+      $category = empty($request->input('category')) ? 2 : $request->input('category');
       $result = Cache::rememberForever('sync_product_mobile_' . $category, function () use ($category) {
         $product_helper = new ProductHelper();
         return $product_helper->getAllProductsMobile($category);
