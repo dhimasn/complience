@@ -87,7 +87,7 @@ class DashboardController extends Controller
         foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
             foreach ($valueMonth as $form1) {
                 $latLong = explode(',', $form1->lat_long);
-                $dataForm[$keyMonth] = array(
+                $dataForm[] = array(
                     'lokasi_pengawasan' => $form1->lokasi_pengawasan,
                     'sesuai' => null !== $form1->formulir3 && $form1->formulir3->validasiPengujian() == 'Tidak Sesuai' ? '1' : '0',
                     'lat' => $latLong[0],
@@ -96,7 +96,6 @@ class DashboardController extends Controller
             }
         }
         $kepatuhan = $this->countKepatuhan($complienceInspeksiVisual);
-        // dd($kepatuhan);
         $status = config('global.status');
 
         $dariSelected = $request->input('dari');
