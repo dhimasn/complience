@@ -9,6 +9,63 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
+          <div class="card-header py-2">
+            TINGKAT KEPATUHAN LABEL PERALATAN PENGGUNA ENERGI NASIONAL
+          </div>
+          <div class="card-body p-1">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+                <tr>
+                  <td></td>
+                  <td>2020</td>
+                  <td>2021</td>
+                  <td>2022</td>
+                </tr>
+                <tr>
+                  <td>Lampu CFL</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+                <tr>
+                  <td>AC</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+                <tr>
+                  <td>Kulkas</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+                <tr>
+                  <td>Kipas Angin</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+                <tr>
+                  <td>Penanak Nasi</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+                <tr>
+                  <td>Lampu LED</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                  <td class="success">0%</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
           <div class="card-body p-1">
             <div class="row">
               <div class="col-6">
@@ -105,6 +162,8 @@
         }
       }
   });
+  Chart.defaults.global.defaultFont = "Montserrat"
+  Chart.defaults.global.defaultFontFamily = "Montserrat"
   // END barUjiPetik
   
   // CHART barInspeksiVisual

@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Api'], function () { // Api Controller
 
 Route::group(['namespace' => 'Mobile', 'prefix' => 'mobile', /*'middleware' => 'auth:api'*/ ], function () { // logged only api
         
-        Route::post('sync-product', 'ProductController@getAllProduct');
+        Route::get('sync-product', 'ProductController@getAllProduct');
 
         Route::group(['namespace' => 'Formulir', 'prefix' => 'formulir'], function () {
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Complience;
 use App\Models\Formulir1;
+use App\Models\Perusahaan;
 use App\Models\Uji_petik;
 use App\User;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class DashboardController extends Controller
                 'long' => $latLong[1],
             );
         }
+        $totalPerusahaan = Perusahaan::count();
         $totalProdukInspeksi = Complience::get()->unique('no_she')->count();
         $totalPengawasLapangan = User::where('id_user_role', 2)->count();
         $complienceUjipetik = Complience::where('kegiatan', 2)->get();
@@ -94,6 +96,7 @@ class DashboardController extends Controller
             'tahun',
             'dariSelected',
             'hinggaSelected',
+            'totalPerusahaan',
         ));
     }
     public function global()
@@ -132,7 +135,13 @@ class DashboardController extends Controller
                 'datetime_offline' => $ujiPetik->datetime_offline,
             );
         }
-        return response()->json(['comp' => $result], 200);
+        $toko = array(
+            'nama' => $form1->lokasi_pengawasan,
+            'tipe' => $dataForms['4'],
+            'alamat' => $dataForms['6'],
+            'wilayah' => $dataForms['7'],
+        );
+        return response()->json(['comp' => $result,'toko' => $toko], 200);
     }
     public function countKepatuhan($form1)
     {

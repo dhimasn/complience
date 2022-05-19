@@ -47,17 +47,16 @@ class AutoGetProductMicrosite extends Command
             $insert = array();
             foreach ($products->data as $product) {
                 $insert[] = array(
-                    'id_data_produk' => $product->id_product,
-                    'id_category' => $product->id_category,
-                    'id_perusahaan' => $product->id_perusahaan,
-                    'id_user' => $product->id_user,
-                    'id_lspro' => $product->id_lspro,
-                    'id_field' => $product->id_field,
+                    'product_id' => $product->id_product,
+                    'category_id' => $product->id_category,
+                    'perusahaan' => $product->id_perusahaan,
+                    'field' => $product->id_field,
                     'field_value' => $product->field_value,
                 );
             }
+            \DB::table('products')->truncate();
             foreach (array_chunk($insert, 1000) as $data) {
-                $result = \DB::table('data_produk_cmp')->insert($data);
+                $result = \DB::table('products')->insert($data);
             }
             Cache::flush();
             \Log::channel('cron')->info('[SUCCESS] AutoGetProductMicrosite');

@@ -29,12 +29,27 @@ class ProductHelper
   {
     $this->_idCategory = $id_category;
     $products = $this->getProductFromDB();
-    $field_product = MasterColumn::where('category_id', $id_category)->get();
+    $field_product = MasterColumn::where('category_id', $id_category)->get()->toArray();
+    $arrTotal[] = array(
+      'category_id' => $id_category,
+      'column_name' => 'field-perusahaan',
+      'column_label' => 'namaPerusahaan',
+    );
+    $arrTotal[] = array(
+      'category_id' => $id_category,
+      'column_name' => 'field-total',
+      'column_label' => 'totalProduk',
+    );
+    
+    $field_product = array_merge($field_product, $arrTotal);
     $result = array();
     foreach ($field_product as $master) {
       foreach (json_decode($products) as $product) {
-        if ($master->column_name == $product->field) {
-          $result[$product->product_id][$master->column_label] = $product->field_value;
+        if ($master['column_name'] == $product->field) {
+          if($master['column_name'] == 'field-total'){
+            $product->field_value = json_decode($product->field_value, true);
+          }
+          $result[$product->product_id][$master['column_label']] = $product->field_value;
         }
       }
     }
@@ -44,13 +59,23 @@ class ProductHelper
   {
     $this->_idCategory = $id_category;
     $products = $this->getProductFromDB();
-    $field_product = FieldMobile::where('category_id', $id_category)->get();
+    $field_product = FieldMobile::where('category_id', $id_category)->get()->toArray();
+    $arrTotal[] = array(
+      'category_id' => $id_category,
+      'field' => 'field-kategori',
+      'key' => 'kategori',
+    );
+    
+    $field_product = array_merge($field_product, $arrTotal);
     $result = array();
     $tempResult = array();
     foreach ($field_product as $master) {
       foreach (json_decode($products) as $product) {
-        if ($master->field == $product->field) {
-          $tempResult[$product->product_id][$master->key] = $product->field_value;
+        if ($master['field'] == $product->field) {
+          $tempResult[$product->product_id][$master['key']] = $product->field_value;
+        }
+        if ($master['field'] == 'field-kategori') {
+          $tempResult[$product->product_id]['kategori'] = 'registrasi';
         }
       }
     }
