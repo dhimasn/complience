@@ -367,31 +367,6 @@
     map.addLayer(markers);
     // end map
 
-    //chart Kepatuhan Uji petik
-    // var data = {
-    //     labels: ["Sesuai","Tidak Sesuai"],
-    //     datasets: [
-    //         {
-    //             data: [{{$ketidaksesuai['sesuai']}}, {{$ketidaksesuai['tidak_sesuai']}}],
-    //             backgroundColor: ["#7ba7b0","#f39800"]
-    //         }]
-    // };
-    // var chartVerifikasi = document.getElementById("chartVerifikasi");
-    // new Chart(chartVerifikasi, {
-    //     type: 'pie',
-    //     data: data,
-    //     options: {
-    //       pieceLabel: {
-    //         render: 'value' //show values
-    //       },
-    //       title: {
-    //         display: true,
-    //         text: 'AC'
-    //       }
-    //     }
-    // });
-    // END Kepatuhan Uji petik
-
     // CHART Kepatuhan Inspeksi Visual
     var data = {
         labels: [
@@ -533,12 +508,20 @@
         datasets: [
             {
               label: 'Sesuai',
-              data: [{{$ketidaksesuai['sesuai']}}],
+              data: [
+                @foreach($ketidaksesuai as $list)
+                  {{$list['sesuai']}},
+                @endforeach
+              ],
               backgroundColor: "#ffee00"
             },
             {
               label: 'Tidak Sesuai',
-              data: [{{$ketidaksesuai['tidak_sesuai']}}],
+              data: [
+                @foreach($ketidaksesuai as $list)
+                  {{$list['tidak_sesuai']}},
+                @endforeach
+              ],
               backgroundColor: "#c7c7c7"
             }
         ]
@@ -629,12 +612,21 @@
         datasets: [
             {
               label: 'Sesuai',
-              data: [{{$kepatuhan['sesuaiCount']}}],
+              data: 
+              [
+                @foreach($kepatuhan['sesuaiCount'] as $list)
+                  {{$list}},
+                @endforeach
+              ],
               backgroundColor: "#ffee00"
             },
             {
               label: 'Tidak Sesuai',
-              data: [{{$kepatuhan['tidakSesuaiCount']}}],
+              data: [
+                @foreach($kepatuhan['tidakSesuaiCount'] as $list)
+                  {{$list}},
+                @endforeach
+              ],
               backgroundColor: "#c7c7c7"
             }
         ]
