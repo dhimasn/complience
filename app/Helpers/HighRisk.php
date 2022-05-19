@@ -47,6 +47,11 @@ class HighRisk
         return $result; 
     }
 
+    public function getReportByShe($pdt){
+        $data = HistoryComplience::where('no_she', '118.001.4.02.104.16.0002')->first();
+        return $data;
+    }
+
     public function refrenceByid($id){
         $data = MasterHighRiskDB::where('id', $id)->first();
         return $data;
@@ -70,6 +75,11 @@ class HighRisk
         return $data;
     }
 
+    public function refrenceByidKriteria($idKriteria){
+        $data = MasterHighRiskDB::where('id_kriteria', $idKriteria)->first();
+        return $data;
+    }
+
     public function groupByMerek(){
         $data = Product::select('field_value')
                     ->where('field','field-0')
@@ -79,9 +89,4 @@ class HighRisk
         return $data;
     }
 
-    public function refrenceByidKriteria($idKriteria){
-        $data = MasterHighRiskDB::where('id_kriteria', $idKriteria)->first();
-        return $data;
-    }
-   
 }
