@@ -562,8 +562,9 @@
               fill: false,
               pointStyle: 'circle',
               pointRadius: 8,
-              pointHoverRadius: 10,
+              pointHoverRadius: 8,
               showLine: false,
+              spanGaps: true
               
             },
             {
@@ -574,14 +575,49 @@
               fill: false,
               pointStyle: 'circle',
               pointRadius: 8,
-              pointHoverRadius: 10,
+              pointHoverRadius: 8,
               showLine: false,
+              spanGaps: true
             }
         ]
     };
     var barUjiPetik = document.getElementById("barUjiPetik");
     new Chart(barUjiPetik, {
         type: 'line',
+        plugins: [{
+          afterDraw: chart => {
+            if (chart.tooltip._active && chart.tooltip._active.length) {
+              
+              const ctx = chart.ctx;
+              ctx.save();
+              const activePoint = chart.tooltip._active[0];
+              const x = activePoint.tooltipPosition().x; 
+              console.log(x)
+              const yAxis = chart.scales['y-axis-0'];
+              const value1 = chart.data.datasets[0].data[activePoint._index];
+              const value2 = chart.data.datasets[1].data[activePoint._index];
+              const y1 = yAxis.getPixelForValue(value1);
+              const y2 = yAxis.getPixelForValue(value2);
+              ctx.beginPath();
+              ctx.moveTo(x, y1);
+              ctx.lineTo(x, y2);
+              ctx.lineWidth = 2;
+              ctx.strokeStyle = 'black';
+              ctx.stroke();
+              ctx.restore();
+            }
+            // var ctx = chart.chart.ctx;
+            // var xaxis = chart.scales['x-axis-0'];
+            // var yaxis = chart.scales['y-axis-0'];
+            // var datasets = chart.data.datasets;
+            // ctx.save();
+            // for (var d = 0; d < datasets.length; d++) {
+            //   var dataset = datasets[d];
+            //   const x = dataset.tooltipPosition().x; 
+            //   console.log(x)
+            // }
+          }
+        }],
         data: data,
         options: {
           legend: {
@@ -597,7 +633,38 @@
                   display : false
                 }
             }]
-          }
+          },
+          tooltips: {
+            enabled: true,
+            displayColors: false,
+            callbacks: {
+              label: function(tooltipItem, data) {
+                var labelVal = data.datasets[0].data[tooltipItem.index];
+                var UjiPetikVal = data.datasets[1].data[tooltipItem.index];
+                var deviasi = parseFloat((UjiPetikVal-labelVal)/labelVal).toFixed(2)
+                return ['Label : '+ labelVal, 'Uji Petik: ' + UjiPetikVal, 'Deviasi : '+deviasi+'%'];
+              },
+            }
+          },
+          // animation: {
+          //   "duration": 1,
+          //   "onComplete": function() {
+          //     var chartInstance = this.chart,
+          //       ctx = chartInstance.ctx;
+
+          //     ctx.font = Chart.helpers.fontString(15, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+          //     ctx.textAlign = 'center';
+          //     ctx.textBaseline = 'bottom';
+
+          //     this.data.datasets.forEach(function(dataset, i) {
+          //       var meta = chartInstance.controller.getDatasetMeta(i);
+          //       meta.data.forEach(function(bar, index) {
+          //         var data = dataset.data[index];
+          //         ctx.fillText(data, bar._model.x, bar._model.y - 5);
+          //       });
+          //     });
+          //   }
+          // },
         }
     });
     // END barUjiPetik
