@@ -112,7 +112,7 @@
             <table>
               <tr>
                 <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH PERUSAHAAN</h5></td>
-                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">{{$totalPerusahaan}}</span></td>
               </tr>
             </table>
           </div>
@@ -132,11 +132,11 @@
             <table>
               <tr>
                 <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH IMPORTIR</h5></td>
-                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">-</span></td>
               </tr>
               <tr>
                 <td align="right"><h5 class="card-title text-uppercase text-muted mb-0">JUMLAH UNIT IMPOR TERLAPOR</h5></td>
-                <td><span class="h2 font-weight-bold mb-0 ml-4">35</span></td>
+                <td><span class="h2 font-weight-bold mb-0 ml-4">-</span></td>
               </tr>
             </table>
           </div>
@@ -263,6 +263,28 @@
         </button>
       </div>
       <div class="table-responsive px-3">
+        <table style="font-size: 13px;">
+          <tr>
+            <td>Nama Lokasi</td>
+            <td>:</td>
+            <td style="font-weight: 700" id="namaLokasi">-</td>
+          </tr>
+          <tr>
+            <td>Tipe Lokasi</td>
+            <td>:</td>
+            <td style="font-weight: 700" id="tipeLokasi">-</td>
+          </tr>
+          <tr>
+            <td>Alamat Lokasi</td>
+            <td>:</td>
+            <td style="font-weight: 700" id="alamatLokasi">-</td>
+          </tr>
+          <tr>
+            <td>Wilayah Lokasi</td>
+            <td>:</td>
+            <td style="font-weight: 700" id="wilayahLokasi">-</td>
+          </tr>
+        </table>
         <table class="table align-items-center table-flush table-hasil-inspeksi">
           <thead class="thead-light">
             <tr>
@@ -652,6 +674,10 @@
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
+          $("#namaLokasi").text(res.toko.nama);
+          $("#tipeLokasi").text(res.toko.tipe);
+          $("#alamatLokasi").text(res.toko.alamat);
+          $("#wilayahLokasi").text(res.toko.wilayah);
           $(".table-hasil-inspeksi tbody").empty();
           var resp = res.comp;
           for (var key in resp) {
