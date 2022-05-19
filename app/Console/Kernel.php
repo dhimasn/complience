@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\AutoGetProductMicrosite::class
+        Commands\AutoGetProductMicrosite::class,
+        Commands\AutoGetPerusahaanMicrosite::class
     ];
 
     /**
@@ -24,7 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('getproduct:microsite')
+        // $schedule->command('getproduct:microsite')
+        // // ->hourly();
+        // ->cron('* * * * *');
+        $schedule->command('getperusahaan:microsite')
         // ->hourly();
         ->cron('* * * * *');
     }
