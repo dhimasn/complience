@@ -275,14 +275,14 @@
             <td style="font-weight: 700" id="tipeLokasi">-</td>
           </tr>
           <tr>
-            <td>Alamat Lokasi</td>
-            <td>:</td>
-            <td style="font-weight: 700" id="alamatLokasi">-</td>
-          </tr>
-          <tr>
             <td>Wilayah Lokasi</td>
             <td>:</td>
             <td style="font-weight: 700" id="wilayahLokasi">-</td>
+          </tr>
+          <tr>
+            <td>Alamat Lokasi</td>
+            <td>:</td>
+            <td style="font-weight: 700" id="alamatLokasi">-</td>
           </tr>
         </table>
         <table class="table align-items-center table-flush table-hasil-inspeksi">
@@ -405,11 +405,11 @@
             {
               label: 'AC',
               data: [
-                {{$kepatuhan['1']}}, 
-                {{$kepatuhan['2']}},
-                {{$kepatuhan['3']}},
-                {{$kepatuhan['4']}},
-                {{$kepatuhan['5']}}
+                {{$kepatuhan['ketidaksesuain']['1']}}, 
+                {{$kepatuhan['ketidaksesuain']['2']}},
+                {{$kepatuhan['ketidaksesuain']['3']}},
+                {{$kepatuhan['ketidaksesuain']['4']}},
+                {{$kepatuhan['ketidaksesuain']['5']}}
               ],
               backgroundColor: ["#36a2eb","#ff6384","#4bc0c0","#ff9f40","#f39800"]
             }
@@ -533,12 +533,12 @@
         datasets: [
             {
               label: 'Sesuai',
-              data: [10],
+              data: [{{$ketidaksesuai['sesuai']}}],
               backgroundColor: "#ffee00"
             },
             {
               label: 'Tidak Sesuai',
-              data: [8],
+              data: [{{$ketidaksesuai['tidak_sesuai']}}],
               backgroundColor: "#c7c7c7"
             }
         ]
@@ -629,12 +629,12 @@
         datasets: [
             {
               label: 'Sesuai',
-              data: [10],
+              data: [{{$kepatuhan['sesuaiCount']}}],
               backgroundColor: "#ffee00"
             },
             {
               label: 'Tidak Sesuai',
-              data: [8],
+              data: [{{$kepatuhan['tidakSesuaiCount']}}],
               backgroundColor: "#c7c7c7"
             }
         ]

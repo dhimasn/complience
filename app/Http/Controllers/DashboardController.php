@@ -170,25 +170,43 @@ class DashboardController extends Controller
         foreach ($form1 as $key) {
             $dataForms[] = json_decode($key->form_data, true);
         }
+        $sesuai = true;
+        $sesuaiCount = 0;
+        $tidakSesuaiCount = 0;
         foreach ($dataForms as $dataForm) {
             $visibilitasLthe = $dataForm[33];
             $kesesuaian = $dataForm[34];
             if ($visibilitasLthe == "Tidak berlaku - label tidak dibubuhkan" || $kesesuaian == "Tidak berlaku - label tidak dibubuhkan") {
                 $result['5']++;
+                $sesuai = false;
             }
             if (in_array($visibilitasLthe, $creteria['1'])) {
                 $result['1']++;
+                $sesuai = false;
             }
             if (in_array($kesesuaian, $creteria['2'])) {
                 $result['2']++;
+                $sesuai = false;
             }
             if (in_array($kesesuaian, $creteria['3'])) {
                 $result['3']++;
+                $sesuai = false;
             }
             if (in_array($kesesuaian, $creteria['4'])) {
                 $result['4']++;
+                $sesuai = false;
             }
+            if($sesuai){
+                $sesuaiCount++;
+            }else{
+                $tidakSesuaiCount++;
+            } 
         }
-        return $result;
+        return array(
+           'ketidaksesuain' => $result,
+           'sesuaiCount' => $sesuaiCount,
+           'tidakSesuaiCount' => $tidakSesuaiCount,
+        );
     }
 }
+ 
