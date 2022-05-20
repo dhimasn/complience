@@ -18,6 +18,7 @@ class DashboardController extends Controller
         $tahun = $request->input('tahun') == '' ? date('Y') : $request->input('tahun');
         $dariDate = date("Y-m-d", strtotime($request->input('dari')));
         $hinggaDate = date("Y-m-d", strtotime($request->input('hingga')));
+        $tahunDate = date("Y", strtotime($dariDate));
         $dataList = array($tahun);
         $months = array(
             "01" => "Jan",
@@ -33,8 +34,8 @@ class DashboardController extends Controller
             "11" => "Nov",
             "12" => "Des"
         );
+        $monthList = array();
         if($periode=='date'){
-            $monthList = array();
             $dariMonth =  date("m", strtotime($dariDate));
             $hinggaMonth =  date("m", strtotime($hinggaDate));
             $pilihBulan = false;
@@ -43,7 +44,7 @@ class DashboardController extends Controller
                     $pilihBulan = true;
                 }
                 if($pilihBulan){
-                    $monthList[] = $monthVal;
+                    $monthList[$monthKey] = $monthVal;
                 }
                 if($hinggaMonth == $monthKey){
                     $pilihBulan = false;
@@ -51,42 +52,56 @@ class DashboardController extends Controller
             }
             $dataList = $monthList;
         }
-        $forms1 = Formulir1::get();
-        $dataForm = array();
-        foreach ($forms1 as $form1) {
-            $latLong = explode(',', $form1->lat_long);
-            $dataForm[] = array(
-                'lokasi_pengawasan' => $form1->lokasi_pengawasan,
-                'sesuai' => null !== $form1->formulir3 && $form1->formulir3->validasiPengujian() == 'Tidak Sesuai' ? '1' : '0',
-                'lat' => $latLong[0],
-                'long' => $latLong[1],
-            );
-        }
+        
+        
         $totalPerusahaan = Perusahaan::count();
-        $totalProdukInspeksi = Complience::get()->unique('no_she')->count();
-        $totalPengawasLapangan = User::where('id_user_role', 2)->count();
-        $complienceUjipetik = Complience::where('kegiatan', 2)->get();
+        $complienceUjipetik = array();;
         $statusUjiPetiks = Complience::whereNotIn('status', [7, 8])->where('kegiatan', 2)->get();
-        $ketidaksesuai['sesuai'] = 0;
-        $ketidaksesuai['tidak_sesuai'] = 0;
-        foreach ($complienceUjipetik as $comp) {
-            if (isset($comp->formulir3)) {
-                if ($comp->formulir3->validasiPengujian() == 'Sesuai') {
-                    $ketidaksesuai['sesuai']++;
-                } else {
-                    $ketidaksesuai['tidak_sesuai']++;
+        
+        $valueList = array();
+        if($periode=='date'){
+            foreach ($dataList as $keyMonth => $valueMonth) {
+                $complienceUjipetik[$keyMonth] = Complience::where('kegiatan', 2)->whereYear('created_at', $tahunDate)->whereMonth('created_at', $keyMonth)->get();
+                $complienceInspeksiVisual[$keyMonth] = Formulir1::whereYear('datetime_offline', $tahunDate)->whereMonth('datetime_offline', $keyMonth)->get();
+            }
+        }else{
+            $complienceUjipetik[] = Complience::where('kegiatan', 2)->whereYear('created_at', $tahun)->get();
+            $complienceInspeksiVisual[] = Formulir1::whereYear('datetime_offline', $tahun)->get();
+        }
+        $ketidaksesuai = array();
+        foreach ($complienceUjipetik as $keyMonth => $valueMonth) {
+            $ketidaksesuai[$keyMonth]['sesuai'] = 0;
+            $ketidaksesuai[$keyMonth]['tidak_sesuai'] = 0;
+            foreach ($valueMonth as $keyComp => $comp) {
+                if (isset($comp->formulir3)) {
+                    if ($comp->formulir3->validasiPengujian() == 'Sesuai') {
+                        $ketidaksesuai[$keyMonth]['sesuai']++;
+                    } else {
+                        $ketidaksesuai[$keyMonth]['tidak_sesuai']++;
+                    }
                 }
             }
         }
-        $kepatuhan = $this->countKepatuhan($forms1);
+
+        $dataForm = array();
+        foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
+            foreach ($valueMonth as $form1) {
+                $latLong = explode(',', $form1->lat_long);
+                $dataForm[] = array(
+                    'lokasi_pengawasan' => $form1->lokasi_pengawasan,
+                    'sesuai' => null !== $form1->formulir3 && $form1->formulir3->validasiPengujian() == 'Tidak Sesuai' ? '1' : '0',
+                    'lat' => $latLong[0],
+                    'long' => $latLong[1],
+                );
+            }
+        }
+        $kepatuhan = $this->countKepatuhan($complienceInspeksiVisual);
         $status = config('global.status');
 
         $dariSelected = $request->input('dari');
         $hinggaSelected = $request->input('hingga');
         return view('pages.dashboard.index', compact(
             'dataForm',
-            'totalProdukInspeksi',
-            'totalPengawasLapangan',
             'ketidaksesuai',
             'kepatuhan',
             'statusUjiPetiks',
@@ -143,13 +158,9 @@ class DashboardController extends Controller
         );
         return response()->json(['comp' => $result,'toko' => $toko], 200);
     }
-    public function countKepatuhan($form1)
+    public function countKepatuhan($complienceInspeksiVisual)
     {
-        $result['1'] = 0; // Label Kabur/Tidak terlihat/Rusak – data dari Visibilitas LTHE 
-        $result['2'] = 0; // Desain Label Tidak Sesuai – data dari Kesesuaian Visual LTHE 
-        $result['3'] = 0; // Label palsu – data dari Kesesuaian Visual LTHE
-        $result['4'] = 0; // Label tidak sesuai dengan produk - data dari Kesesuaian Visual LTHE
-        $result['5'] = 0; // Tidak ada label – data dari Kesesuain Visual LTHE 
+        
         $dataForms = array();
 
         $creteria['1'] = array(
@@ -167,40 +178,50 @@ class DashboardController extends Controller
             "Label tidak sesuai dengan model fisik produk"
         );
 
-        foreach ($form1 as $key) {
-            $dataForms[] = json_decode($key->form_data, true);
+        foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
+            $dataForm[$keyMonth] = array();
+            foreach ($valueMonth as $key) {
+                $dataForms[$keyMonth][] = json_decode($key->form_data, true);
+            }
         }
-        $sesuai = true;
-        $sesuaiCount = 0;
-        $tidakSesuaiCount = 0;
-        foreach ($dataForms as $dataForm) {
-            $visibilitasLthe = $dataForm[33];
-            $kesesuaian = $dataForm[34];
-            if ($visibilitasLthe == "Tidak berlaku - label tidak dibubuhkan" || $kesesuaian == "Tidak berlaku - label tidak dibubuhkan") {
-                $result['5']++;
-                $sesuai = false;
+        $result['1'] = 0; // Label Kabur/Tidak terlihat/Rusak – data dari Visibilitas LTHE 
+        $result['2'] = 0; // Desain Label Tidak Sesuai – data dari Kesesuaian Visual LTHE 
+        $result['3'] = 0; // Label palsu – data dari Kesesuaian Visual LTHE
+        $result['4'] = 0; // Label tidak sesuai dengan produk - data dari Kesesuaian Visual LTHE
+        $result['5'] = 0; // Tidak ada label – data dari Kesesuain Visual LTHE 
+        foreach ($dataForms as $keyMonth => $valueMonth) {
+            $sesuaiCount[$keyMonth] = 0;
+            $tidakSesuaiCount[$keyMonth] = 0;
+            $sesuai = true;
+            foreach ($valueMonth as $dataForm) {
+                $visibilitasLthe = $dataForm[33];
+                $kesesuaian = $dataForm[34];
+                if ($visibilitasLthe == "Tidak berlaku - label tidak dibubuhkan" || $kesesuaian == "Tidak berlaku - label tidak dibubuhkan") {
+                    $result['5']++;
+                    $sesuai = false;
+                }
+                if (in_array($visibilitasLthe, $creteria['1'])) {
+                    $result['1']++;
+                    $sesuai = false;
+                }
+                if (in_array($kesesuaian, $creteria['2'])) {
+                    $result['2']++;
+                    $sesuai = false;
+                }
+                if (in_array($kesesuaian, $creteria['3'])) {
+                    $result['3']++;
+                    $sesuai = false;
+                }
+                if (in_array($kesesuaian, $creteria['4'])) {
+                    $result['4']++;
+                    $sesuai = false;
+                }
+                if($sesuai){
+                    $sesuaiCount[$keyMonth]++;
+                }else{
+                    $tidakSesuaiCount[$keyMonth]++;
+                } 
             }
-            if (in_array($visibilitasLthe, $creteria['1'])) {
-                $result['1']++;
-                $sesuai = false;
-            }
-            if (in_array($kesesuaian, $creteria['2'])) {
-                $result['2']++;
-                $sesuai = false;
-            }
-            if (in_array($kesesuaian, $creteria['3'])) {
-                $result['3']++;
-                $sesuai = false;
-            }
-            if (in_array($kesesuaian, $creteria['4'])) {
-                $result['4']++;
-                $sesuai = false;
-            }
-            if($sesuai){
-                $sesuaiCount++;
-            }else{
-                $tidakSesuaiCount++;
-            } 
         }
         return array(
            'ketidaksesuain' => $result,
