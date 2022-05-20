@@ -22,17 +22,21 @@
                 <th>Risk Rating</th>
                 <th>Verification Result</th>
                 <th>Produk/Import Volume</th>
+                <th>Detail</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)
                 <tr>
-                  <td><a href="">{{$item->no_she}}</a></td>
-                  <td>{{$item->model}}</td>
-                  <td>{{$item->merek}}</td>
-                  <td>{{$item->teknologi}}</td>
-                  <td>{{$item->manufaktur}}</td>
-                  <td>{{$item->updated_at}}</td>
-                  <td>2018-1-EER-OK</td>
+                  <td><a href="">{{$item['nomor_she']}}</a></td>
+                  <td>{{$item['model']}}</td>
+                  <td>{{$item['merek']}}</td>
+                  <td>{{$item['stars_rating']}}</td>
+                  <td>{{$item['eer']}}</td>
+                  <td>{{$item['cspf']}}</td>
+                  <td>{{$item['compressor_type']}}</td>
+                  <td>{{$item['risk_rating']}}</td>
+                  <td>{{$item['verification_result']}}</td>
+                  <td>{{$item['volume_produk']}}</td>
                   <td><a class="btn btn-sm btn-info" href="">detail</a></td>
                 </tr>
                 @endforeach
