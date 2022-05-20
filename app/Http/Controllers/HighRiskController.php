@@ -49,7 +49,8 @@ class HighRiskController extends Controller
                     'compressor_type' => '',
                     'risk_rating' => 0,
                     'verification_result' => '',
-                    'volume_produk' => ''
+                    'volume_produk' => '',
+                    'percentage'
                 );
                 
                 if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
@@ -127,20 +128,14 @@ class HighRiskController extends Controller
                                     $result['risk_rating'] += 3;
                                 }
                             }
-
                         }
-
                         //bobot incrrease
                         $result = $this->bobotIncrease($tahun1,$tahun2,$result);
-
                     }
-                    
                     array_push($highrisk, $result); 
                 }                
-               
             }
         }
-        //print_r(json_encode($highrisk));exit;
         return view('pages.highrisk.index', compact('highrisk'));
     }
 
@@ -200,11 +195,53 @@ class HighRiskController extends Controller
 
         $products = $productHelper->getAllProducts(2);
 
+        $highrisk = [];
+
         foreach($products as $pdt){
-            
+
+            $result = array(
+                'nomor_she' => '',
+                'model' =>'',
+                'merek' => '',
+                'tahun_2020' => '',
+                'tahun_2021' => '',
+                'percentage' => '',
+                'risk_rating' => 0
+            );
+
+            if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
+
+                $result['nomor_she'] = $pdt['No. Registrasi/No. SHE'];
+                $result['model'] = $pdt['Model'];
+                $result['merek'] = $pdt['Merek'];
+                
+                if(!empty($pdt['totalProduk'])){
+
+                    $tahun1 = 0;
+                    $tahun2 = 0;
+
+                    if(array_key_exists('2020', $pdt['totalProduk'])){
+                        $tahun1 = $pdt['totalProduk'][2020];
+                    }
+
+                    if(array_key_exists('2021', $pdt['totalProduk'])){
+                        $tahun2 = $pdt['totalProduk'][2021];
+                    }
+
+                    $result['tahun_2020'] = $tahun1;
+
+                    $result['tahun_2021'] = $tahun2;
+
+                    //bobot incrrease
+                    $result = $this->bobotIncrease($tahun1,$tahun2,$result);
+
+                }
+                
+            }    
+            array_push($highrisk, $result);            
         }
-        
-        //return view('pages.highrisk.volume', compact('highrisk'));
+
+        return view('pages.highrisk.volume', compact('highrisk'));
     }
 
     public function kriteria(){
@@ -295,21 +332,22 @@ class HighRiskController extends Controller
             $tahun2 = 1;
         }
 
-        $pecentage = (($tahun2/$tahun1)*100);
+        $result['percentage'] = (($tahun2/$tahun1)*100);
+    
 
-        if($pecentage > 300){
+        if($result['percentage'] > 300){
             $result['risk_rating'] += 3;
         }
 
-        if($pecentage > 100 && $pecentage < 300){
+        if($result['percentage'] > 100 && $result['percentage'] < 300){
             $result['risk_rating'] += 2;
         }
 
-        if($pecentage > 50 && $pecentage < 100){
+        if($result['percentage'] > 50 && $result['percentage'] < 100){
             $result['risk_rating'] += 1;
         }
 
-        if($pecentage < 50){
+        if($result['percentage'] < 50){
             $result['risk_rating'] += 0;
         }
 

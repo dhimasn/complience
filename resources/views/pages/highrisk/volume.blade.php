@@ -15,21 +15,22 @@
                 <th>Nomor SHE</th>
                 <th>Model Produk</th>
                 <th>Merek</th>
-                <th>tahun 2019</th>
                 <th>tahun 2020</th>
+                <th>tahun 2021</th>
                 <th>% annual init increase</th>
                 <th>Bobot Resiko</th>
+                <th>Detail</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)
                 <tr>
-                  <td><a href="">{{$item->no_she}}</a></td>
-                  <td>{{$item->model}}</td>
-                  <td>{{$item->merek}}</td>
-                  <td>{{$item->teknologi}}</td>
-                  <td>{{$item->manufaktur}}</td>
-                  <td>{{$item->updated_at}}</td>
-                  <td>2018-1-EER-OK</td>
+                  <td><a href="">{{$item['nomor_she']}}</a></td>
+                  <td>{{$item['model']}}</td>
+                  <td>{{$item['merek']}}</td>
+                  <td>{{$item['tahun_2020']}}</td>
+                  <td>{{$item['tahun_2021']}}</td>
+                  <td>{{$item['percentage']}}</td>
+                  <td>{{$item['risk_rating']}}</td>
                   <td><a class="btn btn-sm btn-info" href="">detail</a></td>
                 </tr>
                 @endforeach
