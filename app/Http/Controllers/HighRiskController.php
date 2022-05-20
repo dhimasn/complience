@@ -26,8 +26,10 @@ class HighRiskController extends Controller
 
         $highrisk = [];
         
+        //eer
         $eer  = $this->highrisk->refrenceByidKriteria(1);
-
+        
+        //cspf
         $cspf = $this->highrisk->refrenceByidKriteria(2);
 
         //pangsa pasar
@@ -44,13 +46,13 @@ class HighRiskController extends Controller
                     'model' =>'',
                     'merek' => '',
                     'stars_rating' => '',
-                    'eer' => '',
-                    'cspf' => '',
-                    'compressor_type' => '',
+                    'eer' => '-',
+                    'cspf' => '-',
+                    'compressor_type' => '-',
                     'risk_rating' => 0,
                     'verification_result' => '',
-                    'volume_produk' => '',
-                    'percentage'
+                    'volume_produk' => '-',
+                    'percentage' => '-'
                 );
                 
                 if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
@@ -75,15 +77,18 @@ class HighRiskController extends Controller
                     //find get bobot volume produksi
                     if(!empty($pdt['totalProduk'])){
 
+                        $th1 = date('Y')-2;
+                        $th2 = date('Y')-1;
+                
                         $tahun1 = 0;
                         $tahun2 = 0;
 
-                        if(array_key_exists('2020', $pdt['totalProduk'])){
-                            $tahun1 = $pdt['totalProduk'][2020];
+                        if(array_key_exists($th1, $pdt['totalProduk'])){
+                            $tahun1 = $pdt['totalProduk'][$th1];
                         }
 
-                        if(array_key_exists('2021', $pdt['totalProduk'])){
-                            $tahun2 = $pdt['totalProduk'][2021];
+                        if(array_key_exists($th2, $pdt['totalProduk'])){
+                            $tahun2 = $pdt['totalProduk'][$th2];
                         }
 
                         $ttlProduk = $tahun1+$tahun2;
@@ -91,47 +96,13 @@ class HighRiskController extends Controller
                         $result['volume_produk'] = $ttlProduk;
 
                         if(!empty($pdt['Daya (watt)'])){
-
-                            if((float) $pdt['Daya (watt)'] > 1103.25){
-                                if($ttlProduk < 5000){
-                                    $result['risk_rating'] += 0;
-                                }
-
-                                if($ttlProduk > 5000 && $ttlProduk < 10000){ //5,000-10,000
-                                    $result['risk_rating'] += 1;
-                                }
-
-                                if($ttlProduk < 10000 && $ttlProduk < 15000){ //10,000-15,000
-                                    $result['risk_rating'] += 2;
-                                }
-
-                                if($ttlProduk > 15000){
-                                    $result['risk_rating'] += 3;
-                                }
-                            }
-
-                            if((float) $pdt['Daya (watt)'] <= 1103.25){
-
-                                if($ttlProduk < 15000){
-                                    $result['risk_rating'] += 0;
-                                }
-
-                                if($ttlProduk < 15000 && $ttlProduk < 30000){
-                                    $result['risk_rating'] += 1;
-                                }
-
-                                if($ttlProduk < 30000 && $ttlProduk < 50000){
-                                    $result['risk_rating'] += 2;
-                                }
-
-                                if($ttlProduk > 50000){
-                                    $result['risk_rating'] += 3;
-                                }
-                            }
+                            $result = $this->pangsaPasar($pdt, $ttlProduk, $result, $varProduksi, $varProduksi1);
                         }
+
                         //bobot incrrease
                         $result = $this->bobotIncrease($tahun1,$tahun2,$result);
                     }
+
                     array_push($highrisk, $result); 
                 }                
             }
@@ -197,18 +168,21 @@ class HighRiskController extends Controller
 
         $highrisk = [];
 
+        $th1 = date('Y')-2;
+        $th2 = date('Y')-1;
+
         foreach($products as $pdt){
 
             $result = array(
                 'nomor_she' => '',
                 'model' =>'',
                 'merek' => '',
-                'tahun_2020' => '',
-                'tahun_2021' => '',
+                 $th1 => '',
+                 $th2 => '',
                 'percentage' => '',
                 'risk_rating' => 0
             );
-
+            
             if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
 
                 $result['nomor_she'] = $pdt['No. Registrasi/No. SHE'];
@@ -220,28 +194,28 @@ class HighRiskController extends Controller
                     $tahun1 = 0;
                     $tahun2 = 0;
 
-                    if(array_key_exists('2020', $pdt['totalProduk'])){
-                        $tahun1 = $pdt['totalProduk'][2020];
+                    if(array_key_exists($th1, $pdt['totalProduk'])){
+                        $tahun1 = $pdt['totalProduk'][$th1];
                     }
 
-                    if(array_key_exists('2021', $pdt['totalProduk'])){
-                        $tahun2 = $pdt['totalProduk'][2021];
+                    if(array_key_exists($th2, $pdt['totalProduk'])){
+                        $tahun2 = $pdt['totalProduk'][$th2];
                     }
 
-                    $result['tahun_2020'] = $tahun1;
+                    $result[$th1] = $tahun1;
 
-                    $result['tahun_2021'] = $tahun2;
+                    $result[$th2] = $tahun2;
 
                     //bobot incrrease
                     $result = $this->bobotIncrease($tahun1,$tahun2,$result);
 
                 }
-                
+
             }    
             array_push($highrisk, $result);            
         }
 
-        return view('pages.highrisk.volume', compact('highrisk'));
+        return view('pages.highrisk.volume', compact('highrisk','th1','th2'));
     }
 
     public function kriteria(){
@@ -266,8 +240,7 @@ class HighRiskController extends Controller
     }
 
     public function eeRcspF($eer, $cspf, $pdt, $result){
-
-       
+ 
         $eerAC =  (float) $pdt['Nilai Efisiensi (EER/CSPF)'];
        
         if($eerAC >  (float) substr($eer['nol'],1)){ // > 8.755
@@ -332,7 +305,7 @@ class HighRiskController extends Controller
             $tahun2 = 1;
         }
 
-        $result['percentage'] = (($tahun2/$tahun1)*100);
+        $result['percentage'] = (($tahun2/$tahun1)*100/100);
     
 
         if($result['percentage'] > 300){
@@ -354,4 +327,46 @@ class HighRiskController extends Controller
         return $result;
 
     }
+
+    public function pangsaPasar($pdt, $ttlProduk, $result, $varProduksi, $varProduksi1){
+
+        if((float) $pdt['Daya (watt)'] > 1103.25){
+            if($ttlProduk < (float)(substr($varProduksi1->nol,1))){
+                $result['risk_rating'] += 0;
+            }
+
+            if($ttlProduk > (float)(substr($varProduksi1->satu,1)) && $ttlProduk < (float)(substr($varProduksi1->satu,6))){ //5,000-10,000
+                $result['risk_rating'] += 1;
+            }
+
+            if($ttlProduk < (float)(substr($varProduksi1->dua,1)) && $ttlProduk < (float)(substr($varProduksi1->dua,7))){ //10,000-15,000
+                $result['risk_rating'] += 2;
+            }
+
+            if($ttlProduk > (float)(substr($varProduksi1->tiga,1))){
+                $result['risk_rating'] += 3;
+            }
+        }
+
+        if((float) $pdt['Daya (watt)'] <= 1103.25){
+
+            if($ttlProduk < (float)(substr($varProduksi->nol,1))){
+                $result['risk_rating'] += 0;
+            }
+
+            if($ttlProduk < (float)(substr($varProduksi->satu,1)) && $ttlProduk < (float)(substr($varProduksi->satu,7))){
+                $result['risk_rating'] += 1;
+            }
+
+            if($ttlProduk < (float)(substr($varProduksi->dua,1)) && $ttlProduk < (float)(substr($varProduksi->dua,7))){
+                $result['risk_rating'] += 2;
+            }
+
+            if($ttlProduk > (float)(substr($varProduksi->tiga,1))){
+                $result['risk_rating'] += 3;
+            }
+        }
+        return $result;
+    }
+
 }

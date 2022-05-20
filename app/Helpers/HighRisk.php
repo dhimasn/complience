@@ -48,7 +48,7 @@ class HighRisk
     }
 
     public function getReportByShe($pdt){
-        $data = HistoryComplience::where('no_she', '118.001.4.02.104.16.0002')->first();
+        $data = HistoryComplience::where('no_she', $pdt['Nilai Efisiensi (EER/CSPF)'])->first();
         return $data;
     }
 
@@ -65,7 +65,7 @@ class HighRisk
                         'nol'=> $dt->input('nol'),
                         'satu'=> $dt->input('satu'),
                         'dua'=> $dt->input('dua'),
-                        'dua'=> $dt->input('tiga')
+                        'tiga'=> $dt->input('tiga')
                      ]);
         return $result;
     }
