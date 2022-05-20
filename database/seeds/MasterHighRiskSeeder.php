@@ -18,17 +18,17 @@ class MasterHighRiskSeeder extends Seeder
                 'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
                 'variabel_penilaian' => 'EER (Btu/h/W)', // 1
                 'nol' => '>8.755',
-                'satu' => '>8.7175-8.755',
-                'dua' => '>8.605-8.7175',
+                'satu' => '>8.717-8.755',
+                'dua' => '>8.605-8.717',
                 'tiga' => '<8.605',
             ],
             [
                 'id_kriteria' => 2,
                 'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
                 'variabel_penilaian' => 'CSPF (Wh/Wh)', // 1
-                'nol' => '>3.25',
-                'satu' => '>3.225-3.25',
-                'dua' => '>3.15-3.225',
+                'nol' => '>3.250',
+                'satu' => '>3.225-3.250',
+                'dua' => '>3.150-3.225',
                 'tiga' => '<3.225',
             ],
             [
