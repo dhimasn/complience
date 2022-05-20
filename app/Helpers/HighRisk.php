@@ -89,4 +89,17 @@ class HighRisk
         return $data;
     }
 
+    public function addHighrisk($request){
+        $result = new HistoryComplience();
+        $result->no_she = $request->input('nomor_she');
+        //$result->model = $request->input('model');
+        $result->merek = $request->input('merek');
+        $result->ketidaksesuaian = substr($request->input('kriteria'),0,-1);
+        $result->lembaga_terkait = $request->input('lembaga');
+        $result->pengawas_id = $request->input('inspektur');
+        $result->bobot = substr($request->input('kriteria'),-1);
+        $result->save();
+        return $result; 
+    }
+
 }

@@ -369,4 +369,8 @@ class HighRiskController extends Controller
         return $result;
     }
 
+    public function sync(){
+        
+    }
+
 }
