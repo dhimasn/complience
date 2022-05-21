@@ -15,7 +15,7 @@ class CreateDataHighRiskTable extends Migration
     {
         Schema::create('data_high_risk', function (Blueprint $table) {
             $table->id();
-            $table->string('record_id');
+            $table->string('no_she');
             $table->string('form_data');
             $table->timestamps();
         });
