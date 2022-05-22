@@ -552,30 +552,30 @@
     // END barUjiPetikDate
     // CHART barUjiPetik
     var data = {
-        labels: ["Record 1","Record 2","Record 3"],
+        labels: ["Record 1","Record 2","Record 2","Record 2","Record 2","Record 2"],
         datasets: [
             {
               label: 'Label',
-              data: [4,2,7],
+              data: [4,2,5,10,1,1],
               borderColor: "#7ba7b0",
               backgroundColor: "#7ba7b0",
               fill: false,
               pointStyle: 'circle',
-              pointRadius: 8,
-              pointHoverRadius: 8,
+              pointRadius: 5,
+              pointHoverRadius: 5,
               showLine: false,
               spanGaps: true
               
             },
             {
               label: 'Uji Petik',
-              data: [1,3,2],
+              data: [1,3,1,3,9,3],
               borderColor: "#f39800",
               backgroundColor: "#f39800",
               fill: false,
               pointStyle: 'circle',
-              pointRadius: 8,
-              pointHoverRadius: 8,
+              pointRadius: 5,
+              pointHoverRadius: 5,
               showLine: false,
               spanGaps: true
             }
@@ -585,37 +585,37 @@
     new Chart(barUjiPetik, {
         type: 'line',
         plugins: [{
-          afterDraw: chart => {
-            if (chart.tooltip._active && chart.tooltip._active.length) {
-              
-              const ctx = chart.ctx;
-              ctx.save();
-              const activePoint = chart.tooltip._active[0];
-              const x = activePoint.tooltipPosition().x; 
-              console.log(x)
+          afterDatasetDraw: chart => {
+            const ctx = chart.ctx;
+            ctx.save();
+            const activePoint = chart.data.datasets[0];
+            for (var a = 0; a < activePoint.data.length; a++) {
+              const x = activePoint._meta[4].data[a]._view.x;
+              // console.log(chart.data.datasets[0].points.indexOf(points[0]));
               const yAxis = chart.scales['y-axis-0'];
-              const value1 = chart.data.datasets[0].data[activePoint._index];
-              const value2 = chart.data.datasets[1].data[activePoint._index];
+              const xAxis = chart.scales['x-axis-0'];
+              const value1 = chart.data.datasets[0].data[a];
+              const value2 = chart.data.datasets[1].data[a];
               const y1 = yAxis.getPixelForValue(value1);
               const y2 = yAxis.getPixelForValue(value2);
+
               ctx.beginPath();
               ctx.moveTo(x, y1);
               ctx.lineTo(x, y2);
-              ctx.lineWidth = 2;
+              ctx.lineWidth = 1;
               ctx.strokeStyle = 'black';
               ctx.stroke();
               ctx.restore();
+
+              ctx.textAlign = 'center';
+              ctx.fillStyle = 'black';
+              var deviasi = parseFloat((value2-value1)/value1).toFixed(2)
+              if(y1<y2){
+                ctx.fillText(deviasi+"%", x, y1-20);
+              }else{
+                ctx.fillText(deviasi+"%", x, y2-20);
+              }
             }
-            // var ctx = chart.chart.ctx;
-            // var xaxis = chart.scales['x-axis-0'];
-            // var yaxis = chart.scales['y-axis-0'];
-            // var datasets = chart.data.datasets;
-            // ctx.save();
-            // for (var d = 0; d < datasets.length; d++) {
-            //   var dataset = datasets[d];
-            //   const x = dataset.tooltipPosition().x; 
-            //   console.log(x)
-            // }
           }
         }],
         data: data,
