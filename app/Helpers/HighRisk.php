@@ -37,7 +37,6 @@ class HighRisk
     public function addReport($request){
         $result = new HistoryComplience();
         $result->no_she = $request->input('nomor_she');
-        //$result->model = $request->input('model');
         $result->merek = $request->input('merek');
         $result->ketidaksesuaian = substr($request->input('kriteria'),0,-1);
         $result->lembaga_terkait = $request->input('lembaga');
@@ -89,17 +88,30 @@ class HighRisk
         return $data;
     }
 
-    public function addHighrisk($request){
-        $result = new HistoryComplience();
-        $result->no_she = $request->input('nomor_she');
-        //$result->model = $request->input('model');
-        $result->merek = $request->input('merek');
-        $result->ketidaksesuaian = substr($request->input('kriteria'),0,-1);
-        $result->lembaga_terkait = $request->input('lembaga');
-        $result->pengawas_id = $request->input('inspektur');
-        $result->bobot = substr($request->input('kriteria'),-1);
-        $result->save();
+    public function addHighrisk($nomor_she,$highrisk){
+        $high = $this->getHighRisk($nomor_she);
+        if(!empty($high)){
+
+            $result = HighRiskDB::where('no_she', $nomor_she)
+            ->update([
+                'no_she'=> $nomor_she,
+                'form_data'=> json_encode($highrisk)
+             ]);
+            
+        }else{
+            $result = new HighRiskDB();
+            $result->no_she = $nomor_she;
+            $result->form_data = json_encode($highrisk);
+            $result->save();
+        }
+        
         return $result; 
     }
+
+    public function getHighRisk($nomor_she){
+        $data = HighRiskDB::where('no_she', $nomor_she)->first();
+        return $data;
+    }
+
 
 }
