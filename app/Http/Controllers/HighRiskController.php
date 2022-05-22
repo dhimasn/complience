@@ -45,7 +45,7 @@ class HighRiskController extends Controller
         $productHelper = new ProductHelper();
 
         $products = $productHelper->getAllProducts(2);
-        print_r(json_encode($products));exit;
+        
         $highrisk = [];
         
         $eer  = $this->highrisk->refrenceByidKriteria(1);
