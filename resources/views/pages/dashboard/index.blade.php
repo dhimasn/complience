@@ -552,11 +552,19 @@
     // END barUjiPetikDate
     // CHART barUjiPetik
     var data = {
-        labels: ["Record 1","Record 2","Record 2","Record 2","Record 2","Record 2"],
+        labels: [
+          @foreach($dataList as $list)
+            "{{$list}}",
+          @endforeach
+        ],
         datasets: [
             {
               label: 'Label',
-              data: [4,2,5,10,1,1],
+              data: [
+                @foreach($kepatuhanUjiPetik['tidakSesuaiCount'] as $list)
+                  {{$list}},
+                @endforeach
+              ],
               borderColor: "#7ba7b0",
               backgroundColor: "#7ba7b0",
               fill: false,
@@ -569,7 +577,11 @@
             },
             {
               label: 'Uji Petik',
-              data: [1,3,1,3,9,3],
+              data: [
+                @foreach($ketidaksesuai as $list)
+                  {{$list['tidak_sesuai']}},
+                @endforeach
+              ],
               borderColor: "#f39800",
               backgroundColor: "#f39800",
               fill: false,
