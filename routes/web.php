@@ -24,9 +24,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('highrisk/report','HighRiskController@report')->name('highrisk.report');
     Route::get('highrisk/report/tambah','HighRiskController@addReport')->name('highrisk.tambahReport');
     Route::post('highrisk/report/simpan','HighRiskController@simpanReport')->name('highrisk.simpanReport');
-
     Route::get('highrisk/volume-produk','HighRiskController@volume')->name('highrisk.volume');
-
+    Route::get('highrisk/produk/detail/{id}','HighRiskController@detail')->name('highrisk.detail');
     Route::get('highrisk/kriteria','HighRiskController@kriteria')->name('highrisk.kriteria');
     Route::get('highrisk/kriteria/update/{id}','HighRiskController@updateKriteria')->name('highrisk.updateKriteria');
     Route::post('highrisk/kriteria/simpan','HighRiskController@simpanKriteria')->name('highrisk.simpanKriteria');

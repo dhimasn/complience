@@ -18,21 +18,40 @@ class HighRiskController extends Controller
         $this->highrisk = new HighRisk();
     }
     
-    public function index(){
+    public function index(Request $request){
+
+        //filter
+        $periode = $request->input('periode') == '' ? 'tahun' : $request->input('periode');
+        $tahun = $request->input('tahun') == '' ? date('Y') : $request->input('tahun');
+        $dariDate = date("Y-m-d", strtotime($request->input('dari')));
+        $hinggaDate = date("Y-m-d", strtotime($request->input('hingga')));
+        $tahunDate = date("Y", strtotime($dariDate));
+        $dataList = array($tahun);
+        $months = array(
+            "01" => "Jan",
+            "02" => "Feb",
+            "03" => "Mar",
+            "04" => "Apr",
+            "05" => "Mei",
+            "06" => "Jun",
+            "07" => "Jul",
+            "08" => "Agu",
+            "09" => "Sep",
+            "10" => "Okt",
+            "11" => "Nov",
+            "12" => "Des"
+        );
 
         $productHelper = new ProductHelper();
 
         $products = $productHelper->getAllProducts(2);
-
+        
         $highrisk = [];
         
-        //eer
         $eer  = $this->highrisk->refrenceByidKriteria(1);
         
-        //cspf
         $cspf = $this->highrisk->refrenceByidKriteria(2);
 
-        //pangsa pasar
         $varProduksi = $this->highrisk->refrenceByidKriteria(5);
 
         $varProduksi1 = $this->highrisk->refrenceByidKriteria(6);
@@ -46,13 +65,20 @@ class HighRiskController extends Controller
                     'model' =>'',
                     'merek' => '',
                     'stars_rating' => '',
+                    'compressor_type' => '-',
                     'eer' => '-',
                     'cspf' => '-',
-                    'compressor_type' => '-',
-                    'risk_rating' => 0,
-                    'verification_result' => '',
+                    'ketidaksesuaian' => '-',
                     'volume_produk' => '-',
-                    'percentage' => '-'
+                    'percentage' => '-',
+                    'verification_result' => '-',
+                    'bobot1' => 0,
+                    'bobot2' => 0,
+                    'bobot3' => 0,
+                    'bobot4' => 0,
+                    'bobot5' => 0,
+                    'bobot6' => 0,
+                    'risk_rating' => 0,
                 );
                 
                 if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
@@ -71,7 +97,7 @@ class HighRiskController extends Controller
                     //find history complience high risk
                     $she = $this->highrisk->getReportByShe($pdt);
                     if(!empty($she)){
-                        $result['risk_rating'] += $she->bobot;
+                        $result['bobot3'] = $she->bobot;
                     }
 
                     //find get bobot volume produksi
@@ -103,11 +129,28 @@ class HighRiskController extends Controller
                         $result = $this->bobotIncrease($tahun1,$tahun2,$result);
                     }
 
+                    $result['risk_rating'] = $result['bobot1']+$result['bobot2']+$result['bobot3']+$result['bobot4']+$result['bobot5']+$result['bobot6'];
                     array_push($highrisk, $result); 
                 }                
             }
         }
-        return view('pages.highrisk.index', compact('highrisk'));
+        
+        $dariSelected = $request->input('dari');
+        $hinggaSelected = $request->input('hingga');
+        $kapasitas = $request->input('kapasitas');
+        $kompressor = $request->input('kompressor');
+        $bintang = $request->input('bintang');
+
+        return view('pages.highrisk.index', compact(
+            'highrisk',
+            'periode',
+            'tahun',
+            'dariSelected',
+            'hinggaSelected',
+            'kapasitas',
+            'kompressor',
+            'bintang',
+        ));
     }
 
     public function report(){
@@ -245,52 +288,44 @@ class HighRiskController extends Controller
        
         if($eerAC >  (float) substr($eer['nol'],1)){ // > 8.755
             $result['eer'] = $eerAC;
-            $result['risk_rating'] += 0;
+            $result['bobot1'] = 0;
         }
 
         if($eerAC > (float) substr($eer['satu'],1,6) && $eerAC < (float) substr($eer['satu'],8,11)){ //
             $result['eer'] = $eerAC;
-            $result['risk_rating'] += 1;
+            $result['bobot1'] = 1;
         }
 
         if($eerAC > (float) substr($eer['dua'],1,6) && $eerAC <  (float) substr($eer['dua'],8,11)){
             $result['eer'] = $eerAC;
-            $result['risk_rating'] += 2;
+            $result['bobot1'] = 2;
         }
 
         if($eerAC > 6 && $eerAC <  (float) substr($eer['tiga'],1)){
             $result['eer'] = $eerAC;
-            $result['risk_rating'] += 3;
+            $result['bobot1'] = 3;
         }
 
         $cspfAC = (float) $pdt['Nilai Efisiensi (EER/CSPF)'];
       
         if($cspfAC < 6 && $cspfAC > (float) substr($cspf['nol'],1)){ // >3.25
-            $result['risk_rating'] = 0;
-            $result['eer'] = '';
             $result['cspf'] = $cspfAC;
-            $result['risk_rating'] += 0;
+            $result['bobot2'] = 0;
         }
         
         if($cspfAC > (float) substr($cspf['satu'],1,6) && $cspfAC < (float) substr($cspf['satu'],8,11)){
-            $result['risk_rating'] = 0;
-            $result['eer'] = '';
             $result['cspf'] = $cspfAC;
-            $result['risk_rating'] += 1;
+            $result['bobot2'] = 1;
         }
 
         if($cspfAC > (float) substr($cspf['dua'],1,6) && $cspfAC < (float) substr($cspf['dua'],8,11)){
-            $result['risk_rating'] = 0;
-            $result['eer'] = '';
             $result['cspf'] = $cspfAC;
-            $result['risk_rating'] += 2;
+            $result['bobot2'] = 2;
         }
 
         if($cspfAC < (float) substr($cspf['tiga'],1)){
-            $result['risk_rating'] = 0;
-            $result['eer'] = '';
             $result['cspf'] = $cspfAC;
-            $result['risk_rating'] += 3;
+            $result['bobot2'] = 3;
         }
         
         return $result;
@@ -309,19 +344,19 @@ class HighRiskController extends Controller
     
 
         if($result['percentage'] > 300){
-            $result['risk_rating'] += 3;
+            $result['bobot4'] = 3;
         }
 
         if($result['percentage'] > 100 && $result['percentage'] < 300){
-            $result['risk_rating'] += 2;
+            $result['bobot4'] = 2;
         }
 
         if($result['percentage'] > 50 && $result['percentage'] < 100){
-            $result['risk_rating'] += 1;
+            $result['bobot4'] = 1;
         }
 
         if($result['percentage'] < 50){
-            $result['risk_rating'] += 0;
+            $result['bobot4'] = 0;
         }
 
         return $result;
@@ -332,45 +367,199 @@ class HighRiskController extends Controller
 
         if((float) $pdt['Daya (watt)'] > 1103.25){
             if($ttlProduk < (float)(substr($varProduksi1->nol,1))){
-                $result['risk_rating'] += 0;
+                $result['bobot6'] = 0;
             }
 
             if($ttlProduk > (float)(substr($varProduksi1->satu,1)) && $ttlProduk < (float)(substr($varProduksi1->satu,6))){ //5,000-10,000
-                $result['risk_rating'] += 1;
+                $result['bobot6'] = 1;
             }
 
             if($ttlProduk < (float)(substr($varProduksi1->dua,1)) && $ttlProduk < (float)(substr($varProduksi1->dua,7))){ //10,000-15,000
-                $result['risk_rating'] += 2;
+                $result['bobot6'] = 2;
             }
 
             if($ttlProduk > (float)(substr($varProduksi1->tiga,1))){
-                $result['risk_rating'] += 3;
+                $result['bobot6'] = 3;
             }
         }
 
         if((float) $pdt['Daya (watt)'] <= 1103.25){
 
             if($ttlProduk < (float)(substr($varProduksi->nol,1))){
-                $result['risk_rating'] += 0;
+                $result['bobot5'] = 0;
             }
 
             if($ttlProduk < (float)(substr($varProduksi->satu,1)) && $ttlProduk < (float)(substr($varProduksi->satu,7))){
-                $result['risk_rating'] += 1;
+                $result['bobot5'] = 1;
             }
 
             if($ttlProduk < (float)(substr($varProduksi->dua,1)) && $ttlProduk < (float)(substr($varProduksi->dua,7))){
-                $result['risk_rating'] += 2;
+                $result['bobot5'] = 2;
             }
 
             if($ttlProduk > (float)(substr($varProduksi->tiga,1))){
-                $result['risk_rating'] += 3;
+                $result['bobot5'] = 3;
             }
         }
         return $result;
     }
 
     public function sync(){
+
+        $productHelper = new ProductHelper();
+
+        $products = $productHelper->getAllProducts(2);
         
+        $eer  = $this->highrisk->refrenceByidKriteria(1);
+        
+        $cspf = $this->highrisk->refrenceByidKriteria(2);
+
+        $varProduksi = $this->highrisk->refrenceByidKriteria(5);
+
+        $varProduksi1 = $this->highrisk->refrenceByidKriteria(6);
+
+        if(!empty($products)){
+            
+            foreach($products as $pdt){
+
+                $result = array(
+                    'nomor_she' => '',
+                    'model' =>'',
+                    'merek' => '',
+                    'stars_rating' => '',
+                    'compressor_type' => '-',
+                    'eer' => '-',
+                    'cspf' => '-',
+                    'ketidaksesuaian' => '-',
+                    'volume_produk' => '-',
+                    'percentage' => '-',
+                    'verification_result' => '-',
+                    'bobot1' => 0,
+                    'bobot2' => 0,
+                    'bobot3' => 0,
+                    'bobot4' => 0,
+                    'bobot5' => 0,
+                    'bobot6' => 0,
+                    'risk_rating' => 0,
+                );
+                        
+                if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
+                   
+                    $result['nomor_she'] = $pdt['No. Registrasi/No. SHE'];
+                    $result['model'] = $pdt['Model'];
+                    $result['merek'] = $pdt['Merek'];
+                    $result['stars_rating'] = $pdt['Rating Bintang (1-5)'];
+                    $result['compressor_type'] = $pdt['Tipe'];
+                    
+                    if(!empty($pdt['Nilai Efisiensi (EER/CSPF)'])){
+                        //find nilai eer & cspf
+                        $result = $this->eeRcspF($eer, $cspf, $pdt, $result);
+                    }
+                    
+                    //find history complience high risk
+                    $she = $this->highrisk->getReportByShe($pdt);
+                    if(!empty($she)){
+                        $result['bobot3'] = $she->bobot;
+                        $result['ketidaksesuaian'] = $she->ketidaksesuaian;
+                    }
+
+                    //find get bobot volume produksi
+                    if(!empty($pdt['totalProduk'])){
+
+                        $th1 = date('Y')-2;
+                        $th2 = date('Y')-1;
+                
+                        $tahun1 = 0;
+                        $tahun2 = 0;
+
+                        if(array_key_exists($th1, $pdt['totalProduk'])){
+                            $tahun1 = $pdt['totalProduk'][$th1];
+                        }
+
+                        if(array_key_exists($th2, $pdt['totalProduk'])){
+                            $tahun2 = $pdt['totalProduk'][$th2];
+                        }
+
+                        $ttlProduk = $tahun1+$tahun2;
+
+                        $result['volume_produk'] = $ttlProduk;
+
+                        if(!empty($pdt['Daya (watt)'])){
+                            $result = $this->pangsaPasar($pdt, $ttlProduk, $result, $varProduksi, $varProduksi1);
+                        }
+
+                        //bobot incrrease
+                        $result = $this->bobotIncrease($tahun1,$tahun2,$result);
+                    }
+
+                    if($result['bobot5'] != 0){
+                        $volume1 = $result['volume_produk'];
+                        $volume2 = 0;
+                    }else if ($result['bobot6'] != 0){
+                        $volume1 = 0;
+                        $volume2 = $result['volume_produk'];
+                    }
+
+                    $highrisk = array(
+                        '1' => $result['eer'],
+                        '2' => $result['cspf'],
+                        '3' => $result['ketidaksesuaian'],
+                        '4' => $result['percentage'].'%',
+                        '5' => $volume1,
+                        '6' => $volume2,
+                        'bobot1' => $result['bobot1'],
+                        'bobot2' => $result['bobot2'],
+                        'bobot3' => $result['bobot3'],
+                        'bobot4' => $result['bobot4'],
+                        'bobot5' => $result['bobot5'],
+                        'bobot6' => $result['bobot6'],
+                        'risk_rating' => $result['bobot1']+$result['bobot2']+$result['bobot3']+$result['bobot4']+$result['bobot5']+$result['bobot6'],
+                    );
+
+                    $this->highrisk->addHighrisk($result['nomor_she'], $highrisk);
+                }                
+            }
+        }
     }
 
+    public function detail($no_she){
+        $highrisk = $this->highrisk->getHighRisk($no_she);
+        $hks = json_decode($highrisk->form_data);
+        $kriteria = $this->highrisk->refrence();
+        foreach($kriteria as $hkriteria){
+            if($hkriteria->id_kriteria == 1){
+                $result['kriteria1'] = $hkriteria->kriteria;
+                $result['nilai1'] = $hks->{1};
+                $result['bobot1'] = $hks->bobot1;
+            }
+            if($hkriteria->id_kriteria == 2){
+                $result['kriteria2'] = $hkriteria->kriteria;
+                $result['nilai2'] = $hks->{2};
+                $result['bobot2'] = $hks->bobot2;
+            }
+            if($hkriteria->id_kriteria == 3){
+                $result['kriteria3'] = $hkriteria->kriteria;
+                $result['nilai3'] = $hks->{3};
+                $result['bobot3'] = $hks->bobot3;
+            }
+            if($hkriteria->id_kriteria == 4){
+                $result['kriteria4'] = $hkriteria->kriteria;
+                $result['nilai4'] = $hks->{4};
+                $result['bobot4'] = $hks->bobot4;
+            }
+            if($hkriteria->id_kriteria == 5){
+                $result['kriteria5'] = $hkriteria->kriteria;
+                $result['nilai5'] = $hks->{5};
+                $result['bobot5'] = $hks->bobot5;
+            }
+            if($hkriteria->id_kriteria == 6){
+                $result['kriteria6'] = $hkriteria->kriteria;
+                $result['nilai6'] = $hks->{6};
+                $result['bobot6'] = $hks->bobot6;
+            }
+            $result['risk_rating'] = $hks->risk_rating;
+        }
+        return view('pages.highrisk.detail', compact('result'));
+    }
+    
 }
