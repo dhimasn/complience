@@ -26,30 +26,30 @@
                 <div class="col-sm-9">
                   <div class="row">
                     <div class="col-md-1">
-                      <input type="radio" name="periode" value="tahun">
+                      <input type="radio" name="periode" value="tahun" {{$periode == 'tahun' ? 'checked' : ''}}>
                     </div>
                     <div class="col-md-1">
                       <label class="">Tahun</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="number" placeholder="Tahun" name="tahun" value="" class="form-control form-complience">
+                      <input type="number" placeholder="Tahun" name="tahun" value="{{$tahun}}" class="form-control form-complience">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-1">
-                      <input type="radio" name="periode" value="date" }>
+                      <input type="radio" name="periode" value="date" {{$periode == 'date' ? 'checked' : ''}}>
                     </div>
                     <div class="col-md-1">
                       <label class="">Dari</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="date" name="dari" class="form-control form-complience" value="">
+                      <input type="date" name="dari" class="form-control form-complience" value="{{$dariSelected}}">
                     </div>
                     <div class="col-md-1">
                       <label class="">Hingga</label>
                     </div>
                     <div class="col-md-3">
-                      <input type="date" name="hingga" class="form-control form-complience" value="">
+                      <input type="date" name="hingga" class="form-control form-complience" value="{{$hinggaSelected}}">
                     </div>
                   </div>
                 </div>
@@ -57,20 +57,20 @@
               <div class="form-group row">
                 <label class="col-sm-2">Kapasitas Pendinginan</label>
                 <div class="col-sm-3">
-                  <select name="pelaratan" class="form-control form-complience">
-                    <option value="2">AC</option>
-                    <option disabled value="">Kulkas</option>
-                    <option disabled value="">Kipas Angin</option>
-                    <option disabled value="">Penanak Nasi</option>
-                    <option disabled value="1">Lampu CFL</option>
-                    <option disabled value="">Lampu LED</option>
+                  <select name="kapasitas" class="form-control form-complience">
+                    <option value="½">½ PK</option>
+                    <option disabled value="¾">¾ PK</option>
+                    <option disabled value="1">1 PK</option>
+                    <option disabled value="1 ½">1 ½ PK</option>
+                    <option disabled value="2">2 PK</option>
+                    <option disabled value="2 ½">2 ½ PK</option>
                   </select>
                 </div>
               </div> 
               <div class="form-group row">
                 <label class="col-sm-2">Tipe Kompressor</label>
                 <div class="col-sm-3">
-                  <select name="pelaratan" class="form-control form-complience">
+                  <select name="kompressor" class="form-control form-complience">
                     <option value="inverter">Inverter</option>
                     <option disabled value="non-inverter">Non Inverter</option>
                   </select>
@@ -79,7 +79,7 @@
               <div class="form-group row">
                 <label class="col-sm-2">Tingkat Bintang</label>
                 <div class="col-sm-3">
-                  <select name="pelaratan" class="form-control form-complience">
+                  <select name="bintang" class="form-control form-complience">
                     <option value="1">satu</option>
                     <option disabled value="2">dua</option>
                     <option disabled value="3">tiga</option>

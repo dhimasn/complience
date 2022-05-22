@@ -18,21 +18,40 @@ class HighRiskController extends Controller
         $this->highrisk = new HighRisk();
     }
     
-    public function index(){
+    public function index(Request $request){
+
+        //filter
+        $periode = $request->input('periode') == '' ? 'tahun' : $request->input('periode');
+        $tahun = $request->input('tahun') == '' ? date('Y') : $request->input('tahun');
+        $dariDate = date("Y-m-d", strtotime($request->input('dari')));
+        $hinggaDate = date("Y-m-d", strtotime($request->input('hingga')));
+        $tahunDate = date("Y", strtotime($dariDate));
+        $dataList = array($tahun);
+        $months = array(
+            "01" => "Jan",
+            "02" => "Feb",
+            "03" => "Mar",
+            "04" => "Apr",
+            "05" => "Mei",
+            "06" => "Jun",
+            "07" => "Jul",
+            "08" => "Agu",
+            "09" => "Sep",
+            "10" => "Okt",
+            "11" => "Nov",
+            "12" => "Des"
+        );
 
         $productHelper = new ProductHelper();
 
         $products = $productHelper->getAllProducts(2);
-
+        print_r(json_encode($products));exit;
         $highrisk = [];
         
-        //eer
         $eer  = $this->highrisk->refrenceByidKriteria(1);
         
-        //cspf
         $cspf = $this->highrisk->refrenceByidKriteria(2);
 
-        //pangsa pasar
         $varProduksi = $this->highrisk->refrenceByidKriteria(5);
 
         $varProduksi1 = $this->highrisk->refrenceByidKriteria(6);
@@ -115,7 +134,23 @@ class HighRiskController extends Controller
                 }                
             }
         }
-        return view('pages.highrisk.index', compact('highrisk'));
+        
+        $dariSelected = $request->input('dari');
+        $hinggaSelected = $request->input('hingga');
+        $kapasitas = $request->input('kapasitas');
+        $kompressor = $request->input('kompressor');
+        $bintang = $request->input('bintang');
+
+        return view('pages.highrisk.index', compact(
+            'highrisk',
+            'periode',
+            'tahun',
+            'dariSelected',
+            'hinggaSelected',
+            'kapasitas',
+            'kompressor',
+            'bintang',
+        ));
     }
 
     public function report(){
