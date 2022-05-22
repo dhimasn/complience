@@ -48,7 +48,7 @@ class HighRisk
     }
 
     public function getReportByShe($pdt){
-        $data = HistoryComplience::where('no_she', '118.001.4.02.104.16.0002')->first();
+        $data = HistoryComplience::where('no_she', $pdt['Nilai Efisiensi (EER/CSPF)'])->first();
         return $data;
     }
 
@@ -65,7 +65,7 @@ class HighRisk
                         'nol'=> $dt->input('nol'),
                         'satu'=> $dt->input('satu'),
                         'dua'=> $dt->input('dua'),
-                        'dua'=> $dt->input('tiga')
+                        'tiga'=> $dt->input('tiga')
                      ]);
         return $result;
     }
@@ -87,6 +87,19 @@ class HighRisk
                     ->groupBy('field_value')
                     ->get();
         return $data;
+    }
+
+    public function addHighrisk($request){
+        $result = new HistoryComplience();
+        $result->no_she = $request->input('nomor_she');
+        //$result->model = $request->input('model');
+        $result->merek = $request->input('merek');
+        $result->ketidaksesuaian = substr($request->input('kriteria'),0,-1);
+        $result->lembaga_terkait = $request->input('lembaga');
+        $result->pengawas_id = $request->input('inspektur');
+        $result->bobot = substr($request->input('kriteria'),-1);
+        $result->save();
+        return $result; 
     }
 
 }

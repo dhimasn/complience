@@ -38,10 +38,15 @@
                 <label class="form-control-label">Nomor SHE/No Registrasi</label>
                 <select required name="nomor_she" class="form-control form-complience select2">
                   <option value="" disabled selected="true"></option>
-                  @foreach ($products as $id_product => $product)
-                  <option value="{{$product['No. Registrasi/No. SHE']}}" data-id="{{$id_product}}"
-                    data-merek="{{$product['Merek']}}">{{$product['No. Registrasi/No. SHE']}}</option>
-                  @endforeach
+                  <?php 
+                     foreach ($products as $id_product => $product){
+                       if(array_key_exists('No. Registrasi/No. SHE',$product)){                       
+                  ?>
+                    <option value="{{$product['No. Registrasi/No. SHE']}}" data-id="{{$id_product}}" data-merek="{{$product['Merek']}}">{{$product['No. Registrasi/No. SHE']}}</option>
+                  <?php
+                        }
+                     }
+                  ?>
                 </select>
               </div>
              
@@ -60,7 +65,7 @@
                 <select name="kriteria" class="form-control form-complience ">
                   <option value="" disabled selected="true">pilih kasus</option>
                   @foreach ($result as $rt)
-                  <option value="{{$rt['kriteria'];$rt['bobot']"}}>{{$rt['kriteria']}}</option>
+                  <option value="{{$rt['kriteria'].$rt['bobot']}}">{{$rt['kriteria']}}</option>
                   @endforeach
                 </select>
               </div>

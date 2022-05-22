@@ -18,17 +18,17 @@ class MasterHighRiskSeeder extends Seeder
                 'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
                 'variabel_penilaian' => 'EER (Btu/h/W)', // 1
                 'nol' => '>8.755',
-                'satu' => '>8.7175-8.755',
-                'dua' => '>8.605-8.7175',
+                'satu' => '>8.717-8.755',
+                'dua' => '>8.605-8.717',
                 'tiga' => '<8.605',
             ],
             [
                 'id_kriteria' => 2,
                 'kriteria' => 'Indeks efisiensi energi mendekati SKEM',
                 'variabel_penilaian' => 'CSPF (Wh/Wh)', // 1
-                'nol' => '>3.25',
-                'satu' => '>3.225-3.25',
-                'dua' => '>3.15-3.225',
+                'nol' => '>3.250',
+                'satu' => '>3.225-3.250',
+                'dua' => '>3.150-3.225',
                 'tiga' => '<3.225',
             ],
             [
@@ -43,29 +43,29 @@ class MasterHighRiskSeeder extends Seeder
             [
                 'id_kriteria' => 4,
                 'kriteria' => 'Merek baru atau tidak dikenal',
-                'variabel_penilaian' => 'Nomor SHE dan merek, berdasarkan analisis internal, dilakukan tahunan oleh inspektur', // 4
-                'nol' => 'Peningkatan jumlah model tidak lebih dari 50% dibandingkan tahun lalu',
-                'satu' => 'Peningkatan jumlah model antara 50% dan 100%',
-                'dua' => 'Peningkatan jumlah model antara 100% dan 300%',
-                'tiga' => 'Temuan pengawasan SNI keselamatan',
+                'variabel_penilaian' => 'Nomor SHE dan merek, berdasarkan analisis internal, dilakukan tahunan oleh inspektur (Peningkatan jumlah model)', // 4
+                'nol' => '>50%',
+                'satu' => '>50%-100%',
+                'dua' => '>100%-300%',
+                'tiga' => '>300%',
             ],
             [
                 'id_kriteria' => 5,
                 'kriteria' => 'Pangsa pasar besar',
-                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas', // 2
-                'nol' => '<15,000 unit (½, ¾, 1 PK)',
-                'satu' =>'>15,000-30,000 unit (½, ¾, 1 PK) ',
-                'dua' => '>30,000-50,000 unit (½, ¾, 1 PK)',
-                'tiga' => '>50,000 unit (½, ¾, 1 PK)',
+                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas (½, ¾, 1 PK)', // 2
+                'nol' => '<15000 unit',
+                'satu' =>'>15000-30000 unit',
+                'dua' => '>30000-50000 unit',
+                'tiga' => '>50000 unit',
             ],
             [
                 'id_kriteria' => 6,
                 'kriteria' => 'Pangsa pasar besar',
-                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas', // 2
-                'nol' => '<5,000 unit (½, ¾, 1 PK)',
-                'satu' =>'>5,000-10,000 unit (½, ¾, 1 PK) ',
-                'dua' => '>10,000-15,000 unit (½, ¾, 1 PK)',
-                'tiga' => '>15,000 unit (½, ¾, 1 PK)',
+                'variabel_penilaian' => 'Jumlah unit produksi/impor tahunan, berdasarkan kapasitas (½, ¾, 1 PK)', // 2
+                'nol' =>'<5000 unit',
+                'satu'=>'>5000-10000 unit',
+                'dua' =>'>10000-15000 unit',
+                'tiga'=>'>15000 unit',
             ]
         ]);
     }
