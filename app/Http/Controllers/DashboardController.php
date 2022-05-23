@@ -122,7 +122,9 @@ class DashboardController extends Controller
     }
     public function global()
     {
-        return view('pages.dashboard.global');
+        $complienceUjipetik = Complience::where('kegiatan', 2)->count();
+        $complienceInspeksiVisual = Formulir1::count();
+        return view('pages.dashboard.global', compact('complienceUjipetik', 'complienceInspeksiVisual'));
     }
     public function getProdukToko($name)
     {

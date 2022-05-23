@@ -109,32 +109,32 @@
       datasets: [
           {
             label: 'AC',
-            data: [10],
+            data: [{{$complienceUjipetik}}],
             backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
-            data: [20],
+            data: [0],
             backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
-            data: [8],
+            data: [0],
             backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
-            data: [12],
+            data: [0],
             backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
-            data: [5],
+            data: [0],
             backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
-            data: [24],
+            data: [0],
             backgroundColor: "#4371c6"
           },
       ]
@@ -172,32 +172,32 @@
       datasets: [
           {
             label: 'AC',
-            data: [10],
+            data: [{{$complienceInspeksiVisual}}],
             backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
-            data: [20],
+            data: [0],
             backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
-            data: [8],
+            data: [0],
             backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
-            data: [12],
+            data: [0],
             backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
-            data: [5],
+            data: [0],
             backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
-            data: [24],
+            data: [0],
             backgroundColor: "#4371c6"
           },
       ]
