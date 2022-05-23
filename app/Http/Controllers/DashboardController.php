@@ -55,7 +55,7 @@ class DashboardController extends Controller
         
         
         $totalPerusahaan = Perusahaan::count();
-        $complienceUjipetik = array();;
+        $complienceUjipetik = array();
         $statusUjiPetiks = Complience::whereNotIn('status', [7, 8])->where('kegiatan', 2)->get();
         
         $valueList = array();
@@ -76,13 +76,17 @@ class DashboardController extends Controller
                 if (isset($comp->formulir3)) {
                     if ($comp->formulir3->validasiPengujian() == 'Sesuai') {
                         $ketidaksesuai[$keyMonth]['sesuai']++;
+                        // $ketidaksesuaiOne[$comp->no_she] = 'sesuai';
                     } else {
                         $ketidaksesuai[$keyMonth]['tidak_sesuai']++;
+                        // $ketidaksesuaiOne[$comp->no_she] = 'tidak_sesuai';
                     }
                 }
+                // else{
+                //     $ketidaksesuaiOne[$comp->no_she] = '';
+                // }
             }
         }
-
         $dataForm = array();
         foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
             foreach ($valueMonth as $form1) {
@@ -96,6 +100,7 @@ class DashboardController extends Controller
             }
         }
         $kepatuhan = $this->countKepatuhan($complienceInspeksiVisual);
+        $kepatuhanUjiPetik = $this->countKepatuhan($complienceUjipetik, 2);
         $status = config('global.status');
 
         $dariSelected = $request->input('dari');
@@ -112,11 +117,21 @@ class DashboardController extends Controller
             'dariSelected',
             'hinggaSelected',
             'totalPerusahaan',
+            'kepatuhanUjiPetik',
         ));
     }
     public function global()
     {
-        return view('pages.dashboard.global');
+        $complienceUjipetik = Complience::selectRaw('year(created_at) year, count(*) data')
+                            ->groupBy('year')
+                            ->orderBy('year', 'desc')->where('kegiatan', 2)->get()->toArray();
+        $complienceInspeksiVisual = Formulir1::selectRaw('year(created_at) year, count(*) data')
+                            ->groupBy('year')
+                            ->orderBy('year', 'desc')
+                            ->get()->toArray();
+
+        // dd($complienceUjipetik[0]['year']);
+        return view('pages.dashboard.global', compact('complienceUjipetik', 'complienceInspeksiVisual'));
     }
     public function getProdukToko($name)
     {
@@ -158,7 +173,12 @@ class DashboardController extends Controller
         );
         return response()->json(['comp' => $result,'toko' => $toko], 200);
     }
-    public function countKepatuhan($complienceInspeksiVisual)
+    public function countKepatuhanUjiPetik($complienceUjipetik, $ketidaksesuai){
+        // dd($complienceUjipetik);
+        $kepatuhan = $this->countKepatuhan($complienceUjipetik, 2);
+        
+    }
+    public function countKepatuhan($complienceInspeksiVisual, $type = 1) // 1 : Inspeksi Visual 2: Uji Petik
     {
         
         $dataForms = array();
@@ -178,11 +198,27 @@ class DashboardController extends Controller
             "Label tidak sesuai dengan model fisik produk"
         );
 
-        foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
-            $dataForm[$keyMonth] = array();
-            foreach ($valueMonth as $key) {
-                $dataForms[$keyMonth][] = json_decode($key->form_data, true);
-            }
+        switch ($type) {
+            case 1:
+                foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
+                    $dataForm[$keyMonth] = array();
+                    foreach ($valueMonth as $key) {
+                        $dataForms[$keyMonth][] = json_decode($key->form_data, true);
+                    }
+                }
+                break;
+            case 2: // ujipetik
+                foreach ($complienceInspeksiVisual as $keyMonth => $valueMonth) {
+                    $dataForm[$keyMonth] = array();
+                    foreach ($valueMonth as $key) {
+                        $dataForms[$keyMonth][] = json_decode($key->formulir1->form_data, true);
+                    }
+                }
+                break;
+            
+            default:
+                # code...
+                break;
         }
         $result['1'] = 0; // Label Kabur/Tidak terlihat/Rusak – data dari Visibilitas LTHE 
         $result['2'] = 0; // Desain Label Tidak Sesuai – data dari Kesesuaian Visual LTHE 
