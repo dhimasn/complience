@@ -105,36 +105,59 @@
 <script>
   // CHART barUjiPetik
   var data = {
-      labels: ["2022"],
+      labels: [
+        @foreach($complienceUjipetik as $item)
+          '{{$item["year"]}}',
+        @endforeach
+      ],
       datasets: [
           {
             label: 'AC',
-            data: [{{$complienceUjipetik}}],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                {{$item["data"]}},
+              @endforeach
+            ],
             backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
-            data: [0],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                0,
+              @endforeach],
             backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
-            data: [0],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                0,
+              @endforeach],
             backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
-            data: [0],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                0,
+              @endforeach],
             backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
-            data: [0],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                0,
+              @endforeach],
             backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
-            data: [0],
+            data: [
+              @foreach($complienceUjipetik as $item)
+                0,
+              @endforeach],
             backgroundColor: "#4371c6"
           },
       ]
@@ -168,36 +191,59 @@
   
   // CHART barInspeksiVisual
   var data = {
-      labels: ["2022"],
+      labels: [
+        @foreach($complienceInspeksiVisual as $item)
+          '{{$item["year"]}}',
+        @endforeach
+      ],
       datasets: [
           {
             label: 'AC',
-            data: [{{$complienceInspeksiVisual}}],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                {{$item["data"]}},
+              @endforeach
+            ],
             backgroundColor: "#ee7d31"
           },
           {
             label: 'Kulkas',
-            data: [0],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                0,
+              @endforeach],
             backgroundColor: "#a4a6a3"
           },
           {
             label: 'Lampu LED',
-            data: [0],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                0,
+              @endforeach],
             backgroundColor: "#72ae42"
           },
           {
             label: 'Penanak Nasi',
-            data: [0],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                0,
+              @endforeach],
             backgroundColor: "#5a9ad7"
           },
           {
             label: 'Kipas Angin',
-            data: [0],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                0,
+              @endforeach],
             backgroundColor: "#fec200"
           },
           {
             label: 'Lampu CFL',
-            data: [0],
+            data: [
+              @foreach($complienceInspeksiVisual as $item)
+                0,
+              @endforeach],
             backgroundColor: "#4371c6"
           },
       ]

@@ -122,8 +122,15 @@ class DashboardController extends Controller
     }
     public function global()
     {
-        $complienceUjipetik = Complience::where('kegiatan', 2)->count();
-        $complienceInspeksiVisual = Formulir1::count();
+        $complienceUjipetik = Complience::selectRaw('year(created_at) year, count(*) data')
+                            ->groupBy('year')
+                            ->orderBy('year', 'desc')->where('kegiatan', 2)->get()->toArray();
+        $complienceInspeksiVisual = Formulir1::selectRaw('year(created_at) year, count(*) data')
+                            ->groupBy('year')
+                            ->orderBy('year', 'desc')
+                            ->get()->toArray();
+
+        // dd($complienceUjipetik[0]['year']);
         return view('pages.dashboard.global', compact('complienceUjipetik', 'complienceInspeksiVisual'));
     }
     public function getProdukToko($name)
