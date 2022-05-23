@@ -409,7 +409,7 @@ class HighRiskController extends Controller
         $productHelper = new ProductHelper();
 
         $products = $productHelper->getAllProducts(2);
-        
+        print_r(json_encode($products));exit;
         $eer  = $this->highrisk->refrenceByidKriteria(1);
         
         $cspf = $this->highrisk->refrenceByidKriteria(2);
@@ -499,7 +499,7 @@ class HighRiskController extends Controller
                         $volume1 = 0;
                         $volume2 = $result['volume_produk'];
                     }
-
+                    
                     $highrisk = array(
                         '1' => $result['eer'],
                         '2' => $result['cspf'],
@@ -560,6 +560,10 @@ class HighRiskController extends Controller
             $result['risk_rating'] = $hks->risk_rating;
         }
         return view('pages.highrisk.detail', compact('result'));
+    }
+
+    public function export(){
+
     }
     
 }
