@@ -113,6 +113,7 @@ class HighRisk
                     'bintang' => $newHigh['stars_rating'],
                     'volume' => $newHigh['volume_produk'],
                     'verification_result' => null,
+                    'risk_rating' => $newHigh['risk_rating'],
                     'compressor_type' => $newHigh['compressor_type'],
                     'form_data'=> json_encode($highrisk)
                  ]);
@@ -125,6 +126,7 @@ class HighRisk
                 $result->bintang = $newHigh['stars_rating'];
                 $result->volume = $newHigh['volume_produk'];
                 $result->verification_result = null;
+                $result->risk_rating = $newHigh['risk_rating'];
                 $result->compressor_type = $newHigh['compressor_type'];
                 $result->form_data = json_encode($highrisk);
                 $result->save();
