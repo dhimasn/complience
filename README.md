@@ -24,9 +24,6 @@ complience tools is application to help inspectorat catch data
 6. tambahkan requirement api di file `.env`
     - URL_GET_PRODUCT_MICROSITE
     - SECRET_KEY_MICROSITE
-    - php artisan db:seed --class=MasterHighRiskSeeder
-    - php artisan db:seed --class=UserRoleSeeder
-    - php artisan db:seed --class=UserSeeder
     - php artisan route:clear
     - php artisan route:list
     - php artisan cache:clear
