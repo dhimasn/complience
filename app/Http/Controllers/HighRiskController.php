@@ -41,106 +41,32 @@ class HighRiskController extends Controller
             "11" => "Nov",
             "12" => "Des"
         );
-
-        $productHelper = new ProductHelper();
-
-        $products = $productHelper->getAllProducts(2);
-        
-        $highrisk = [];
-        
-        $eer  = $this->highrisk->refrenceByidKriteria(1);
-        
-        $cspf = $this->highrisk->refrenceByidKriteria(2);
-
-        $varProduksi = $this->highrisk->refrenceByidKriteria(5);
-
-        $varProduksi1 = $this->highrisk->refrenceByidKriteria(6);
-
-        if(!empty($products)){
-            
-            foreach($products as $pdt){
-
-                $result = array(
-                    'nomor_she' => '',
-                    'model' =>'',
-                    'merek' => '',
-                    'stars_rating' => '',
-                    'compressor_type' => '-',
-                    'eer' => '-',
-                    'cspf' => '-',
-                    'ketidaksesuaian' => '-',
-                    'volume_produk' => '-',
-                    'percentage' => '-',
-                    'verification_result' => '-',
-                    'bobot1' => 0,
-                    'bobot2' => 0,
-                    'bobot3' => 0,
-                    'bobot4' => 0,
-                    'bobot5' => 0,
-                    'bobot6' => 0,
-                    'risk_rating' => 0,
-                );
-                
-                if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
-                   
-                    $result['nomor_she'] = $pdt['No. Registrasi/No. SHE'];
-                    $result['model'] = $pdt['Model'];
-                    $result['merek'] = $pdt['Merek'];
-                    $result['stars_rating'] = $pdt['Rating Bintang (1-5)'];
-                    $result['compressor_type'] = $pdt['Tipe'];
-                    
-                    if(!empty($pdt['Nilai Efisiensi (EER/CSPF)'])){
-                        //find nilai eer & cspf
-                        $result = $this->eeRcspF($eer, $cspf, $pdt, $result);
-                    }
-                    
-                    //find history complience high risk
-                    $she = $this->highrisk->getReportByShe($pdt);
-                    if(!empty($she)){
-                        $result['bobot3'] = $she->bobot;
-                    }
-
-                    //find get bobot volume produksi
-                    if(!empty($pdt['totalProduk'])){
-
-                        $th1 = date('Y')-2;
-                        $th2 = date('Y')-1;
-                
-                        $tahun1 = 0;
-                        $tahun2 = 0;
-
-                        if(array_key_exists($th1, $pdt['totalProduk'])){
-                            $tahun1 = $pdt['totalProduk'][$th1];
-                        }
-
-                        if(array_key_exists($th2, $pdt['totalProduk'])){
-                            $tahun2 = $pdt['totalProduk'][$th2];
-                        }
-
-                        $ttlProduk = $tahun1+$tahun2;
-
-                        $result['volume_produk'] = $ttlProduk;
-
-                        if(!empty($pdt['Daya (watt)'])){
-                            $result = $this->pangsaPasar($pdt, $ttlProduk, $result, $varProduksi, $varProduksi1);
-                        }
-
-                        //bobot incrrease
-                        $result = $this->bobotIncrease($tahun1,$tahun2,$result);
-                    }
-
-                    $result['risk_rating'] = $result['bobot1']+$result['bobot2']+$result['bobot3']+$result['bobot4']+$result['bobot5']+$result['bobot6'];
-                    array_push($highrisk, $result); 
-                }                
-            }
-        }
-        
         $dariSelected = $request->input('dari');
         $hinggaSelected = $request->input('hingga');
         $kapasitas = $request->input('kapasitas');
+        
+        //filter terpakai
         $kompressor = $request->input('kompressor');
         $bintang = $request->input('bintang');
-
+        $custom['kompressor'] = $kompressor;
+        $custom['bintang'] = $bintang;
+        $highrisk = [];
+        $result = $this->highrisk->getListDataHighRiskCustom($custom);
+        foreach($result as $rs){  
+            $hks = json_decode($rs['form_data']);
+            $hk['nomor_she'] = $rs['no_she'];
+            $hk['model'] =  $rs['model'];
+            $hk['merek'] =  $rs['merek'];
+            $hk['stars_rating'] =  $rs['bintang'];
+            $hk['eer'] =  $hks->{1};
+            $hk['cspf'] =  $hks->{2};
+            $hk['compressor_type'] =$rs['compressor_type'];
+            $hk['risk_rating'] =  $hks->risk_rating;
+            $hk['verification_result'] =  $rs['verification_result'];
+            $hk['volume_produk'] =  $rs['volume'];
+            array_push($highrisk,$hk); 
+        }
+        
         return view('pages.highrisk.index', compact(
             'highrisk',
             'periode',
@@ -491,15 +417,14 @@ class HighRiskController extends Controller
                         //bobot incrrease
                         $result = $this->bobotIncrease($tahun1,$tahun2,$result);
                     }
-
+                    $volume1 = 0;
+                    $volume2 = 0;
                     if($result['bobot5'] != 0){
                         $volume1 = $result['volume_produk'];
-                        $volume2 = 0;
                     }else if ($result['bobot6'] != 0){
-                        $volume1 = 0;
                         $volume2 = $result['volume_produk'];
                     }
-
+  
                     $highrisk = array(
                         '1' => $result['eer'],
                         '2' => $result['cspf'],
@@ -515,8 +440,8 @@ class HighRiskController extends Controller
                         'bobot6' => $result['bobot6'],
                         'risk_rating' => $result['bobot1']+$result['bobot2']+$result['bobot3']+$result['bobot4']+$result['bobot5']+$result['bobot6'],
                     );
-
-                    $this->highrisk->addHighrisk($result['nomor_she'], $highrisk);
+                    
+                    $this->highrisk->addHighrisk($result, $highrisk);
                 }                
             }
         }
@@ -561,5 +486,37 @@ class HighRiskController extends Controller
         }
         return view('pages.highrisk.detail', compact('result'));
     }
-    
+
+    public function export(){
+        $headers = [
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=high_risk.csv", // <- name of file
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0",
+        ];
+        $columns  = ['nomor_she','model_produk','merek','stars_rating','eer (Btu/h/w)','cspf (wh/wh)','compressor_type','risk_rating','verification_result','volume'];
+        $result = $this->highrisk->getListDataHighRisk();
+        $callback = function () use ($result, $columns) {
+            $file = fopen('php://output', 'w'); //<-here. name of file is written in headers
+            fputcsv($file, $columns);
+            foreach ($result as $rs) {
+                $hks = json_decode($rs['form_data']);
+                fputcsv($file, [$rs['no_she'], 
+                                $rs['model'], 
+                                $rs['merek'], 
+                                $rs['bintang'],
+                                $hks->{1},
+                                $hks->{2},
+                                $rs['compressor_type'],
+                                $hks->risk_rating,
+                                $rs['verification_result'],
+                                $rs['volume']
+                            ]);
+            }
+            fclose($file);
+        };
+        return response()->stream($callback, 200, $headers);
+    }
+
 }
