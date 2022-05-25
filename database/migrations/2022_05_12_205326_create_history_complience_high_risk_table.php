@@ -20,7 +20,7 @@ class CreateHistoryComplienceHighRiskTable extends Migration
             $table->string('merek')->nullable();
             $table->string('ketidaksesuaian')->nullable();
             $table->string('lembaga_terkait')->nullable();
-            $table->string('pengawas_id');
+            $table->string('pengawas_id')->nullable();
             $table->integer('bobot');
             $table->timestamps();
         });
