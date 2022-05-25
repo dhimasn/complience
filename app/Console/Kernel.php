@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\AutoGetProductMicrosite::class,
-        Commands\AutoGetPerusahaanMicrosite::class
+        Commands\AutoGetPerusahaanMicrosite::class,
+        Commands\AutoGetHighriskMicrosite::class
     ];
 
     /**
@@ -29,6 +30,9 @@ class Kernel extends ConsoleKernel
         // ->hourly();
         ->cron('* * * * *');
         $schedule->command('getperusahaan:microsite')
+        // ->hourly();
+        ->cron('* * * * *');
+        $schedule->command('gethighrisk:microsite')
         // ->hourly();
         ->cron('* * * * *');
     }
