@@ -43,7 +43,7 @@ class HighRiskController extends Controller
         );
         $dariSelected = $request->input('dari');
         $hinggaSelected = $request->input('hingga');
-        $kapasitas = $request->input('kapasitas');
+        $kapasitas = $request->input('kapasitas'); 
         
         //filter terpakai
         $kompressor = $request->input('kompressor');
@@ -518,5 +518,5 @@ class HighRiskController extends Controller
         };
         return response()->stream($callback, 200, $headers);
     }
-
+    
 }

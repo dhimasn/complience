@@ -28,18 +28,16 @@ class HighRisk
     }
 
     public function getListDataHighRiskCustom($custom){
-        $results = HighRiskDB::get();
-        // if (!empty($custom['kompressor'])) {
-        //     $results = HighRiskDB::whereHas('compressor_type', function ($q) use ($custom) {
-        //         $q->where('compressor_type', $custom['kompressor']);
-        //     });
-        // }
-        // if (!empty($custom['bintang'])) {
-        //     $results = HighRiskDB::whereHas('bintang', function ($q) use ($custom) {
-        //         $q->where('bintang', $custom['bintang']);
-        //     });
-        // };
-        return $results;
+        $results = HighRiskDB::query();
+        if (!empty($custom['kompressor'])) {
+            $results->orWhere('compressor_type', $custom['kompressor']);
+        }
+
+        if (!empty($custom['bintang'])) {
+            $results->orWhere('bintang', $custom['bintang']);
+        }
+        $results->orderBy('risk_rating', 'DESC');
+        return $results->get();
     }
 
     public function report(){
@@ -103,38 +101,35 @@ class HighRisk
 
     public function addHighrisk($newHigh,$highrisk){
        
-            $high = $this->getHighRisk($newHigh['nomor_she']);
-            if(!empty($high)){
-                $result = HighRiskDB::where('no_she', $newHigh['nomor_she'])
-                ->update([
-                    'no_she' => $newHigh['nomor_she'],
-                    'model' => $newHigh['model'],
-                    'merek' => $newHigh['merek'],
-                    'bintang' => $newHigh['stars_rating'],
-                    'volume' => $newHigh['volume_produk'],
-                    'verification_result' => null,
-                    'risk_rating' => $newHigh['risk_rating'],
-                    'compressor_type' => $newHigh['compressor_type'],
-                    'form_data'=> json_encode($highrisk)
-                 ]);
-                
-            }else{
-                $result = new HighRiskDB();
-                $result->no_she = $newHigh['nomor_she'];
-                $result->model = $newHigh['model'];
-                $result->merek = $newHigh['merek'];
-                $result->bintang = $newHigh['stars_rating'];
-                $result->volume = $newHigh['volume_produk'];
-                $result->verification_result = null;
-                $result->risk_rating = $newHigh['risk_rating'];
-                $result->compressor_type = $newHigh['compressor_type'];
-                $result->form_data = json_encode($highrisk);
-                $result->save();
-            }
-
-            return $result;
-        
-       
+        $high = $this->getHighRisk($newHigh['nomor_she']);
+        if(!empty($high)){
+            $result = HighRiskDB::where('no_she', $newHigh['nomor_she'])
+            ->update([
+                'no_she' => $newHigh['nomor_she'],
+                'model' => $newHigh['model'],
+                'merek' => $newHigh['merek'],
+                'bintang' => $newHigh['stars_rating'],
+                'volume' => $newHigh['volume_produk'],
+                'verification_result' => null,
+                'risk_rating' => $newHigh['risk_rating'],
+                'compressor_type' => $newHigh['compressor_type'],
+                'form_data'=> json_encode($highrisk)
+                ]);
+            
+        }else{
+            $result = new HighRiskDB();
+            $result->no_she = $newHigh['nomor_she'];
+            $result->model = $newHigh['model'];
+            $result->merek = $newHigh['merek'];
+            $result->bintang = $newHigh['stars_rating'];
+            $result->volume = $newHigh['volume_produk'];
+            $result->verification_result = null;
+            $result->risk_rating = $newHigh['risk_rating'];
+            $result->compressor_type = $newHigh['compressor_type'];
+            $result->form_data = json_encode($highrisk);
+            $result->save();
+        }
+        return $result;
     }
 
     public function getHighRisk($nomor_she){
