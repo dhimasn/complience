@@ -20,9 +20,9 @@ class CreateDataHighRiskTable extends Migration
             $table->string('merek');
             $table->string('bintang');
             $table->string('compressor_type');
-            $table->string('volume');
-            $table->string('verification_result');
-            $table->string('risk_rating');
+            $table->string('volume')->nullable();
+            $table->string('verification_result')->nullable();
+            $table->string('risk_rating')->nullable();
             $table->string('form_data');
             $table->timestamps();
         });

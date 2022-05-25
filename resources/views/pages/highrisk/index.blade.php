@@ -21,6 +21,8 @@
                   </select>
                 </div>
               </div>
+              
+              <!--
               <div class="form-group row">
                 <label class="col-sm-2">Periode</label>
                 <div class="col-sm-9">
@@ -54,6 +56,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-group row">
                 <label class="col-sm-2">Kapasitas Pendinginan</label>
                 <div class="col-sm-3">
@@ -67,6 +70,8 @@
                   </select>
                 </div>
               </div> 
+              -->
+
               <div class="form-group row">
                 <label class="col-sm-2">Tipe Kompressor</label>
                 <div class="col-sm-3">
