@@ -67,21 +67,21 @@ class ProductHelper
     );
     
     $field_product = array_merge($field_product, $arrTotal);
-    $result = array();
     $tempResult = array();
     foreach ($field_product as $master) {
       foreach (json_decode($products) as $product) {
         if ($master['field'] == $product->field) {
           $tempResult[$product->product_id][$master['key']] = $product->field_value;
-        }
-        if ($master['field'] == 'field-kategori') {
-          $tempResult[$product->product_id]['kategori'] = 'registrasi';
+          if($master['key'] == 'noregistrasi'){
+            $kategori = 'registrasi';
+            if (strpos($product->field_value, '/') !== false) {
+              $kategori = 'she';
+            }
+            $tempResult[$product->product_id]['kategori'] = $kategori;
+          }
         }
       }
     }
-    foreach ($tempResult as $key => $value) {
-      $result[] = $value;
-    }
-    return $result;
+    return $tempResult;
   }
 }
