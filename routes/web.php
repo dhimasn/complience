@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('highrisk/kriteria','HighRiskController@kriteria')->name('highrisk.kriteria');
     Route::get('highrisk/kriteria/update/{id}','HighRiskController@updateKriteria')->name('highrisk.updateKriteria');
     Route::post('highrisk/kriteria/simpan','HighRiskController@simpanKriteria')->name('highrisk.simpanKriteria');
+    Route::get('highrisk/export','HighRiskController@export')->name('highrisk.export');
 
 
     Route::get('highrisk/sync','HighRiskController@sync')->name('highrisk.sync');

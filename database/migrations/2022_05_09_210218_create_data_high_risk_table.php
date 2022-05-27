@@ -16,6 +16,13 @@ class CreateDataHighRiskTable extends Migration
         Schema::create('data_high_risk', function (Blueprint $table) {
             $table->id();
             $table->string('no_she');
+            $table->string('model');
+            $table->string('merek');
+            $table->string('bintang');
+            $table->string('compressor_type');
+            $table->string('volume')->nullable();
+            $table->string('verification_result')->nullable();
+            $table->string('risk_rating')->nullable();
             $table->string('form_data');
             $table->timestamps();
         });
