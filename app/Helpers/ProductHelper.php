@@ -67,6 +67,7 @@ class ProductHelper
     );
     
     $field_product = array_merge($field_product, $arrTotal);
+    $result = array();
     $tempResult = array();
     foreach ($field_product as $master) {
       foreach (json_decode($products) as $product) {
@@ -82,6 +83,9 @@ class ProductHelper
         }
       }
     }
-    return $tempResult;
+    foreach ($tempResult as $key => $value) {
+      $result[] = $value;
+    }
+    return $result;
   }
 }
