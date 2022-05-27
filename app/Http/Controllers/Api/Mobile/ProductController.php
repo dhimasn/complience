@@ -13,9 +13,9 @@ class ProductController extends Controller
   {
     try {
       $category = empty($request->input('category')) ? 2 : $request->input('category');
-      $product_helper = new ProductHelper();
-      return $product_helper->getAllProductsMobile($category);
       $result = Cache::rememberForever('sync_product_mobile_' . $category, function () use ($category) {
+        $product_helper = new ProductHelper();
+        return $product_helper->getAllProductsMobile($category);
       });
       if ($result) {
         $response['success'] = true;
