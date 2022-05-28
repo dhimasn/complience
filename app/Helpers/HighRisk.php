@@ -27,17 +27,19 @@ class HighRisk
         return $data;
     }
 
-    public function getListDataHighRiskCustom($custom){
-        $results = HighRiskDB::query();
-        if (!empty($custom['kompressor'])) {
-            $results->orWhere('compressor_type', $custom['kompressor']);
-        }
-
-        if (!empty($custom['bintang'])) {
-            $results->orWhere('bintang', $custom['bintang']);
-        }
-        $results->orderBy('risk_rating', 'DESC');
-        return $results->get();
+    public function getListDataHighRiskCustom($kompressor, $bintang, $kp){
+        $results = HighRiskDB::when($kompressor, function ($query, $kompressor) {
+            return $query->where('compressor_type', $kompressor);
+        })
+        ->when($bintang, function ($query, $bintang) {
+            return $query->where('bintang', $bintang);
+        })
+        ->when($kp, function ($query, $kp) {
+            return $query->whereBetween('kapasitas', [$kp['a'],$kp['b']]);       
+        })
+        ->orderBy('risk_rating', 'desc')
+        ->get();
+        return $results;
     }
 
     public function report(){
@@ -100,7 +102,6 @@ class HighRisk
     }
 
     public function addHighrisk($newHigh,$highrisk){
-       
         $high = $this->getHighRisk($newHigh['nomor_she']);
         if(!empty($high)){
             $result = HighRiskDB::where('no_she', $newHigh['nomor_she'])
@@ -110,6 +111,7 @@ class HighRisk
                 'merek' => $newHigh['merek'],
                 'bintang' => $newHigh['stars_rating'],
                 'volume' => $newHigh['volume_produk'],
+                'kapasitas' => $newHigh['kapasitas'],
                 'verification_result' => null,
                 'risk_rating' => $newHigh['risk_rating'],
                 'compressor_type' => $newHigh['compressor_type'],
@@ -123,6 +125,7 @@ class HighRisk
             $result->merek = $newHigh['merek'];
             $result->bintang = $newHigh['stars_rating'];
             $result->volume = $newHigh['volume_produk'];
+            $result->kapasitas = $newHigh['kapasitas'];
             $result->verification_result = null;
             $result->risk_rating = $newHigh['risk_rating'];
             $result->compressor_type = $newHigh['compressor_type'];

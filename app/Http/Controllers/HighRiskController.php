@@ -19,7 +19,6 @@ class HighRiskController extends Controller
     }
     
     public function index(Request $request){
-
         //filter
         $periode = $request->input('periode') == '' ? 'tahun' : $request->input('periode');
         $tahun = $request->input('tahun') == '' ? date('Y') : $request->input('tahun');
@@ -48,10 +47,38 @@ class HighRiskController extends Controller
         //filter terpakai
         $kompressor = $request->input('kompressor');
         $bintang = $request->input('bintang');
-        $custom['kompressor'] = $kompressor;
-        $custom['bintang'] = $bintang;
+        $kapasitas = $request->input('kapasitas');
+        $kp = null;
+        if(!empty($kapasitas)){
+            if($kapasitas == 0.5){
+                $kpA = 0;
+                $kpB = 4500.00;
+            }
+            if($kapasitas == 0.75){
+                $kpA = 4500.00;
+                $kpB = 6750.00;
+            }
+            if($kapasitas == 1){
+                $kpA = 6750.00;
+                $kpB = 9000.00;
+            }
+            if($kapasitas == 1.5){
+                $kpA = 9000.00;
+                $kpB = 13500.00;
+            }
+            if($kapasitas == 2){
+                $kpA = 13500.00;
+                $kpB = 18000.00;
+            }
+            if($kapasitas == 2.5){
+                $kpA = 18000.00;
+                $kpB = 22500.00;
+            }
+            $kp['a'] = $kpA;
+            $kp['b'] = $kpB;
+        }
         $highrisk = [];
-        $result = $this->highrisk->getListDataHighRiskCustom($custom);
+        $result = $this->highrisk->getListDataHighRiskCustom($kompressor, $bintang, $kp);
         foreach($result as $rs){  
             $hks = json_decode($rs['form_data']);
             $hk['nomor_she'] = $rs['no_she'];
@@ -353,6 +380,7 @@ class HighRiskController extends Controller
                     'model' =>'',
                     'merek' => '',
                     'stars_rating' => '',
+                    'kapasitas'=>'',
                     'compressor_type' => '-',
                     'eer' => '-',
                     'cspf' => '-',
@@ -370,12 +398,12 @@ class HighRiskController extends Controller
                 );
                         
                 if(array_key_exists('No. Registrasi/No. SHE', $pdt)){
-                   
                     $result['nomor_she'] = $pdt['No. Registrasi/No. SHE'];
                     $result['model'] = $pdt['Model'];
                     $result['merek'] = $pdt['Merek'];
                     $result['stars_rating'] = $pdt['Rating Bintang (1-5)'];
                     $result['compressor_type'] = $pdt['Tipe'];
+                    $result['kapasitas'] = $pdt['Kapasitas Pendinginan (BTU/h)'];
                     
                     if(!empty($pdt['Nilai Efisiensi (EER/CSPF)'])){
                         //find nilai eer & cspf

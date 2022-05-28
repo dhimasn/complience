@@ -55,27 +55,29 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div class="form-group row">
                 <label class="col-sm-2">Kapasitas Pendinginan</label>
                 <div class="col-sm-3">
                   <select name="kapasitas" class="form-control form-complience">
-                    <option value="½">½ PK</option>
-                    <option value="¾">¾ PK</option>
+                    <option value="">{SELECT}</option>
+                    <option value="0.5">½ PK</option>
+                    <option value="0.75">¾ PK</option>
                     <option value="1">1 PK</option>
-                    <option value="1 ½">1 ½ PK</option>
+                    <option value="1.5">1 ½ PK</option>
                     <option value="2">2 PK</option>
-                    <option value="2 ½">2 ½ PK</option>
+                    <option value="2.5">2 ½ PK</option>
                   </select>
                 </div>
               </div> 
-              -->
+             
 
               <div class="form-group row">
                 <label class="col-sm-2">Tipe Kompressor</label>
                 <div class="col-sm-3">
                   <select name="kompressor" class="form-control form-complience">
+                    <option value="">{SELECT}</option>
                     <option value="Inverter">Inverter</option>
                     <option value="Non-Inverter">Non Inverter</option>
                   </select>
@@ -85,6 +87,7 @@
                 <label class="col-sm-2">Tingkat Bintang</label>
                 <div class="col-sm-3">
                   <select name="bintang" class="form-control form-complience">
+                    <option value="">{SELECT}</option>
                     <option value="1">satu</option>
                     <option value="2">dua</option>
                     <option value="3">tiga</option>
