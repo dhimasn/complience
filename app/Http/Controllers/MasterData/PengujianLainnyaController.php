@@ -45,7 +45,6 @@ class PengujianLainnyaController extends Controller
             $dataForm4 = FormCategory::whereHas('childForm', function($q) use($valueForm4){
                 $q->whereIn('id', array_keys($valueForm4));
             })->get();
-            
             $helpers = new GeneralHelper();
         } else {
             abort(404);
