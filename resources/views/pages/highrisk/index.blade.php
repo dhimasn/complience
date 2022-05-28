@@ -22,7 +22,7 @@
                 </div>
               </div>
               
-              <!--
+               <!--
               <div class="form-group row">
                 <label class="col-sm-2">Periode</label>
                 <div class="col-sm-9">
@@ -160,8 +160,8 @@
 @endsection
 @section('scripts')
 <script>
-  $(document).ready( function () {
-    $('table').DataTable();
-} );
+$(document).ready( function () {
+    $('table').DataTable({ "order": [[ 7, "desc" ]] });
+});
 </script>
 @endsection
