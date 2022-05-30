@@ -87,6 +87,7 @@ class HighRiskController extends Controller
             $hk['stars_rating'] =  $rs['bintang'];
             $hk['eer'] =  $hks->{1};
             $hk['cspf'] =  $hks->{2};
+            $hk['kapasitas'] = $rs['kapasitas'];
             $hk['compressor_type'] =$rs['compressor_type'];
             $hk['risk_rating'] =  $hks->risk_rating;
             $hk['verification_result'] =  $rs['verification_result'];

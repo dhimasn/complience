@@ -127,6 +127,7 @@
                 <th>Star Rating (1-5)</th>
                 <th>EER (Btu/h/W)</th>
                 <th>CSPF (Wh/Wh)</th>
+                <th>Kapasitas Pendinginan (BTU/hr)</th>
                 <th>Commpressor Type</th>
                 <th>Risk Rating</th>
                 <th>Verification Result</th>
@@ -142,6 +143,7 @@
                   <td>{{$item['stars_rating']}}</td>
                   <td>{{$item['eer']}}</td>
                   <td>{{$item['cspf']}}</td>
+                  <td>{{$item['kapasitas']}}</td>
                   <td>{{$item['compressor_type']}}</td>
                   <td>{{$item['risk_rating']}}</td>
                   <td>{{$item['verification_result']}}</td>
@@ -161,7 +163,7 @@
 @section('scripts')
 <script>
 $(document).ready( function () {
-    $('table').DataTable({ "order": [[ 7, "desc" ]] });
+    $('table').DataTable({ "order": [[ 8, "desc" ]] });
 });
 </script>
 @endsection
