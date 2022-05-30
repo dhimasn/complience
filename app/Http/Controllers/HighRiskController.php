@@ -72,7 +72,11 @@ class HighRiskController extends Controller
             }
             if($kapasitas == 2.5){
                 $kpA = 18000.00;
-                $kpB = 22500.00;
+                $kpB = 26999.00;
+            }
+            if($kapasitas == 3){
+                $kpA = 27000.00;
+                $kpB = 30000.00;
             }
             $kp['a'] = $kpA;
             $kp['b'] = $kpB;
