@@ -68,6 +68,7 @@
                     <option value="1.5">1 ½ PK</option>
                     <option value="2">2 PK</option>
                     <option value="2.5">2 ½ PK</option>
+                    <option value="3">3 PK</option>
                   </select>
                 </div>
               </div> 
