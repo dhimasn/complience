@@ -643,7 +643,8 @@
             xAxes : [{
                 gridLines : {
                   display : false
-                }
+                },
+                offset: true
             }]
           },
           tooltips: {
