@@ -116,3 +116,6 @@ Route::group(['middleware' => 'auth:web'], function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/privacy-policy', function(){
+    return view('pages/privacy-policy');
+});
