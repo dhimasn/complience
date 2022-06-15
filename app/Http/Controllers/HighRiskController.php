@@ -181,7 +181,7 @@ class HighRiskController extends Controller
                  $th1 => '',
                  $th2 => '',
                 'percentage' => '',
-                'risk_rating' => 0
+                'bobot4' => 0
             );
             
             if(array_key_exists('No. Registrasi/No. SHE', $pdt)){

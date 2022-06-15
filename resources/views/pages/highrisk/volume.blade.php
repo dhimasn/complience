@@ -29,7 +29,7 @@
                   <td>{{$item[$th1]}}</td>
                   <td>{{$item[$th2]}}</td>
                   <td>{{$item['percentage']}}</td>
-                  <td>{{$item['risk_rating']}}</td>
+                  <td>{{$item['bobot4']}}</td>
                 </tr>
                 @endforeach
               </tbody>
