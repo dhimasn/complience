@@ -225,6 +225,8 @@ class DashboardController extends Controller
         $result['3'] = 0; // Label palsu – data dari Kesesuaian Visual LTHE
         $result['4'] = 0; // Label tidak sesuai dengan produk - data dari Kesesuaian Visual LTHE
         $result['5'] = 0; // Tidak ada label – data dari Kesesuain Visual LTHE 
+        $sesuaiCount = array();
+        $tidakSesuaiCount = array();
         foreach ($dataForms as $keyMonth => $valueMonth) {
             $sesuaiCount[$keyMonth] = 0;
             $tidakSesuaiCount[$keyMonth] = 0;
