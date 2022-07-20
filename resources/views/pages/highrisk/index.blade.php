@@ -122,35 +122,47 @@
             <table class="table table-comp table-responsive">
               <thead class="thead-comp">
                 <th>Nomor SHE</th>
-                <th>Model Produk</th>
+                <th>Risk Rating</th>
                 <th>Merek</th>
                 <th>Star Rating (1-5)</th>
                 <th>EER (Btu/h/W)</th>
                 <th>CSPF (Wh/Wh)</th>
-                <th>Kapasitas Pendinginan (BTU/hr)</th>
                 <th>Commpressor Type</th>
-                <th>Risk Rating</th>
+                <th>Model Produk</th>
                 <th>Verification Result</th>
                 <th>Produk/Import Volume</th>
                 <th>Detail</th>
               </thead>
               <tbody>
                 @foreach ($highrisk as $item)
-                <tr>
-                  <td><a href="">{{$item['nomor_she']}}</a></td>
-                  <td>{{$item['model']}}</td>
-                  <td>{{$item['merek']}}</td>
-                  <td>{{$item['stars_rating']}}</td>
-                  <td>{{$item['eer']}}</td>
-                  <td>{{$item['cspf']}}</td>
-                  <td>{{$item['kapasitas']}}</td>
-                  <td>{{$item['compressor_type']}}</td>
-                  <td>{{$item['risk_rating']}}</td>
-                  <td>{{$item['verification_result']}}</td>
-                  <td>{{$item['volume_produk']}}</td>
-                  <td><a class="btn btn-sm btn-info" href="{{route('highrisk.detail', $item['nomor_she'])}}">detail</a></td>
-                </tr>
-                @endforeach
+                  <tr>
+                    <td><a href="">{{$item['nomor_she']}}</a></td>
+                    <?php
+                      if($item['risk_rating'] >= 7){
+                    ?>
+                    <td bgcolor="red">{{$item['risk_rating']}}</td>
+                    <?php 
+                      }else if($item['risk_rating'] >= 3 && $item['risk_rating'] <= 6){
+                    ?>
+                    <td bgcolor="FFEC33">{{$item['risk_rating']}}</td>
+                    <?php 
+                      } else if($item['risk_rating'] <= 2){
+                    ?>
+                    <td bgcolor="8DFF33">{{$item['risk_rating']}}</td>
+                    <?php 
+                      } 
+                    ?>
+                    <td>{{$item['model']}}</td>
+                    <td>{{$item['merek']}}</td>
+                    <td>{{$item['stars_rating']}}</td>
+                    <td>{{$item['eer']}}</td>
+                    <td>{{$item['cspf']}}</td>
+                    <td>{{$item['compressor_type']}}</td>
+                    <td>{{$item['verification_result']}}</td>
+                    <td>{{$item['volume_produk']}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{{route('highrisk.detail', $item['nomor_she'])}}">detail</a></td>
+                  </tr>
+                  @endforeach
               </tbody>
             </table>
           </div>
@@ -163,7 +175,7 @@
 @section('scripts')
 <script>
 $(document).ready( function () {
-    $('table').DataTable({ "order": [[ 8, "desc" ]] });
+    $('table').DataTable({ "order": [[ 1, "desc" ]] });
 });
 </script>
 @endsection

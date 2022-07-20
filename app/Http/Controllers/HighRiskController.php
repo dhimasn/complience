@@ -107,7 +107,7 @@ class HighRiskController extends Controller
             'hinggaSelected',
             'kapasitas',
             'kompressor',
-            'bintang',
+            'bintang'
         ));
     }
 
